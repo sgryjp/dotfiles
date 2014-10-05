@@ -1,4 +1,4 @@
 dotfiles
 ========
 
-My personal dot files.
+This repository stores my personal dot files.
