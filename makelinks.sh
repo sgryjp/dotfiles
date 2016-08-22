@@ -12,6 +12,7 @@ function makelinks() {
             continue 
         fi
         mkdir -p $destdir
+        destdir=`cd $destdir; pwd`      # for cleaner message
         echo $destdir/$fname
         ln -s $srcdir/$fname $destdir/$fname
     done

@@ -1,14 +1,20 @@
-# I don't wanna maintain two config files.
+# .bash_profile
+
+# Import aliases
 if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
+	source ~/.bashrc
 fi
 
-# aliases
-alias ls='ls -FG'
-alias ll='ls -l'
-alias la='ls -a'
-alias l.='ls -d .*'
-alias grep='grep --color'
+# Settings
+export LANG='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
+export PATH=$PATH:$HOME/bin
+export EDITOR=`which vi`
+if which vim > /dev/null; then export EDITOR=`which vim`; fi
+if which less > /dev/null; then export PAGER=`which less`; fi
+
+# Bash settings
+export HISTIGNORE=clear:ls*:pwd:fg*:bg*:rm*
 
 # for Python 3 on Mac OS X
 if [ -d /Library/Frameworks/Python.framework/Versions/Current/bin ]; then
