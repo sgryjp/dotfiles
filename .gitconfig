@@ -5,3 +5,5 @@
 [user]
 	name = Suguru YAMAMOTO
 	email = sgryjp@gmail.com
+[push]
+	default = simple
