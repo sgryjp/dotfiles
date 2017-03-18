@@ -6,6 +6,7 @@ set nonumber
 set noswapfile
 set title
 set wildmenu
+set backspace=indent,eol,start
 syntax on
 filetype indent plugin on
 set encoding=utf-8
