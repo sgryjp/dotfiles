@@ -4,7 +4,7 @@ set ruler
 set hlsearch
 set nonumber
 set noswapfile
-set title
+set notitle
 set wildmenu
 set backspace=indent,eol,start
 syntax on
