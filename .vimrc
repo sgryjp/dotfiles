@@ -7,10 +7,15 @@ set noswapfile
 set notitle
 set wildmenu
 set backspace=indent,eol,start
-syntax on
-filetype indent plugin on
 set encoding=utf-8
 set fileencoding=utf-8
+
+if has('syntax')
+    syntax on
+endif
+if exists("did_load_ftplugin")
+    filetype indent plugin on
+endif
 
 if exists('*plug#begin')
     call plug#begin('~/.vim/plugged')
