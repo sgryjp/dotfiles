@@ -16,6 +16,10 @@ endif
 if exists("did_load_ftplugin")
     filetype indent plugin on
 endif
+if has('unnamedplus')
+    set clipboard&
+    set clipboard^=unnamedplus
+endif
 
 if exists('*plug#begin')
     call plug#begin('~/.vim/plugged')
