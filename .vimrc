@@ -1,28 +1,22 @@
-set mouse=
-set path+=/usr/include/**
-set ruler
-set hlsearch
+set   termencoding=cp932
+set   mouse=a
+set   path+=/usr/include/**
+set   ruler
+set   hlsearch
 set nonumber
 set noswapfile
 set notitle
-set wildmenu
-set backspace=indent,eol,start
-set encoding=utf-8
-set fileencoding=utf-8
+set   wildmenu
+set   backspace=indent,eol,start
+set   encoding=utf-8
+set   fileencoding=utf-8
+set   fileencodings=ucs-bom,utf-8,cp932
 
 if has('syntax')
     syntax on
-endif
-if exists("did_load_ftplugin")
-    filetype indent plugin on
 endif
 if has('unnamedplus')
     set clipboard&
     set clipboard^=unnamedplus
 endif
-
-if exists('*plug#begin')
-    call plug#begin('~/.vim/plugged')
-    Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle'] }
-    call plug#end()
-endif
+filetype indent plugin on
