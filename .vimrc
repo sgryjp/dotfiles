@@ -1,4 +1,3 @@
-set   termencoding=cp932
 set   mouse=a
 set   path+=/usr/include/**
 set   ruler
@@ -12,11 +11,12 @@ set   encoding=utf-8
 set   fileencoding=utf-8
 set   fileencodings=ucs-bom,utf-8,cp932
 
-if has('syntax')
-    syntax on
+if has('win32')
+    set termencoding=cp932
 endif
 if has('unnamedplus')
     set clipboard&
     set clipboard^=unnamedplus
 endif
+syntax on
 filetype indent plugin on
