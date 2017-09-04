@@ -1,3 +1,6 @@
+if has('win32') || has('win64')
+    set   termencoding=cp932
+endif
 set   mouse=a
 set   path+=/usr/include/**
 set   ruler
@@ -11,12 +14,21 @@ set   encoding=utf-8
 set   fileencoding=utf-8
 set   fileencodings=ucs-bom,utf-8,cp932
 
-if has('win32')
-    set termencoding=cp932
-endif
 if has('unnamedplus')
     set clipboard&
     set clipboard^=unnamedplus
 endif
-syntax on
+
 filetype indent plugin on
+syntax on
+
+" et=expandtab, ts=tabstop, sts=softtabstop, sw=shiftwidth
+set shiftround
+set et ts=4 sts=4 sw=4
+augroup indent
+    autocmd!
+    autocmd FileType gitconfig setlocal noet ts=8 sts=8 sw=8
+    autocmd FileType go        setlocal noet ts=4 sts=4 sw=4
+    autocmd FileType make      setlocal noet ts=8 sts=8 sw=8
+    autocmd FileType html      setlocal noet ts=2 sts=2 sw=2
+augroup END

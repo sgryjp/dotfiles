@@ -21,10 +21,6 @@ if not %ERRORLEVEL% == 0 (
 
 call :MKDIR  "%USERPROFILE%\vimfiles"
 call :MKLINK "%USERPROFILE%\vimfiles\vimrc" "%ROOT%\.vim\vimrc"
-call :MKDIR  "%USERPROFILE%\vimfiles\ftplugin"
-for %%I in (.vim\ftplugin\*.vim) do (
-    call :MKLINK "%USERPROFILE%\vimfiles\ftplugin\%%~nxI" "%%~fI"
-)
 
 :CLEANUP
 del ".\makelinks.tmp" > NUL
@@ -41,6 +37,6 @@ REM ---------------------------------------------------------------------------
 :MKDIR
     if not exist "%~1" (
         mkdir "%~1"
-        echo New dir: %~1
+        echo New dir:  %~1
     )
     exit /b 0
