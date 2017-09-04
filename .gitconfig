@@ -7,3 +7,5 @@
 	email = sgryjp@gmail.com
 [push]
 	default = simple
+[status]
+	short = true
