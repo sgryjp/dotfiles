@@ -19,5 +19,5 @@ function makelinks() {
 }
 
 #------------------------------------------------------------------------------
-makelinks '.'             '.*'
-makelinks '.vim/ftplugin' '*.vim'
+makelinks '.'    '.*'
+makelinks '.vim' 'vimrc'

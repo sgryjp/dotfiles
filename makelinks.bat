@@ -19,9 +19,9 @@ if not %ERRORLEVEL% == 0 (
     goto :CLEANUP
 )
 
-call :MKLINK "%USERPROFILE%\_vimrc" "%ROOT%.vimrc"
-call :MKDIR "%USERPROFILE%\_vim"
-call :MKDIR "%USERPROFILE%\_vim\ftplugin"
+call :MKDIR  "%USERPROFILE%\_vim"
+call :MKLINK "%USERPROFILE%\_vim\vimrc" "%ROOT%\.vim\vimrc"
+call :MKDIR  "%USERPROFILE%\_vim\ftplugin"
 for %%I in (.vim\ftplugin\*.vim) do (
     call :MKLINK "%USERPROFILE%\_vim\ftplugin\%%~nxI" "%%~fI"
 )
