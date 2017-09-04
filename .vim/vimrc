@@ -19,6 +19,11 @@ if has('unnamedplus')
     set clipboard^=unnamedplus
 endif
 
+     map <C-n>     :cnext<CR>
+     map <C-m>     :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
+
+execute pathogen#infect()
 filetype indent plugin on
 syntax on
 
@@ -31,4 +36,10 @@ augroup indent
     autocmd FileType go        setlocal noet ts=4 sts=4 sw=4
     autocmd FileType make      setlocal noet ts=8 sts=8 sw=8
     autocmd FileType html      setlocal noet ts=2 sts=2 sw=2
+augroup END
+
+augroup golangSettings
+    autocmd!
+    autocmd FileType go nmap <leader>b  <Plug>(go-build)
+    autocmd FileType go nmap <leader>r  <Plug>(go-run)
 augroup END
