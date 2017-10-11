@@ -54,6 +54,7 @@ augroup golangSettings
     autocmd!
     autocmd FileType go nmap <leader>b  <Plug>(go-build)
     autocmd FileType go nmap <leader>r  <Plug>(go-run)
+    let g:go_auto_sameids = 1
 augroup END
 
 augroup pythonSettings
