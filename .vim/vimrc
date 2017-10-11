@@ -25,7 +25,13 @@ endif
      map <C-m>     :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 
-execute pathogen#infect()
+" Plugins
+call plug#begin('~/.vim/plugged')
+Plug 'ctrlpvim/ctrlp.vim', { 'tag': '*' }
+Plug 'fatih/vim-go', { 'tag': '*' }
+Plug 'davidhalter/jedi-vim', { 'tag': '*' }
+call plug#end()
+
 filetype indent plugin on
 syntax on
 
