@@ -5,6 +5,8 @@ set   mouse=a
 set   path+=/usr/include/**
 set   ruler
 set   hlsearch
+set   smartcase
+set nowrapscan
 set nonumber
 set noswapfile
 set notitle
