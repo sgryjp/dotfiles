@@ -55,3 +55,9 @@ augroup golangSettings
     autocmd FileType go nmap <leader>b  <Plug>(go-build)
     autocmd FileType go nmap <leader>r  <Plug>(go-run)
 augroup END
+
+augroup pythonSettings
+    autocmd!
+    autocmd FileType python set foldmethod=indent
+    autocmd FileType python set foldlevel=999
+augroup END
