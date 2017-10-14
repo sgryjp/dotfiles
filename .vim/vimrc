@@ -30,9 +30,10 @@ nnoremap <leader>a :cclose<CR>
 
 " Plugins
 call plug#begin('~/.vim/plugged')
-Plug 'ctrlpvim/ctrlp.vim', { 'tag': '*' }
-Plug 'fatih/vim-go', { 'tag': '*' }
-Plug 'davidhalter/jedi-vim', { 'tag': '*' }
+Plug 'https://github.com/ctrlpvim/ctrlp.vim',     { 'tag': '*' }
+Plug 'https://github.com/fatih/vim-go',           { 'tag': '*' }
+Plug 'https://github.com/davidhalter/jedi-vim',   { 'tag': '*' }
+Plug 'https://github.com/tpope/vim-surround.git', { 'tag': '*' }
 call plug#end()
 
 filetype indent plugin on
