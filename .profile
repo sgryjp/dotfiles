@@ -7,7 +7,7 @@ if which vim > /dev/null; then export EDITOR=`which vim`; fi
 if which less > /dev/null; then export PAGER=`which less`; fi
 
 # Bash settings
-export HISTIGNORE=clear:ls*:pwd:fg*:bg*:rm*
+export HISTIGNORE=clear:pwd:fg*:bg*:rm*
 
 # for Python 3 on Mac OS X, and MacPorts
 if [ -d /Library/Frameworks/Python.framework/Versions/Current/bin ]; then
