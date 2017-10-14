@@ -31,7 +31,6 @@ nnoremap <leader>a :cclose<CR>
 " Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'ctrlpvim/ctrlp.vim', { 'tag': '*' }
-Plug 'scrooloose/syntastic', { 'tag': '*' }
 Plug 'fatih/vim-go', { 'tag': '*' }
 Plug 'davidhalter/jedi-vim', { 'tag': '*' }
 call plug#end()
