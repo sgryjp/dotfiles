@@ -16,7 +16,7 @@ set   encoding=utf-8
 set   fileencoding=utf-8
 set   fileencodings=ucs-bom,utf-8,cp932
 set   laststatus=2
-set   statusline=%n\ %<%F%R%M%W%y%q%=\ %(%l,%c%V%)\ %p%%
+set   statusline=%n\ %<%F%R%M,%{&ff}%W%y%q%=\ %(%l,%c%V%)\ %p%%
 set   grepprg=ack
 
 if has('unnamedplus')
