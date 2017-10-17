@@ -21,7 +21,10 @@ set notitle
 set noruler
 set nonumber
 set   laststatus=2
-set   statusline=%n\ %<%f%R%M,%{&ff}%y%h%w%q%=\ %(%l,%c%V%)\ %p%%
+set   statusline =%n\ %<%f%R%M,%{&ff}%y%h%w%q%=\ %(%l,%c%V%)\ %p%%
+set   statusline+=\ %#warningmsg#
+set   statusline+=%{SyntasticStatuslineFlag()}
+set   statusline+=%*
 set   wildmenu
 set   mouse=a
 
@@ -40,10 +43,11 @@ nnoremap <leader>a :cclose<CR>
 
 " Plugins
 call plug#begin()
-Plug 'https://github.com/ctrlpvim/ctrlp.vim',   { 'tag': '*' }
-Plug 'https://github.com/fatih/vim-go',         { 'tag': '*' }
-Plug 'https://github.com/davidhalter/jedi-vim', { 'tag': '*' }
-Plug 'https://github.com/tpope/vim-surround',   { 'tag': '*' }
+Plug 'https://github.com/ctrlpvim/ctrlp.vim',     { 'tag': '*' }
+Plug 'https://github.com/vim-syntastic/syntastic'
+Plug 'https://github.com/fatih/vim-go',           { 'tag': '*' }
+Plug 'https://github.com/davidhalter/jedi-vim',   { 'tag': '*' }
+Plug 'https://github.com/tpope/vim-surround',     { 'tag': '*' }
 call plug#end()
 
 filetype indent plugin on
@@ -72,3 +76,6 @@ augroup PythonSettings
     autocmd FileType python set foldmethod=indent
     autocmd FileType python set foldlevel=999
 augroup END
+
+" Plugin settings
+let g:syntastic_stl_format = "[L%F,%t]"
