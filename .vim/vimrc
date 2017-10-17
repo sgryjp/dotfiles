@@ -1,39 +1,49 @@
 if has('win32') || has('win64')
     set   termencoding=cp932
 endif
-set   mouse=a
+if has('linux')
 set   path+=/usr/include/**
-set   ruler
-set   hlsearch
-set   smartcase
-set nowrapscan
-set nonumber
-set noswapfile
-set notitle
-set   wildmenu
+endif
+
+" File & Edit
 set   backspace=indent,eol,start
 set   encoding=utf-8
 set   fileencoding=utf-8
 set   fileencodings=ucs-bom,utf-8,cp932
-set   laststatus=2
-set   statusline=%n\ %<%f%R%M,%{&ff}%y%h%w%q%=\ %(%l,%c%V%)\ %p%%
-set   grepprg=ack
-
+set noswapfile
 if has('unnamedplus')
     set clipboard&
     set clipboard^=unnamedplus
 endif
 
+" User Interface & Appearence
+set notitle
+set noruler
+set nonumber
+set   laststatus=2
+set   statusline=%n\ %<%f%R%M,%{&ff}%y%h%w%q%=\ %(%l,%c%V%)\ %p%%
+set   wildmenu
+set   mouse=a
+
+" Search
+set   hlsearch
+set   smartcase
+set nowrapscan
+
+" Misc.
+set   grepprg=ack
+
+" Keymaps
      map <C-n>     :cnext<CR>
      map <C-m>     :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 
 " Plugins
 call plug#begin()
-Plug 'https://github.com/ctrlpvim/ctrlp.vim',     { 'tag': '*' }
-Plug 'https://github.com/fatih/vim-go',           { 'tag': '*' }
-Plug 'https://github.com/davidhalter/jedi-vim',   { 'tag': '*' }
-Plug 'https://github.com/tpope/vim-surround.git', { 'tag': '*' }
+Plug 'https://github.com/ctrlpvim/ctrlp.vim',   { 'tag': '*' }
+Plug 'https://github.com/fatih/vim-go',         { 'tag': '*' }
+Plug 'https://github.com/davidhalter/jedi-vim', { 'tag': '*' }
+Plug 'https://github.com/tpope/vim-surround',   { 'tag': '*' }
 call plug#end()
 
 filetype indent plugin on
@@ -50,14 +60,14 @@ augroup indent
     autocmd FileType html      setlocal noet ts=2 sts=2 sw=2
 augroup END
 
-augroup golangSettings
+augroup GolangSettings
     autocmd!
     autocmd FileType go nmap <leader>b  <Plug>(go-build)
     autocmd FileType go nmap <leader>r  <Plug>(go-run)
     let g:go_auto_sameids = 1
 augroup END
 
-augroup pythonSettings
+augroup PythonSettings
     autocmd!
     autocmd FileType python set foldmethod=indent
     autocmd FileType python set foldlevel=999
