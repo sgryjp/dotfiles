@@ -51,6 +51,7 @@ Plug 'https://github.com/vim-syntastic/syntastic'
 Plug 'https://github.com/fatih/vim-go',           { 'tag': '*' }
 Plug 'https://github.com/davidhalter/jedi-vim',   { 'tag': '*' }
 Plug 'https://github.com/tpope/vim-surround',     { 'tag': '*' }
+Plug 'https://github.com/tpope/vim-fugitive',     { 'tag': '*' }
 call plug#end()
 
 filetype indent plugin on
