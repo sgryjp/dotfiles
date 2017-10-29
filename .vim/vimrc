@@ -38,6 +38,11 @@ set nowrapscan
 
 " Misc.
 set   grepprg=ack
+set  wildignore =*.swp,*.~*
+set  wildignore+=*.o,*.obj
+set  wildignore+=*.so,*.dll
+set  wildignore+=*.py[cod]
+set  wildignore+=*.min.*
 
 " Keymaps
      map ]q        :cnext<CR>
