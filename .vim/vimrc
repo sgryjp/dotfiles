@@ -47,6 +47,7 @@ set   grepprg=ack
 nnoremap <leader>a :cclose<CR>
 
 " Plugins
+call pathogen#infect()
 call plug#begin()
 Plug 'https://github.com/ctrlpvim/ctrlp.vim',     { 'tag': '*' }
 Plug 'https://github.com/vim-syntastic/syntastic'
