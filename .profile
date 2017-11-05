@@ -1,6 +1,6 @@
 # Settings
-export LANG='ja_JP.UTF-8'
-export LC_ALL='ja_JP.UTF-8'
+#export LANG='ja_JP.UTF-8'
+#export LC_ALL='ja_JP.UTF-8'
 export PATH=$HOME/bin:$PATH
 export EDITOR=`which vi`
 if which vim > /dev/null; then export EDITOR=`which vim`; fi
