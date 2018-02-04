@@ -37,7 +37,7 @@ set   smartcase
 set nowrapscan
 
 " Misc.
-set   grepprg=ack
+set   grepprg=rg
 set  wildignore =*.swp,*.~*
 set  wildignore+=*.o,*.obj
 set  wildignore+=*.so,*.dll
