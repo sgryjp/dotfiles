@@ -8,6 +8,10 @@ if which less > /dev/null; then export PAGER=`which less`; fi
 
 # Bash settings
 export HISTIGNORE=clear:pwd:fg*:bg*:rm*
+if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+    # for bash-completion from MacPorts
+	. /opt/local/etc/profile.d/bash_completion.sh
+fi
 
 # for Python 3 on Mac OS X, and MacPorts
 if [ -d /Library/Frameworks/Python.framework/Versions/Current/bin ]; then
