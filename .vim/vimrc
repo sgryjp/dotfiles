@@ -30,6 +30,9 @@ set   statusline+=%{SyntasticStatuslineFlag()}
 set   statusline+=%*
 set   wildmenu
 set   mouse=a
+if !has('gui_running') && exists('&termguicolors') && $COLORTERM ==# 'truecolor'
+    set termguicolors
+endif
 
 " Search
 set   hlsearch
