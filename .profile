@@ -1,10 +1,23 @@
+# MacPorts
+if [ -d /opt/local/bin ]; then
+	PATH="/opt/local/bin:$PATH"
+fi
+if [ -d /opt/local/sbin ]; then
+	PATH="/opt/local/sbin:$PATH"
+fi
+export PATH
+
 # Settings
 #export LANG='ja_JP.UTF-8'
 #export LC_ALL='ja_JP.UTF-8'
 export PATH=$HOME/bin:$PATH
-export EDITOR=`which vi`
-if which vim > /dev/null; then export EDITOR=`which vim`; fi
-if which less > /dev/null; then export PAGER=`which less`; fi
+export EDITOR=vi
+if command -v vim > /dev/null; then
+    export EDITOR=`command -v vim`
+fi
+if command -v less > /dev/null; then
+    export PAGER=`command -v less`
+fi
 
 # Bash settings
 export HISTIGNORE=clear:pwd:fg*:bg*
@@ -16,12 +29,6 @@ fi
 # for Python 3 on Mac OS X, and MacPorts
 if [ -d /Library/Frameworks/Python.framework/Versions/Current/bin ]; then
 	PATH=/Library/Frameworks/Python.framework/Versions/Current/bin:$PATH
-fi
-if [ -d /opt/local/bin ]; then
-	PATH="/opt/local/bin:$PATH"
-fi
-if [ -d /opt/local/sbin ]; then
-	PATH="/opt/local/sbin:$PATH"
 fi
 export PATH
 
