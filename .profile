@@ -7,7 +7,7 @@ if which vim > /dev/null; then export EDITOR=`which vim`; fi
 if which less > /dev/null; then export PAGER=`which less`; fi
 
 # Bash settings
-export HISTIGNORE=clear:pwd:fg*:bg*:rm*
+export HISTIGNORE=clear:pwd:fg*:bg*
 if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
     # for bash-completion from MacPorts
 	. /opt/local/etc/profile.d/bash_completion.sh
