@@ -4,7 +4,7 @@ setlocal EnableExtensions
 set BATDIR=%~dp0
 if not exist "%USERPROFILE%" (
     echo [Error] Environment variable %%USERPROFILE%% is not set.
-    goto :CLEANUP
+    goto :EOF
 )
 
 REM Check access priviledge
@@ -12,7 +12,7 @@ if exist "%TEMP%\makelinks.tmp" del "%TEMP%\makelinks.tmp"
 (mklink "%TEMP%\makelinks.tmp" "%~0" 2>&1) > NUL
 if not %ERRORLEVEL% == 0 (
     echo Failed to create symbolic link
-    goto :CLEANUP
+    goto :EOF
 )
 del ".\makelinks.tmp" 2> NUL
 
