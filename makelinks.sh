@@ -19,5 +19,6 @@ function makelinks() {
 }
 
 #------------------------------------------------------------------------------
-makelinks '.'    '.*'
-makelinks '.vim' 'vimrc'
+makelinks '.'             '.*'
+makelinks '.vim'          'vimrc'
+makelinks '.vim/autoload' 'plug.vim'

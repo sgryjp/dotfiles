@@ -25,6 +25,8 @@ REM ---------------------------------------------------------------------------
     set DOTVIM=%~f1
     call :MKDIR  "%DOTVIM%"
     call :MKLINK "%DOTVIM%vimrc" "%BATDIR%.vim\vimrc"
+    call :MKDIR  "%DOTVIM%autoload"
+    call :MKLINK "%DOTVIM%autoload\plug.vim" "%BATDIR%.vim\autoload\plug.vim"
     call :MKDIR  "%DOTVIM%ftplugin"
     for %%I in (%BATDIR%.vim\ftplugin\*.vim) do (
         call :MKLINK "%DOTVIM%ftplugin\%%~nxI" "%%~fI"
