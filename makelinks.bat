@@ -42,7 +42,7 @@ REM ---------------------------------------------------------------------------
 :MKDIR
     if not exist "%~f1" (
         mkdir "%~f1"
-	echo mkdir "%~f1"
+        echo mkdir "%~f1"
     ) else (
         echo mkdir "%~f1" ^(skip^)
     )
