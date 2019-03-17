@@ -17,6 +17,8 @@ if not %ERRORLEVEL% == 0 (
 del ".\makelinks.tmp" 2> NUL
 
 call :MAIN "%USERPROFILE%\vimfiles\"
+call :MAIN "%USERPROFILE%\.vim\"
+call :MAIN "%USERPROFILE%\_vim\"
 goto :EOF
 
 
