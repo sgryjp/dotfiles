@@ -46,6 +46,8 @@ set  wildignore+=*.o,*.obj
 set  wildignore+=*.so,*.dll
 set  wildignore+=*.py[cod]
 set  wildignore+=*.min.*
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+highlight ExtraWhitespace ctermbg=red guibg=red
 
 " Keymaps
      map ]q        :cnext<CR>
