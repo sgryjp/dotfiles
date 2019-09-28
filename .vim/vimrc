@@ -96,4 +96,5 @@ augroup PythonSettings
 augroup END
 
 " Plugin settings
+let g:ctrlp_custom_ignore = '\v[\/](__pycache__|node_modules)'
 let g:syntastic_stl_format = "[L%F,%t]"
