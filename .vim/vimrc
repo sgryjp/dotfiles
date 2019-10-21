@@ -69,6 +69,7 @@ Plug 'https://github.com/vim-syntastic/syntastic'
 Plug 'https://github.com/fatih/vim-go',                 { 'tag': '*' }
 Plug 'https://github.com/davidhalter/jedi-vim',         { 'tag': '*' }
 Plug 'https://github.com/JuliaEditorSupport/julia-vim'
+Plug 'https://github.com/rust-lang/rust.vim.git'
 call plug#end()
 
 filetype indent plugin on
