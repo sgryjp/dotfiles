@@ -59,12 +59,14 @@ nnoremap <leader>a :cclose<CR>
 " Plugins
 "call pathogen#infect()
 call plug#begin()
-Plug 'https://github.com/ctrlpvim/ctrlp.vim',          { 'tag': '*' }
+Plug 'https://github.com/tpope/vim-surround',           { 'tag': '*' }
+
+Plug 'https://github.com/ctrlpvim/ctrlp.vim',           { 'tag': '*' }
+Plug 'https://github.com/tpope/vim-fugitive',           { 'tag': '*' }
+
 Plug 'https://github.com/vim-syntastic/syntastic'
-Plug 'https://github.com/fatih/vim-go',                { 'tag': '*' }
-Plug 'https://github.com/davidhalter/jedi-vim',        { 'tag': '*' }
-Plug 'https://github.com/tpope/vim-surround',          { 'tag': '*' }
-Plug 'https://github.com/tpope/vim-fugitive',          { 'tag': '*' }
+Plug 'https://github.com/fatih/vim-go',                 { 'tag': '*' }
+Plug 'https://github.com/davidhalter/jedi-vim',         { 'tag': '*' }
 Plug 'https://github.com/JuliaEditorSupport/julia-vim'
 call plug#end()
 
