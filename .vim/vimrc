@@ -59,6 +59,7 @@ nnoremap <leader>a :cclose<CR>
 " Plugins
 "call pathogen#infect()
 call plug#begin()
+Plug 'https://github.com/justinmk/vim-sneak.git',       { 'tag': '*' }
 Plug 'https://github.com/tpope/vim-surround',           { 'tag': '*' }
 
 Plug 'https://github.com/ctrlpvim/ctrlp.vim',           { 'tag': '*' }
