@@ -29,7 +29,7 @@ set   statusline+=\ %#warningmsg#
 set   statusline+=%{SyntasticStatuslineFlag()}
 set   statusline+=%*
 set   wildmenu
-set   mouse=a
+set   mouse=
 if !has('gui_running') && exists('&termguicolors') && $COLORTERM ==# 'truecolor'
     set termguicolors
 endif
