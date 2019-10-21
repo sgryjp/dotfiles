@@ -100,7 +100,7 @@ augroup PythonSettings
 augroup END
 
 " Plugin settings
-let g:ctrlp_custom_ignore = '\v[\/](__pycache__|node_modules)'
+let g:ctrlp_custom_ignore = '\v[\/](__pycache__|node_modules|target)'
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
 let g:syntastic_stl_format = "[L%F,%t]"
