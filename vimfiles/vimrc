@@ -50,6 +50,8 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 highlight ExtraWhitespace ctermbg=red guibg=red
 
 " Keymaps
+     map ]l        :lnext<CR>
+     map [l        :lprevious<CR>
      map ]q        :cnext<CR>
      map [q        :cprevious<CR>
      map <C-n>     :cnext<CR>
