@@ -19,6 +19,8 @@ function makelinks() {
 }
 
 #------------------------------------------------------------------------------
-makelinks '.'             '.*'
+for F in bashrc gitconfig gitignore inputrc profile; do
+    ln -fs $(pwd)/$F ~/.$F
+done
 makelinks '.vim'          'vimrc'
 makelinks '.vim/autoload' 'plug.vim'
