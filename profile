@@ -32,6 +32,10 @@ if [ -d /Library/Frameworks/Python.framework/Versions/Current/bin ]; then
 fi
 export PATH
 
+# Rust and Go
+if test -d ~/.cargo/bin; then export PATH=~/.cargo/bin/:$PATH; fi
+if test -d ~/go/bin;     then export PATH=~/go/bin/:$PATH; fi
+
 # Aliases
 case `uname` in
     Darwin) LSOPTS='-G';;
