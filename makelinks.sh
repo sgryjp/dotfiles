@@ -1,26 +1,19 @@
-#!/usr/bin/env bash
+#!/bin/sh
+SCRIPT=$(readlink -f "$0")
+SCRIPT_PATH=$(dirname "$SCRIPT")
 
-function makelinks() {
-    scriptdir=`dirname $0`
-    srcdir=`cd $scriptdir/$1; pwd`
-    destdir=$HOME/$1
-
-    fnames=`find "$srcdir" -type f -name "$2" | grep -v ".DS_Store"`
-    for fname in $fnames; do
-        fname=`basename $fname`
-        #if [ -h $destdir/$fname ]; then
-        #    continue
-        #fi
-        mkdir -p $destdir
-        destdir=`cd $destdir; pwd`      # for cleaner message
-        echo $destdir/$fname
-        ln -fs $srcdir/$fname $destdir/$fname
-    done
+makelink() {
+    echo \$1 = $1
+    echo \$2 = $2
+    if test "$(readlink -f $2)" != "$1"; then
+        ln -fsv "$1" "$2"
+    fi
 }
 
-#------------------------------------------------------------------------------
 for F in bashrc gitconfig gitignore inputrc profile; do
-    ln -fs $(pwd)/$F ~/.$F
+    makelink $SCRIPT_PATH/$F ~/.$F
 done
-makelinks '.vim'          'vimrc'
-makelinks '.vim/autoload' 'plug.vim'
+
+mkdir -vp ~/.vim/autoload
+makelink $SCRIPT_PATH/vimfiles/vimrc             ~/.vim/vimrc
+makelink $SCRIPT_PATH/vimfiles/autoload/plug.vim ~/.vim/autoload/plug.vim
