@@ -1,9 +1,9 @@
 # MacPorts
 if [ -d /opt/local/bin ]; then
-	PATH="/opt/local/bin:$PATH"
+    PATH="/opt/local/bin:$PATH"
 fi
 if [ -d /opt/local/sbin ]; then
-	PATH="/opt/local/sbin:$PATH"
+    PATH="/opt/local/sbin:$PATH"
 fi
 export PATH
 
@@ -23,12 +23,12 @@ fi
 export HISTIGNORE=clear:pwd:fg*:bg*
 if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
     # for bash-completion from MacPorts
-	. /opt/local/etc/profile.d/bash_completion.sh
+    . /opt/local/etc/profile.d/bash_completion.sh
 fi
 
 # for Python 3 on Mac OS X, and MacPorts
 if [ -d /Library/Frameworks/Python.framework/Versions/Current/bin ]; then
-	PATH=/Library/Frameworks/Python.framework/Versions/Current/bin:$PATH
+    PATH=/Library/Frameworks/Python.framework/Versions/Current/bin:$PATH
 fi
 export PATH
 
