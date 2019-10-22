@@ -16,25 +16,19 @@ if not %ERRORLEVEL% == 0 (
 )
 del ".\makelinks.tmp" 2> NUL
 
-call :MAIN "%USERPROFILE%\vimfiles\"
-call :MAIN "%USERPROFILE%\.vim\"
-call :MAIN "%USERPROFILE%\_vim\"
+call :MKDIR "%USERPROFILE%\vimfiles\autoload"
+call :MKDIR "%USERPROFILE%\.vim\autoload"
+call :MKDIR "%USERPROFILE%\_vim\autoload"
+call :MKLINK "%USERPROFILE%\vimfiles\vimrc" "%BATDIR%vimfiles\vimrc"
+call :MKLINK "%USERPROFILE%\.vim\vimrc"     "%BATDIR%vimfiles\vimrc"
+call :MKLINK "%USERPROFILE%\_vim\vimrc"     "%BATDIR%vimfiles\vimrc"
+call :MKLINK "%USERPROFILE%\vimfiles\autoload\plug.vim" "%BATDIR%vimfiles\autoload\plug.vim"
+call :MKLINK "%USERPROFILE%\.vim\autoload\plug.vim"     "%BATDIR%vimfiles\autoload\plug.vim"
+call :MKLINK "%USERPROFILE%\_vim\autoload\plug.vim"     "%BATDIR%vimfiles\autoload\plug.vim"
 goto :EOF
 
 
 REM ---------------------------------------------------------------------------
-:MAIN
-    set DOTVIM=%~f1
-    call :MKDIR  "%DOTVIM%"
-    call :MKLINK "%DOTVIM%vimrc" "%BATDIR%.vim\vimrc"
-    call :MKDIR  "%DOTVIM%autoload"
-    call :MKLINK "%DOTVIM%autoload\plug.vim" "%BATDIR%.vim\autoload\plug.vim"
-    call :MKDIR  "%DOTVIM%ftplugin"
-    for %%I in (%BATDIR%.vim\ftplugin\*.vim) do (
-        call :MKLINK "%DOTVIM%ftplugin\%%~nxI" "%%~fI"
-    )
-    exit /b 0
-
 :MKLINK
     set DEST=%~f1
     set SRC=%~f2
@@ -45,9 +39,7 @@ REM ---------------------------------------------------------------------------
 
 :MKDIR
     if not exist "%~f1" (
-        mkdir "%~f1"
         echo mkdir "%~f1"
-    ) else (
-        echo mkdir "%~f1" ^(skip^)
+        mkdir "%~f1"
     )
     exit /b 0
