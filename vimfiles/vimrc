@@ -24,7 +24,8 @@ set notitle
 set noruler
 set nonumber
 set   laststatus=2
-set   statusline =%n\ %<%f%R%M,%{&ff}%y%h%w%q%=\ %(%l,%c%V%)\ %p%%
+set   statusline =%n\ %<%f%R%M,%{&ff}%y%{FugitiveStatusline()}%h%w%q
+set   statusline+=%=\ %(%l,%c%V%)\ %p%%
 set   statusline+=\ %#warningmsg#
 set   statusline+=%{SyntasticStatuslineFlag()}
 set   statusline+=%*
