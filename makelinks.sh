@@ -15,3 +15,6 @@ done
 mkdir -vp ~/.vim/autoload
 makelink $SCRIPT_PATH/vimfiles/vimrc             ~/.vim/vimrc
 makelink $SCRIPT_PATH/vimfiles/autoload/plug.vim ~/.vim/autoload/plug.vim
+
+mkdir -vp ~/.config/nvim/
+makelink $SCRIPT_PATH/init.vim ~/.config/nvim/init.vim
