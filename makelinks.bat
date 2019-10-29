@@ -45,8 +45,8 @@ REM ---------------------------------------------------------------------------
     set DEST=%~f1
     set SRC=%~f2
     if exist "%DEST%" del /q "%DEST%"
-    mklink "%DEST%" "%SRC%" > NUL
     echo mklink "%DEST%" "%SRC%"
+    mklink "%DEST%" "%SRC%" > NUL
     exit /b 0
 
 :MKDIR
