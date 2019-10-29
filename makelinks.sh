@@ -3,8 +3,6 @@ SCRIPT=$(readlink -f "$0")
 SCRIPT_PATH=$(dirname "$SCRIPT")
 
 makelink() {
-    echo \$1 = $1
-    echo \$2 = $2
     if test "$(readlink -f $2)" != "$1"; then
         ln -fsv "$1" "$2"
     fi
