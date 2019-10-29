@@ -16,6 +16,9 @@ if not %ERRORLEVEL% == 0 (
 )
 del ".\makelinks.tmp" 2> NUL
 
+call :MKLINK "%USERPROFILE%\.gitconfig" "%BATDIR%gitconfig"
+call :MKLINK "%USERPROFILE%\.gitignore" "%BATDIR%gitignore"
+
 call :MKDIR "%USERPROFILE%\vimfiles\autoload"
 call :MKDIR "%USERPROFILE%\.vim\autoload"
 call :MKDIR "%USERPROFILE%\_vim\autoload"
