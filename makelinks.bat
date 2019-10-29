@@ -16,8 +16,8 @@ if not %ERRORLEVEL% == 0 (
 )
 del ".\makelinks.tmp" 2> NUL
 
-call :MKLINK "%USERPROFILE%\.gitconfig" "%BATDIR%gitconfig"
-call :MKLINK "%USERPROFILE%\.gitignore" "%BATDIR%gitignore"
+call :COPY "%BATDIR%gitconfig" "%USERPROFILE%\.gitconfig"
+call :COPY "%BATDIR%gitignore" "%USERPROFILE%\.gitignore"
 
 call :MKDIR "%USERPROFILE%\vimfiles\autoload"
 call :MKDIR "%USERPROFILE%\.vim\autoload"
@@ -32,6 +32,15 @@ goto :EOF
 
 
 REM ---------------------------------------------------------------------------
+:COPY
+    set SRC=%~f1
+    set DEST=%~f2
+    if not exist "%DEST%" (
+        echo copy "%SRC%" "%DEST%"
+        copy "%SRC%" "%DEST%" > NUL
+    )
+    exit /b 0
+
 :MKLINK
     set DEST=%~f1
     set SRC=%~f2
