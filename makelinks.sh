@@ -10,6 +10,19 @@ makelink() {
     return 1
 }
 
+insert_source_line() {
+    # Create the target file
+    if test ! -e $2; then
+        mkdir -p $(dirname $2)
+        touch $2
+    fi
+
+    # Insert a line to "source" the target file
+    if test $(grep $1 $2 | wc -l 2>/dev/null) = 0; then
+        echo "if test -e $1; then source $1; fi\n" >> $2
+    fi
+}
+
 # Files to be replaced
 mkdir -vp ~/.config/git
 for F in git/config git/ignore; do
@@ -26,6 +39,8 @@ for F in bashrc profile; do
         printf 'source "~/.local/etc/%s"; fi\n' "$F" >> ~/.$F
     fi
 done
+insert_source_line $SCRIPT_PATH/zshrc   ~/.zshrc
+insert_source_line $SCRIPT_PATH/profile ~/.zprofile
 
 # VIM
 mkdir -vp ~/.vim/autoload
