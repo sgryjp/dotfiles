@@ -1,10 +1,39 @@
 #!/bin/sh
 SCRIPT_PATH=$(cd $(dirname $0) && pwd -P)
 
+canonicalize() {
+    _COUNT=100
+    _DIRNAME=$(dirname $1)
+    _BASENAME=$(basename $1)
+
+    while test -L "$_DIRNAME/$_BASENAME"; do
+        _TARGET=$(readlink "$_DIRNAME/$_BASENAME")
+        _DIRNAME=$(dirname "$_TARGET")
+        _BASENAME=$(basename "$_TARGET")
+
+        if test $_COUNT -le 0; then
+            printf "error: too many recursion\n" >&2
+            return 1
+        fi
+        _COUNT=$(expr $_COUNT + 1)
+    done
+
+    CANONICALIZED=$(cd $_DIRNAME && pwd -P)/$_BASENAME
+    unset _DIRNAME _BASENAME
+}
+
 makelink() {
+    # Resolve canonicalized path of the target file
+    canonicalize $2
+    if test $? -ne 0; then
+         echo "error: failed to resolve canonicalized path of $2" >&2
+         return 1
+    fi
+
     # Make a link unless the target is a symlink to the source
-    if test "$(readlink -f $2)" != "$1"; then
+    if test "$CANONICALIZED" != "$1"; then
         ln -fsv "$1" "$2"
+        unset CANONICALIZED
         return 0
     fi
     return 1
@@ -31,14 +60,8 @@ done
 makelink $SCRIPT_PATH/inputrc ~/.inputrc
 
 # Files to be additionally sourced
-mkdir -vp ~/.local/etc
-for F in bashrc profile; do
-    makelink $SCRIPT_PATH/$F ~/.local/etc/$F
-    if test $(grep "~/.local/etc/$F" ~/.$F | wc -l) = 0; then
-        printf 'if test -e "~/.local/etc/%s"; then ' "$F" >> ~/.$F
-        printf 'source "~/.local/etc/%s"; fi\n' "$F" >> ~/.$F
-    fi
-done
+insert_source_line $SCRIPT_PATH/bashrc  ~/.bashrc
+insert_source_line $SCRIPT_PATH/profile ~/.profile
 insert_source_line $SCRIPT_PATH/zshrc   ~/.zshrc
 insert_source_line $SCRIPT_PATH/profile ~/.zprofile
 
