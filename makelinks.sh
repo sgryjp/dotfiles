@@ -1,6 +1,5 @@
 #!/bin/sh
-SCRIPT=$(readlink -f "$0")
-SCRIPT_PATH=$(dirname "$SCRIPT")
+SCRIPT_PATH=$(cd $(dirname $0) && pwd -P)
 
 makelink() {
     # Make a link unless the target is a symlink to the source
