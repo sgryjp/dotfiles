@@ -9,3 +9,5 @@
 	default = simple
 [status]
 	short = true
+[pager]
+	branch = false
