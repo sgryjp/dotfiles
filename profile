@@ -8,6 +8,7 @@ fi
 export PATH
 
 # Settings
+umask 022
 export LANG='C.UTF-8'
 export LC_ALL='C.UTF-8'
 export PATH=$HOME/bin:$PATH
