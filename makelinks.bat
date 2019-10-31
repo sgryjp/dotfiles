@@ -16,8 +16,8 @@ if not %ERRORLEVEL% == 0 (
 )
 del ".\makelinks.tmp" 2> NUL
 
-call :COPY "%BATDIR%gitconfig" "%USERPROFILE%\.gitconfig"
-call :COPY "%BATDIR%gitignore" "%USERPROFILE%\.gitignore"
+call :COPY "%BATDIR%git/config" "%USERPROFILE%\.gitconfig"
+call :COPY "%BATDIR%git/ignore" "%USERPROFILE%\.gitignore"
 
 call :MKDIR "%USERPROFILE%\vimfiles\autoload"
 call :MKDIR "%USERPROFILE%\.vim\autoload"

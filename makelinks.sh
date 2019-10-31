@@ -13,8 +13,8 @@ makelink() {
 
 # Files to be replaced
 mkdir -vp ~/.config/git
-for F in gitconfig gitignore; do
-    makelink $SCRIPT_PATH/$F ~/.config/git/$F
+for F in git/config git/ignore; do
+    makelink $SCRIPT_PATH/$F ~/.config/$F
 done
 makelink $SCRIPT_PATH/inputrc ~/.inputrc
 
