@@ -57,7 +57,8 @@ mkdir -vp ~/.config/git
 for F in git/config git/ignore; do
     makelink $SCRIPT_PATH/$F ~/.config/$F
 done
-makelink $SCRIPT_PATH/inputrc ~/.inputrc
+makelink $SCRIPT_PATH/zsh/antigen.zsh ~/.local/antigen.zsh
+makelink $SCRIPT_PATH/inputrc         ~/.inputrc
 
 # Files to be additionally sourced
 insert_source_line $SCRIPT_PATH/bashrc  ~/.bashrc
