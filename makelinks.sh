@@ -3,6 +3,7 @@ SCRIPT=$(readlink -f "$0")
 SCRIPT_PATH=$(dirname "$SCRIPT")
 
 makelink() {
+    # Make a link unless the target is a symlink to the source
     if test "$(readlink -f $2)" != "$1"; then
         ln -fsv "$1" "$2"
         return 0
@@ -21,11 +22,9 @@ makelink $SCRIPT_PATH/inputrc ~/.inputrc
 mkdir -vp ~/.local/etc
 for F in bashrc profile; do
     makelink $SCRIPT_PATH/$F ~/.local/etc/$F
-    if test $? = 0; then
-        if test $(grep "~/.local/etc/$F" ~/.$F | wc -l) = 0; then
-            printf 'if test -e "~/.local/etc/%s"; then ' "$F" >> ~/.$F
-            printf 'source "~/.local/etc/%s"; fi\n' "$F" >> ~/.$F
-        fi
+    if test $(grep "~/.local/etc/$F" ~/.$F | wc -l) = 0; then
+        printf 'if test -e "~/.local/etc/%s"; then ' "$F" >> ~/.$F
+        printf 'source "~/.local/etc/%s"; fi\n' "$F" >> ~/.$F
     fi
 done
 
