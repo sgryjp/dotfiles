@@ -1,12 +1,3 @@
-# MacPorts
-if [ -d /opt/local/bin ]; then
-    PATH="/opt/local/bin:$PATH"
-fi
-if [ -d /opt/local/sbin ]; then
-    PATH="/opt/local/sbin:$PATH"
-fi
-export PATH
-
 # Settings
 umask 022
 export LANG='C.UTF-8'
