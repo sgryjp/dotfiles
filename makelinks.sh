@@ -54,6 +54,7 @@ insert_line() {
     fi
 }
 
+# usage: insert_source_line TARGET FILE
 insert_source_line() {
     # Create the target file
     if test ! -e $2; then
@@ -62,12 +63,15 @@ insert_source_line() {
     fi
 
     # Insert a line to "source" the target file
-    if test $(grep $1 $2 | wc -l 2>/dev/null) = 0; then
-        echo "Modifying \"$2\" to source \"$1\""
-        echo "if test -e $1; then source $1; fi" >> $2
+    if test $(grep \"$1\" $2 | wc -l 2>/dev/null) = 0; then
+        echo "Inserting lines to source \"$1\" into \"$2\""
+        echo "if test -e \"$1\"; then" >> $2
+        echo "    source \"$1\"" >> $2
+        echo "fi" >> $2
     fi
 }
 
+# Files to be replaced
 mkdir -pv ~/.config/git
 for F in git/config git/ignore; do
     makelink $SCRIPT_PATH/$F ~/.config/$F
