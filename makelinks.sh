@@ -64,7 +64,7 @@ insert_source_line() {
 
     # Insert a line to "source" the target file
     if test $(grep \"$1\" $2 | wc -l 2>/dev/null) = 0; then
-        echo "Inserting lines to source \"$1\" into \"$2\""
+        echo "Modifying \"$2\" to source \"$1\""
         echo "if test -e \"$1\"; then" >> $2
         echo "    source \"$1\"" >> $2
         echo "fi" >> $2
