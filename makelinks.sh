@@ -12,7 +12,7 @@ canonicalize() {
         _BASENAME=$(basename "$_TARGET")
 
         if test $_COUNT -le 0; then
-            printf "error: too many recursion\n" >&2
+            echo "error: too many recursion" >&2
             return 1
         fi
         _COUNT=$(expr $_COUNT + 1)
@@ -42,18 +42,19 @@ makelink() {
 insert_source_line() {
     # Create the target file
     if test ! -e $2; then
-        mkdir -p $(dirname $2)
+        mkdir -pv $(dirname $2)
         touch $2
     fi
 
     # Insert a line to "source" the target file
     if test $(grep $1 $2 | wc -l 2>/dev/null) = 0; then
-        echo "if test -e $1; then source $1; fi\n" >> $2
+        echo "Modifying \"$2\" to source \"$1\""
+        echo "if test -e $1; then source $1; fi" >> $2
     fi
 }
 
 # Files to be replaced
-mkdir -vp ~/.config/git
+mkdir -pv ~/.config/git
 for F in git/config git/ignore; do
     makelink $SCRIPT_PATH/$F ~/.config/$F
 done
@@ -67,10 +68,10 @@ insert_source_line $SCRIPT_PATH/zshrc   ~/.zshrc
 insert_source_line $SCRIPT_PATH/profile ~/.zprofile
 
 # VIM
-mkdir -vp ~/.vim/autoload
+mkdir -pv ~/.vim/autoload
 makelink $SCRIPT_PATH/vimfiles/vimrc             ~/.vim/vimrc
 makelink $SCRIPT_PATH/vimfiles/autoload/plug.vim ~/.vim/autoload/plug.vim
 
 # Neovim
-mkdir -vp ~/.config/nvim/
+mkdir -pv ~/.config/nvim/
 makelink $SCRIPT_PATH/init.vim ~/.config/nvim/init.vim
