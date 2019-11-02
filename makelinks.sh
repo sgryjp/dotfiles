@@ -71,12 +71,7 @@ insert_source_line() {
     fi
 }
 
-# Files to be replaced
-mkdir -pv ~/.config/git
-for F in git/config git/ignore; do
-    makelink $SCRIPT_PATH/$F ~/.config/$F
-done
-
+# Profile
 if test -e ~/.bashrc; then
     insert_source_line $SCRIPT_PATH/profile.env   ~/.bashrc
 fi
@@ -92,6 +87,11 @@ if test -e ~/.zprofile; then
     insert_source_line $SCRIPT_PATH/profile.misc  ~/.zprofile
 fi
 insert_line "set editing-mode vi"       ~/.inputrc
+
+# Git
+mkdir -pv ~/.config/git
+makelink $SCRIPT_PATH/git/config ~/.config/git/config
+makelink $SCRIPT_PATH/git/ignore ~/.config/git/ignore
 
 # VIM
 mkdir -pv ~/.vim/autoload
