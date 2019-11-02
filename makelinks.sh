@@ -39,6 +39,21 @@ makelink() {
     return 1
 }
 
+# usage: insert_line LINE FILE
+insert_line() {
+    # Create the target file
+    if test ! -e $2; then
+        mkdir -pv $(dirname $2)
+        touch $2
+    fi
+
+    # Insert a line to "source" the target file
+    if test $(grep "$1" $2 | wc -l 2>/dev/null) = 0; then
+        echo "Inserting \"$1\" into \"$2\""
+        echo "$1" >> $2
+    fi
+}
+
 insert_source_line() {
     # Create the target file
     if test ! -e $2; then
@@ -53,27 +68,27 @@ insert_source_line() {
     fi
 }
 
-# Files to be replaced
 mkdir -pv ~/.config/git
 for F in git/config git/ignore; do
     makelink $SCRIPT_PATH/$F ~/.config/$F
 done
 makelink $SCRIPT_PATH/zsh/antigen.zsh ~/.local/antigen.zsh
-makelink $SCRIPT_PATH/inputrc         ~/.inputrc
 
-# Files to be additionally sourced
-insert_source_line $SCRIPT_PATH/bashrc  ~/.bashrc
+if test -e ~/.bashrc; then
+    insert_source_line $SCRIPT_PATH/profile.env   ~/.bashrc
+fi
+if test -e ~/.zshrc; then
+    insert_source_line $SCRIPT_PATH/profile.env   ~/.zshrc
+fi
 if test -e ~/.profile; then
     insert_source_line $SCRIPT_PATH/profile.alias ~/.profile
-    insert_source_line $SCRIPT_PATH/profile.env   ~/.profile
     insert_source_line $SCRIPT_PATH/profile.misc  ~/.profile
 fi
-insert_source_line $SCRIPT_PATH/zshrc   ~/.zshrc
 if test -e ~/.zprofile; then
     insert_source_line $SCRIPT_PATH/profile.alias ~/.zprofile
-    insert_source_line $SCRIPT_PATH/profile.env   ~/.zprofile
     insert_source_line $SCRIPT_PATH/profile.misc  ~/.zprofile
 fi
+insert_line "set editing-mode vi"       ~/.inputrc
 
 # VIM
 mkdir -pv ~/.vim/autoload
