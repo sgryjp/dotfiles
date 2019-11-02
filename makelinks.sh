@@ -63,9 +63,17 @@ makelink $SCRIPT_PATH/inputrc         ~/.inputrc
 
 # Files to be additionally sourced
 insert_source_line $SCRIPT_PATH/bashrc  ~/.bashrc
-insert_source_line $SCRIPT_PATH/profile ~/.profile
+if test -e ~/.profile; then
+    insert_source_line $SCRIPT_PATH/profile.alias ~/.profile
+    insert_source_line $SCRIPT_PATH/profile.env   ~/.profile
+    insert_source_line $SCRIPT_PATH/profile.misc  ~/.profile
+fi
 insert_source_line $SCRIPT_PATH/zshrc   ~/.zshrc
-insert_source_line $SCRIPT_PATH/profile ~/.zprofile
+if test -e ~/.zprofile; then
+    insert_source_line $SCRIPT_PATH/profile.alias ~/.zprofile
+    insert_source_line $SCRIPT_PATH/profile.env   ~/.zprofile
+    insert_source_line $SCRIPT_PATH/profile.misc  ~/.zprofile
+fi
 
 # VIM
 mkdir -pv ~/.vim/autoload
