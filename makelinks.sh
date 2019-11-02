@@ -72,7 +72,6 @@ mkdir -pv ~/.config/git
 for F in git/config git/ignore; do
     makelink $SCRIPT_PATH/$F ~/.config/$F
 done
-makelink $SCRIPT_PATH/zsh/antigen.zsh ~/.local/antigen.zsh
 
 if test -e ~/.bashrc; then
     insert_source_line $SCRIPT_PATH/profile.env   ~/.bashrc
