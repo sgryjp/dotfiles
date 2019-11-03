@@ -82,6 +82,11 @@ if test -e ~/.profile; then
     insert_source_line $SCRIPT_PATH/profile.alias ~/.profile
     insert_source_line $SCRIPT_PATH/profile.misc  ~/.profile
 fi
+if test -e ~/.bash_profile; then
+    insert_source_line $SCRIPT_PATH/profile.alias        ~/.bash_profile
+    insert_source_line $SCRIPT_PATH/profile.misc         ~/.bash_profile
+    insert_source_line $SCRIPT_PATH/profile/bash_profile ~/.bash_profile
+fi
 if test -e ~/.zprofile; then
     insert_source_line $SCRIPT_PATH/profile.alias ~/.zprofile
     insert_source_line $SCRIPT_PATH/profile.misc  ~/.zprofile
