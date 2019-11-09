@@ -73,23 +73,23 @@ insert_source_line() {
 
 # Profile
 if test -e ~/.bashrc; then
-    insert_source_line $SCRIPT_PATH/profile.env   ~/.bashrc
+    insert_source_line $SCRIPT_PATH/profile/env   ~/.bashrc
 fi
 if test -e ~/.zshrc; then
-    insert_source_line $SCRIPT_PATH/profile.env   ~/.zshrc
+    insert_source_line $SCRIPT_PATH/profile/env   ~/.zshrc
 fi
 if test -e ~/.profile; then
-    insert_source_line $SCRIPT_PATH/profile.alias ~/.profile
-    insert_source_line $SCRIPT_PATH/profile.misc  ~/.profile
+    insert_source_line $SCRIPT_PATH/profile/alias ~/.profile
+    insert_source_line $SCRIPT_PATH/profile/misc  ~/.profile
 fi
 if test -e ~/.bash_profile; then
-    insert_source_line $SCRIPT_PATH/profile.alias        ~/.bash_profile
-    insert_source_line $SCRIPT_PATH/profile.misc         ~/.bash_profile
+    insert_source_line $SCRIPT_PATH/profile/alias        ~/.bash_profile
+    insert_source_line $SCRIPT_PATH/profile/misc         ~/.bash_profile
     insert_source_line $SCRIPT_PATH/profile/bash_profile ~/.bash_profile
 fi
 if test -e ~/.zprofile; then
-    insert_source_line $SCRIPT_PATH/profile.alias ~/.zprofile
-    insert_source_line $SCRIPT_PATH/profile.misc  ~/.zprofile
+    insert_source_line $SCRIPT_PATH/profile/alias ~/.zprofile
+    insert_source_line $SCRIPT_PATH/profile/misc  ~/.zprofile
 fi
 insert_line "set editing-mode vi"       ~/.inputrc
 
