@@ -42,7 +42,9 @@ set   smartcase
 set nowrapscan
 
 " Misc.
-set   grepprg=rg\ --vimgrep
+if executable('rg')
+    set   grepprg=rg\ --vimgrep
+endif
 set  wildignore =*.swp,*.~*
 set  wildignore+=*.o,*.obj
 set  wildignore+=*.so,*.dll
