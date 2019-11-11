@@ -33,10 +33,13 @@ makelink() {
     # Make a link unless the target is a symlink to the source
     if test "$CANONICALIZED" != "$1"; then
         ln -fsv "$1" "$2"
+        if test $? -ne 0; then
+            echo "error: failed to create a link \"$2\"" >&2
+            return 1
+        fi
         unset CANONICALIZED
-        return 0
     fi
-    return 1
+    return 0
 }
 
 # usage: insert_line LINE FILE
