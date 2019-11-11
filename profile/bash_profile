@@ -1,9 +1,0 @@
-_rst='\[\e[0m\]'
-_ul='\[\e[4m\]'
-_red='\[\e[0;31m\]'
-PS1="\$("
-PS1+="status="\$?"; "
-PS1+="if [ \$status -ne 0 ]; then echo \"$_red[\$status] $_rst\"; fi"
-PS1+=")"
-PS1+="\u@\h:${_ul}\w${_rst}\$ "
-unset _rst _ul _red
