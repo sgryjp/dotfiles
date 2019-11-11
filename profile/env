@@ -17,3 +17,7 @@ export EDITOR
 if command -v less > /dev/null; then
     export PAGER=`command -v less`
 fi
+if command -v fd > /dev/null; then
+    export FZF_DEFAULT_COMMAND="fd -t f"
+    export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
+fi

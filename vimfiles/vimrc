@@ -51,7 +51,7 @@ set  wildignore+=*.min.*
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 highlight ExtraWhitespace ctermbg=red guibg=red
 
-" Keymaps
+" Generic keymaps
      map ]l        :lnext<CR>
      map [l        :lprevious<CR>
      map ]q        :cnext<CR>
@@ -66,7 +66,9 @@ call plug#begin()
 Plug 'https://github.com/justinmk/vim-sneak.git',       { 'tag': '*' }
 Plug 'https://github.com/tpope/vim-surround',           { 'tag': '*' }
 
-Plug 'https://github.com/ctrlpvim/ctrlp.vim',           { 'tag': '*' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+"Plug 'https://github.com/ctrlpvim/ctrlp.vim',           { 'tag': '*' }
 Plug 'https://github.com/tpope/vim-fugitive',           { 'tag': '*' }
 
 Plug 'https://github.com/vim-syntastic/syntastic'
@@ -116,3 +118,4 @@ augroup END
 " Plugin settings
 let g:ctrlp_custom_ignore = '\v[\/](__pycache__|node_modules|target)'
 let g:syntastic_stl_format = "[L%F,%t]"
+nnoremap <C-p> :FZF<CR>
