@@ -24,10 +24,10 @@ set notitle
 set noruler
 set nonumber
 set   laststatus=2
-set   statusline =%n\ %<%f%R%M,%{&ff}%y%{FugitiveStatusline()}%h%w%q
+set   statusline =%n\ %<%f%R%M,%{&ff}%y%h%w%q
+set   statusline+=\ %{coc#status()}
 set   statusline+=%=\ %(%l,%c%V%)\ %p%%
 set   statusline+=\ %#warningmsg#
-set   statusline+=%{SyntasticStatuslineFlag()}
 set   statusline+=%*
 set   wildmenu
 set   mouse=
@@ -49,15 +49,6 @@ set  wildignore+=*.min.*
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 highlight ExtraWhitespace ctermbg=red guibg=red
 
-" Generic keymaps
-     map ]l        :lnext<CR>
-     map [l        :lprevious<CR>
-     map ]q        :cnext<CR>
-     map [q        :cprevious<CR>
-     map <C-n>     :cnext<CR>
-     map <C-m>     :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
-
 " Plugins
 "call pathogen#infect()
 call plug#begin()
@@ -66,16 +57,10 @@ Plug 'https://github.com/nanotech/jellybeans.vim.git',  { 'tag': '*' }
 Plug 'https://github.com/justinmk/vim-sneak.git',       { 'tag': '*' }
 Plug 'https://github.com/tpope/vim-surround',           { 'tag': '*' }
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-"Plug 'https://github.com/ctrlpvim/ctrlp.vim',           { 'tag': '*' }
 Plug 'https://github.com/tpope/vim-fugitive',           { 'tag': '*' }
 
-Plug 'https://github.com/vim-syntastic/syntastic'
-Plug 'https://github.com/fatih/vim-go',                 { 'tag': '*' }
-Plug 'https://github.com/davidhalter/jedi-vim',         { 'tag': '*' }
-Plug 'https://github.com/JuliaEditorSupport/julia-vim'
-Plug 'https://github.com/rust-lang/rust.vim.git'
+Plug 'sheerun/vim-polyglot',                            { 'tag': '*' }
+Plug 'neoclide/coc.nvim',                               { 'tag': '*', 'branch': 'release' }
 call plug#end()
 
 filetype indent plugin on
@@ -84,6 +69,19 @@ syntax on
 " Color scheme (note: load the plugin before this)
 set t_Co=256
 colorscheme jellybeans
+
+" Keymaps
+    nmap         ]l    :lnext<CR>
+    nmap         [l    :lprevious<CR>
+    nmap         ]q    :cnext<CR>
+    nmap         [q    :cprevious<CR>
+    nmap <silent>[g    <Plug>(coc-diagnostic-prev)
+    nmap <silent>]g    <Plug>(coc-diagnostic-next)
+    nmap <silent>gd    <Plug>(coc-definition)
+    nmap <leader>r     <Plug>(coc-rename)
+    nmap <leader>f     <Plug>(coc-format)
+    vmap <leader>f     <Plug>(coc-format-selected)
+    nmap         <C-p> :CocList files<CR>
 
 " et=expandtab, ts=tabstop, sts=softtabstop, sw=shiftwidth
 set shiftround
@@ -115,11 +113,5 @@ augroup RustSettings
     autocmd!
     autocmd FileType rust nmap <leader>b :make build<cr>
     autocmd FileType rust nmap <leader>t :make test<cr>
-    autocmd FileType rust nmap <leader>f :RustFmt<cr>
     let g:rust_cargo_check_tests = 1
 augroup END
-
-" Plugin settings
-let g:ctrlp_custom_ignore = '\v[\/](__pycache__|node_modules|target)'
-let g:syntastic_stl_format = "[L%F,%t]"
-nnoremap <C-p> :FZF<CR>
