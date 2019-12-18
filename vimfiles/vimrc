@@ -83,6 +83,11 @@ colorscheme jellybeans
     vmap <leader>f     <Plug>(coc-format-selected)
     nmap         <C-p> :CocList files<CR>
 
+     " Move forward/backward till next non-wsp at same the colum
+     " https://vi.stackexchange.com/a/693
+	 map <silent><C-j> :call search('\%' . virtcol('.') . 'v\S', 'W')<CR>
+	 map <silent><C-k> :call search('\%' . virtcol('.') . 'v\S', 'bW')<CR>
+
 " et=expandtab, ts=tabstop, sts=softtabstop, sw=shiftwidth
 set shiftround
 set et ts=4 sts=4 sw=4
