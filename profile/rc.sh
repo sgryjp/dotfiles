@@ -9,6 +9,8 @@ alias la='ls -a'
 alias l.='ls -d .*'
 alias grep='grep --color'
 alias egrep='egrep --color'
+alias gd='git diff'
+alias gl='git log --graph --oneline --decorate'
 alias gs='git status -s'
 
 # PS1
