@@ -50,17 +50,13 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 highlight ExtraWhitespace ctermbg=red guibg=red
 
 " Plugins
-"call pathogen#infect()
 call plug#begin()
-Plug 'https://github.com/nanotech/jellybeans.vim.git',  { 'tag': '*' }
-
-Plug 'https://github.com/justinmk/vim-sneak.git',       { 'tag': '*' }
-Plug 'https://github.com/tpope/vim-surround',           { 'tag': '*' }
-
-Plug 'https://github.com/tpope/vim-fugitive',           { 'tag': '*' }
-
-Plug 'sheerun/vim-polyglot',                            { 'tag': '*' }
-Plug 'neoclide/coc.nvim',                               { 'tag': '*', 'branch': 'release' }
+Plug 'nanotech/jellybeans.vim', { 'tag': '*' }
+Plug 'justinmk/vim-sneak',      { 'tag': '*' }
+Plug 'tpope/vim-surround',      { 'tag': '*' }
+Plug 'tpope/vim-fugitive',      { 'tag': '*' }
+Plug 'sheerun/vim-polyglot',    { 'tag': '*' }
+Plug 'neoclide/coc.nvim',       { 'tag': '*', 'branch': 'release' }
 call plug#end()
 
 filetype indent plugin on
@@ -71,20 +67,20 @@ set t_Co=256
 colorscheme jellybeans
 
 " Keymaps
-    nmap         ]l    :lnext<CR>
-    nmap         [l    :lprevious<CR>
-    nmap         ]q    :cnext<CR>
-    nmap         [q    :cprevious<CR>
-    nmap <silent>[g    <Plug>(coc-diagnostic-prev)
-    nmap <silent>]g    <Plug>(coc-diagnostic-next)
-    nmap <silent>gd    <Plug>(coc-definition)
-    nmap <leader>r     <Plug>(coc-rename)
-    nmap <leader>f     <Plug>(coc-format)
-    vmap <leader>f     <Plug>(coc-format-selected)
-    nmap         <C-p> :CocList files<CR>
+    nmap         ]l     :lnext<CR>
+    nmap         [l     :lprevious<CR>
+    nmap         ]q     :cnext<CR>
+    nmap         [q     :cprevious<CR>
+    nmap <silent>[g     <Plug>(coc-diagnostic-prev)
+    nmap <silent>]g     <Plug>(coc-diagnostic-next)
+    nmap <silent>gd     <Plug>(coc-definition)
+    nmap <leader>r      <Plug>(coc-rename)
+    nmap <leader>f      <Plug>(coc-format)
+    vmap <leader>f      <Plug>(coc-format-selected)
+    nmap         <C-p>  :CocList files<CR>
 
-     " Move forward/backward till next non-wsp at same the colum
-     " https://vi.stackexchange.com/a/693
+    " Move forward/backward till next non-wsp at same the colum
+    " https://vi.stackexchange.com/a/693
 	 map <silent><C-j> :call search('\%' . virtcol('.') . 'v\S', 'W')<CR>
 	 map <silent><C-k> :call search('\%' . virtcol('.') . 'v\S', 'bW')<CR>
 

@@ -82,13 +82,13 @@ if test -e ~/.zshrc; then
     insert_source_line $SCRIPT_PATH/profile/rc.sh   ~/.zshrc
 fi
 if test -e ~/.profile; then
-    insert_source_line $SCRIPT_PATH/profile/profile.sh ~/.profile
+    insert_source_line $SCRIPT_PATH/profile/profile.sh  ~/.profile
 fi
 if test -e ~/.bash_profile; then
-    insert_source_line $SCRIPT_PATH/profile/profile.sh ~/.bash_profile
+    insert_source_line $SCRIPT_PATH/profile/profile.sh  ~/.bash_profile
 fi
 if test -e ~/.zprofile; then
-    insert_source_line $SCRIPT_PATH/profile/profile.sh ~/.zprofile
+    insert_source_line $SCRIPT_PATH/profile/profile.sh  ~/.zprofile
 fi
 insert_line "set editing-mode vi"                   ~/.inputrc
 insert_line "source-file $SCRIPT_PATH/tmux.conf"    ~/.tmux.conf
