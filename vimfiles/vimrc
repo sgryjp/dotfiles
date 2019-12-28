@@ -70,16 +70,21 @@ set t_Co=256
 colorscheme jellybeans
 
 " Keymaps
+    " For l(ocation-list), q(uick-fix-list), (dia)g(nostic-items)
     nmap         ]l     :lnext<CR>
     nmap         [l     :lprevious<CR>
     nmap         ]q     :cnext<CR>
     nmap         [q     :cprevious<CR>
     nmap <silent>[g     <Plug>(coc-diagnostic-prev)
     nmap <silent>]g     <Plug>(coc-diagnostic-next)
+
+    " Override go-to-definition and other language dependent actions
     nmap <silent>gd     <Plug>(coc-definition)
     nmap <leader>r      <Plug>(coc-rename)
     nmap <leader>f      <Plug>(coc-format)
     vmap <leader>f      <Plug>(coc-format-selected)
+
+    " Ctrl+P to show file searcher
     nmap         <C-p>  :Files<CR>
 
     " Move forward/backward till next non-wsp at same the colum
@@ -103,8 +108,8 @@ call s:SetIndent(4, 1)
 augroup indent
     autocmd!
     autocmd FileType gitconfig  call s:SetIndent(8, 0)
-    autocmd FileType go         call s:SetIndent(4, 0)
     autocmd FileType make       call s:SetIndent(8, 0)
+    autocmd FileType go         call s:SetIndent(4, 0)
     autocmd FileType css        call s:SetIndent(2, 1)
     autocmd FileType html       call s:SetIndent(2, 1)
     autocmd FileType javascript call s:SetIndent(2, 1)
