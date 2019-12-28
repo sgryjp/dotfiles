@@ -84,8 +84,8 @@ colorscheme jellybeans
 
     " Move forward/backward till next non-wsp at same the colum
     " https://vi.stackexchange.com/a/693
-	 map <silent><C-j> :call search('\%' . virtcol('.') . 'v\S', 'W')<CR>
-	 map <silent><C-k> :call search('\%' . virtcol('.') . 'v\S', 'bW')<CR>
+    nmap <silent>gJ     :call search('\%' . virtcol('.') . 'v\S', 'W')<CR>
+    nmap <silent>gK     :call search('\%' . virtcol('.') . 'v\S', 'bW')<CR>
 
 " et=expandtab, ts=tabstop, sts=softtabstop, sw=shiftwidth
 set shiftround
