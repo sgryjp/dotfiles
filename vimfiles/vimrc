@@ -55,6 +55,7 @@ Plug 'nanotech/jellybeans.vim', { 'tag': '*' }
 Plug 'justinmk/vim-sneak',      { 'tag': '*' }
 Plug 'tpope/vim-surround',      { 'tag': '*' }
 Plug 'tpope/vim-fugitive',      { 'tag': '*' }
+Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf',            { 'tag': '*' }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot',    { 'tag': '*' }
