@@ -87,15 +87,25 @@ colorscheme jellybeans
     nmap <silent>gJ     :call search('\%' . virtcol('.') . 'v\S', 'W')<CR>
     nmap <silent>gK     :call search('\%' . virtcol('.') . 'v\S', 'bW')<CR>
 
-" et=expandtab, ts=tabstop, sts=softtabstop, sw=shiftwidth
+" Indentation
 set shiftround
-set et ts=4 sts=4 sw=4
+function! s:SetIndent(size, expand)
+    if a:expand == 1
+        set   expandtab
+    else
+        set noexpandtab
+    endif
+    let &tabstop = a:size
+    let &softtabstop = a:size
+    let &shiftwidth = a:size
+endfunction
+call s:SetIndent(4, 1)
 augroup indent
     autocmd!
-    autocmd FileType gitconfig setlocal noet ts=8 sts=8 sw=8
-    autocmd FileType go        setlocal noet ts=4 sts=4 sw=4
-    autocmd FileType make      setlocal noet ts=8 sts=8 sw=8
-    autocmd FileType html      setlocal noet ts=2 sts=2 sw=2
+    autocmd FileType gitconfig  call s:SetIndent(8, 0)
+    autocmd FileType go         call s:SetIndent(4, 0)
+    autocmd FileType make       call s:SetIndent(8, 0)
+    autocmd FileType html       call s:SetIndent(2, 1)
 augroup END
 
 augroup GolangSettings
