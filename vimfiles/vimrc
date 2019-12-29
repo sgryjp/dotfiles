@@ -52,6 +52,7 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 " Plugins
 call plug#begin()
 Plug 'nanotech/jellybeans.vim', { 'tag': '*' }
+Plug 'kana/vim-submode',        { 'tag': '*' }
 Plug 'justinmk/vim-sneak',      { 'tag': '*' }
 Plug 'tpope/vim-surround',      { 'tag': '*' }
 Plug 'tpope/vim-fugitive',      { 'tag': '*' }
@@ -91,6 +92,16 @@ colorscheme jellybeans
     " https://vi.stackexchange.com/a/693
     nmap <silent>gJ     :call search('\%' . virtcol('.') . 'v\S', 'W')<CR>
     nmap <silent>gK     :call search('\%' . virtcol('.') . 'v\S', 'bW')<CR>
+
+    " submode to control split window size (vim-submode)
+    call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+    call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+    call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
+    call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
+    call submode#map('winsize', 'n', '', '>', '<C-w>>')
+    call submode#map('winsize', 'n', '', '<', '<C-w><')
+    call submode#map('winsize', 'n', '', '+', '<C-w>+')
+    call submode#map('winsize', 'n', '', '-', '<C-w>-')
 
 " Indentation
 set shiftround
