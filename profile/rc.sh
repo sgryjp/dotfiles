@@ -14,7 +14,7 @@ alias gl='git log --graph --oneline --decorate'
 alias gs='git status -s'
 
 # PS1
-if test $(basename $SHELL) = "bash"; then
+if test -n "$BASH_VERSION"; then
     rst='\[\e[0m\]'
     ul='\[\e[4m\]'
     red='\[\e[0;31m\]'
@@ -24,10 +24,8 @@ if test $(basename $SHELL) = "bash"; then
     PS1+=")"
     PS1+="\u@\h:${ul}\w${rst}\$ "
     unset rst ul red
-else
-    PS1="\u@\h:${ul}\w${rst}\$ "
+    export PS1
 fi
-export PS1
 
 # Other settings for interactive use
 EDITOR=vi
