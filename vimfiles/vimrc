@@ -118,12 +118,14 @@ endfunction
 call s:SetIndent(4, 1)
 augroup indent
     autocmd!
-    autocmd FileType gitconfig  call s:SetIndent(8, 0)
-    autocmd FileType make       call s:SetIndent(8, 0)
-    autocmd FileType go         call s:SetIndent(4, 0)
-    autocmd FileType css        call s:SetIndent(2, 1)
-    autocmd FileType html       call s:SetIndent(2, 1)
-    autocmd FileType javascript call s:SetIndent(2, 1)
+    autocmd FileType gitconfig       call s:SetIndent(8, 0)
+    autocmd FileType make            call s:SetIndent(8, 0)
+    autocmd FileType go              call s:SetIndent(4, 0)
+    autocmd FileType css             call s:SetIndent(2, 1)
+    autocmd FileType html            call s:SetIndent(2, 1)
+    autocmd FileType javascript      call s:SetIndent(2, 1)
+    autocmd FileType typescript      call s:SetIndent(2, 1)
+    autocmd FileType typescriptreact call s:SetIndent(2, 1)
 augroup END
 
 augroup GolangSettings
