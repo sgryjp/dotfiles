@@ -94,9 +94,21 @@ insert_line "set editing-mode vi"                   ~/.inputrc
 makelink $SCRIPT_PATH/tmux.conf                     ~/.tmux.conf
 
 # Git
-mkdir -pv ~/.config/git
-makelink $SCRIPT_PATH/git/config ~/.config/git/config
-makelink $SCRIPT_PATH/git/ignore ~/.config/git/ignore
+if command -v git > /dev/null; then
+    mkdir -pv ~/.config/git
+    makelink $SCRIPT_PATH/git/ignore ~/.config/git/ignore
+    already_sourced=no
+    for path in $(git config --global --get-all include.path); do
+        if test $path -ef $SCRIPT_PATH/git/config; then
+            already_sourced=yes
+        fi
+    done
+    if test $already_sourced = "no"; then
+        git config --global --add include.path $SCRIPT_PATH/git/config
+        echo "Updated 'include.path' of Git config as:"
+        git config --global --get-all include.path
+    fi
+fi
 
 # VIM
 mkdir -pv ~/.vim/autoload ~/.vim/colors
