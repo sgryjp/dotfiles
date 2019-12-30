@@ -40,7 +40,9 @@ export EDITOR
 if command -v less > /dev/null; then
     export PAGER=`command -v less`
 fi
-if command -v fd > /dev/null; then
-    export FZF_DEFAULT_COMMAND="fd -t f"
-    export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
+if command -v fzf > /dev/null; then
+    if command -v rg > /dev/null; then
+        export FZF_DEFAULT_COMMAND="rg --files --follow"
+    fi
+    export FZF_DEFAULT_OPTS="--height 40% --inline-info"
 fi
