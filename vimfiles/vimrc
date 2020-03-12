@@ -56,6 +56,7 @@ Plug 'kana/vim-submode',        { 'tag': '*' }
 Plug 'justinmk/vim-sneak',      { 'tag': '*' }
 Plug 'tpope/vim-surround',      { 'tag': '*' }
 Plug 'tpope/vim-fugitive',      { 'tag': '*' }
+Plug 'tpope/vim-commentary',    { 'tag': '*' }
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf',            { 'tag': '*' }
 Plug 'junegunn/fzf.vim'
