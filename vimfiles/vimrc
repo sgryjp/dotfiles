@@ -62,7 +62,6 @@ Plug 'junegunn/fzf',            { 'tag': '*' }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot',    { 'tag': '*' }
 Plug 'neoclide/coc.nvim',       { 'tag': '*', 'branch': 'release' }
-Plug 'prettier/vim-prettier',   { 'tag': '*' }
 call plug#end()
 
 filetype indent plugin on
@@ -85,8 +84,12 @@ colorscheme jellybeans
     nmap <silent>gd     <Plug>(coc-definition)
     nmap <leader>r      <Plug>(coc-rename)
 
-    " Ctrl+P to show file searcher
+    " Ctrl+P to show file searcher (fzf)
     nmap         <C-p>  :Files<CR>
+
+    " Ctrl+F to format document
+    nmap <leader>f <Plug>(coc-format)
+    vmap <leader>f <Plug>(coc-format-selected)
 
     " Move forward/backward till next non-wsp at same the colum
     " https://vi.stackexchange.com/a/693
@@ -143,8 +146,6 @@ augroup PythonSettings
     autocmd!
     autocmd FileType python set foldmethod=indent
     autocmd FileType python set foldlevel=999
-    let g:jedi#popup_on_dot = 0
-    let g:jedi#popup_select_first = 0
 augroup END
 
 augroup RustSettings
@@ -152,14 +153,4 @@ augroup RustSettings
     autocmd FileType rust nmap <leader>b :make build<cr>
     autocmd FileType rust nmap <leader>t :make test<cr>
     let g:rust_cargo_check_tests = 1
-augroup END
-
-augroup JsxSettings
-    autocmd!
-    autocmd FileType css             nmap <leader>f :PrettierAsync<cr>
-    autocmd FileType html            nmap <leader>f :PrettierAsync<cr>
-    autocmd FileType javascript      nmap <leader>f :PrettierAsync<cr>
-    autocmd FileType javascriptreact nmap <leader>f :PrettierAsync<cr>
-    autocmd FileType typescript      nmap <leader>f :PrettierAsync<cr>
-    autocmd FileType typescriptreact nmap <leader>f :PrettierAsync<cr>
 augroup END
