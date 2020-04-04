@@ -29,6 +29,7 @@ set   statusline+=\ %{coc#status()}
 set   statusline+=%=\ %(%l,%c%V%)\ %p%%
 set   statusline+=\ %#warningmsg#
 set   statusline+=%*
+set   updatetime=500
 set   wildmenu
 set   mouse=
 
@@ -54,10 +55,9 @@ call plug#begin()
 Plug 'nanotech/jellybeans.vim', { 'tag': '*' }
 Plug 'kana/vim-submode',        { 'tag': '*' }
 Plug 'justinmk/vim-sneak',      { 'tag': '*' }
+Plug 'tpope/vim-commentary',    { 'tag': '*' }
 Plug 'tpope/vim-surround',      { 'tag': '*' }
 Plug 'tpope/vim-fugitive',      { 'tag': '*' }
-Plug 'tpope/vim-commentary',    { 'tag': '*' }
-Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf',            { 'tag': '*' }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot',    { 'tag': '*' }
@@ -104,6 +104,9 @@ colorscheme jellybeans
     call submode#map('winsize', 'n', '', '+', '<C-w>+')
     call submode#map('winsize', 'n', '', '-', '<C-w>-')
 
+    " Others
+    imap <silent><expr> <c-j>  coc#refresh()
+
 " Indentation
 set shiftround
 function! s:SetIndent(size, expand)
@@ -125,6 +128,7 @@ augroup indent
     autocmd FileType css             call s:SetIndent(2, 1)
     autocmd FileType html            call s:SetIndent(2, 1)
     autocmd FileType javascript      call s:SetIndent(2, 1)
+    autocmd FileType javascriptreact call s:SetIndent(2, 1)
     autocmd FileType typescript      call s:SetIndent(2, 1)
     autocmd FileType typescriptreact call s:SetIndent(2, 1)
 augroup END
@@ -149,4 +153,14 @@ augroup RustSettings
     autocmd FileType rust nmap <leader>b :make build<cr>
     autocmd FileType rust nmap <leader>t :make test<cr>
     let g:rust_cargo_check_tests = 1
+augroup END
+
+augroup JsxSettings
+    autocmd!
+    autocmd FileType css             nmap <leader>f :%!prettier %<cr>
+    autocmd FileType html            nmap <leader>f :%!prettier %<cr>
+    autocmd FileType javascript      nmap <leader>f :%!prettier %<cr>
+    autocmd FileType javascriptreact nmap <leader>f :%!prettier %<cr>
+    autocmd FileType typescript      nmap <leader>f :%!prettier %<cr>
+    autocmd FileType typescriptreact nmap <leader>f :%!prettier %<cr>
 augroup END
