@@ -53,6 +53,7 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 " Plugins
 call plug#begin()
 Plug 'nanotech/jellybeans.vim', { 'tag': '*' }
+Plug 'airblade/vim-gitgutter'
 Plug 'kana/vim-submode',        { 'tag': '*' }
 Plug 'justinmk/vim-sneak',      { 'tag': '*' }
 Plug 'tpope/vim-commentary',    { 'tag': '*' }
