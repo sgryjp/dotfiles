@@ -70,6 +70,9 @@ syntax on
 
 " Color scheme (note: load the plugin before this)
 set t_Co=256
+if exists('&termguicolors')
+    set termguicolors
+endif
 colorscheme jellybeans
 
 " Keymaps
