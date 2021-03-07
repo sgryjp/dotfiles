@@ -19,18 +19,18 @@ del ".\makelinks.tmp" 2> NUL
 call :COPY "%BATDIR%git/config" "%USERPROFILE%\.gitconfig"
 call :COPY "%BATDIR%git/ignore" "%USERPROFILE%\.gitignore"
 
-call :MKDIR "%USERPROFILE%\vimfiles\autoload"
-call :MKDIR "%USERPROFILE%\.vim\autoload"
 call :MKDIR "%USERPROFILE%\_vim\autoload"
-call :MKLINK "%USERPROFILE%\vimfiles\vimrc"             "%BATDIR%vimfiles\vimrc"
-call :MKLINK "%USERPROFILE%\vimfiles\coc-settings.json" "%BATDIR%vimfiles\coc-settings.json"
-call :MKLINK "%USERPROFILE%\.vim\vimrc"                 "%BATDIR%vimfiles\vimrc"
-call :MKLINK "%USERPROFILE%\.vim\coc-settings.json"     "%BATDIR%vimfiles\coc-settings.json"
 call :MKLINK "%USERPROFILE%\_vim\vimrc"                 "%BATDIR%vimfiles\vimrc"
 call :MKLINK "%USERPROFILE%\_vim\coc-settings.json"     "%BATDIR%vimfiles\coc-settings.json"
-call :MKLINK "%USERPROFILE%\vimfiles\autoload\plug.vim" "%BATDIR%vimfiles\autoload\plug.vim"
-call :MKLINK "%USERPROFILE%\.vim\autoload\plug.vim"     "%BATDIR%vimfiles\autoload\plug.vim"
 call :MKLINK "%USERPROFILE%\_vim\autoload\plug.vim"     "%BATDIR%vimfiles\autoload\plug.vim"
+call :MKDIR "%USERPROFILE%\.vim\autoload"
+call :MKLINK "%USERPROFILE%\.vim\vimrc"                 "%BATDIR%vimfiles\vimrc"
+call :MKLINK "%USERPROFILE%\.vim\coc-settings.json"     "%BATDIR%vimfiles\coc-settings.json"
+call :MKLINK "%USERPROFILE%\.vim\autoload\plug.vim"     "%BATDIR%vimfiles\autoload\plug.vim"
+call :MKDIR "%USERPROFILE%\vimfiles\autoload"
+call :MKLINK "%USERPROFILE%\vimfiles\vimrc"             "%BATDIR%vimfiles\vimrc"
+call :MKLINK "%USERPROFILE%\vimfiles\coc-settings.json" "%BATDIR%vimfiles\coc-settings.json"
+call :MKLINK "%USERPROFILE%\vimfiles\autoload\plug.vim" "%BATDIR%vimfiles\autoload\plug.vim"
 goto :EOF
 
 
