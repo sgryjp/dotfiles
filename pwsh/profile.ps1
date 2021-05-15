@@ -18,3 +18,8 @@ if ($Host.Version.Major -ge 7) {
 
 # Use Emacs keybindings
 Set-PSReadLineOption -EditMode Emacs
+
+# Use standard-ish prompt using "~" for user profile directory
+function prompt {
+    "PS " + "$(Get-Location)".Replace($env:USERPROFILE, "~") + "> "
+}
