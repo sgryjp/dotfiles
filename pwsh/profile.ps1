@@ -15,3 +15,6 @@ if ($Host.Version.Major -ge 7) {
 } else {
     Set-Alias -Force -Option AllScope gl GitLog
 }
+
+# Use Emacs keybindings
+Set-PSReadLineOption -EditMode Emacs
