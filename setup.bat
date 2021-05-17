@@ -31,6 +31,9 @@ call :MKDIR "%USERPROFILE%\vimfiles\autoload"
 call :MKLINK "%USERPROFILE%\vimfiles\vimrc"             "%BATDIR%vimfiles\vimrc"
 call :MKLINK "%USERPROFILE%\vimfiles\coc-settings.json" "%BATDIR%vimfiles\coc-settings.json"
 call :MKLINK "%USERPROFILE%\vimfiles\autoload\plug.vim" "%BATDIR%vimfiles\autoload\plug.vim"
+
+call :MKDIR "%USERPROFILE%\.config\nvim"
+call :MKLINK "%USERPROFILE%\.config\nvim\init.vim"      "%BATDIR%nvim\init.vim"
 goto :EOF
 
 
