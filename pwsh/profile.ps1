@@ -16,6 +16,9 @@ if ($Host.Version.Major -ge 7) {
     Set-Alias -Force -Option AllScope gl GitLog
 }
 
+# Remove unnecessary aliases
+Get-ChildItem Alias: | Where-Object -Property Name -in @("curl", "wget") | Remove-Item
+
 # Use Emacs keybindings
 Set-PSReadLineOption -EditMode Emacs
 
