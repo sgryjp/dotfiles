@@ -90,7 +90,7 @@ fi
 if test -e ~/.zprofile; then
     insert_source_line $SCRIPT_PATH/profile/profile.sh  ~/.zprofile
 fi
-insert_line "set editing-mode vi"                   ~/.inputrc
+insert_line "set editing-mode emacs"                ~/.inputrc
 makelink $SCRIPT_PATH/tmux.conf                     ~/.tmux.conf
 
 # Git
