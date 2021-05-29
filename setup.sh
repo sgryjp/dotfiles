@@ -42,15 +42,15 @@ makelink() {
     return 0
 }
 
-# usage: insert_line LINE FILE
+# usage: insert_line LINE_TO_INSERT FILE
 insert_line() {
-    # Create the target file
+    # Ensure that the target file exists
     if test ! -e $2; then
         mkdir -pv $(dirname $2)
         touch $2
     fi
 
-    # Insert a line to "source" the target file
+    # Insert a line to "source" the target file if not inserted yet
     if test $(grep "$1" $2 | wc -l 2>/dev/null) = 0; then
         echo "Inserting \"$1\" into \"$2\""
         echo "$1" >> $2
@@ -59,7 +59,7 @@ insert_line() {
 
 # usage: insert_source_line TARGET FILE
 insert_source_line() {
-    # Create the target file
+    # Ensure that the target file exists
     if test ! -e $2; then
         mkdir -pv $(dirname $2)
         touch $2
