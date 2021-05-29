@@ -15,18 +15,18 @@ alias gl='git log --graph --oneline --decorate'
 alias gs='git status -s'
 
 # PS1
-if test -n "$BASH_VERSION"; then
-    rst='\[\e[0m\]'
-    ul='\[\e[4m\]'
-    red='\[\e[0;31m\]'
-    PS1="\$("
-    PS1+="status="\$?"; "
-    PS1+="if [ \$status -ne 0 ]; then echo \"$red[\$status] $rst\"; fi"
-    PS1+=")"
-    PS1+="\u@\h:${ul}\w${rst}\$ "
-    unset rst ul red
-    export PS1
-fi
+# if test -n "$BASH_VERSION"; then
+#     rst='\[\e[0m\]'
+#     ul='\[\e[4m\]'
+#     red='\[\e[0;31m\]'
+#     PS1="\$("
+#     PS1+="status="\$?"; "
+#     PS1+="if [ \$status -ne 0 ]; then echo \"$red[\$status] $rst\"; fi"
+#     PS1+=")"
+#     PS1+="\u@\h:${ul}\w${rst}\$ "
+#     unset rst ul red
+#     export PS1
+# fi
 
 # Other settings for interactive use
 EDITOR=vi
