@@ -1,3 +1,2 @@
-[user]
-	name = Suguru Yamamoto
-	email = sgryjp@gmail.com
+[pull]
+	ff = only
