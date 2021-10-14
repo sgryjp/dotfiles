@@ -1,3 +1,4 @@
+" vim:set foldmethod=marker:
 if has('win32') || has('win64')
     set   termencoding=cp932
 endif
@@ -83,43 +84,45 @@ if has_key(g:plugs, 'vim-gitgutter')
 endif
 
 
-" Keymaps
-    " For l(ocation-list), q(uick-fix-list), (dia)g(nostic-items)
-    nmap         ]l     :lnext<CR>
-    nmap         [l     :lprevious<CR>
-    nmap         ]q     :cnext<CR>
-    nmap         [q     :cprevious<CR>
-    nmap <silent>[g     <Plug>(coc-diagnostic-prev)
-    nmap <silent>]g     <Plug>(coc-diagnostic-next)
+" Keymaps {{{
 
-    " Override go-to-definition and other language dependent actions
-    nmap <silent>gd     <Plug>(coc-definition)
-    nmap <leader>r      <Plug>(coc-rename)
+" Code-completion
+imap <silent><expr> <c-j>  coc#refresh()
 
-    " Ctrl+P to show file searcher (fzf)
-    nmap         <C-p>  :Files<CR>
+" Jump to prev/next l(ocation-list), q(uick-fix-list), (dia)g(nostic-items)
+nmap         ]l     :lnext<CR>
+nmap         [l     :lprevious<CR>
+nmap         ]q     :cnext<CR>
+nmap         [q     :cprevious<CR>
+nmap <silent>[g     <Plug>(coc-diagnostic-prev)
+nmap <silent>]g     <Plug>(coc-diagnostic-next)
 
-    " Ctrl+F to format document
-    nmap <leader>f <Plug>(coc-format)
-    vmap <leader>f <Plug>(coc-format-selected)
+" Go to something
+nmap <silent>gd     <Plug>(coc-definition)
+nmap <leader>r      <Plug>(coc-rename)
 
-    " Move forward/backward till next non-wsp at same the colum
-    " https://vi.stackexchange.com/a/693
-    nmap <silent>gJ     :call search('\%' . virtcol('.') . 'v\S', 'W')<CR>
-    nmap <silent>gK     :call search('\%' . virtcol('.') . 'v\S', 'bW')<CR>
+" Formatting
+nmap <leader>f <Plug>(coc-format)
+vmap <leader>f <Plug>(coc-format-selected)
 
-    " submode to control split window size (vim-submode)
-    call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
-    call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
-    call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
-    call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
-    call submode#map('winsize', 'n', '', '>', '<C-w>>')
-    call submode#map('winsize', 'n', '', '<', '<C-w><')
-    call submode#map('winsize', 'n', '', '+', '<C-w>+')
-    call submode#map('winsize', 'n', '', '-', '<C-w>-')
+" Ctrl+P to show file searcher (fzf)
+nmap         <C-p>  :Files<CR>
 
-    " Others
-    imap <silent><expr> <c-j>  coc#refresh()
+" Move forward/backward till next non-wsp at same the colum
+" https://vi.stackexchange.com/a/693
+nmap <silent>gJ     :call search('\%' . virtcol('.') . 'v\S', 'W')<CR>
+nmap <silent>gK     :call search('\%' . virtcol('.') . 'v\S', 'bW')<CR>
+
+" submode to control split window size (vim-submode)
+call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
+call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
+call submode#map('winsize', 'n', '', '>', '<C-w>>')
+call submode#map('winsize', 'n', '', '<', '<C-w><')
+call submode#map('winsize', 'n', '', '+', '<C-w>+')
+call submode#map('winsize', 'n', '', '-', '<C-w>-')
+" }}}
 
 " Indentation
 set shiftround
