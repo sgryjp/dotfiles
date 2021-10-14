@@ -113,10 +113,8 @@ fi
 # VIM
 mkdir -pv ~/.vim/autoload ~/.vim/colors
 makelink $SCRIPT_PATH/vimfiles/vimrc                 ~/.vim/vimrc
-makelink $SCRIPT_PATH/vimfiles/coc-settings.json     ~/.vim/coc-settings.json
 makelink $SCRIPT_PATH/vimfiles/autoload/plug.vim     ~/.vim/autoload/plug.vim
 
 # Neovim
 mkdir -pv ~/.config/nvim/
 makelink $SCRIPT_PATH/nvim/init.vim ~/.config/nvim/init.vim
-makelink $SCRIPT_PATH/vimfiles/coc-settings.json ~/.config/nvim/coc-settings.json

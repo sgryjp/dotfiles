@@ -26,7 +26,6 @@ set noruler
 set nonumber
 set   laststatus=2
 set   statusline =%n\ %<%f%R%M,%{&ff}%y%h%w%q
-set   statusline+=\ %{coc#status()}
 set   statusline+=%=\ %(%l,%c%V%)\ %p%%
 set   statusline+=\ %#warningmsg#
 set   statusline+=%*
@@ -64,7 +63,10 @@ Plug 'junegunn/fzf',            { 'tag': '*' }
 Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot',    { 'tag': '*' }
 Plug 'qpkorr/vim-renamer'
-Plug 'neoclide/coc.nvim',       { 'tag': '*', 'branch': 'release' }
+if has('nvim')
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'williamboman/nvim-lsp-installer'
+endif
 call plug#end()
 
 filetype indent plugin on
@@ -83,30 +85,53 @@ if has_key(g:plugs, 'vim-gitgutter')
     let g:gitgutter_sign_modified_removed = '≃'
 endif
 
+" Neovim specific configurations
+if has("nvim")
+    set omnifunc=v:lua.vim.lsp.omnifunc
+
+lua << EOF
+    local lsp_installer = require("nvim-lsp-installer")
+    lsp_installer.on_server_ready(function(server)
+        server:setup {}
+        vim.cmd("do User LspAttachBuffers")
+    end)
+EOF
+endif
 
 " Keymaps {{{
 
 " Code-completion
-imap <silent><expr> <c-j>  coc#refresh()
+imap <silent><c-j>      <c-x><c-o>
 
 " Jump to prev/next l(ocation-list), q(uick-fix-list), (dia)g(nostic-items)
-nmap         ]l     :lnext<CR>
-nmap         [l     :lprevious<CR>
-nmap         ]q     :cnext<CR>
-nmap         [q     :cprevious<CR>
-nmap <silent>[g     <Plug>(coc-diagnostic-prev)
-nmap <silent>]g     <Plug>(coc-diagnostic-next)
+nmap         ]l         :lnext<CR>
+nmap         [l         :lprevious<CR>
+nmap         ]q         :cnext<CR>
+nmap         [q         :cprevious<CR>
+nmap <silent>[g         :lua vim.lsp.diagnostic.goto_prev()<CR>
+nmap <silent>]g         :lua vim.lsp.diagnostic.goto_next()<CR>
 
 " Go to something
-nmap <silent>gd     <Plug>(coc-definition)
-nmap <leader>r      <Plug>(coc-rename)
+nmap <silent>gD         :lua vim.lsp.buf.declaration()<CR>
+nmap <silent>gd         :lua vim.lsp.buf.definition()<CR>
+nmap <silent>gy         :lua vim.lsp.buf.type_definition()<CR>
+nmap <silent>gi         :lua vim.lsp.buf.implementation()<CR>
+nmap <silent>gr         :lua vim.lsp.buf.references()<CR>
+
+" Inspection
+nmap <silent>K          :lua vim.lsp.buf.hover()<CR>
+nmap <silent><C-k>      :lua vim.lsp.buf.signature_help()<CR>
+
+" Refactoring
+nmap <silent><leader>r  :lua vim.lsp.buf.rename()<CR>
+nmap <silent><leader>a  :lua vim.lsp.buf.code_action()<CR>
 
 " Formatting
-nmap <leader>f <Plug>(coc-format)
-vmap <leader>f <Plug>(coc-format-selected)
+nmap <silent><leader>f  :lua vim.lsp.buf.formatting()<CR>
+vmap <silent><leader>f  :lua vim.lsp.buf.range_formatting()<CR>
 
 " Ctrl+P to show file searcher (fzf)
-nmap         <C-p>  :Files<CR>
+nmap         <C-p>      :Files<CR>
 
 " Move forward/backward till next non-wsp at same the colum
 " https://vi.stackexchange.com/a/693
