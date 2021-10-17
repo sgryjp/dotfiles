@@ -36,6 +36,7 @@ set   completeopt-=preview  " Suppress opening a scratch buffer on completion
 
 " Search
 set   hlsearch
+set   ignorecase
 set   smartcase
 set nowrapscan
 
