@@ -51,6 +51,7 @@ set  wildignore+=*.py[cod]
 set  wildignore+=*.min.*
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 highlight ExtraWhitespace ctermbg=red guibg=red
+filetype indent plugin on
 
 " Plugins
 call plug#begin()
@@ -76,12 +77,11 @@ else
 endif
 call plug#end()
 
-filetype indent plugin on
 syntax on
 
 " Color scheme (note: load the plugin before this)
 set t_Co=256
-if exists('&termguicolors')
+if has('termguicolors')
     set termguicolors
 endif
 colorscheme jellybeans
