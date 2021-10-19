@@ -116,51 +116,51 @@ endif
 imap <silent><c-j>      <c-x><c-o>
 
 " Jump to prev/next l(ocation-list), q(uick-fix-list), (dia)g(nostic-items)
-nmap         ]l         :lnext<CR>
-nmap         [l         :lprevious<CR>
-nmap         ]q         :cnext<CR>
-nmap         [q         :cprevious<CR>
-nmap <silent>[g         :lua vim.lsp.diagnostic.goto_prev()<CR>
-nmap <silent>]g         :lua vim.lsp.diagnostic.goto_next()<CR>
+nmap         ]l         <cmd>lnext<cr>
+nmap         [l         <cmd>lprevious<cr>
+nmap         ]q         <cmd>cnext<cr>
+nmap         [q         <cmd>cprevious<cr>
+nmap <silent>[g         <cmd>lua vim.lsp.diagnostic.goto_prev()<cr>
+nmap <silent>]g         <cmd>lua vim.lsp.diagnostic.goto_next()<cr>
 
 " Go to something
-nmap <silent>gD         :lua vim.lsp.buf.declaration()<CR>
-nmap <silent>gd         :lua vim.lsp.buf.definition()<CR>
-nmap <silent>gy         :lua vim.lsp.buf.type_definition()<CR>
-nmap <silent>gi         :lua vim.lsp.buf.implementation()<CR>
-nmap <silent>gr         :lua vim.lsp.buf.references()<CR>
+nmap <silent>gD         <cmd>lua vim.lsp.buf.declaration()<cr>
+nmap <silent>gd         <cmd>lua vim.lsp.buf.definition()<cr>
+nmap <silent>gy         <cmd>lua vim.lsp.buf.type_definition()<cr>
+nmap <silent>gi         <cmd>lua vim.lsp.buf.implementation()<cr>
+nmap <silent>gr         <cmd>lua vim.lsp.buf.references()<cr>
 
 " Inspection
-nmap <silent>K          :lua vim.lsp.buf.hover()<CR>
-nmap <silent><C-k>      :lua vim.lsp.buf.signature_help()<CR>
+nmap <silent>K          <cmd>lua vim.lsp.buf.hover()<cr>
+nmap <silent><c-k>      <cmd>lua vim.lsp.buf.signature_help()<cr>
 
 " Refactoring (and formatting)
-nmap <silent><leader>rr  :lua vim.lsp.buf.rename()<CR>
-nmap <silent><leader>ra  :lua vim.lsp.buf.code_action()<CR>
-nmap <silent><leader>rf  :lua vim.lsp.buf.formatting()<CR>
-vmap <silent><leader>rf  :lua vim.lsp.buf.range_formatting()<CR>
+nmap <silent><leader>rr <cmd>lua vim.lsp.buf.rename()<cr>
+nmap <silent><leader>ra <cmd>lua vim.lsp.buf.code_action()<cr>
+nmap <silent><leader>rf <cmd>lua vim.lsp.buf.formatting()<cr>
+vmap <silent><leader>rf <cmd>lua vim.lsp.buf.range_formatting()<cr>
 
 " Finder
 if has("nvim")
-    nmap <silent><leader>g  :Telescope live_grep<cr>
-    nmap <silent><c-p>      :Telescope find_files<cr>
-    nmap <silent><leader>ff :Telescope find_files<cr>
-    nmap <silent><leader>fb :Telescope buffers<cr>
-    nmap <silent><leader>fs :Telescope lsp_document_symbols<cr>
-    nmap <silent><leader>fS :Telescope lsp_workspace_symbols<cr>
-    nmap <silent><leader>fd :Telescope lsp_definitions<cr>
-    nmap <silent><leader>fr :Telescope lsp_references<cr>
-    nmap <silent><leader>fi :Telescope lsp_implementations<cr>
-    nmap <silent><leader>fg :Telescope lsp_document_diagnostics<cr>
-    nmap <silent><leader>fG :Telescope lsp_workspace_diagnostics<cr>
+    nmap <silent><leader>g  <cmd>Telescope live_grep<cr>
+    nmap <silent><c-p>      <cmd>Telescope find_files<cr>
+    nmap <silent><leader>ff <cmd>Telescope find_files<cr>
+    nmap <silent><leader>fb <cmd>Telescope buffers<cr>
+    nmap <silent><leader>fs <cmd>Telescope lsp_document_symbols<cr>
+    nmap <silent><leader>fS <cmd>Telescope lsp_workspace_symbols<cr>
+    nmap <silent><leader>fd <cmd>Telescope lsp_definitions<cr>
+    nmap <silent><leader>fr <cmd>Telescope lsp_references<cr>
+    nmap <silent><leader>fi <cmd>Telescope lsp_implementations<cr>
+    nmap <silent><leader>fg <cmd>Telescope lsp_document_diagnostics<cr>
+    nmap <silent><leader>fG <cmd>Telescope lsp_workspace_diagnostics<cr>
 else
-    nmap         <c-p>      :Files<cr>
+    nmap         <c-p>      <cmd>Files<cr>
 endif
 
 " Move forward/backward till next non-wsp at same the colum
 " https://vi.stackexchange.com/a/693
-nmap <silent>gJ     :call search('\%' . virtcol('.') . 'v\S', 'W')<CR>
-nmap <silent>gK     :call search('\%' . virtcol('.') . 'v\S', 'bW')<CR>
+nmap <silent>gJ     <cmd>call search('\%' . virtcol('.') . 'v\S', 'W')<CR>
+nmap <silent>gK     <cmd>call search('\%' . virtcol('.') . 'v\S', 'bW')<CR>
 
 " submode to control split window size (vim-submode)
 call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
