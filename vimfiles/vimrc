@@ -79,18 +79,21 @@ call plug#end()
 
 syntax on
 
-" Color scheme (note: load the plugin before this)
+" Color scheme (note: load the plugin before this) {{{
 set t_Co=256
 if has('termguicolors')
     set termguicolors
 endif
+
+" Use jellybeans color scheme with a litle darker background
+let g:jellybeans_overrides = { 'background' : { 'guibg': '0c0c0c' }, }
 colorscheme jellybeans
-if has_key(g:plugs, 'vim-gitgutter')
-    " Use brighter color, same for ChangeDelete, keep the sign 1 char
-    highlight link GitGutterDelete       diffRemoved
-    highlight link GitGutterChangeDelete diffRemoved
-    let g:gitgutter_sign_modified_removed = '≃'
-endif
+
+" (git-gutter) Make markers for deleted line brighter
+highlight GitGutterDelete       guifg=#ff000a guibg=#333333
+highlight GitGutterChangeDelete guifg=#ff000a guibg=#333333
+let g:gitgutter_sign_modified_removed = '≃'
+" }}} Color scheme
 
 " Neovim specific configurations
 if has("nvim")
