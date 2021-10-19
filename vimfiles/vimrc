@@ -97,7 +97,7 @@ let g:gitgutter_sign_modified_removed = '≅'
 " }}} Color scheme
 
 " Neovim specific configurations
-if has("nvim")
+if has('nvim')
     set omnifunc=v:lua.vim.lsp.omnifunc
 
 lua << EOF
@@ -140,8 +140,8 @@ nmap <silent><leader>ra <cmd>lua vim.lsp.buf.code_action()<cr>
 nmap <silent><leader>rf <cmd>lua vim.lsp.buf.formatting()<cr>
 vmap <silent><leader>rf <cmd>lua vim.lsp.buf.range_formatting()<cr>
 
-" Finder
-if has("nvim")
+" Fuzzy finder
+if has('nvim')
     nmap <silent><leader>g  <cmd>Telescope live_grep<cr>
     nmap <silent><c-p>      <cmd>Telescope find_files<cr>
     nmap <silent><leader>ff <cmd>Telescope find_files<cr>
