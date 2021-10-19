@@ -92,7 +92,7 @@ colorscheme jellybeans
 " (git-gutter) Make markers for deleted line brighter
 highlight GitGutterDelete       guifg=#ff000a guibg=#333333
 highlight GitGutterChangeDelete guifg=#ff000a guibg=#333333
-let g:gitgutter_sign_modified_removed = '≃'
+let g:gitgutter_sign_modified_removed = '≅'
 " }}} Color scheme
 
 " Neovim specific configurations
