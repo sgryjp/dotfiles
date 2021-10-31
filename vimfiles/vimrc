@@ -1,6 +1,9 @@
 " vim:set foldmethod=marker:
 if has('win32') || has('win64')
     set   termencoding=cp932
+    if executable('pwsh')
+        set shell=pwsh.exe
+    endif
 endif
 if has('linux')
 set   path+=/usr/include/**
