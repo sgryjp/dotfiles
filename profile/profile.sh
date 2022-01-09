@@ -6,3 +6,7 @@ export XDG_DATA_HOME=$HOME/.local/share
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
 umask 022
+
+if test -x ~/.linuxbrew/bin/brew; then
+    eval $(~/.linuxbrew/bin/brew shellenv)
+fi
