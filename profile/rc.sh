@@ -28,6 +28,11 @@ if test -n "$BASH_VERSION"; then
     unset rst ul red
     export PS1
 fi
+if test -n "$ZSH_VERSION"; then
+    PS1="%(?..%F{red}[%?]%f )"
+    PS1+="%m:%U%~%u%# "
+    export PS1
+fi
 
 # Other settings for interactive use
 EDITOR=vi
