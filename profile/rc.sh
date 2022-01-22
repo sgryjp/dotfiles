@@ -1,3 +1,6 @@
+# Goodies for interactive use. This should be sourced from
+# ~/.zshrc or ~/.bashrc.
+
 # Aliases
 case `uname` in
     Darwin) LSOPTS='-G';;
