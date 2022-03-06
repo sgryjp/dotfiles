@@ -26,3 +26,7 @@ Set-PSReadLineOption -EditMode Emacs
 function prompt {
     "PS " + "$(Get-Location)".Replace($env:USERPROFILE, "~") + "> "
 }
+
+# Check and warn if host specific environment variables are not as expected
+if ($env:XDG_CONFIG_HOME -eq $null) { Write-Warning "XDG_CONFIG_HOME is not defind." }
+if ($env:XDG_DATA_HOME -eq $null)   { Write-Warning "XDG_DATA_HOME is not defind." }
