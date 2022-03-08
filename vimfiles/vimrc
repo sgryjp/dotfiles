@@ -1,9 +1,11 @@
 " vim:set foldmethod=marker:
 if has('win32') || has('win64')
     set   termencoding=cp932
-    if executable('pwsh')
-        set shell=pwsh.exe
-    endif
+    " :PlugUpdate fails if `pwsh.exe` is set for shell...
+    " https://www.reddit.com/r/neovim/comments/gbb2g3/wierd_vimplug_error_messages/g3n3vtl/
+    "if executable('pwsh')
+    "    set shell=pwsh.exe
+    "endif
 endif
 if has('linux')
 set   path+=/usr/include/**
