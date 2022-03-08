@@ -1,5 +1,7 @@
 [color]
 	status = auto
 	ui = true
+[fetch]
+	prune = true
 [pull]
 	ff = only
