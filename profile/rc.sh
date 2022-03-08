@@ -16,6 +16,7 @@ alias gb='git show-branch'
 alias gd='git diff'
 alias gl='git log --graph --oneline --decorate'
 alias gs='git status -s'
+alias ,ps='ps -Hfu $(id -un)'
 
 # PS1
 if test -n "$BASH_VERSION"; then
