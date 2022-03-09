@@ -47,6 +47,8 @@ if command -v nvim > /dev/null; then
     EDITOR=`command -v nvim`
 fi
 export EDITOR
+export HISTSIZE=8192
+export HISTFILESIZE=8192
 
 if command -v less > /dev/null; then
     export PAGER=`command -v less`
