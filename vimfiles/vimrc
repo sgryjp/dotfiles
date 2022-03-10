@@ -78,7 +78,7 @@ if has('nvim')
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-lualine/lualine.nvim'
 else
-    Plug 'junegunn/fzf',        { 'tag': '*' }
+    Plug 'junegunn/fzf',        { 'tag': '*', 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
 endif
 call plug#end()
