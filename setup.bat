@@ -20,6 +20,7 @@ REM Git configurations
 git config --global include.path "%BATDIR%git\config"
 call :COPY "%BATDIR%git/ignore" "%USERPROFILE%\.gitignore"
 
+REM VIM configurations
 call :MKDIR "%USERPROFILE%\_vim\autoload"
 call :MKLINK "%USERPROFILE%\_vim\vimrc"                 "%BATDIR%vimfiles\vimrc"
 call :MKLINK "%USERPROFILE%\_vim\autoload\plug.vim"     "%BATDIR%vimfiles\autoload\plug.vim"
@@ -30,6 +31,7 @@ call :MKDIR "%USERPROFILE%\vimfiles\autoload"
 call :MKLINK "%USERPROFILE%\vimfiles\vimrc"             "%BATDIR%vimfiles\vimrc"
 call :MKLINK "%USERPROFILE%\vimfiles\autoload\plug.vim" "%BATDIR%vimfiles\autoload\plug.vim"
 
+REM Neovim configurations
 call :MKDIR "%USERPROFILE%\.config\nvim"
 call :MKLINK "%USERPROFILE%\.config\nvim\init.vim"      "%BATDIR%nvim\init.vim"
 goto :EOF
