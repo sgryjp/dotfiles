@@ -106,12 +106,18 @@ if has('nvim')
     set omnifunc=v:lua.vim.lsp.omnifunc
 
 lua << EOF
-    require("lualine").setup {}
-    local lsp_installer = require("nvim-lsp-installer")
-    lsp_installer.on_server_ready(function(server)
-        server:setup {}
-        vim.cmd("do User LspAttachBuffers")
-    end)
+    local ok, lualine = pcall(require, "lualine")
+    if ok then
+        lualine.setup {}
+    end
+
+    local ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+    if ok then
+        lsp_installer.on_server_ready(function(server)
+            server:setup {}
+            vim.cmd("do User LspAttachBuffers")
+        end)
+    end
 EOF
 endif
 
