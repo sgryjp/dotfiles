@@ -211,51 +211,51 @@ if !has("nvim")
 endif
 
 " Jump to prev/next l(ocation-list), q(uick-fix-list), (dia)g(nostic-items)
-nmap         ]l         <cmd>lnext<cr>
-nmap         [l         <cmd>lprevious<cr>
-nmap         ]q         <cmd>cnext<cr>
-nmap         [q         <cmd>cprevious<cr>
-nmap <silent>[g         <cmd>lua vim.lsp.diagnostic.goto_prev()<cr>
-nmap <silent>]g         <cmd>lua vim.lsp.diagnostic.goto_next()<cr>
+nmap         ]l         <Cmd>lnext<CR>
+nmap         [l         <Cmd>lprevious<CR>
+nmap         ]q         <Cmd>cnext<CR>
+nmap         [q         <Cmd>cprevious<CR>
+nmap <silent>[g         <Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nmap <silent>]g         <Cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
 " Go to something
-nmap <silent>gD         <cmd>lua vim.lsp.buf.declaration()<cr>
-nmap <silent>gd         <cmd>lua vim.lsp.buf.definition()<cr>
-nmap <silent>gy         <cmd>lua vim.lsp.buf.type_definition()<cr>
-nmap <silent>gi         <cmd>lua vim.lsp.buf.implementation()<cr>
-nmap <silent>gr         <cmd>lua vim.lsp.buf.references()<cr>
+nmap <silent>gD         <Cmd>lua vim.lsp.buf.declaration()<CR>
+nmap <silent>gd         <Cmd>lua vim.lsp.buf.definition()<CR>
+nmap <silent>gy         <Cmd>lua vim.lsp.buf.type_definition()<CR>
+nmap <silent>gi         <Cmd>lua vim.lsp.buf.implementation()<CR>
+nmap <silent>gr         <Cmd>lua vim.lsp.buf.references()<CR>
 
 " Inspection
-nmap <silent>K          <cmd>lua vim.lsp.buf.hover()<cr>
-nmap <silent><c-k>      <cmd>lua vim.lsp.buf.signature_help()<cr>
+nmap <silent>K          <Cmd>lua vim.lsp.buf.hover()<CR>
+nmap <silent><C-k>      <Cmd>lua vim.lsp.buf.signature_help()<CR>
 
 " Refactoring (and formatting)
-nmap <silent><leader>rr <cmd>lua vim.lsp.buf.rename()<cr>
-nmap <silent><leader>ra <cmd>lua vim.lsp.buf.code_action()<cr>
-nmap <silent><leader>rf <cmd>lua vim.lsp.buf.formatting()<cr>
-vmap <silent><leader>rf <cmd>lua vim.lsp.buf.range_formatting()<cr>
+nmap <silent><Leader>rr <Cmd>lua vim.lsp.buf.rename()<CR>
+nmap <silent><Leader>ra <Cmd>lua vim.lsp.buf.code_action()<CR>
+nmap <silent><Leader>rf <Cmd>lua vim.lsp.buf.formatting()<CR>
+vmap <silent><Leader>rf <Cmd>lua vim.lsp.buf.range_formatting()<CR>
 
 " Fuzzy finder
 if has('nvim')
-    nmap <silent><leader>g  <cmd>Telescope live_grep<cr>
-    nmap <silent><c-p>      <cmd>Telescope find_files<cr>
-    nmap <silent><leader>ff <cmd>Telescope find_files<cr>
-    nmap <silent><leader>fb <cmd>Telescope buffers<cr>
-    nmap <silent><leader>fs <cmd>Telescope lsp_document_symbols<cr>
-    nmap <silent><leader>fS <cmd>Telescope lsp_workspace_symbols<cr>
-    nmap <silent><leader>fd <cmd>Telescope lsp_definitions<cr>
-    nmap <silent><leader>fr <cmd>Telescope lsp_references<cr>
-    nmap <silent><leader>fi <cmd>Telescope lsp_implementations<cr>
-    nmap <silent><leader>fg <cmd>Telescope lsp_document_diagnostics<cr>
-    nmap <silent><leader>fG <cmd>Telescope lsp_workspace_diagnostics<cr>
+    nmap <silent><Leader>g  <Cmd>Telescope live_grep<CR>
+    nmap <silent><C-p>      <Cmd>Telescope find_files<CR>
+    nmap <silent><Leader>ff <Cmd>Telescope find_files<CR>
+    nmap <silent><Leader>fb <Cmd>Telescope buffers<CR>
+    nmap <silent><Leader>fs <Cmd>Telescope lsp_document_symbols<CR>
+    nmap <silent><Leader>fS <Cmd>Telescope lsp_workspace_symbols<CR>
+    nmap <silent><Leader>fd <Cmd>Telescope lsp_definitions<CR>
+    nmap <silent><Leader>fr <Cmd>Telescope lsp_references<CR>
+    nmap <silent><Leader>fi <Cmd>Telescope lsp_implementations<CR>
+    nmap <silent><Leader>fg <Cmd>Telescope lsp_document_diagnostics<CR>
+    nmap <silent><leader>fG <Cmd>Telescope lsp_workspace_diagnostics<CR>
 else
-    nmap         <c-p>      <cmd>Files<cr>
+    nmap         <C-p>      <Cmd>Files<CR>
 endif
 
 " Move forward/backward till next non-wsp at same the colum
 " https://vi.stackexchange.com/a/693
-nmap <silent>gJ     <cmd>call search('\%' . virtcol('.') . 'v\S', 'W')<CR>
-nmap <silent>gK     <cmd>call search('\%' . virtcol('.') . 'v\S', 'bW')<CR>
+nmap <silent>gJ     <Cmd>call search('\%' . virtcol('.') . 'v\S', 'W')<CR>
+nmap <silent>gK     <Cmd>call search('\%' . virtcol('.') . 'v\S', 'bW')<CR>
 
 " submode to control split window size (vim-submode)
 call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
@@ -296,8 +296,8 @@ augroup END
 
 augroup GolangSettings
     autocmd!
-    autocmd FileType go nmap <leader>b  <Plug>(go-build)
-    autocmd FileType go nmap <leader>r  <Plug>(go-run)
+    autocmd FileType go nmap <Leader>b  <Plug>(go-build)
+    autocmd FileType go nmap <Leader>r  <Plug>(go-run)
     let g:go_auto_sameids = 1
 augroup END
 
@@ -309,7 +309,7 @@ augroup END
 
 augroup RustSettings
     autocmd!
-    autocmd FileType rust nmap <leader>b :make build<cr>
-    autocmd FileType rust nmap <leader>t :make test<cr>
+    autocmd FileType rust nmap <Leader>b :make build<CR>
+    autocmd FileType rust nmap <Leader>t :make test<CR>
     let g:rust_cargo_check_tests = 1
 augroup END
