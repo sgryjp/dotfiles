@@ -204,8 +204,10 @@ endif
 
 " Keymaps {{{
 
-" Code-completion
-imap <silent><c-j>      <c-x><c-o>
+" Code-completion (not for Neovim as there will be nvim-cmp)
+if !has("nvim")
+    imap <silent><C-j>      <C-x><C-o>
+endif
 
 " Jump to prev/next l(ocation-list), q(uick-fix-list), (dia)g(nostic-items)
 nmap         ]l         <cmd>lnext<cr>
