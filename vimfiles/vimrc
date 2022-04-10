@@ -70,6 +70,7 @@ Plug 'machakann/vim-sandwich',  { 'tag': '*' }
 Plug 'tpope/vim-fugitive',      { 'tag': '*' }
 Plug 'sheerun/vim-polyglot',    { 'tag': '*' }
 Plug 'qpkorr/vim-renamer'
+Plug 'editorconfig/editorconfig-vim', { 'tag': '*' }
 if has('nvim')
     Plug 'nvim-lua/plenary.nvim' " for telescope.nvim
     Plug 'kyazdani42/nvim-web-devicons' " for telescope.nvim
