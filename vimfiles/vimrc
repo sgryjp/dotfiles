@@ -61,6 +61,7 @@ filetype indent plugin on
 " Plugins
 call plug#begin()
 Plug 'nanotech/jellybeans.vim', { 'tag': '*' }
+Plug 'editorconfig/editorconfig-vim', { 'tag': '*' }
 Plug 'airblade/vim-gitgutter'
 Plug 'kana/vim-submode',        { 'tag': '*' }
 Plug 'justinmk/vim-sneak',      { 'tag': '*' }
