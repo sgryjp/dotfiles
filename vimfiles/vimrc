@@ -246,8 +246,7 @@ if has('nvim')
     nmap <silent><Leader>fd <Cmd>Telescope lsp_definitions<CR>
     nmap <silent><Leader>fr <Cmd>Telescope lsp_references<CR>
     nmap <silent><Leader>fi <Cmd>Telescope lsp_implementations<CR>
-    nmap <silent><Leader>fg <Cmd>Telescope lsp_document_diagnostics<CR>
-    nmap <silent><leader>fG <Cmd>Telescope lsp_workspace_diagnostics<CR>
+    nmap <silent><Leader>fg <Cmd>Telescope diagnostics<CR>
 else
     nmap         <C-p>      <Cmd>Files<CR>
 endif
