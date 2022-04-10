@@ -65,7 +65,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'kana/vim-submode',        { 'tag': '*' }
 Plug 'justinmk/vim-sneak',      { 'tag': '*' }
 Plug 'tpope/vim-commentary',    { 'tag': '*' }
-Plug 'tpope/vim-surround',      { 'tag': '*' }
+Plug 'machakann/vim-sandwich',  { 'tag': '*' }
 Plug 'tpope/vim-fugitive',      { 'tag': '*' }
 Plug 'sheerun/vim-polyglot',    { 'tag': '*' }
 Plug 'qpkorr/vim-renamer'
