@@ -78,6 +78,11 @@ if has('nvim')
     Plug 'williamboman/nvim-lsp-installer'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-lualine/lualine.nvim'
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-path'
+    Plug 'hrsh7th/cmp-cmdline'
 else
     Plug 'junegunn/fzf',        { 'tag': '*', 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
@@ -119,6 +124,76 @@ lua << EOF
             vim.cmd("do User LspAttachBuffers")
         end)
     end
+
+    local ok, cmp = pcall(require, "cmp")
+    if ok then
+        cmp.setup {
+            mapping = {
+                ["<C-p>"]     = cmp.mapping.select_prev_item(),
+                ["<C-n>"]     = cmp.mapping.select_next_item(),
+                ["<C-d>"]     = cmp.mapping.scroll_docs(-4),
+                ["<C-f>"]     = cmp.mapping.scroll_docs(4),
+                ["<C-j>"]     = cmp.mapping.complete(),
+                ["<C-e>"]     = cmp.mapping.close(),
+                ["<CR>"]      = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+                ["<C-y>"]     = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+                ["<Tab>"]     = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+                ["<S-Tab>"]   = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+            },
+            sources = cmp.config.sources({
+                { name = "nvim_lsp" },
+            }, {
+                { name = "buffer" },
+                { name = "path" },
+            }),
+        }
+
+        -- Complete VIM commands
+        cmp.setup.cmdline(":", {
+            sources = {
+                { name = "cmdline" }
+            }
+        })
+
+        -- Complete search words
+        cmp.setup.cmdline("/", {
+            sources = {
+                { name = "cmdline" }
+            }
+        })
+
+    end
+
+    local ok, lsp_config = pcall(require, "lspconfig")
+    if ok then
+        lsp_config.efm.setup {
+            init_options = {
+                documentFormatting = true,
+                hover = true,
+                documentSymbol = true,
+                codeAction = true,
+                completion = true,
+            },
+            settings = {
+                rootMarkers = {".git/"},
+                languages = {
+                    lua = {
+                        {formatCommand = "lua-format -i", formatStdin = true}
+                    },
+                    python = {
+                        {
+                            lintCommand = "flake8 --stdin-display-name ${INPUT} -",
+                            lintStdin = true,
+                            --lintFormats = [ "%f:%l:%c: %m" ],
+                            formatCommand = "black --quiet -",
+                            formatStdin = true,
+                        }
+                    }
+                }
+            }
+        }
+    end
+
 EOF
 endif
 
