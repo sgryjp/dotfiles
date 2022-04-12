@@ -200,8 +200,8 @@ nmap         ]l         <Cmd>lnext<CR>
 nmap         [l         <Cmd>lprevious<CR>
 nmap         ]q         <Cmd>cnext<CR>
 nmap         [q         <Cmd>cprevious<CR>
-nmap <silent>[g         <Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-nmap <silent>]g         <Cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nmap <silent>[g         <Cmd>lua vim.diagnostic.goto_prev()<CR>
+nmap <silent>]g         <Cmd>lua vim.diagnostic.goto_next()<CR>
 
 " Go to something
 nmap <silent>gD         <Cmd>lua vim.lsp.buf.declaration()<CR>
