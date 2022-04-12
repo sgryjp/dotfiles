@@ -173,37 +173,6 @@ lua << EOF
                 { name = "cmdline" }
             }
         })
-
-    end
-
-    local ok, lsp_config = pcall(require, "lspconfig")
-    if ok then
-        lsp_config.efm.setup {
-            init_options = {
-                documentFormatting = true,
-                hover = true,
-                documentSymbol = true,
-                codeAction = true,
-                completion = true,
-            },
-            settings = {
-                rootMarkers = {".git/"},
-                languages = {
-                    lua = {
-                        {formatCommand = "lua-format -i", formatStdin = true}
-                    },
-                    python = {
-                        {
-                            lintCommand = "flake8 --stdin-display-name ${INPUT} -",
-                            lintStdin = true,
-                            --lintFormats = [ "%f:%l:%c: %m" ],
-                            formatCommand = "black --quiet -",
-                            formatStdin = true,
-                        }
-                    }
-                }
-            }
-        }
     end
 
 EOF
