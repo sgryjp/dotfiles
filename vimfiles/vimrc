@@ -86,6 +86,7 @@ if has('nvim')
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-cmdline'
     Plug 'onsails/lspkind-nvim'
+    Plug 'jose-elias-alvarez/null-ls.nvim'
 else
     Plug 'junegunn/fzf',        { 'tag': '*', 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
@@ -175,6 +176,15 @@ lua << EOF
         })
     end
 
+    local ok, null_ls = pcall(require, "null-ls")
+    if ok then
+        null_ls.setup {
+            sources = {
+                null_ls.builtins.formatting.black,
+                null_ls.builtins.diagnostics.flake8,
+            }
+        }
+    end
 EOF
 endif
 
