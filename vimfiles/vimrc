@@ -123,7 +123,11 @@ if has('nvim')
 lua << EOF
     local ok, lualine = pcall(require, "lualine")
     if ok then
-        lualine.setup {}
+        lualine.setup {
+            options = {
+                globalstatus = true, -- nvim 0.7+
+            }
+        }
     end
 
     local ok, lsp_installer = pcall(require, "nvim-lsp-installer")
