@@ -226,10 +226,12 @@ vmap <silent><Leader>rf <Cmd>lua vim.lsp.buf.range_formatting()<CR>
 
 " Fuzzy finder
 if has('nvim')
-    nmap <silent><Leader>g  <Cmd>Telescope live_grep<CR>
     nmap <silent><C-p>      <Cmd>Telescope find_files<CR>
-    nmap <silent><Leader>ff <Cmd>Telescope find_files<CR>
+
     nmap <silent><Leader>fb <Cmd>Telescope buffers<CR>
+    nmap <silent><Leader>ff <Cmd>Telescope find_files<CR>
+    nmap <silent><Leader>fp <Cmd>Telescope live_grep<CR>
+    nmap <silent><Leader>fq <Cmd>Telescope quickfix<CR>
     nmap <silent><Leader>fs <Cmd>Telescope lsp_document_symbols<CR>
     nmap <silent><Leader>fS <Cmd>Telescope lsp_workspace_symbols<CR>
     nmap <silent><Leader>fd <Cmd>Telescope lsp_definitions<CR>
