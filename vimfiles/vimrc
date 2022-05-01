@@ -143,10 +143,10 @@ lua << EOF
         lspkind = require "lspkind"
         cmp.setup {
             mapping = cmp.mapping.preset.insert({
-                ["<C-d>"]     = cmp.mapping.scroll_docs(-4),
+                ["<C-b>"]     = cmp.mapping.scroll_docs(-4),
                 ["<C-f>"]     = cmp.mapping.scroll_docs(4),
                 ["<C-j>"]     = cmp.mapping.complete(),
-                ["<C-e>"]     = cmp.mapping.close(),
+                ["<C-e>"]     = cmp.mapping.abort(),
                 ["<CR>"]      = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
                 ["<C-y>"]     = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
                 ["<Tab>"]     = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
