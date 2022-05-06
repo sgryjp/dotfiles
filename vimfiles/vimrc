@@ -161,6 +161,11 @@ lua << EOF
             formatting = {
                 format = lspkind.cmp_format(),
             },
+            completion = {
+                -- Mainly to suppress collecting excessive amount of executables
+                -- from PATH after typing :!
+                keyword_length = 2,
+            },
         }
 
         -- Complete VIM commands
