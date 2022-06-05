@@ -38,6 +38,11 @@ if test -n "$ZSH_VERSION"; then
     export PS1
 fi
 
+# Completion
+if test -n "$ZSH_VERSION"; then
+    autoload -Uz compinit && compinit
+fi
+
 # Other settings for interactive use
 EDITOR=vi
 if command -v vim > /dev/null; then
