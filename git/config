@@ -3,6 +3,8 @@
 [color]
 	status = auto
 	ui = true
+[delta]
+	side-by-side = true
 [fetch]
 	prune = true
 [pull]
