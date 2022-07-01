@@ -39,7 +39,7 @@ set   scrolloff=2
 set   updatetime=500
 set   wildmenu
 set   mouse=
-set   completeopt-=preview  " Suppress opening a scratch buffer on completion
+set   completeopt=menuone,noinsert,noselect
 
 " Search
 set   hlsearch
