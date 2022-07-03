@@ -46,7 +46,11 @@ set notitle
 set noruler
 set   number
 set   relativenumber
-set   laststatus=2
+if has('nvim-0.7')
+    set laststatus=3
+else
+    set laststatus=2
+endif
 set   statusline =%n\ %<%f%R%M,%{&ff}%y%h%w%q
 set   statusline+=%=\ %(%l,%c%V%)\ %p%%
 set   statusline+=\ %#warningmsg#
