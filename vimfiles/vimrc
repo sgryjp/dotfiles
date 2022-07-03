@@ -300,13 +300,6 @@ call submode#map('winsize', 'n', '', '+', '<C-w>+')
 call submode#map('winsize', 'n', '', '-', '<C-w>-')
 " }}}
 
-augroup GolangSettings
-    autocmd!
-    autocmd FileType go nmap <Leader>b  <Plug>(go-build)
-    autocmd FileType go nmap <Leader>r  <Plug>(go-run)
-    let g:go_auto_sameids = 1
-augroup END
-
 augroup PythonSettings
     autocmd!
     autocmd FileType python set foldmethod=indent
@@ -317,5 +310,4 @@ augroup RustSettings
     autocmd!
     autocmd FileType rust nmap <Leader>b :make build<CR>
     autocmd FileType rust nmap <Leader>t :make test<CR>
-    let g:rust_cargo_check_tests = 1
 augroup END
