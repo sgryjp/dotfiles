@@ -1,4 +1,20 @@
 " vim:set foldmethod=marker:
+
+" Utility functions {{{
+
+function! s:set_indent(size, expand)
+    if a:expand == 1
+        set   expandtab
+    else
+        set noexpandtab
+    endif
+    let &tabstop = a:size
+    let &softtabstop = a:size
+    let &shiftwidth = a:size
+endfunction
+
+" }}}
+
 if has('win32') || has('win64')
     set   termencoding=cp932
     " :PlugUpdate fails if `pwsh.exe` is set for shell...
@@ -46,6 +62,22 @@ set   hlsearch
 set   ignorecase
 set   smartcase
 set nowrapscan
+
+" Indentation
+set shiftround
+call s:set_indent(4, 1)
+augroup indent
+    autocmd!
+    autocmd FileType gitconfig       call s:set_indent(8, 0)
+    autocmd FileType make            call s:set_indent(8, 0)
+    autocmd FileType go              call s:set_indent(4, 0)
+    autocmd FileType css             call s:set_indent(2, 1)
+    autocmd FileType html            call s:set_indent(2, 1)
+    autocmd FileType javascript      call s:set_indent(2, 1)
+    autocmd FileType javascriptreact call s:set_indent(2, 1)
+    autocmd FileType typescript      call s:set_indent(2, 1)
+    autocmd FileType typescriptreact call s:set_indent(2, 1)
+augroup END
 
 " Misc.
 if executable('rg')
@@ -267,32 +299,6 @@ call submode#map('winsize', 'n', '', '<', '<C-w><')
 call submode#map('winsize', 'n', '', '+', '<C-w>+')
 call submode#map('winsize', 'n', '', '-', '<C-w>-')
 " }}}
-
-" Indentation
-set shiftround
-function! s:SetIndent(size, expand)
-    if a:expand == 1
-        set   expandtab
-    else
-        set noexpandtab
-    endif
-    let &tabstop = a:size
-    let &softtabstop = a:size
-    let &shiftwidth = a:size
-endfunction
-call s:SetIndent(4, 1)
-augroup indent
-    autocmd!
-    autocmd FileType gitconfig       call s:SetIndent(8, 0)
-    autocmd FileType make            call s:SetIndent(8, 0)
-    autocmd FileType go              call s:SetIndent(4, 0)
-    autocmd FileType css             call s:SetIndent(2, 1)
-    autocmd FileType html            call s:SetIndent(2, 1)
-    autocmd FileType javascript      call s:SetIndent(2, 1)
-    autocmd FileType javascriptreact call s:SetIndent(2, 1)
-    autocmd FileType typescript      call s:SetIndent(2, 1)
-    autocmd FileType typescriptreact call s:SetIndent(2, 1)
-augroup END
 
 augroup GolangSettings
     autocmd!
