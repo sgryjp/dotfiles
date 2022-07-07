@@ -281,10 +281,11 @@ nmap <silent>K          <Cmd>lua vim.lsp.buf.hover()<CR>
 nmap <silent><C-k>      <Cmd>lua vim.lsp.buf.signature_help()<CR>
 
 " Refactoring (and formatting)
-nmap <silent><Leader>rr <Cmd>lua vim.lsp.buf.rename()<CR>
-nmap <silent><Leader>ra <Cmd>lua vim.lsp.buf.code_action()<CR>
-nmap <silent><Leader>rf <Cmd>lua vim.lsp.buf.formatting()<CR>
-vmap <silent><Leader>rf <Cmd>lua vim.lsp.buf.range_formatting()<CR>
+let mapleader = '\'
+nmap <silent><Leader>r <Cmd>lua vim.lsp.buf.rename()<CR>
+nmap <silent><Leader>a <Cmd>lua vim.lsp.buf.code_action()<CR>
+nmap <silent><Leader>f <Cmd>lua vim.lsp.buf.formatting()<CR>
+vmap <silent><Leader>f <Cmd>lua vim.lsp.buf.range_formatting()<CR>
 
 " Fuzzy finder
 let mapleader = '<Space>'
