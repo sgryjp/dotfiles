@@ -192,6 +192,13 @@ lua << EOF
         end)
     end
 
+    local ok, telescope = pcall(require, "telescope")
+    if ok then
+        telescope.setup {
+            defaults = {mappings = {i = {["<Esc>"] = "close"}}},
+        }
+    end
+
     local ok, cmp = pcall(require, "cmp")
     if ok then
         lspkind = require "lspkind"
