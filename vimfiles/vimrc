@@ -195,7 +195,15 @@ lua << EOF
     local ok, telescope = pcall(require, "telescope")
     if ok then
         telescope.setup {
-            defaults = {mappings = {i = {["<Esc>"] = "close"}}},
+            defaults = {
+                mappings = {
+                    i = {
+                        -- Close Telescope window by Esc even in insert mode
+                        ["<Esc>"] = "close",
+                        ["<C-[>"] = "close",
+                    },
+                },
+            },
         }
     end
 
