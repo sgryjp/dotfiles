@@ -114,6 +114,7 @@ if has('nvim')
     Plug 'nvim-lua/plenary.nvim' " for telescope.nvim
     Plug 'kyazdani42/nvim-web-devicons' " for telescope.nvim
 
+    Plug 'kyazdani42/nvim-tree.lua'
     Plug 'neovim/nvim-lspconfig'
     Plug 'williamboman/nvim-lsp-installer'
     Plug 'nvim-telescope/telescope.nvim'
@@ -266,6 +267,11 @@ lua << EOF
             }
         }
     end
+
+    local ok, nvim_tree = pcall(require, "nvim-tree")
+    if ok then
+        nvim_tree.setup {}
+    end
 EOF
 endif
 
@@ -318,6 +324,10 @@ if has('nvim')
 else
     nmap         <C-p>      <Cmd>Files<CR>
 endif
+
+" File explorer (nvim-tree)
+nmap         <C-n>  <Cmd>NvimTreeFindFileToggle<CR>
+
 
 " Move forward/backward till next non-wsp at same the colum
 " https://vi.stackexchange.com/a/693
