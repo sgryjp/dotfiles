@@ -359,3 +359,10 @@ augroup RustSettings
     autocmd FileType rust nmap \b :make build<CR>
     autocmd FileType rust nmap \t :make test<CR>
 augroup END
+
+augroup HelpSettings
+    autocmd!
+    autocmd FileType help nmap<buffer> q     <Cmd>close<CR>
+    autocmd FileType help nmap<buffer> <C-[> <Cmd>close<CR>
+    autocmd FileType help nmap<buffer> <Esc> <Cmd>close<CR>
+augroup END
