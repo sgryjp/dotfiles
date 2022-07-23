@@ -277,6 +277,11 @@ endif
 
 " Keymaps {{{
 
+" Close auxiliary windows by <C-[> in normal mode.
+nmap <silent><C-[>      <Cmd>cclose<CR>
+                        \<Cmd>lclose<CR>
+                        \<Cmd>helpclose<CR>
+
 " Code-completion (not for Neovim as there will be nvim-cmp)
 if !has("nvim")
     imap <silent><C-j>      <C-x><C-o>
