@@ -360,6 +360,13 @@ augroup RustSettings
     autocmd FileType rust nmap \t :make test<CR>
 augroup END
 
+augroup GoSettings
+    autocmd!
+    autocmd FileType go set makeprg=go
+    autocmd FileType go nmap \b :make build ./...<CR>
+    autocmd FileType go nmap \t :make test ./...<CR>
+augroup END
+
 augroup HelpSettings
     autocmd!
     autocmd FileType help nmap<buffer> q     <Cmd>close<CR>
