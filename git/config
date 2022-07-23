@@ -7,5 +7,7 @@
 	side-by-side = true
 [fetch]
 	prune = true
+[init]
+	defaultBranch = main
 [pull]
 	ff = only
