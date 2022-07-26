@@ -16,6 +16,7 @@ endfunction
 
 " }}}
 
+" OS dependent workarounds {{{
 if has('win32') || has('win64')
     set   termencoding=cp932
     " :PlugUpdate fails if `pwsh.exe` is set for shell...
@@ -23,10 +24,16 @@ if has('win32') || has('win64')
     "if executable('pwsh')
     "    set shell=pwsh.exe
     "endif
+
+    " Use tee command on Windows too (should be bundled with Neovim)
+    if executable('tee')
+        set shellpipe=2>&1\|\ tee
+    endif
 endif
 if has('linux')
 set   path+=/usr/include/**
 endif
+" }}}
 
 " File & Edit
 set   backspace=indent,eol,start
