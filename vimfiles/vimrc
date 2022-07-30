@@ -366,28 +366,28 @@ augroup PythonSettings
     " Note that setting errorformat for pytest is not necessary because it's
     " the same as flake8's which should be provided by vim-polyglot.
     autocmd!
-    autocmd FileType python set foldmethod=indent
-    autocmd FileType python set foldlevel=999
-    autocmd FileType python set makeprg=python\ $*
-    autocmd FileType python nmap \t <Cmd>make -m pytest<CR>
+    autocmd FileType python setlocal foldmethod=indent
+    autocmd FileType python setlocal foldlevel=999
+    autocmd FileType python setlocal makeprg=python\ $*
+    autocmd FileType python nmap<buffer>    \t <Cmd>make -m pytest<CR>
 augroup END
 
 augroup RustSettings
     autocmd!
-    autocmd FileType rust nmap \b :make build<CR>
-    autocmd FileType rust nmap \t :make test<CR>
+    autocmd FileType rust   nmap<buffer>    \b :make build<CR>
+    autocmd FileType rust   nmap<buffer>    \t :make test<CR>
 augroup END
 
 augroup GoSettings
     autocmd!
-    autocmd FileType go set makeprg=go
-    autocmd FileType go nmap \b :make build ./...<CR>
-    autocmd FileType go nmap \t :make test ./...<CR>
+    autocmd FileType go     setlocal makeprg=go
+    autocmd FileType go     nmap<buffer>    \b :make build ./...<CR>
+    autocmd FileType go     nmap<buffer>    \t :make test ./...<CR>
 augroup END
 
 augroup HelpSettings
     autocmd!
-    autocmd FileType help nmap<buffer> q     <Cmd>close<CR>
-    autocmd FileType help nmap<buffer> <C-[> <Cmd>close<CR>
-    autocmd FileType help nmap<buffer> <Esc> <Cmd>close<CR>
+    autocmd FileType help   nmap<buffer> q     <Cmd>close<CR>
+    autocmd FileType help   nmap<buffer> <C-[> <Cmd>close<CR>
+    autocmd FileType help   nmap<buffer> <Esc> <Cmd>close<CR>
 augroup END
