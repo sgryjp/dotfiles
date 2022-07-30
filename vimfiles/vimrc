@@ -106,8 +106,11 @@ filetype indent plugin on
 
 " Plugins
 call plug#begin()
-"Plug 'nanotech/jellybeans.vim', { 'tag': '*' }
-Plug 'arcticicestudio/nord-vim',{ 'tag': '*' }
+if has('nvim')
+    Plug 'arcticicestudio/nord-vim',    { 'tag': '*' }
+else
+    Plug 'nanotech/jellybeans.vim',     { 'tag': '*' }
+endif
 Plug 'editorconfig/editorconfig-vim', { 'tag': '*' }
 Plug 'airblade/vim-gitgutter'
 Plug 'kana/vim-submode',        { 'tag': '*' }
@@ -148,16 +151,19 @@ if has('termguicolors')
     set termguicolors
 endif
 
-" Use jellybeans color scheme with a litle darker background
-" ...and adjust GitGutter sign color a little 
-"let g:jellybeans_overrides = { 'background' : { 'guibg': '0c0c0c' }, }
-"colorscheme jellybeans
-"highlight GitGutterDelete       guifg=#ff000a guibg=#333333
-"highlight GitGutterChangeDelete guifg=#ff000a guibg=#333333
+if has('nvim')
+    let g:nord_italic = 1
+    let g:nord_underline = 1
+    colorscheme nord
+else
+    " Use jellybeans color scheme with a litle darker background
+    " ...and adjust GitGutter sign color a little 
+    let g:jellybeans_overrides = { 'background' : { 'guibg': '0c0c0c' }, }
+    highlight GitGutterDelete       guifg=#ff000a guibg=#333333
+    highlight GitGutterChangeDelete guifg=#ff000a guibg=#333333
+    colorscheme jellybeans
+endif
 
-let g:nord_italic = 1
-let g:nord_underline = 1
-colorscheme nord
 " }}} Color scheme
 
 " (GitGutter) Use '≅' instead of '~_' for modified & removed line
