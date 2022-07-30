@@ -352,6 +352,8 @@ nmap         <C-h>  <C-w>h
 nmap         <C-j>  <C-w>j
 nmap         <C-k>  <C-w>k
 nmap         <C-l>  <C-w>l
+tmap         <Esc>  <C-\><C-n>
+tmap         <C-[>  <C-\><C-n>
 tmap         <C-h>  <C-\><C-n><C-w>h
 tmap         <C-j>  <C-\><C-n><C-w>j
 tmap         <C-k>  <C-\><C-n><C-w>k
