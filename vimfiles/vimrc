@@ -14,6 +14,52 @@ function! s:set_indent(size, expand)
     let &shiftwidth = a:size
 endfunction
 
+function! s:make_in_term_on_exit(j, d, e) abort
+    " Scan error messages and put them into quickfix window
+    cgetbuffer
+
+    " Let 'q' or Esc to close the terminal window
+    nmap<buffer> q     <Cmd>q<CR>
+    nmap<buffer> <Esc> <Cmd>q<CR>
+    nmap<buffer> <C-[> <Cmd>q<CR>
+
+    " Put cursor to the bottom
+    call cursor(9999, 9999)
+endfunction
+
+function! s:make_in_term(args) abort
+    " Disable shellslash temporarily
+    " TODO: Confirm this is right on Windows
+    if exists('+shellslash')
+        let l:shellslash = &shellslash
+        set noshellslash
+    endif
+
+    try
+        " Resolve command line to execute
+        let l:cmdline = &makeprg
+        if strlen(l:cmdline) == 0
+            let &l:cmdline = 'make'
+        endif
+        let l:cmdline .= " " . a:args
+
+        " Remember current errorformat for parsing result later as creating a
+        " buffer may change it depending on configuration (e.g.: `autocmd`s).
+        let l:errorformat = &errorformat
+
+        " Execute it in a terminal buffer
+        rightbelow vnew
+        let l:options = {'on_exit': function("s:make_in_term_on_exit")}
+        let l:job = termopen(l:cmdline, l:options)
+    finally
+        if exists('+shellslash')
+            let &shellslash = l:shellslash
+        endif
+    endtry
+endfunction
+
+command! -nargs=* MakeInTerm call s:make_in_term('<args>')
+
 " }}}
 
 " OS dependent workarounds {{{
