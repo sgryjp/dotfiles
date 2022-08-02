@@ -164,7 +164,7 @@ Plug 'justinmk/vim-sneak',      { 'tag': '*' }
 Plug 'tpope/vim-commentary',    { 'tag': '*' }
 Plug 'machakann/vim-sandwich',  { 'tag': '*' }
 Plug 'tpope/vim-fugitive',      { 'tag': '*' }
-Plug 'sheerun/vim-polyglot',    { 'tag': '*' }
+Plug 'sheerun/vim-polyglot'
 Plug 'qpkorr/vim-renamer'
 Plug 'editorconfig/editorconfig-vim', { 'tag': '*' }
 if has('nvim')
