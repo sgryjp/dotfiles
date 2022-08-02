@@ -167,6 +167,7 @@ Plug 'tpope/vim-fugitive',      { 'tag': '*' }
 Plug 'sheerun/vim-polyglot'
 Plug 'qpkorr/vim-renamer'
 Plug 'editorconfig/editorconfig-vim', { 'tag': '*' }
+Plug 'lukas-reineke/indent-blankline.nvim'
 if has('nvim')
     Plug 'nvim-lua/plenary.nvim' " for telescope.nvim
     Plug 'kyazdani42/nvim-web-devicons' " for telescope.nvim
