@@ -38,6 +38,14 @@ if test -n "$ZSH_VERSION"; then
     export PS1
 fi
 
+# Keybind
+if test -n "$BASH_VERSION"; then
+    set -o emacs
+fi
+if test -n "$ZSH_VERSION"; then
+    bindkey -e
+fi
+
 # Completion
 if test -n "$ZSH_VERSION"; then
     autoload -Uz compinit && compinit
