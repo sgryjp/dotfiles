@@ -117,4 +117,4 @@ makelink $SCRIPT_PATH/vimfiles/autoload/plug.vim    ~/.vim/autoload/plug.vim
 
 # Neovim
 mkdir -pv ~/.config/nvim/
-makelink $SCRIPT_PATH/nvim/init.vim                 ~/.config/nvim/init.vim
+makelink $SCRIPT_PATH/nvim/init.lua                 ~/.config/nvim/init.lua

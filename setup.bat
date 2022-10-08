@@ -33,7 +33,7 @@ call :MKLINK "%USERPROFILE%\vimfiles\autoload\plug.vim" "%BATDIR%vimfiles\autolo
 
 REM Neovim configurations
 call :MKDIR "%USERPROFILE%\.config\nvim"
-call :MKLINK "%USERPROFILE%\.config\nvim\init.vim"      "%BATDIR%nvim\init.vim"
+call :MKLINK "%USERPROFILE%\.config\nvim\init.lua"      "%BATDIR%nvim\init.lua"
 goto :EOF
 
 
