@@ -32,8 +32,16 @@ call :MKLINK "%USERPROFILE%\vimfiles\vimrc"             "%BATDIR%vimfiles\vimrc"
 call :MKLINK "%USERPROFILE%\vimfiles\autoload\plug.vim" "%BATDIR%vimfiles\autoload\plug.vim"
 
 REM Neovim configurations
-call :MKDIR "%USERPROFILE%\.config\nvim"
-call :MKLINK "%USERPROFILE%\.config\nvim\init.lua"      "%BATDIR%nvim\init.lua"
+call :MKDIR "%USERPROFILE%\.config\nvim\autoload"
+call :MKDIR "%USERPROFILE%\.config\nvim\lua\plugins"
+call :MKLINK "%USERPROFILE%\.config\nvim\init.lua"                  "%BATDIR%nvim\init.lua"
+call :MKLINK "%USERPROFILE%\.config\vimfiles\autoload\plug.vim"     "%BATDIR%nvim\autoload\plug.vim"
+call :MKLINK "%USERPROFILE%\.config\nvim\lua\plugins\cmp.lua"       "%BATDIR%nvim\lua\plugins\cmp.lua"
+call :MKLINK "%USERPROFILE%\.config\nvim\lua\plugins\lualine.lua"   "%BATDIR%nvim\lua\plugins\lualine.lua"
+call :MKLINK "%USERPROFILE%\.config\nvim\lua\plugins\null-ls.lua"   "%BATDIR%nvim\lua\plugins\null-ls.lua"
+call :MKLINK "%USERPROFILE%\.config\nvim\lua\plugins\nvim-lsp-installer.lua" "%BATDIR%nvim\lua\plugins\nvim-lsp-installer.lua"
+call :MKLINK "%USERPROFILE%\.config\nvim\lua\plugins\nvim-tree.lua" "%BATDIR%nvim\lua\plugins\nvim-tree.lua"
+call :MKLINK "%USERPROFILE%\.config\nvim\lua\plugins\telescope.lua" "%BATDIR%nvim\lua\plugins\telescope.lua"
 goto :EOF
 
 

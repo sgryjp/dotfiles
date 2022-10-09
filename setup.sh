@@ -117,5 +117,12 @@ makelink $SCRIPT_PATH/vimfiles/autoload/plug.vim    ~/.vim/autoload/plug.vim
 
 # Neovim
 mkdir -pv ~/.config/nvim/autoload
+mkdir -pv ~/.config/nvim/lua/plugins
 makelink $SCRIPT_PATH/nvim/init.lua                 ~/.config/nvim/init.lua
 makelink $SCRIPT_PATH/vimfiles/autoload/plug.vim    ~/.config/nvim/autoload/plug.vim
+for f in $SCRIPT_PATH/nvim/lua/plugins/*; do
+    if [ -f "$f" ]; then
+        basename=$(basename $f)
+        makelink "$f" ~/.config/nvim/lua/plugins/$basename
+    fi
+done
