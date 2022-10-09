@@ -4,6 +4,18 @@ if not ok then
 end
 
 lsp_installer.on_server_ready(function(server)
-    server:setup {}
+    local config = {}
+
+    if server.name == "sumneko_lua" then
+        config.settings = {
+            Lua = {
+                diagnostics = {
+                    globals = { "vim" },
+                },
+            },
+        }
+    end
+
+    server:setup(config)
     vim.cmd("do User LspAttachBuffers")
 end)
