@@ -219,11 +219,6 @@ endif
 " (GitGutter) Use '≅' instead of '~_' for modified & removed line
 let g:gitgutter_sign_modified_removed = '≅'
 
-" Neovim specific configurations
-if has('nvim')
-    set omnifunc=v:lua.vim.lsp.omnifunc
-endif
-
 " Keymaps {{{
 
 " Close auxiliary windows by <C-[> in normal mode.
