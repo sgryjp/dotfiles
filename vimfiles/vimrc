@@ -162,7 +162,6 @@ endif
 Plug 'editorconfig/editorconfig-vim', { 'tag': '*' }
 Plug 'airblade/vim-gitgutter'
 Plug 'kana/vim-submode',        { 'tag': '*' }
-Plug 'justinmk/vim-sneak',      { 'tag': '*' }
 Plug 'tpope/vim-commentary',    { 'tag': '*' }
 Plug 'machakann/vim-sandwich',  { 'tag': '*' }
 Plug 'tpope/vim-fugitive',      { 'tag': '*' }
