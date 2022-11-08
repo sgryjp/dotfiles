@@ -9,9 +9,9 @@ if not exist "%USERPROFILE%" (
 
 REM Check access priviledge
 if exist "%TEMP%\makelinks.tmp" del "%TEMP%\makelinks.tmp"
-(mklink /h "%TEMP%\makelinks.tmp" "%~0" 2>&1) > NUL
+(mklink "%TEMP%\makelinks.tmp" "%~0" 2>&1) > NUL
 if not %ERRORLEVEL% == 0 (
-    echo Failed to create a hard link
+    echo Failed to create a symbolic link
     goto :EOF
 )
 del ".\makelinks.tmp" 2> NUL
@@ -59,8 +59,8 @@ REM ---------------------------------------------------------------------------
     set DEST=%~f1
     set SRC=%~f2
     if exist "%DEST%" del /q "%DEST%"
-    echo mklink /h "%DEST%" "%SRC%"
-    mklink /h "%DEST%" "%SRC%" > NUL
+    echo mklink "%DEST%" "%SRC%"
+    mklink "%DEST%" "%SRC%" > NUL
     exit /b 0
 
 :MKDIR
