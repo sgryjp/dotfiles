@@ -252,7 +252,7 @@ nmap <silent><C-k>      <Cmd>lua vim.lsp.buf.signature_help()<CR>
 " Refactoring (and formatting)
 nmap \r <Cmd>lua vim.lsp.buf.rename()<CR>
 nmap \a <Cmd>lua vim.lsp.buf.code_action()<CR>
-nmap \f <Cmd>lua vim.lsp.buf.formatting()<CR>
+nmap \f <Cmd>lua vim.lsp.buf.format({async = false})<CR>
 vmap \f <Cmd>lua vim.lsp.buf.range_formatting()<CR>
 
 " Fuzzy finder
