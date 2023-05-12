@@ -159,7 +159,6 @@ if has('nvim')
 else
     Plug 'nanotech/jellybeans.vim',     { 'tag': '*' }
 endif
-Plug 'editorconfig/editorconfig-vim', { 'tag': '*' }
 Plug 'airblade/vim-gitgutter'
 Plug 'kana/vim-submode',        { 'tag': '*' }
 Plug 'tpope/vim-commentary',    { 'tag': '*' }
@@ -167,7 +166,6 @@ Plug 'machakann/vim-sandwich',  { 'tag': '*' }
 Plug 'tpope/vim-fugitive',      { 'tag': '*' }
 Plug 'sheerun/vim-polyglot'
 Plug 'qpkorr/vim-renamer'
-Plug 'editorconfig/editorconfig-vim', { 'tag': '*' }
 Plug 'lukas-reineke/indent-blankline.nvim'
 if has('nvim')
     Plug 'nvim-lua/plenary.nvim' " for telescope.nvim
@@ -191,6 +189,7 @@ if has('nvim')
 else
     Plug 'junegunn/fzf',        { 'tag': '*', 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
+    Plug 'editorconfig/editorconfig-vim', { 'tag': '*' }
 endif
 call plug#end()
 
@@ -208,7 +207,7 @@ if has('nvim')
     colorscheme nord
 else
     " Use jellybeans color scheme with a litle darker background
-    " ...and adjust GitGutter sign color a little 
+    " ...and adjust GitGutter sign color a little
     let g:jellybeans_overrides = { 'background' : { 'guibg': '0c0c0c' }, }
     highlight GitGutterDelete       guifg=#ff000a guibg=#333333
     highlight GitGutterChangeDelete guifg=#ff000a guibg=#333333
