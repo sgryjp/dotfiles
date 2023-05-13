@@ -30,3 +30,8 @@ function prompt {
 # Check and warn if host specific environment variables are not as expected
 if ($env:XDG_CONFIG_HOME -eq $null) { Write-Warning "XDG_CONFIG_HOME is not defind." }
 if ($env:XDG_DATA_HOME -eq $null)   { Write-Warning "XDG_DATA_HOME is not defind." }
+
+# Setup EDITOR environment variable
+if (Get-Command -CommandType Application nvim) {
+    $env:EDITOR = "nvim"
+}
