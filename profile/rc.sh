@@ -72,3 +72,6 @@ if command -v fzf > /dev/null; then
     fi
     export FZF_DEFAULT_OPTS="--height 40% --inline-info"
 fi
+if command -v go > /dev/null; then
+    export PATH=$PATH:$(go env GOPATH)/bin
+fi
