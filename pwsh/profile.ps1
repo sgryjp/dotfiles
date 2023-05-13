@@ -22,7 +22,7 @@ Get-ChildItem Alias: | Where-Object -Property Name -in @("curl", "wget") | Remov
 # Use Emacs keybindings
 Set-PSReadLineOption -EditMode Emacs
 
-# Use standard-ish prompt using "~" for user profile directory
+# Use standard-ish prompt except that user profile directory is shown as "~" 
 function prompt {
     "PS " + "$(Get-Location)".Replace($env:USERPROFILE, "~") + "> "
 }
