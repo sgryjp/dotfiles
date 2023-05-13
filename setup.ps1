@@ -40,15 +40,15 @@ New-Directory "vimfiles\autoload"
 New-SymlinkFile -Target "vimfiles\vimrc"                "vimfiles\vimrc"
 New-SymlinkFile -Target "vimfiles\autoload\plug.vim"    "vimfiles\autoload\plug.vim"
 
-# # Neovim configurations
+# Neovim configurations
 New-Directory ".config\nvim\autoload"
 New-Directory ".config\nvim\lua\plugins"
-New-SymlinkFile -Target "nvim\init.lua"                 ".config\nvim\init.lua"
+Get-ChildItem -Recurse -File "nvim" | %{
+    $target = $_.FullName
+    $relpath = Resolve-Path -Relative -LiteralPath $target
+    $relpath = $relpath.TrimStart(".\\")  # ".\nvim\***" --> "nvim\***"
+    $source = Join-Path ".config" $relpath
+    Invoke-Expression "New-SymlinkFile -Target '$relpath' '$source'"
+}
 New-SymlinkFile -Target "vimfiles\vimrc"                ".config\nvim\vimrc"
 New-SymlinkFile -Target "vimfiles\autoload\plug.vim"    ".config\nvim\autoload\plug.vim"
-New-SymlinkFile -Target "nvim\lua\plugins\cmp.lua"      ".config\nvim\lua\plugins\cmp.lua"
-New-SymlinkFile -Target "nvim\lua\plugins\lualine.lua"  ".config\nvim\lua\plugins\lualine.lua"
-New-SymlinkFile -Target "nvim\lua\plugins\null-ls.lua"  ".config\nvim\lua\plugins\null-ls.lua"
-New-SymlinkFile -Target "nvim\lua\plugins\nvim-lsp-installer.lua" ".config\nvim\lua\plugins\nvim-lsp-installer.lua"
-New-SymlinkFile -Target "nvim\lua\plugins\nvim-tree.lua"    ".config\nvim\lua\plugins\nvim-tree.lua"
-New-SymlinkFile -Target "nvim\lua\plugins\telescope.lua"    ".config\nvim\lua\plugins\telescope.lua"
