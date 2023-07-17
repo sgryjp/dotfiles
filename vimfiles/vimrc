@@ -159,7 +159,6 @@ if has('nvim')
 else
     Plug 'nanotech/jellybeans.vim',     { 'tag': '*' }
 endif
-Plug 'airblade/vim-gitgutter'
 Plug 'kana/vim-submode',        { 'tag': '*' }
 Plug 'tpope/vim-commentary',    { 'tag': '*' }
 Plug 'machakann/vim-sandwich',  { 'tag': '*' }
@@ -187,10 +186,12 @@ if has('nvim')
     Plug 'hrsh7th/cmp-cmdline'
     Plug 'onsails/lspkind-nvim'
     Plug 'jose-elias-alvarez/null-ls.nvim'
+    Plug 'lewis6991/gitsigns.nvim', { 'tag': '*' }
 else
     Plug 'junegunn/fzf',        { 'tag': '*', 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'editorconfig/editorconfig-vim', { 'tag': '*' }
+    Plug 'airblade/vim-gitgutter'
 endif
 call plug#end()
 
