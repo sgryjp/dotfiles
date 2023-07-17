@@ -4,7 +4,7 @@ if not ok then
 end
 
 gitsigns.setup {
-	current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+	current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
 	current_line_blame_formatter = '<abbrev_sha> <author_time:%Y-%m-%d> <summary>',
 	on_attach = function(bufnr)
 		local gs = package.loaded.gitsigns
