@@ -48,7 +48,7 @@ function! s:make_in_term(args) abort
         let l:errorformat = &errorformat
 
         " Execute it in a terminal buffer
-        rightbelow vnew
+        rightbelow split_f
         let l:options = {'on_exit': function("s:make_in_term_on_exit")}
         let l:job = termopen(l:cmdline, l:options)
     finally
@@ -58,7 +58,7 @@ function! s:make_in_term(args) abort
     endtry
 endfunction
 
-command! -nargs=* MakeInTerm call s:make_in_term('<args>')
+command! -nargs=* Make call s:make_in_term('<args>')
 
 " }}}
 
