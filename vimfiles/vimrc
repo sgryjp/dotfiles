@@ -333,6 +333,13 @@ augroup GoSettings
     autocmd FileType go     nmap<buffer>    \t :make test ./...<CR>
 augroup END
 
+augroup QuickFixSettings
+    autocmd!
+    autocmd FileType qf     nmap<buffer> q     <Cmd>q<CR>
+    autocmd FileType qf     nmap<buffer> <C-[> <Cmd>q<CR>
+    autocmd FileType qf     nmap<buffer> <Esc> <Cmd>q<CR>
+augroup END
+
 augroup HelpSettings
     autocmd!
     autocmd FileType help   nmap<buffer> q     <Cmd>close<CR>
