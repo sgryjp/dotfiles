@@ -116,6 +116,8 @@ if !has('nvim-0.8')
     set mouse=
 endif
 set   completeopt=menuone,noinsert,noselect
+set nolist
+set   listchars=tab:╌╌>,trail:␠
 
 " Search
 set   hlsearch
@@ -337,6 +339,18 @@ augroup GoSettings
     autocmd FileType go     setlocal makeprg=go
     autocmd FileType go     nmap<buffer>    \b :make build ./...<CR>
     autocmd FileType go     nmap<buffer>    \t :make test ./...<CR>
+augroup END
+
+
+augroup DiffSettings
+    autocmd!
+
+    " Show whitespace characters in diff mode
+    autocmd OptionSet diff  if v:option_new == 1 |
+        \   set   list |
+        \ else |
+        \   set nolist |
+        \ endif
 augroup END
 
 augroup QuickFixSettings
