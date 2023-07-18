@@ -309,15 +309,17 @@ call submode#map('winsize', 'n', '', '-', '<C-w>-')
 " (vim-polyglot) Override some configurations
 let g:vim_markdown_new_list_item_indent = 2
 
+" Filetype specific configurations
 augroup PythonSettings
     " Using pytest for unit testing.
     " Note that setting errorformat for pytest is not necessary because it's
     " the same as flake8's which should be provided by vim-polyglot.
     autocmd!
+    autocmd FileType python setlocal errorformat=%f:%l:\ %m
     autocmd FileType python setlocal foldmethod=indent
     autocmd FileType python setlocal foldlevel=999
-    autocmd FileType python setlocal makeprg=python\ $*
-    autocmd FileType python nmap<buffer>    \t <Cmd>make -m pytest<CR>
+    autocmd FileType python setlocal makeprg=python\ -m\ pytest\ $*
+    autocmd FileType python nmap<buffer>    \t <Cmd>make<CR>
 augroup END
 
 augroup RustSettings
