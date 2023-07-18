@@ -1,5 +1,3 @@
-local trouble = require("trouble.providers.telescope")
-
 local ok, telescope = pcall(require, "telescope")
 if not ok then
     return
@@ -12,13 +10,6 @@ telescope.setup {
                 -- Close Telescope window by Esc even in insert mode
                 ["<Esc>"] = "close",
                 ["<C-[>"] = "close",
-
-                -- Open result in trouble.nvim
-                ["<c-t>"] = trouble.open_with_trouble
-            },
-            n = {
-                -- Open result in trouble.nvim
-                ["<c-t>"] = trouble.open_with_trouble
             },
         },
     },

@@ -187,7 +187,6 @@ if has('nvim')
     Plug 'onsails/lspkind-nvim'
     Plug 'jose-elias-alvarez/null-ls.nvim'
     Plug 'lewis6991/gitsigns.nvim', { 'tag': '*' }
-    Plug 'folke/trouble.nvim',      { 'tag': '*' }
 else
     Plug 'junegunn/fzf',        { 'tag': '*', 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
