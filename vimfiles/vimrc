@@ -257,6 +257,10 @@ nmap \r <Cmd>lua vim.lsp.buf.rename()<CR>
 nmap \a <Cmd>lua vim.lsp.buf.code_action()<CR>
 nmap \f <Cmd>lua vim.lsp.buf.format({async = false})<CR>
 
+" QuickFix and location list
+nmap \q <Cmd>copen<CR>
+nmap \l <Cmd>lopen<CR>
+
 " Fuzzy finder
 if has('nvim')
     nmap <silent><C-p>      <Cmd>Telescope find_files<CR>
