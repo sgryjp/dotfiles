@@ -90,10 +90,11 @@ set nobackup
 set nowritebackup
 set noswapfile
 set noundofile
-if has('unnamedplus')
-    set clipboard&
-    set clipboard^=unnamedplus
-endif
+"if has('unnamedplus')
+"    set clipboard&
+"    set clipboard^=unnamedplus
+"endif
+set clipboard=
 
 " User Interface & Appearence
 set notitle
