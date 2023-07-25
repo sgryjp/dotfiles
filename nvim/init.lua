@@ -2,6 +2,7 @@ vim.cmd("runtime vimrc")
 
 require("plugins/cmp")
 require("plugins/gitsigns")
+require("plugins/kanagawa")
 require("plugins/lualine")
 require("plugins/lsp")
 require("plugins/lsp_signature")

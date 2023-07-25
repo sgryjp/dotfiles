@@ -158,7 +158,7 @@ filetype indent plugin on
 " Plugins
 call plug#begin()
 if has('nvim')
-    Plug 'arcticicestudio/nord-vim',    { 'tag': '*' }
+    Plug 'rebelot/kanagawa.nvim'
 else
     Plug 'nanotech/jellybeans.vim',     { 'tag': '*' }
 endif
@@ -201,16 +201,13 @@ call plug#end()
 syntax on
 
 " Color scheme (note: load the plugin before this) {{{
+" For Neovim, see 'kanagawa.lua'
 set t_Co=256
 if has('termguicolors')
     set termguicolors
 endif
 
-if has('nvim')
-    let g:nord_italic = 1
-    let g:nord_underline = 1
-    colorscheme nord
-else
+if !has('nvim')
     " Use jellybeans color scheme with a litle darker background
     " ...and adjust GitGutter sign color a little
     let g:jellybeans_overrides = { 'background' : { 'guibg': '0c0c0c' }, }
