@@ -113,9 +113,7 @@ set   statusline+=%*
 set   scrolloff=2
 set   updatetime=500
 set   wildmenu
-if !has('nvim-0.8')
-    set mouse=
-endif
+set   mouse=
 set   completeopt=menuone,noinsert,noselect
 set nolist
 set   listchars=tab:╌╌>,trail:␠
