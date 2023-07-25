@@ -146,6 +146,9 @@ augroup END
 if executable('rg')
     set   grepprg=rg\ --vimgrep
 endif
+if has('nvim-0.9')
+    set diffopt=linematch:60,filler,closeoff
+endif
 set  wildignore =*.swp,*.~*
 set  wildignore+=*.o,*.obj
 set  wildignore+=*.so,*.dll
