@@ -1,6 +1,7 @@
 vim.cmd("runtime vimrc")
 
 require("plugins/cmp")
+require("plugins/inlay-hints")
 require("plugins/gitsigns")
 require("plugins/kanagawa")
 require("plugins/lualine")
