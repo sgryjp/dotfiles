@@ -152,8 +152,8 @@ set  wildignore+=*.o,*.obj
 set  wildignore+=*.so,*.dll
 set  wildignore+=*.py[cod]
 set  wildignore+=*.min.*
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-highlight ExtraWhitespace ctermbg=red guibg=red
+"autocmd BufWinEnter * match ExtraWhitespace /\s\+$/  
+"highlight ExtraWhitespace ctermbg=red guibg=red
 filetype indent plugin on
 
 " Plugins
