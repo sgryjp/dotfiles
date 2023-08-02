@@ -203,6 +203,7 @@ if has('nvim')
     Plug 'jose-elias-alvarez/null-ls.nvim'
     Plug 'lewis6991/gitsigns.nvim', { 'tag': '*' }
     Plug 'simrat39/inlay-hints.nvim'
+    Plug 'simrat39/symbols-outline.nvim'
 else
     Plug 'junegunn/fzf',        { 'tag': '*', 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
@@ -276,7 +277,7 @@ nmap \f <Cmd>lua vim.lsp.buf.format({async = false})<CR>
 nmap \q <Cmd>copen<CR>
 nmap \l <Cmd>lopen<CR>
 
-" Fuzzy finder
+" Fuzzy finder and utility views
 if has('nvim')
     nmap <silent><C-p>      <Cmd>Telescope find_files<CR>
 
@@ -284,12 +285,13 @@ if has('nvim')
     nmap <silent><Space>f  <Cmd>Telescope find_files<CR>
     nmap <silent><Space>p  <Cmd>Telescope live_grep<CR>
     nmap <silent><Space>q  <Cmd>Telescope quickfix<CR>
-    nmap <silent><Space>s  <Cmd>Telescope lsp_document_symbols<CR>
-    nmap <silent><Space>S  <Cmd>Telescope lsp_workspace_symbols<CR>
+    "nmap <silent><Space>s  <Cmd>Telescope lsp_document_symbols<CR>
+    "nmap <silent><Space>S  <Cmd>Telescope lsp_workspace_symbols<CR>
     nmap <silent><Space>d  <Cmd>Telescope lsp_definitions<CR>
     nmap <silent><Space>r  <Cmd>Telescope lsp_references<CR>
     nmap <silent><Space>i  <Cmd>Telescope lsp_implementations<CR>
     nmap <silent><Space>g  <Cmd>Telescope diagnostics<CR>
+    nmap <silent><Space>s  <Cmd>SymbolsOutline<CR>
 else
     nmap         <C-p>      <Cmd>Files<CR>
 endif
