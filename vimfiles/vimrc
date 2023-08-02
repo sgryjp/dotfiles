@@ -81,7 +81,7 @@ set   path+=/usr/include/**
 endif
 " }}}
 
-" File & Edit
+" File & Edit {{{
 set   backspace=indent,eol,start
 set   encoding=utf-8
 set   fileencoding=utf-8
@@ -96,7 +96,9 @@ set noundofile
 "endif
 set clipboard=
 
-" User Interface & Appearence
+" }}}
+
+" User Interface & Appearence {{{
 set notitle
 set noruler
 set   number
@@ -118,13 +120,17 @@ set   completeopt=menuone,noinsert,noselect
 set nolist
 set   listchars=tab:╌╌>,trail:␠
 
-" Search
+" }}}
+
+" Search {{{
 set   hlsearch
 set   ignorecase
 set   smartcase
 set nowrapscan
 
-" Indentation
+" }}}
+
+" Indentation {{{
 set shiftround
 call s:set_indent(4, 1)
 augroup indent
@@ -140,7 +146,9 @@ augroup indent
     autocmd FileType typescriptreact call s:set_indent(2, 1)
 augroup END
 
-" Misc.
+" }}}
+
+" Misc. {{{
 if executable('rg')
     set   grepprg=rg\ --vimgrep
 endif
@@ -156,7 +164,9 @@ set  wildignore+=*.min.*
 "highlight ExtraWhitespace ctermbg=red guibg=red
 filetype indent plugin on
 
-" Plugins
+" }}}
+
+" Plugins {{{
 call plug#begin()
 if has('nvim')
     Plug 'rebelot/kanagawa.nvim'
@@ -200,6 +210,8 @@ else
     Plug 'airblade/vim-gitgutter'
 endif
 call plug#end()
+
+" }}}
 
 syntax on
 
@@ -316,7 +328,7 @@ call submode#map('winsize', 'n', '', '-', '<C-w>-')
 " (vim-polyglot) Override some configurations
 let g:vim_markdown_new_list_item_indent = 2
 
-" Filetype specific configurations
+" Filetype specific configurations {{{
 augroup PythonSettings
     " Using pytest for unit testing.
     " Note that setting errorformat for pytest is not necessary because it's
@@ -367,3 +379,5 @@ augroup HelpSettings
     autocmd FileType help   nmap<buffer> <C-[> <Cmd>close<CR>
     autocmd FileType help   nmap<buffer> <Esc> <Cmd>close<CR>
 augroup END
+
+" }}}
