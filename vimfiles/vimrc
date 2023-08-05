@@ -175,7 +175,6 @@ else
 endif
 Plug 'kana/vim-submode',        { 'tag': '*' }
 Plug 'tpope/vim-commentary',    { 'tag': '*' }
-Plug 'machakann/vim-sandwich',  { 'tag': '*' }
 Plug 'tpope/vim-fugitive',      { 'tag': '*' }
 Plug 'sheerun/vim-polyglot'
 Plug 'qpkorr/vim-renamer'
@@ -184,6 +183,7 @@ if has('nvim')
     Plug 'nvim-lua/plenary.nvim' " for telescope.nvim
     Plug 'kyazdani42/nvim-web-devicons' " for telescope.nvim
 
+    Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
     Plug 'kyazdani42/nvim-tree.lua'
     Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
@@ -205,10 +205,11 @@ if has('nvim')
     Plug 'simrat39/inlay-hints.nvim'
     Plug 'simrat39/symbols-outline.nvim'
 else
-    Plug 'junegunn/fzf',        { 'tag': '*', 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf',                    { 'tag': '*', 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
-    Plug 'editorconfig/editorconfig-vim', { 'tag': '*' }
+    Plug 'editorconfig/editorconfig-vim',   { 'tag': '*' }
     Plug 'airblade/vim-gitgutter'
+    Plug 'machakann/vim-sandwich',          { 'tag': '*' }
 endif
 call plug#end()
 
