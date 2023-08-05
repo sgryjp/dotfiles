@@ -182,9 +182,8 @@ Plug 'qpkorr/vim-renamer'
 Plug 'lukas-reineke/indent-blankline.nvim'
 if has('nvim')
     Plug 'nvim-lua/plenary.nvim' " for telescope.nvim
-    Plug 'kyazdani42/nvim-web-devicons' " for telescope.nvim etc.
+    Plug 'kyazdani42/nvim-web-devicons' " for telescope.nvim
 
-    Plug 'echasnovski/mini.files'
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
     Plug 'kyazdani42/nvim-tree.lua'
     Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
@@ -281,8 +280,9 @@ nmap \l <Cmd>lopen<CR>
 " Fuzzy finder and utility views
 if has('nvim')
     nmap <silent><C-p>      <Cmd>Telescope find_files<CR>
+
     nmap <silent><Space>b   <Cmd>Telescope buffers<CR>
-    "nmap <silent><Space>f   <Cmd>Telescope find_files<CR>
+    nmap <silent><Space>f   <Cmd>Telescope find_files<CR>
     nmap <silent><Space>p   <Cmd>Telescope live_grep<CR>
     nmap <silent><Space>q   <Cmd>Telescope quickfix<CR>
     "nmap <silent><Space>s   <Cmd>Telescope lsp_document_symbols<CR>
@@ -292,8 +292,6 @@ if has('nvim')
     nmap <silent><Space>i   <Cmd>Telescope lsp_implementations<CR>
     nmap <silent><Space>g   <Cmd>Telescope diagnostics<CR>
     nmap <silent><Space>s   <Cmd>SymbolsOutline<CR>
-
-    nmap <silent><Space>f   <Cmd>lua MiniFiles.open()<CR>
 else
     nmap         <C-p>      <Cmd>Files<CR>
 endif
