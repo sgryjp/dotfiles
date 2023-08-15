@@ -12,7 +12,8 @@ Set-Alias gb GitShowBranch
 Set-Alias gs GitStatus
 if ($Host.Version.Major -ge 7) {
     Set-Alias -Force gl GitLog
-} else {
+}
+else {
     Set-Alias -Force -Option AllScope gl GitLog
 }
 
@@ -29,7 +30,7 @@ function prompt {
 
 # Check and warn if host specific environment variables are not as expected
 if ($null -eq $env:XDG_CONFIG_HOME) { Write-Warning "XDG_CONFIG_HOME is not defind." }
-if ($null -eq $env:XDG_DATA_HOME)   { Write-Warning "XDG_DATA_HOME is not defind." }
+if ($null -eq $env:XDG_DATA_HOME) { Write-Warning "XDG_DATA_HOME is not defind." }
 
 # Setup EDITOR environment variable
 if (Get-Command -CommandType Application nvim) {
