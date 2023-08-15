@@ -36,3 +36,9 @@ if ($null -eq $env:XDG_DATA_HOME) { Write-Warning "XDG_DATA_HOME is not defind."
 if (Get-Command -CommandType Application nvim) {
     $env:EDITOR = "nvim"
 }
+
+# Define "pipx" command which invokes its zipapp
+if (Test-Path -Path "$env:USERPROFILE\.local\opt\pipx.pyz" -PathType Leaf) {
+    function Invoke-Pipx { python "$env:USERPROFILE\.local\opt\pipx.pyz" $args }
+    Set-Alias -Option AllScope pipx Invoke-Pipx
+}
