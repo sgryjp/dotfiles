@@ -383,4 +383,9 @@ augroup HelpSettings
     autocmd FileType help   nmap<buffer> <Esc> <Cmd>close<CR>
 augroup END
 
+augroup FugitiveSettings
+    autocmd!
+    autocmd FileType fugitive :resize 12
+augroup END
+
 " }}}
