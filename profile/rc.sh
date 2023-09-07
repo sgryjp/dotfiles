@@ -27,7 +27,7 @@ if test -n "$BASH_VERSION"; then
     PS1+="status="\$?"; "
     PS1+="if [ \$status -ne 0 ]; then echo \"$red[\$status] $rst\"; fi"
     PS1+=")"
-    # PS1+="\u@"
+    PS1+="\u@"
     PS1+="\h:${ul}\w${rst}\$ "
     unset rst ul red
     export PS1
