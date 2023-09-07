@@ -171,7 +171,6 @@ call plug#begin()
 if has('nvim')
     Plug 'rebelot/kanagawa.nvim'
 endif
-Plug 'kana/vim-submode',        { 'tag': '*' }
 Plug 'tpope/vim-commentary',    { 'tag': '*' }
 Plug 'tpope/vim-fugitive',      { 'tag': '*' }
 Plug 'sheerun/vim-polyglot'
@@ -308,15 +307,6 @@ tmap         <C-l>  <C-\><C-n><C-w>l
 nmap <silent>gJ     <Cmd>call search('\%' . virtcol('.') . 'v\S', 'W')<CR>
 nmap <silent>gK     <Cmd>call search('\%' . virtcol('.') . 'v\S', 'bW')<CR>
 
-" submode to control split window size (vim-submode)
-call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
-call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
-call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
-call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
-call submode#map('winsize', 'n', '', '>', '<C-w>>')
-call submode#map('winsize', 'n', '', '<', '<C-w><')
-call submode#map('winsize', 'n', '', '+', '<C-w>+')
-call submode#map('winsize', 'n', '', '-', '<C-w>-')
 " }}}
 
 " (vim-polyglot) Override some configurations
