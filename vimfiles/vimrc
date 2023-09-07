@@ -215,11 +215,13 @@ call plug#end()
 
 syntax on
 
-" Color scheme (note: load the plugin before this) {{{
-" For Neovim, see 'kanagawa.lua'
-set t_Co=256
-if has('termguicolors')
-    set termguicolors
+" Color scheme {{{
+if !has('nvim')
+    set t_Co=256
+    if has('termguicolors')
+        set termguicolors
+    endif
+    colorscheme desert
 endif
 
 " }}} Color scheme
