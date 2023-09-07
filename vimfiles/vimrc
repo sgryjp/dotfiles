@@ -170,8 +170,6 @@ filetype indent plugin on
 call plug#begin()
 if has('nvim')
     Plug 'rebelot/kanagawa.nvim'
-else
-    Plug 'nanotech/jellybeans.vim',     { 'tag': '*' }
 endif
 Plug 'kana/vim-submode',        { 'tag': '*' }
 Plug 'tpope/vim-commentary',    { 'tag': '*' }
@@ -222,15 +220,6 @@ syntax on
 set t_Co=256
 if has('termguicolors')
     set termguicolors
-endif
-
-if !has('nvim')
-    " Use jellybeans color scheme with a litle darker background
-    " ...and adjust GitGutter sign color a little
-    let g:jellybeans_overrides = { 'background' : { 'guibg': '0c0c0c' }, }
-    highlight GitGutterDelete       guifg=#ff000a guibg=#333333
-    highlight GitGutterChangeDelete guifg=#ff000a guibg=#333333
-    colorscheme jellybeans
 endif
 
 " }}} Color scheme
