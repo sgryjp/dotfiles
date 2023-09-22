@@ -18,7 +18,7 @@ else {
 }
 
 # Remove unnecessary aliases
-Get-ChildItem Alias: | Where-Object -Property Name -in @("curl", "wget") | Remove-Item
+Get-ChildItem Alias: | Where-Object -Property Name -in @("curl", "wget", "r") | Remove-Item
 
 # Use Emacs keybindings
 Set-PSReadLineOption -EditMode Emacs
