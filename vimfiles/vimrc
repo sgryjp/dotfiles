@@ -179,10 +179,11 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 if has('nvim')
     Plug 'nvim-lua/plenary.nvim' " for telescope.nvim
     Plug 'kyazdani42/nvim-web-devicons' " for telescope.nvim
+    Plug 'MunifTanjim/nui.nvim'  " for neo-tree
 
     Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-    Plug 'kyazdani42/nvim-tree.lua'
+    Plug 'nvim-neo-tree/neo-tree.nvim'
     Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
     Plug 'williamboman/mason-lspconfig.nvim'
     Plug 'neovim/nvim-lspconfig'
@@ -287,8 +288,8 @@ else
     nmap         <C-p>      <Cmd>Files<CR>
 endif
 
-" File explorer (nvim-tree)
-nmap         <C-n>  <Cmd>NvimTreeFindFileToggle<CR>
+" File explorer (neo-tree)
+nmap         <C-n>  <Cmd>Neotree<CR>
 
 " Moves between windows
 nmap         <C-h>  <C-w>h
