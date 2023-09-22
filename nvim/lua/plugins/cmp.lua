@@ -3,7 +3,7 @@ if not ok then
     return
 end
 
-lspkind = require "lspkind"
+local lspkind = require "lspkind"
 cmp.setup {
     mapping = cmp.mapping.preset.insert({
         ["<C-b>"]   = cmp.mapping.scroll_docs(-4),
@@ -20,16 +20,16 @@ cmp.setup {
         { name = "nvim_lua" },
     }, {
         { name = "buffer" },
-        { name = "path" },
+        -- { name = "path" },
     }),
     formatting = {
         format = lspkind.cmp_format(),
     },
-    completion = {
-        -- Mainly to suppress collecting excessive amount of executables
-        -- from PATH after typing :!
-        keyword_length = 2,
-    },
+    -- completion = {
+    --     -- Mainly to suppress collecting excessive amount of executables
+    --     -- from PATH after typing :!
+    --     keyword_length = 2,
+    -- },
 }
 
 -- Complete VIM commands
