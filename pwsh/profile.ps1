@@ -39,6 +39,8 @@ if (Get-Command -CommandType Application nvim) {
 
 # Define "pipx" command which invokes its zipapp
 if (Test-Path -Path "$env:USERPROFILE\.local\opt\pipx.pyz" -PathType Leaf) {
-    function Invoke-Pipx { python "$env:USERPROFILE\.local\opt\pipx.pyz" $args }
+    function Invoke-Pipx {
+        Invoke-Expression "$(scoop which python39) $env:USERPROFILE\.local\opt\pipx.pyz $args"
+    }
     Set-Alias -Option AllScope pipx Invoke-Pipx
 }
