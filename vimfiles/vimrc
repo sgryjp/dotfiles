@@ -232,9 +232,11 @@ let g:gitgutter_sign_modified_removed = '≅'
 " Keymaps {{{
 
 " Close auxiliary windows by <C-[> in normal mode.
-nmap <silent><C-[>      <Cmd>cclose<CR>
-                        \<Cmd>lclose<CR>
-                        \<Cmd>helpclose<CR>
+if has("nvim")
+    nmap <silent><C-[>      <Cmd>cclose<CR>
+                            \ <Cmd>lclose<CR>
+                            \ <Cmd>helpclose<CR>
+endif
 
 " Code-completion (not for Neovim as there will be nvim-cmp)
 if !has("nvim")
