@@ -1,5 +1,16 @@
 # "dot source" this file in my $PROFILE
 
+# Check whether my personally important environment variables are set or not
+# and set fallback values if not set
+if (-Not (Test-Path Env:\XDG_CONFIG_HOME)) {
+    $env:XDG_CONFIG_HOME = $env:UserProfile + "\.config" 
+    Write-Warning "XDG_CONFIG_HOME is not defind; using $env:XDG_CONFIG_HOME as fallback"
+}
+if (-Not (Test-Path Env:\XDG_DATA_HOME)) {
+    $env:XDG_DATA_HOME = $env:UserProfile + "\.local\share"
+    Write-Warning "XDG_DATA_HOME is not defind; using $env:XDG_DATA_HOME as fallback"
+}
+
 # Define git related functions for aliases
 function GitDiff { git diff $args }
 function GitLog { git log --graph --oneline --decorate $args }
@@ -27,10 +38,6 @@ Set-PSReadLineOption -EditMode Emacs
 function prompt {
     "PS " + "$(Get-Location)".Replace($env:USERPROFILE, "~") + "> "
 }
-
-# Check and warn if host specific environment variables are not as expected
-if ($null -eq $env:XDG_CONFIG_HOME) { Write-Warning "XDG_CONFIG_HOME is not defind." }
-if ($null -eq $env:XDG_DATA_HOME) { Write-Warning "XDG_DATA_HOME is not defind." }
 
 # Setup EDITOR environment variable
 if (Get-Command -ErrorAction Ignore -CommandType Application nvim) {
