@@ -33,7 +33,7 @@ if ($null -eq $env:XDG_CONFIG_HOME) { Write-Warning "XDG_CONFIG_HOME is not defi
 if ($null -eq $env:XDG_DATA_HOME) { Write-Warning "XDG_DATA_HOME is not defind." }
 
 # Setup EDITOR environment variable
-if (Get-Command -CommandType Application nvim) {
+if (Get-Command -ErrorAction Ignore -CommandType Application nvim) {
     $env:EDITOR = "nvim"
 }
 
