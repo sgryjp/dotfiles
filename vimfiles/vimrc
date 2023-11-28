@@ -199,7 +199,7 @@ if has('nvim')
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-cmdline'
     Plug 'onsails/lspkind-nvim'
-    Plug 'jose-elias-alvarez/null-ls.nvim'
+    Plug 'stevearc/conform.nvim'
     Plug 'lewis6991/gitsigns.nvim', { 'tag': '*' }
     Plug 'simrat39/inlay-hints.nvim'
     Plug 'simrat39/symbols-outline.nvim'
@@ -266,7 +266,7 @@ nmap <silent><C-k>      <Cmd>lua vim.lsp.buf.signature_help()<CR>
 " Refactoring (and formatting)
 nmap \r <Cmd>lua vim.lsp.buf.rename()<CR>
 nmap \a <Cmd>lua vim.lsp.buf.code_action()<CR>
-nmap \f <Cmd>lua vim.lsp.buf.format({async = false})<CR>
+nmap \f <Cmd>lua require'conform'.format({lsp_fallback = true})<CR>
 
 " QuickFix and location list
 nmap \q <Cmd>copen<CR>
