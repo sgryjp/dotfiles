@@ -181,6 +181,7 @@ if has('nvim')
     Plug 'kyazdani42/nvim-web-devicons' " for telescope.nvim
     Plug 'MunifTanjim/nui.nvim'  " for neo-tree
 
+    Plug 'rbong/vim-flog'
     Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
     Plug 'nvim-neo-tree/neo-tree.nvim'
