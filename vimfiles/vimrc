@@ -1,5 +1,4 @@
 " This file should be included from init.nvim in Neovim instance.
-echo "vimrc"
 
 " Common settings
 runtime common.vim

@@ -1,4 +1,4 @@
-" Share configuration of VIM
+# Share configuration of VIM
 vim.cmd("set runtimepath^=~/.vim runtimepath+=~/.vim/after")
 vim.cmd("let &packpath=&runtimepath")
 vim.cmd("runtime vimrc")
