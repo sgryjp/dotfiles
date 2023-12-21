@@ -168,7 +168,7 @@ filetype indent plugin on
 
 " Plugins {{{
 call plug#begin()
-Plug 'catppuccin/nvim',         { 'tag': '*', 'as': 'catpuccin' }
+Plug 'vim/colorschemes'
 Plug 'tpope/vim-commentary',    { 'tag': '*' }
 Plug 'tpope/vim-fugitive',      { 'tag': '*' }
 Plug 'sheerun/vim-polyglot'
@@ -221,7 +221,7 @@ if !has('nvim')
         set termguicolors
     endif
 endif
-colorscheme catppuccin-mocha
+colorscheme habamax
 
 " }}} Color scheme
 
