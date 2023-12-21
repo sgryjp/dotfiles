@@ -168,9 +168,7 @@ filetype indent plugin on
 
 " Plugins {{{
 call plug#begin()
-if has('nvim')
-    Plug 'rebelot/kanagawa.nvim'
-endif
+Plug 'catppuccin/nvim',         { 'tag': '*', 'as': 'catpuccin' }
 Plug 'tpope/vim-commentary',    { 'tag': '*' }
 Plug 'tpope/vim-fugitive',      { 'tag': '*' }
 Plug 'sheerun/vim-polyglot'
@@ -222,8 +220,8 @@ if !has('nvim')
     if has('termguicolors')
         set termguicolors
     endif
-    colorscheme desert
 endif
+colorscheme catppuccin-mocha
 
 " }}} Color scheme
 

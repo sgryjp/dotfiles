@@ -1,4 +1,4 @@
-# Share configuration of VIM
+-- Share configuration of VIM
 vim.cmd("set runtimepath^=~/.vim runtimepath+=~/.vim/after")
 vim.cmd("let &packpath=&runtimepath")
 vim.cmd("runtime vimrc")
@@ -7,7 +7,6 @@ require("plugins/cmp")
 require("plugins/conform")
 require("plugins/inlay-hints")
 require("plugins/gitsigns")
-require("plugins/kanagawa")
 require("plugins/lualine")
 require("plugins/lsp")
 require("plugins/lsp_signature")
