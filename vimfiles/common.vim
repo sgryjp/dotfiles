@@ -221,7 +221,9 @@ if !has('nvim')
         set termguicolors
     endif
 endif
-colorscheme habamax
+if findfile("colors/habamax.vim", &rtp) != ""
+    colorscheme habamax
+endif
 
 " }}} Color scheme
 
