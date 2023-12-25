@@ -168,13 +168,13 @@ filetype indent plugin on
 
 " Plugins {{{
 call plug#begin()
-Plug 'vim/colorschemes'
 Plug 'tpope/vim-commentary',    { 'tag': '*' }
 Plug 'tpope/vim-fugitive',      { 'tag': '*' }
 Plug 'sheerun/vim-polyglot'
 Plug 'qpkorr/vim-renamer'
 Plug 'lukas-reineke/indent-blankline.nvim'
 if has('nvim')
+    Plug 'catppuccin/nvim',         { 'tag': '*', 'as': 'catpuccin' }
     Plug 'nvim-lua/plenary.nvim' " for telescope.nvim
     Plug 'kyazdani42/nvim-web-devicons' " for telescope.nvim
     Plug 'MunifTanjim/nui.nvim'  " for neo-tree
@@ -202,6 +202,7 @@ if has('nvim')
     Plug 'simrat39/inlay-hints.nvim'
     Plug 'simrat39/symbols-outline.nvim'
 else
+    Plug 'joshdick/onedark.vim'
     Plug 'junegunn/fzf',                    { 'tag': '*', 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'editorconfig/editorconfig-vim',   { 'tag': '*' }
@@ -220,9 +221,13 @@ if !has('nvim')
     if has('termguicolors')
         set termguicolors
     endif
-endif
-if findfile("colors/habamax.vim", &rtp) != ""
-    colorscheme habamax
+    if findfile("colors/onedark.vim", &rtp) != ""
+        colorscheme onedark
+    endif
+else
+    if findfile("colors/catppuccin.vim", &rtp) != ""
+        colorscheme catppuccin
+    endif
 endif
 
 " }}} Color scheme
