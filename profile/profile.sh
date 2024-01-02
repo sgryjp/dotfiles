@@ -8,6 +8,9 @@ export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
+command -v go >/dev/null || PATH=$PATH:$(go env GOPATH)/bin
+export PATH
+
 umask 022
 
 if test -x ~/.linuxbrew/bin/brew; then
