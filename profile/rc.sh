@@ -53,19 +53,13 @@ fi
 
 # Other settings for interactive use
 EDITOR=vi
-if command -v vim > /dev/null; then
-    EDITOR=`command -v vim`
-fi
-if command -v nvim > /dev/null; then
-    EDITOR=`command -v nvim`
-fi
+command -v vim  >/dev/null || EDITOR=`command -v vim`
+command -v nvim >/dev/null || EDITOR=`command -v nvim`
 export EDITOR
 export HISTSIZE=8192
 export HISTFILESIZE=8192
 
-if command -v less > /dev/null; then
-    export PAGER=`command -v less`
-fi
+command -v less >/dev/null || export PAGER=`command -v less`
 if command -v fzf > /dev/null; then
     if command -v rg > /dev/null; then
         export FZF_DEFAULT_COMMAND="rg --files --follow"
