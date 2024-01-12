@@ -172,7 +172,6 @@ Plug 'tpope/vim-commentary',    { 'tag': '*' }
 Plug 'tpope/vim-fugitive',      { 'tag': '*' }
 Plug 'sheerun/vim-polyglot'
 Plug 'qpkorr/vim-renamer'
-Plug 'lukas-reineke/indent-blankline.nvim'
 if has('nvim')
     Plug 'catppuccin/nvim',         { 'tag': '*', 'as': 'catpuccin' }
     Plug 'nvim-lua/plenary.nvim' " for telescope.nvim
@@ -202,6 +201,7 @@ if has('nvim')
     Plug 'simrat39/inlay-hints.nvim'
     Plug 'simrat39/symbols-outline.nvim'
 else
+    Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'joshdick/onedark.vim'
     Plug 'junegunn/fzf',                    { 'tag': '*', 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
