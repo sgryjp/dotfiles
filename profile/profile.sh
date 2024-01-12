@@ -14,7 +14,3 @@ command -v go >/dev/null || PATH=$PATH:$(go env GOPATH)/bin
 export PATH
 
 umask 022
-
-if test -x ~/.linuxbrew/bin/brew; then
-    eval $(~/.linuxbrew/bin/brew shellenv)
-fi
