@@ -8,7 +8,6 @@ if not vim.g.vscode then
     require("plugins/conform")
     require("plugins/inlay-hints")
     require("plugins/gitsigns")
-    require("plugins/lualine")
     require("plugins/lsp")
     require("plugins/lsp_signature")
     require("plugins/mini")

@@ -15,3 +15,8 @@ ok, indentscope = pcall(require, "mini.indentscope")
 if ok then
 	indentscope.setup {}
 end
+
+ok, statusline = pcall(require, "mini.statusline")
+if ok then
+	statusline.setup {}
+end

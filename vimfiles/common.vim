@@ -187,7 +187,6 @@ if has('nvim')
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-telescope/telescope-ui-select.nvim'
-    Plug 'nvim-lualine/lualine.nvim'
     Plug 'ray-x/lsp_signature.nvim'
     Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-nvim-lsp'
