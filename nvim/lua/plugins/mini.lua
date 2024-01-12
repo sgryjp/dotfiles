@@ -1,14 +1,19 @@
 local ok
-local mini_surround, mini_cursorword, indentscope
+local extra, surround, cursorword, indentscope, statusline, pick
 
-ok, mini_surround = pcall(require, "mini.surround")
+ok, extra = pcall(require, "mini.extra")
 if ok then
-	mini_surround.setup {}
+	extra.setup {}
 end
 
-ok, mini_cursorword = pcall(require, "mini.cursorword")
+ok, surround = pcall(require, "mini.surround")
 if ok then
-	mini_cursorword.setup {}
+	surround.setup {}
+end
+
+ok, cursorword = pcall(require, "mini.cursorword")
+if ok then
+	cursorword.setup {}
 end
 
 ok, indentscope = pcall(require, "mini.indentscope")
@@ -19,4 +24,10 @@ end
 ok, statusline = pcall(require, "mini.statusline")
 if ok then
 	statusline.setup {}
+end
+
+ok, pick = pcall(require, "mini.pick")
+if ok then
+	pick.setup {}
+    vim.ui.select = pick.ui_select
 end

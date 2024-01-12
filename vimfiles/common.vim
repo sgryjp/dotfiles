@@ -279,18 +279,19 @@ nmap \l <Cmd>lopen<CR>
 
 " Fuzzy finder and utility views
 if has('nvim')
-    nmap <silent><C-p>      <Cmd>Telescope find_files<CR>
+    nmap <silent><C-p>      <Cmd>lua MiniPick.builtin.files()<CR>
 
-    nmap <silent><Space>b   <Cmd>Telescope buffers<CR>
-    nmap <silent><Space>f   <Cmd>Telescope find_files<CR>
-    nmap <silent><Space>p   <Cmd>Telescope live_grep<CR>
-    nmap <silent><Space>q   <Cmd>Telescope quickfix<CR>
-    "nmap <silent><Space>s   <Cmd>Telescope lsp_document_symbols<CR>
-    "nmap <silent><Space>S   <Cmd>Telescope lsp_workspace_symbols<CR>
-    nmap <silent><Space>d   <Cmd>Telescope lsp_definitions<CR>
-    nmap <silent><Space>r   <Cmd>Telescope lsp_references<CR>
-    nmap <silent><Space>i   <Cmd>Telescope lsp_implementations<CR>
-    nmap <silent><Space>g   <Cmd>Telescope diagnostics<CR>
+    nmap <silent><Space>b   <Cmd>lua MiniPick.builtin.buffers()<CR>
+    nmap <silent><Space>f   <Cmd>lua MiniPick.builtin.files()<CR>
+    nmap <silent><Space>p   <Cmd>lua MiniPick.builtin.grep_live()<CR>
+    " nmap <silent><Space>s   <Cmd>lua MiniExtra.pickers.lsp({ scope = 'document_symbol' })<CR>
+    nmap <silent><Space>S   <Cmd>lua MiniExtra.pickers.lsp({ scope = 'workspace_symbol' })<CR>
+    nmap <silent><Space>d   <Cmd>lua MiniExtra.pickers.lsp({ scope = 'definition' })<CR>
+    nmap <silent><Space>r   <Cmd>lua MiniExtra.pickers.lsp({ scope = 'references' })<CR>
+    nmap <silent><Space>i   <Cmd>lua MiniExtra.pickers.lsp({ scope = 'implementation' })<CR>
+    nmap <silent><Space>y   <Cmd>lua MiniExtra.pickers.lsp({ scope = 'type_definition' })<CR>
+    nmap <silent><Space>g   <Cmd>lua MiniExtra.pickers.diagnostic()<CR>
+
     nmap <silent><Space>s   <Cmd>SymbolsOutline<CR>
 else
     nmap         <C-p>      <Cmd>Files<CR>
