@@ -137,6 +137,7 @@ augroup indent
     autocmd!
     autocmd FileType gitconfig       call s:set_indent(8, 0)
     autocmd FileType make            call s:set_indent(8, 0)
+    autocmd FileType markdown        call s:set_indent(2, 0)
     autocmd FileType go              call s:set_indent(4, 0)
     autocmd FileType css             call s:set_indent(2, 1)
     autocmd FileType html            call s:set_indent(2, 1)
@@ -170,7 +171,6 @@ filetype indent plugin on
 call plug#begin()
 Plug 'tpope/vim-commentary',    { 'tag': '*' }
 Plug 'tpope/vim-fugitive',      { 'tag': '*' }
-Plug 'sheerun/vim-polyglot'
 Plug 'qpkorr/vim-renamer'
 if has('nvim')
     Plug 'catppuccin/nvim',         { 'tag': '*', 'as': 'catpuccin' }
@@ -201,6 +201,7 @@ if has('nvim')
     Plug 'simrat39/inlay-hints.nvim'
     Plug 'simrat39/symbols-outline.nvim'
 else
+    Plug 'sheerun/vim-polyglot'
     Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'joshdick/onedark.vim'
     Plug 'junegunn/fzf',                    { 'tag': '*', 'do': { -> fzf#install() } }
@@ -317,9 +318,6 @@ nmap <silent>gJ     <Cmd>call search('\%' . virtcol('.') . 'v\S', 'W')<CR>
 nmap <silent>gK     <Cmd>call search('\%' . virtcol('.') . 'v\S', 'bW')<CR>
 
 " }}}
-
-" (vim-polyglot) Override some configurations
-let g:vim_markdown_new_list_item_indent = 2
 
 " Filetype specific configurations {{{
 augroup PythonSettings
