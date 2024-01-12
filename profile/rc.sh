@@ -48,6 +48,9 @@ fi
 
 # Completion
 if test -n "$ZSH_VERSION"; then
+    if command -v brew > /dev/null; then
+        FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+    fi
     autoload -Uz compinit && compinit
 fi
 
