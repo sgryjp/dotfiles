@@ -11,6 +11,8 @@ conform.setup {
         json = { { "prettierd", "prettier" } },
         markdown = { { "prettierd", "prettier" } },
         python = { "ruff_format" },
+        swift = { "swift_format" },
         yaml = { { "prettierd", "prettier" } },
     },
+    log_level = vim.log.levels.INFO,
 }
