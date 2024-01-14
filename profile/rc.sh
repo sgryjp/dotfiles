@@ -54,6 +54,17 @@ if test -n "$ZSH_VERSION"; then
     autoload -Uz compinit && compinit
 fi
 
+# fzf
+if command -v fzf >/dev/null; then
+    if command -v rg >/dev/null; then
+        export FZF_DEFAULT_COMMAND="rg --files --follow"
+    fi
+    export FZF_DEFAULT_OPTS="--height 40% --inline-info"
+
+    [ -n "$BASH_VERSION" ] && [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+    [ -n "$ZSH_VERSION" ] && [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+fi
+
 # Other settings for interactive use
 EDITOR=vi
 command -v vim  >/dev/null && EDITOR=`command -v vim`
@@ -63,9 +74,3 @@ export HISTSIZE=8192
 export HISTFILESIZE=8192
 
 command -v less >/dev/null && export PAGER=`command -v less`
-if command -v fzf >/dev/null; then
-    if command -v rg >/dev/null; then
-        export FZF_DEFAULT_COMMAND="rg --files --follow"
-    fi
-    export FZF_DEFAULT_OPTS="--height 40% --inline-info"
-fi
