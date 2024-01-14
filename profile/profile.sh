@@ -10,7 +10,7 @@ export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
 [ -d /snap/bin ]         && PATH=/snap/bin:$PATH
 [ -d $HOME/.cargo/bin ]  && PATH=$PATH:$HOME/.cargo/bin
-command -v go >/dev/null || PATH=$PATH:$(go env GOPATH)/bin
+command -v go >/dev/null && PATH=$PATH:$(go env GOPATH)/bin
 export PATH
 
 umask 022
