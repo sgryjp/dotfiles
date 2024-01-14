@@ -94,7 +94,7 @@ insert_line "set editing-mode emacs"                ~/.inputrc
 makelink $SCRIPT_PATH/tmux.conf                     ~/.tmux.conf
 
 # Git
-if command -v git > /dev/null; then
+if command -v git >/dev/null; then
     mkdir -pv ~/.config/git
     makelink $SCRIPT_PATH/git/ignore ~/.config/git/ignore
     already_sourced=no

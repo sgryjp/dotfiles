@@ -48,7 +48,7 @@ fi
 
 # Completion
 if test -n "$ZSH_VERSION"; then
-    if command -v brew > /dev/null; then
+    if command -v brew >/dev/null; then
         FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
     fi
     autoload -Uz compinit && compinit
@@ -63,8 +63,8 @@ export HISTSIZE=8192
 export HISTFILESIZE=8192
 
 command -v less >/dev/null && export PAGER=`command -v less`
-if command -v fzf > /dev/null; then
-    if command -v rg > /dev/null; then
+if command -v fzf >/dev/null; then
+    if command -v rg >/dev/null; then
         export FZF_DEFAULT_COMMAND="rg --files --follow"
     fi
     export FZF_DEFAULT_OPTS="--height 40% --inline-info"
