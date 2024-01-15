@@ -1,8 +1,6 @@
 [alias]
-    ; https://stackoverflow.com/a/9074343/8319336
-    lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
-    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
-    lg = lg1
+    ; See https://stackoverflow.com/a/9074343/8319336
+    graph = log --graph --abbrev-commit --decorate --format=format:'%C(yellow)%h%C(reset) - %C(green)%ai%C(reset) %C(dim white)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
 [core]
 	pager = delta
 [color]

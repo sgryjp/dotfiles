@@ -14,7 +14,7 @@ alias grep='grep --color'
 alias egrep='egrep --color'
 alias gb='git show-branch'
 alias gd='git diff'
-alias gl='git log --graph --oneline --decorate'
+alias gl='git graph'
 alias gs='git status -s'
 alias ,ps='ps -Hfu $(id -un)'
 
