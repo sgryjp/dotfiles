@@ -3,15 +3,19 @@ vim.cmd("set runtimepath^=~/.vim runtimepath+=~/.vim/after")
 vim.cmd("let &packpath=&runtimepath")
 vim.cmd("runtime vimrc")
 
+-- Load plugins config files in filename order.
+local function load_plugins()
+    local plugin_dir = vim.fn.stdpath("config") .. "/lua/plugins"
+    local plugins = vim.fn.readdir(plugin_dir)
+    table.sort(plugins)
+
+    for _, plugin in ipairs(plugins) do
+        if plugin:match("%.lua$") then
+            require("plugins/" .. plugin:gsub("%.lua$", ""))
+        end
+    end
+end
+
 if not vim.g.vscode then
-    require("plugins/cmp")
-    require("plugins/conform")
-    require("plugins/inlay-hints")
-    require("plugins/gitsigns")
-    require("plugins/lsp")
-    require("plugins/lsp_signature")
-    require("plugins/mini")
-    require("plugins/nvim-tree")
-    require("plugins/nvim-treesitter")
-    require("plugins/symbols-outline")
+    load_plugins()
 end
