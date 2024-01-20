@@ -171,7 +171,6 @@ filetype indent plugin on
 call plug#begin()
 Plug 'tpope/vim-commentary',    { 'tag': '*' }
 Plug 'tpope/vim-fugitive',      { 'tag': '*' }
-Plug 'qpkorr/vim-renamer'
 if has('nvim')
     Plug 'catppuccin/nvim',         { 'tag': '*', 'as': 'catpuccin' }
     Plug 'nvim-lua/plenary.nvim' " for telescope.nvim
@@ -179,6 +178,7 @@ if has('nvim')
     Plug 'MunifTanjim/nui.nvim'  " for neo-tree
 
     Plug 'rbong/vim-flog'
+    Plug 'stevearc/oil.nvim', { 'branch': 'stable' }
     Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
     Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
     Plug 'nvim-neo-tree/neo-tree.nvim'
