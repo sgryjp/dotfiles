@@ -110,21 +110,11 @@ insert_source_line() {
 }
 
 # Profile
-if test -e ~/.bashrc; then
-    insert_source_line $SCRIPT_PATH/profile/rc.sh   ~/.bashrc
-fi
-if test -e ~/.zshrc; then
-    insert_source_line $SCRIPT_PATH/profile/rc.sh   ~/.zshrc
-fi
-if test -e ~/.profile; then
-    insert_source_line $SCRIPT_PATH/profile/profile.sh  ~/.profile
-fi
-if test -e ~/.bash_profile; then
-    insert_source_line $SCRIPT_PATH/profile/profile.sh  ~/.bash_profile
-fi
-if test -e ~/.zprofile; then
-    insert_source_line $SCRIPT_PATH/profile/profile.sh  ~/.zprofile
-fi
+[ -e ~/.bashrc ] &&         insert_source_line $SCRIPT_PATH/profile/rc.sh       ~/.bashrc
+[ -e ~/.zshrc ] &&          insert_source_line $SCRIPT_PATH/profile/rc.sh       ~/.zshrc
+[ -e ~/.profile ] &&        insert_source_line $SCRIPT_PATH/profile/profile.sh  ~/.profile
+[ -e ~/.bash_profile ] &&   insert_source_line $SCRIPT_PATH/profile/profile.sh  ~/.bash_profile
+[ -e ~/.zprofile ] &&       insert_source_line $SCRIPT_PATH/profile/profile.sh  ~/.zprofile
 insert_line "set editing-mode emacs"                ~/.inputrc
 makelink $SCRIPT_PATH/tmux.conf                     ~/.tmux.conf
 
@@ -161,5 +151,13 @@ for f in $SCRIPT_PATH/nvim/lua/plugins/*; do
     if [ -f "$f" ]; then
         basename=$(basename $f)
         makelink "$f" ~/.config/nvim/lua/plugins/$basename
+    fi
+done
+
+# Remove dead symlinks
+for link in $(find ~/.config/nvim -type l); do
+    if [ ! -e $link ]; then
+        echo "rm -f $link # dead link"
+        rm -f $link
     fi
 done
