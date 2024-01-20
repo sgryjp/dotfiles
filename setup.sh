@@ -1,6 +1,14 @@
 #!/bin/sh
 SCRIPT_PATH=$(cd $(dirname $0) && pwd -P)
 
+#######################################
+# Resolve canonicalized path of a given target.
+#
+# Arguments:
+#   Path to be canonicalized.
+# Outputs:
+#   Set the result to a variable `CANONICALIZED`
+#######################################
 canonicalize() {
     _COUNT=100
     _DIRNAME=$(dirname $1)
@@ -22,6 +30,17 @@ canonicalize() {
     unset _DIRNAME _BASENAME
 }
 
+#######################################
+# Make a symbolic link pointing $2 as $1.
+#
+# Arguments:
+#   1. Path of a symbolic link to create.
+#   2. Symbolic link target.
+# Outputs:
+#   (stderr) Error message if failed
+# Returns:
+#   1 if any error detected otherwise 0
+#######################################
 makelink() {
     # Resolve canonicalized path of the target file
     canonicalize $2
@@ -42,7 +61,15 @@ makelink() {
     return 0
 }
 
-# usage: insert_line LINE_TO_INSERT FILE
+#######################################
+# Insert a line ($1) to a file ($2) if it's not inserted.
+#
+# Arguments:
+#   1. String to insert.
+#   2. Path of a file to which the line is inserted.
+# Outputs:
+#   (stdout) Trace message.
+#######################################
 insert_line() {
     # Ensure that the target file exists
     if test ! -e $2; then
@@ -57,7 +84,15 @@ insert_line() {
     fi
 }
 
-# usage: insert_source_line TARGET FILE
+#######################################
+# Insert code block to "source" a file ($1) to a file ($2) if it's not inserted yet.
+#
+# Arguments:
+#   1. Path of a file to be "source"d.
+#   2. Path of a file to which the code block is inserted.
+# Outputs:
+#   (stdout) Trace message.
+#######################################
 insert_source_line() {
     # Ensure that the target file exists
     if test ! -e $2; then
