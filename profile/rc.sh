@@ -2,9 +2,9 @@
 # ~/.zshrc or ~/.bashrc.
 
 # Aliases
-case `uname` in
-    Darwin) LSOPTS='-G';;
-    Linux)  LSOPTS='--color=auto';;
+case $(uname) in
+    Darwin) LSOPTS='-G' ;;
+    Linux)  LSOPTS='--color=auto' ;;
 esac
 alias ls='ls -F $LSOPTS'
 alias ll='ls -l'
@@ -67,10 +67,10 @@ fi
 
 # Other settings for interactive use
 EDITOR=vi
-command -v vim  >/dev/null && EDITOR=`command -v vim`
-command -v nvim >/dev/null && EDITOR=`command -v nvim`
+command -v vim  >/dev/null && EDITOR=$(command -v vim)
+command -v nvim >/dev/null && EDITOR=$(command -v nvim)
 export EDITOR
 export HISTSIZE=8192
 export HISTFILESIZE=8192
 
-command -v less >/dev/null && export PAGER=`command -v less`
+command -v less >/dev/null && export PAGER=$(command -v less)
