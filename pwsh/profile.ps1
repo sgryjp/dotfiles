@@ -13,7 +13,7 @@ if (-Not (Test-Path Env:\XDG_DATA_HOME)) {
 
 # Define git related functions for aliases
 function GitDiff { git diff $args }
-function GitLog { git log --graph --oneline --decorate $args }
+function GitLog { git graph $args }
 function GitShowBranch { git show-branch $args }
 function GitStatus { git status -s $args }
 
