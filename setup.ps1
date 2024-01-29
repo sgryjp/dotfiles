@@ -60,6 +60,23 @@ function Get-LinkPathAndTarget {
     }
 }
 
+function Insert-Line($line, $file_path) {
+    # Ensure that the target file exists
+    if (!(Test-Path $file_path)) {
+        New-Item -ItemType File -Path $file_path -Force | Out-Null
+    }
+
+    # Insert a line to "source" the target file if not inserted yet
+    if ((Select-String -Path $file_path -SimpleMatch -Pattern $line -Quiet) -eq $false) {
+        Write-Host "Inserting ""$line"" into ""$file_path"""
+        Add-Content -Path $file_path -Value $line
+    }
+}
+
+# Nushell
+Insert-Line "source $PSScriptRoot\nu\env.nu" $env:APPDATA\nushell\env.nu
+Insert-Line "source $PSScriptRoot\nu\config.nu" $env:APPDATA\nushell\config.nu
+
 # Git configurations
 git config --global include.path $PSScriptRoot\git\config
 Copy-Item "$PSScriptRoot\git\ignore" "$env:USERPROFILE\.gitignore"
