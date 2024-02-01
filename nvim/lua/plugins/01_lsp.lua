@@ -10,7 +10,7 @@ mason.setup {}
 --     automatic_installation = true
 -- }
 
-mason_lspconfig.setup_handlers({ function(server_name)
+local function configure_server(server_name)
     local opts = {}
     if server_name == 'lua_ls' then
         local libpath = {}
@@ -31,4 +31,20 @@ mason_lspconfig.setup_handlers({ function(server_name)
         }
     end
     lspconfig[server_name].setup(opts)
+end
+
+-- Define list of servers which I prefer to use
+local configured_servers = {
+    pyright = false,
+}
+
+-- Setup servers managed by mason.nvim and then manually setup the rest
+mason_lspconfig.setup_handlers({ function(server_name)
+    configure_server(server_name)
+    configured_servers[server_name] = true
 end });
+for server_name, installed in pairs(configured_servers) do
+    if not installed then
+        configure_server(server_name)
+    end
+end
