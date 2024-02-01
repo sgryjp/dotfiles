@@ -6,10 +6,9 @@ if not (ok1 and ok2 and ok3) then
 end
 
 mason.setup {}
-mason_lspconfig.setup {
-    automatic_installation = true
-}
-
+-- mason_lspconfig.setup {
+--     automatic_installation = true
+-- }
 
 mason_lspconfig.setup_handlers({ function(server_name)
     local opts = {}
