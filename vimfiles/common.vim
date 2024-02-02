@@ -171,6 +171,7 @@ filetype indent plugin on
 call plug#begin()
 Plug 'tpope/vim-commentary',    { 'tag': '*' }
 Plug 'tpope/vim-fugitive',      { 'tag': '*' }
+Plug 'NoahTheDuke/vim-just'
 if has('nvim')
     Plug 'catppuccin/nvim',         { 'tag': '*', 'as': 'catpuccin' }
     Plug 'nvim-lua/plenary.nvim' " for telescope.nvim

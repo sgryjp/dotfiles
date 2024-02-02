@@ -9,6 +9,7 @@ conform.setup {
     formatters_by_ft = {
         html = { { "prettierd", "prettier" } },
         json = { { "prettierd", "prettier" } },
+        just = { "just" },
         markdown = { { "prettierd", "prettier" } },
         python = { "ruff_format" },
         sh = { "shfmt" },

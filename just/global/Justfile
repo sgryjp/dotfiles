@@ -1,0 +1,28 @@
+set shell := ["nu", "-m", "-light", "-c"]
+set windows-shell := ["nu", "-m", "-light", "-c"]
+
+default:
+    just --list
+
+super-refresh: _super-refresh-npm _super-refresh-pip _super-refresh-pipx _super-refresh-scoop _super-clean-dotcache _super-clean-tempfiles
+
+_super-refresh-scoop:
+    scooop update '*'
+    scoop cleanup '*'
+    scoop cache rm --all
+
+_super-refresh-npm:
+    npm update --global
+    npm cache clean --force
+
+_super-refresh-pip:
+    pip cache purge
+
+_super-refresh-pipx:
+    pipx upgrade-all
+
+_super-clean-dotcache:
+    enter $env.XDG_CACHE_HOME; rm -rf *; exit
+
+_super-clean-tempfiles:
+    enter $env.TEMP; rm -rf *; exit
