@@ -173,19 +173,22 @@ Plug 'tpope/vim-commentary',    { 'tag': '*' }
 Plug 'tpope/vim-fugitive',      { 'tag': '*' }
 Plug 'NoahTheDuke/vim-just'
 if has('nvim')
+    Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
+    Plug 'williamboman/mason-lspconfig.nvim'
+    Plug 'neovim/nvim-lspconfig'
+
+    Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+
     Plug 'catppuccin/nvim',         { 'tag': '*', 'as': 'catpuccin' }
-    Plug 'nvim-lua/plenary.nvim' " for telescope.nvim
+
     Plug 'kyazdani42/nvim-web-devicons' " for telescope.nvim
+    Plug 'nvim-lua/plenary.nvim' " for telescope.nvim
     Plug 'MunifTanjim/nui.nvim'  " for neo-tree
 
     Plug 'rbong/vim-flog'
     Plug 'stevearc/oil.nvim', { 'branch': 'stable' }
     Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
-    Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
     Plug 'nvim-neo-tree/neo-tree.nvim'
-    Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
-    Plug 'williamboman/mason-lspconfig.nvim'
-    Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-telescope/telescope-ui-select.nvim'
     Plug 'ray-x/lsp_signature.nvim'
