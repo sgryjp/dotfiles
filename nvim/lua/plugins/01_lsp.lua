@@ -1,3 +1,14 @@
+-- Set border to floating windows for Neovim's built-in LSP handlers
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "rounded",
+    title = " Hover ",
+})
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = "rounded",
+    title = " Signature Help ",
+})
+
+-- Setup plugins
 local ok1, lspconfig = pcall(require, "lspconfig")
 local ok2, mason = pcall(require, "mason")
 local ok3, mason_lspconfig = pcall(require, "mason-lspconfig")
