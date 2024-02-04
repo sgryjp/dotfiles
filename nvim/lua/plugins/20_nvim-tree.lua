@@ -3,4 +3,4 @@ if not ok then
     return
 end
 
-nvim_tree.setup {}
+nvim_tree.setup({})

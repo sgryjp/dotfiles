@@ -5,14 +5,14 @@ if not (ok1 and ok2 and ok3) then
     return
 end
 
-mason.setup {}
+mason.setup({})
 -- mason_lspconfig.setup {
 --     automatic_installation = true
 -- }
 
 local function configure_server(server_name)
     local opts = {}
-    if server_name == 'lua_ls' then
+    if server_name == "lua_ls" then
         local libpath = {}
         table.insert(libpath, vim.fn.stdpath("config") .. "/lua")
         table.insert(libpath, vim.env.VIMRUNTIME .. "/lua")
@@ -21,13 +21,13 @@ local function configure_server(server_name)
                 Lua = {
                     runtime = "LuaJIT",
                     diagnostics = {
-                        globals = { 'vim' },
+                        globals = { "vim" },
                     },
                     workspace = {
                         library = libpath,
                     },
-                }
-            }
+                },
+            },
         }
     end
     lspconfig[server_name].setup(opts)
@@ -39,10 +39,12 @@ local configured_servers = {
 }
 
 -- Setup servers managed by mason.nvim and then manually setup the rest
-mason_lspconfig.setup_handlers({ function(server_name)
-    configure_server(server_name)
-    configured_servers[server_name] = true
-end });
+mason_lspconfig.setup_handlers({
+    function(server_name)
+        configure_server(server_name)
+        configured_servers[server_name] = true
+    end,
+})
 for server_name, installed in pairs(configured_servers) do
     if not installed then
         configure_server(server_name)

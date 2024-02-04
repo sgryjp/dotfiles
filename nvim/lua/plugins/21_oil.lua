@@ -3,4 +3,4 @@ if not ok then
     return
 end
 
-oil.setup {}
+oil.setup({})

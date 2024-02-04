@@ -1,6 +1,6 @@
 local ok, inlay_hints = pcall(require, "inlay-hints")
 if not ok then
-	return
+    return
 end
 
-inlay_hints.setup {}
+inlay_hints.setup({})
