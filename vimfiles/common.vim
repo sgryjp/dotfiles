@@ -120,6 +120,9 @@ set   mouse=
 set   completeopt=menuone,noinsert,noselect
 set nolist
 set   listchars=tab:╌╌>,trail:␠
+set   breakindent
+set   breakindentopt=shift:2,sbr
+set   showbreak=↳
 
 " }}}
 
