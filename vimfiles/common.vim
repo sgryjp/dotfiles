@@ -104,11 +104,6 @@ set notitle
 set noruler
 set   number
 set   relativenumber
-if has('nvim-0.7')
-    set laststatus=3
-else
-    set laststatus=2
-endif
 set   statusline =%n\ %<%f%R%M,%{&ff}%y%h%w%q
 set   statusline+=%=\ %(%l,%c%V%)\ %p%%
 set   statusline+=\ %#warningmsg#
@@ -124,6 +119,13 @@ set   listchars=tab:╌╌>,trail:␠
 set   breakindent
 set   breakindentopt=shift:2,sbr
 set   showbreak=↳
+if has('nvim')
+    set laststatus=3
+    set pumblend=10
+    set winblend=10
+else
+    set laststatus=2
+endif
 
 " }}}
 
