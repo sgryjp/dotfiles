@@ -112,6 +112,7 @@ set   statusline =%n\ %<%f%R%M,%{&ff}%y%h%w%q
 set   statusline+=%=\ %(%l,%c%V%)\ %p%%
 set   statusline+=\ %#warningmsg#
 set   statusline+=%*
+set   splitright
 set   scrolloff=2
 set   updatetime=500
 set   wildmenu
