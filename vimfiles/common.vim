@@ -304,6 +304,11 @@ endif
 " File explorer (neo-tree)
 nmap         <C-n>  <Cmd>Neotree<CR>
 
+" File explorer (oil)
+if has('nvim')
+    nmap    -       :Oil<CR>
+endif
+
 " Moves between windows
 nmap         <C-h>  <C-w>h
 nmap         <C-j>  <C-w>j
