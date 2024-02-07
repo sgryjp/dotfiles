@@ -6,3 +6,5 @@ alias gb = git show-branch
 alias gd = git diff
 alias gl = git graph
 alias gs = git status
+
+source git-completions.nu
