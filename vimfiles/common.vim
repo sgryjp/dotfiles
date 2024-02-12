@@ -335,6 +335,13 @@ nmap <silent>gK     <Cmd>call search('\%' . virtcol('.') . 'v\S', 'bW')<CR>
 " }}}
 
 " Filetype specific configurations {{{
+augroup GoSettings
+    autocmd!
+    autocmd FileType go     setlocal makeprg=go
+    autocmd FileType go     nmap<buffer>    \b :make build ./...<CR>
+    autocmd FileType go     nmap<buffer>    \t :make test ./...<CR>
+augroup END
+
 augroup PythonSettings
     " Using pytest for unit testing.
     " Note that setting errorformat for pytest is not necessary because it's
@@ -349,17 +356,11 @@ augroup END
 
 augroup RustSettings
     autocmd!
-    autocmd FileType rust   nmap<buffer>    \b :make build<CR>
+    autocmd FileType rust   setlocal errorformat=%f:%l:%m
+    autocmd FileType rust   setlocal makeprg=cargo\ $*
+    autocmd FileType rust   nmap<buffer>    \b :make build --message-format=short<CR>
     autocmd FileType rust   nmap<buffer>    \t :make test<CR>
 augroup END
-
-augroup GoSettings
-    autocmd!
-    autocmd FileType go     setlocal makeprg=go
-    autocmd FileType go     nmap<buffer>    \b :make build ./...<CR>
-    autocmd FileType go     nmap<buffer>    \t :make test ./...<CR>
-augroup END
-
 
 augroup DiffSettings
     autocmd!
