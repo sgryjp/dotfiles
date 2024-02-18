@@ -4,34 +4,32 @@ local clue, extra, surround, cursorword, indentscope, statusline, pick
 ok, clue = pcall(require, "mini.clue")
 if ok then
     clue.setup({
+        window = {
+            delay = 250,
+        },
         triggers = {
-            -- Leader triggers
-            { mode = "n", keys = "<Leader>" },
-            { mode = "x", keys = "<Leader>" },
-            -- Built-in completion
+            { mode = "n", keys = "\\" },
+            { mode = "x", keys = "\\" },
+            { mode = "n", keys = "<Space>" },
+            { mode = "x", keys = "<Space>" },
             { mode = "i", keys = "<C-x>" },
-            -- `g` key
             { mode = "n", keys = "g" },
             { mode = "x", keys = "g" },
-            -- Marks
             { mode = "n", keys = "'" },
             { mode = "n", keys = "`" },
             { mode = "x", keys = "'" },
             { mode = "x", keys = "`" },
-            -- Registers
             { mode = "n", keys = '"' },
             { mode = "x", keys = '"' },
             { mode = "i", keys = "<C-r>" },
             { mode = "c", keys = "<C-r>" },
-            -- Window commands
             { mode = "n", keys = "<C-w>" },
-            -- `z` key
             { mode = "n", keys = "z" },
             { mode = "x", keys = "z" },
+            { mode = "n", keys = "[" },
+            { mode = "n", keys = "]" },
         },
-
         clues = {
-            -- Enhance this by adding descriptions for <Leader> mapping groups
             clue.gen_clues.builtin_completion(),
             clue.gen_clues.g(),
             clue.gen_clues.marks(),

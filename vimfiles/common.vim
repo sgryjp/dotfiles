@@ -267,52 +267,13 @@ nmap         [q         <Cmd>cprevious<CR>
 nmap <silent>[g         <Cmd>lua vim.diagnostic.goto_prev()<CR>
 nmap <silent>]g         <Cmd>lua vim.diagnostic.goto_next()<CR>
 
-" Go to something
-nmap <silent>gD         <Cmd>lua vim.lsp.buf.declaration()<CR>
-nmap <silent>gd         <Cmd>lua vim.lsp.buf.definition()<CR>
-nmap <silent>gy         <Cmd>lua vim.lsp.buf.type_definition()<CR>
-nmap <silent>gi         <Cmd>lua vim.lsp.buf.implementation()<CR>
-nmap <silent>gr         <Cmd>lua vim.lsp.buf.references()<CR>
-
-" Inspection
-nmap <silent>K          <Cmd>lua vim.lsp.buf.hover()<CR>
-nmap <silent><C-k>      <Cmd>lua vim.lsp.buf.signature_help()<CR>
-
-" Refactoring (and formatting)
-nmap \r <Cmd>lua vim.lsp.buf.rename()<CR>
-nmap \a <Cmd>lua vim.lsp.buf.code_action()<CR>
-nmap \f <Cmd>lua require'conform'.format({lsp_fallback = true})<CR>
-
 " QuickFix and location list
 nmap \q <Cmd>copen<CR>
 nmap \l <Cmd>lopen<CR>
 
-" Fuzzy finder and utility views
-if has('nvim')
-    nmap <silent><C-p>      <Cmd>lua MiniPick.builtin.files()<CR>
-
-    nmap <silent><Space>b   <Cmd>lua MiniPick.builtin.buffers()<CR>
-    nmap <silent><Space>f   <Cmd>lua MiniPick.builtin.files()<CR>
-    nmap <silent><Space>p   <Cmd>lua MiniPick.builtin.grep_live()<CR>
-    " nmap <silent><Space>s   <Cmd>lua MiniExtra.pickers.lsp({ scope = 'document_symbol' })<CR>
-    nmap <silent><Space>S   <Cmd>lua MiniExtra.pickers.lsp({ scope = 'workspace_symbol' })<CR>
-    nmap <silent><Space>d   <Cmd>lua MiniExtra.pickers.lsp({ scope = 'definition' })<CR>
-    nmap <silent><Space>r   <Cmd>lua MiniExtra.pickers.lsp({ scope = 'references' })<CR>
-    nmap <silent><Space>i   <Cmd>lua MiniExtra.pickers.lsp({ scope = 'implementation' })<CR>
-    nmap <silent><Space>y   <Cmd>lua MiniExtra.pickers.lsp({ scope = 'type_definition' })<CR>
-    nmap <silent><Space>g   <Cmd>lua MiniExtra.pickers.diagnostic()<CR>
-
-    nmap <silent><Space>s   <Cmd>SymbolsOutline<CR>
-else
+" Fuzzy finder
+if !has('nvim')
     nmap         <C-p>      <Cmd>Files<CR>
-endif
-
-" File explorer (neo-tree)
-nmap         <C-n>  <Cmd>Neotree<CR>
-
-" File explorer (oil)
-if has('nvim')
-    nmap    -       :Oil<CR>
 endif
 
 " Moves between windows

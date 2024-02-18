@@ -19,3 +19,4 @@ end
 if not vim.g.vscode then
     load_plugins()
 end
+require("keymaps")
