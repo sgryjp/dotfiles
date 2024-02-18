@@ -15,7 +15,7 @@ if (-Not (Test-Path Env:\XDG_DATA_HOME)) {
 function GitDiff { git diff $args }
 function GitLog { git graph $args }
 function GitShowBranch { git show-branch $args }
-function GitStatus { git status -s $args }
+function GitStatus { git status --short --branch --ahead-behind $args }
 
 # Define git related aliases. Note, "gl" is for Get-Location by default.
 Set-Alias gd GitDiff

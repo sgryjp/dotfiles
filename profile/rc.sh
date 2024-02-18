@@ -15,7 +15,7 @@ alias egrep='egrep --color'
 alias gb='git show-branch'
 alias gd='git diff'
 alias gl='git graph'
-alias gs='git status -s'
+alias gs='git status --short --branch --ahead-behind'
 alias ,ps='ps -Hfu $(id -un)'
 
 # PS1
