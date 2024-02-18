@@ -15,6 +15,7 @@ alias egrep='egrep --color'
 alias gb='git show-branch'
 alias gd='git diff'
 alias gl='git graph'
+alias gl2='git graph $(git for-each-ref --format="%(refname:short)" refs/heads | tr "\n" " ")'
 alias gs='git status --short --branch --ahead-behind'
 alias ,ps='ps -Hfu $(id -un)'
 

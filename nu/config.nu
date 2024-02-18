@@ -5,6 +5,7 @@ $env.config.cursor_shape = { emacs: blink_block, vi_insert: blink_block, vi_norm
 alias gb = git show-branch
 alias gd = git diff
 alias gl = git graph
+alias gl2 = git graph ...(git for-each-ref --format='%(refname:short)' 'refs/heads' | lines)
 alias gs = git status --short --branch --ahead-behind
 
 source git-completions.nu
