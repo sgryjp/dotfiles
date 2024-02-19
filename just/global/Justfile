@@ -7,7 +7,7 @@ default:
 super-refresh: _super-refresh-npm _super-refresh-pip _super-refresh-pipx _super-refresh-scoop _super-clean-dotcache _super-clean-tempfiles
 
 _super-refresh-scoop:
-    scooop update '*'
+    sooop update '*'
     scoop cleanup '*'
     scoop cache rm --all
 
