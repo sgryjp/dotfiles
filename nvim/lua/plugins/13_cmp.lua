@@ -30,6 +30,11 @@ cmp.setup({
     --     -- from PATH after typing :!
     --     keyword_length = 2,
     -- },
+    snippet = {
+        expand = function(args)
+            vim.fn["vsnip#anonymous"](args.body)
+        end,
+    },
 })
 
 -- Complete VIM commands
