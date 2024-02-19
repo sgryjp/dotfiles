@@ -20,16 +20,10 @@ cmp.setup({
         { name = "nvim_lua" },
     }, {
         { name = "buffer" },
-        -- { name = "path" },
     }),
     formatting = {
         format = lspkind.cmp_format(),
     },
-    -- completion = {
-    --     -- Mainly to suppress collecting excessive amount of executables
-    --     -- from PATH after typing :!
-    --     keyword_length = 2,
-    -- },
     snippet = {
         expand = function(args)
             vim.fn["vsnip#anonymous"](args.body)
