@@ -28,6 +28,8 @@ if ok then
             { mode = "x", keys = "z" },
             { mode = "n", keys = "[" },
             { mode = "n", keys = "]" },
+            -- gitsigns
+            { mode = "n", keys = "<C-g>" },
         },
         clues = {
             clue.gen_clues.builtin_completion(),
