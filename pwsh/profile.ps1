@@ -13,7 +13,7 @@ if (-Not (Test-Path Env:\XDG_DATA_HOME)) {
 
 # Define git related functions for aliases
 function GitDiff { git diff $args }
-function GitLog { git graph $args }
+function GitLog { git log $args }
 function GitShowBranch { git show-branch $args }
 function GitStatus { git status --short --branch --ahead-behind $args }
 
@@ -22,10 +22,10 @@ Set-Alias gd GitDiff
 Set-Alias gb GitShowBranch
 Set-Alias gs GitStatus
 if ($Host.Version.Major -ge 7) {
-    Set-Alias -Force gl GitLog
+    Set-Alias -Force gl GitGraph
 }
 else {
-    Set-Alias -Force -Option AllScope gl GitLog
+    Set-Alias -Force -Option AllScope gl GitGraph
 }
 
 # Remove unnecessary aliases
