@@ -194,8 +194,8 @@ if has('nvim')
     Plug 'MunifTanjim/nui.nvim'  " for neo-tree
 
     Plug 'rbong/vim-flog'
-    Plug 'stevearc/oil.nvim', { 'branch': 'stable' }
-    Plug 'echasnovski/mini.nvim', { 'branch': 'stable' }
+    Plug 'stevearc/oil.nvim', { 'tag': '*' }
+    Plug 'echasnovski/mini.nvim', { 'tag': '*' }
     Plug 'nvim-neo-tree/neo-tree.nvim'
     Plug 'ray-x/lsp_signature.nvim'
     Plug 'hrsh7th/nvim-cmp'
