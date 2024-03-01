@@ -1,5 +1,5 @@
 local ok
-local clue, extra, surround, cursorword, indentscope, statusline, pick
+local clue, extra, notify, surround, cursorword, indentscope, statusline, pick
 
 ok, clue = pcall(require, "mini.clue")
 if ok then
@@ -45,6 +45,12 @@ end
 ok, extra = pcall(require, "mini.extra")
 if ok then
     extra.setup({})
+end
+
+ok, notify = pcall(require, "mini.notify")
+if ok then
+    notify.setup({})
+    vim.notify = notify.make_notify()
 end
 
 ok, surround = pcall(require, "mini.surround")
