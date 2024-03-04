@@ -193,7 +193,6 @@ if has('nvim')
 
     Plug 'kyazdani42/nvim-web-devicons'
 
-    Plug 'rbong/vim-flog'
     Plug 'stevearc/oil.nvim', { 'tag': '*' }
     Plug 'echasnovski/mini.nvim', { 'tag': '*' }
     Plug 'ray-x/lsp_signature.nvim'
