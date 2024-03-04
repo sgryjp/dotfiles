@@ -210,7 +210,6 @@ if has('nvim')
     Plug 'onsails/lspkind-nvim'
     Plug 'stevearc/conform.nvim'
     Plug 'lewis6991/gitsigns.nvim', { 'tag': '*' }
-    Plug 'simrat39/inlay-hints.nvim'
     Plug 'simrat39/symbols-outline.nvim'
 else
     Plug 'sheerun/vim-polyglot'
