@@ -45,6 +45,5 @@ nmap("<Space>g", ":lua MiniExtra.pickers.diagnostic()<CR>", { desc = "Pick a dia
 
 nmap("<Space>s", ":SymbolsOutline<CR>", { desc = "Open outline" })
 
--- File explorer (neo-tree, oil.nvim)
-nmap("<C-n>", ":Neotree<CR>")
+-- File explorer (oil.nvim)
 nmap("-", ":Oil<CR>")

@@ -191,14 +191,11 @@ if has('nvim')
 
     Plug 'catppuccin/nvim',         { 'tag': '*', 'as': 'catpuccin' }
 
-    Plug 'kyazdani42/nvim-web-devicons' " for neo-tree
-    Plug 'nvim-lua/plenary.nvim' " for neo-tree
-    Plug 'MunifTanjim/nui.nvim'  " for neo-tree
+    Plug 'kyazdani42/nvim-web-devicons'
 
     Plug 'rbong/vim-flog'
     Plug 'stevearc/oil.nvim', { 'tag': '*' }
     Plug 'echasnovski/mini.nvim', { 'tag': '*' }
-    Plug 'nvim-neo-tree/neo-tree.nvim'
     Plug 'ray-x/lsp_signature.nvim'
     Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-nvim-lsp'
