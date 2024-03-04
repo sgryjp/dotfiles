@@ -5,6 +5,7 @@ end
 local configs = require("nvim-treesitter.configs")
 
 configs.setup({
+    ensure_installed = { "lua", "json", "python", "rust" },
     textobjects = {
         select = {
             enable = true,
