@@ -16,6 +16,9 @@ if not (ok1 and ok2 and ok3) then
     return
 end
 
+-- Make omnifunc LSP based completion
+vim.omnifunc = 'v:lua.vim.lsp.omnifunc'
+
 mason.setup({})
 -- mason_lspconfig.setup {
 --     automatic_installation = true
