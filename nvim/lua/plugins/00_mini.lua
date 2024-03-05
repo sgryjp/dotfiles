@@ -1,5 +1,10 @@
 local ok
-local clue, extra, notify, surround, cursorword, indentscope, statusline, pick
+local clue, completion, extra, notify, surround, cursorword, indentscope, statusline, pick
+
+ok, completion = pcall(require, "mini.completion")
+if ok then
+    completion.setup({})
+end
 
 ok, clue = pcall(require, "mini.clue")
 if ok then
