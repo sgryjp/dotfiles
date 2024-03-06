@@ -118,6 +118,10 @@ insert_source_line() {
 insert_line "set editing-mode emacs"                ~/.inputrc
 makelink $SCRIPT_PATH/tmux.conf                     ~/.tmux.conf
 
+# Nushell
+insert_line "source $SCRIPT_PATH/nu/env.nu" ~/.config/nushell/env.nu
+insert_line "source $SCRIPT_PATH/nu/config.nu" ~/.config/nushell/config.nu
+
 # Git
 if command -v git >/dev/null; then
     mkdir -pv ~/.config/git
