@@ -31,7 +31,7 @@ canonicalize() {
 }
 
 #######################################
-# Make a symbolic link pointing $2 as $1.
+# Make a symbolic link file $1 which points to $2.
 #
 # Arguments:
 #   1. Path of a symbolic link to create.
