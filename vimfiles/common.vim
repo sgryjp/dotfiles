@@ -179,7 +179,6 @@ filetype indent plugin on
 call plug#begin()
 Plug 'tpope/vim-commentary',    { 'tag': '*' }
 Plug 'tpope/vim-fugitive',      { 'tag': '*' }
-Plug 'NoahTheDuke/vim-just'
 Plug 'elkasztano/nushell-syntax-vim'
 if has('nvim')
     Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
