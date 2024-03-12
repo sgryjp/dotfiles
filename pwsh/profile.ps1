@@ -10,6 +10,7 @@ if (-Not (Test-Path Env:\XDG_DATA_HOME)) {
     $env:XDG_DATA_HOME = $env:UserProfile + "\.local\share"
     Write-Warning "XDG_DATA_HOME is not defind; using $env:XDG_DATA_HOME as fallback"
 }
+$env:LESSCHARSET = "utf-8"
 
 # Define git related functions for aliases
 function GitDiff { git diff $args }
