@@ -53,7 +53,10 @@ if (Test-Path -Path "$env:USERPROFILE\.local\opt\pipx.pyz" -PathType Leaf) {
     Set-Alias -Option AllScope pipx Invoke-Pipx
 }
 
-# fnm
+# Node.js (fnm)
 if (Get-Command -ErrorAction Ignore -CommandType Application fnm) {
     fnm env --use-on-cd | Out-String | Invoke-Expression
 }
+
+# Python
+$env:PIP_REQUIRE_VIRTUALENV = "true"
