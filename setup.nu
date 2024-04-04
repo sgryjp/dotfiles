@@ -105,7 +105,7 @@ ls $"($env.FILE_PWD)/nvim/lua/plugins" | each {|ent|
 }
 
 # Remove dead symlinks
-ls $"($env.XDG_CONFIG_HOME)/nvim/**/*" | where {|it| $it.type == 'symlink'} | each {|file|
+ls ($"($env.XDG_CONFIG_HOME)/nvim/**/*" | into glob) | where {|it| $it.type == 'symlink'} | each {|file|
   let target = readlink -m $file.name
   if (not ($target | path exists)) {
     log info $"rm ($file.name)"
