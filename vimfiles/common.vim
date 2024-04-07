@@ -113,7 +113,7 @@ set   scrolloff=2
 set   updatetime=500
 set   wildmenu
 set   wildmode=longest:full
-set   wildoptions=fuzzy,pum
+set   wildoptions=pum
 set   mouse=
 set   completeopt=menuone,noinsert,noselect
 set nolist
