@@ -7,3 +7,6 @@ runtime common.vim
 if !has('nvim')
     runtime! regular.vim
 end
+
+" Set keymappings
+runtime keymaps.vim

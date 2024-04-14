@@ -88,6 +88,7 @@ make_dir ~/.vim/autoload
 make_dir ~/.vim/colors
 make_link ~/.vim/vimrc              ($env.FILE_PWD | path join vimfiles vimrc)
 make_link ~/.vim/common.vim         ($env.FILE_PWD | path join vimfiles common.vim)
+make_link ~/.vim/keymaps.vim        ($env.FILE_PWD | path join vimfiles keymaps.vim)
 make_link ~/.vim/regular.vim        ($env.FILE_PWD | path join vimfiles regular.vim)
 make_link ~/.vim/autoload/plug.vim  ($env.FILE_PWD | path join vimfiles autoload/plug.vim)
 

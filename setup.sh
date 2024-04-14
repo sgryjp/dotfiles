@@ -143,6 +143,7 @@ fi
 mkdir -pv ~/.vim/autoload ~/.vim/colors
 makelink $SCRIPT_PATH/vimfiles/vimrc                ~/.vim/vimrc
 makelink $SCRIPT_PATH/vimfiles/common.vim           ~/.vim/common.vim
+makelink $SCRIPT_PATH/vimfiles/keymaps.vim          ~/.vim/keymaps.vim
 makelink $SCRIPT_PATH/vimfiles/regular.vim          ~/.vim/regular.vim
 makelink $SCRIPT_PATH/vimfiles/autoload/plug.vim    ~/.vim/autoload/plug.vim
 

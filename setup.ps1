@@ -108,14 +108,17 @@ $links = [ordered]@{  # <link file to create> = <link target>
     # VIM
     "$env:USERPROFILE\_vim\vimrc"                 = "$PSScriptRoot\vimfiles\vimrc";
     "$env:USERPROFILE\_vim\common.vim"            = "$PSScriptRoot\vimfiles\common.vim";
+    "$env:USERPROFILE\_vim\keymaps.vim"           = "$PSScriptRoot\vimfiles\keymaps.vim";
     "$env:USERPROFILE\_vim\regular.vim"           = "$PSScriptRoot\vimfiles\regular.vim";
     "$env:USERPROFILE\_vim\autoload\plug.vim"     = "$PSScriptRoot\vimfiles\autoload\plug.vim";
     "$env:USERPROFILE\.vim\vimrc"                 = "$PSScriptRoot\vimfiles\vimrc";
     "$env:USERPROFILE\.vim\common.vim"            = "$PSScriptRoot\vimfiles\common.vim";
+    "$env:USERPROFILE\.vim\keymaps.vim"           = "$PSScriptRoot\vimfiles\keymaps.vim";
     "$env:USERPROFILE\.vim\regular.vim"           = "$PSScriptRoot\vimfiles\regular.vim";
     "$env:USERPROFILE\.vim\autoload\plug.vim"     = "$PSScriptRoot\vimfiles\autoload\plug.vim";
     "$env:USERPROFILE\vimfiles\vimrc"             = "$PSScriptRoot\vimfiles\vimrc";
     "$env:USERPROFILE\vimfiles\common.vim"        = "$PSScriptRoot\vimfiles\common.vim";
+    "$env:USERPROFILE\vimfiles\keymaps.vim"       = "$PSScriptRoot\vimfiles\keymaps.vim";
     "$env:USERPROFILE\vimfiles\regular.vim"       = "$PSScriptRoot\vimfiles\regular.vim";
     "$env:USERPROFILE\vimfiles\autoload\plug.vim" = "$PSScriptRoot\vimfiles\autoload\plug.vim";
     # Neovim
