@@ -11,12 +11,17 @@ if !has("nvim")
 endif
 
 " Jump to prev/next l(ocation-list), q(uick-fix-list), (dia)g(nostic-items)
-nmap         ]l         <Cmd>lnext<CR>
-nmap         [l         <Cmd>lprevious<CR>
-nmap         ]q         <Cmd>cnext<CR>
-nmap         [q         <Cmd>cprevious<CR>
-nmap <silent>[g         <Cmd>lua vim.diagnostic.goto_prev()<CR>
-nmap <silent>]g         <Cmd>lua vim.diagnostic.goto_next()<CR>
+if exists('g:vscode')
+    nmap <silent>[g         :call VSCodeNotify("editor.action.marker.prevInFiles")<CR>
+    nmap <silent>]g         :call VSCodeNotify("editor.action.marker.nextInFiles")<CR>
+else
+    nmap         ]l         <Cmd>lnext<CR>
+    nmap         [l         <Cmd>lprevious<CR>
+    nmap         ]q         <Cmd>cnext<CR>
+    nmap         [q         <Cmd>cprevious<CR>
+    nmap <silent>[g         <Cmd>lua vim.diagnostic.goto_prev()<CR>
+    nmap <silent>]g         <Cmd>lua vim.diagnostic.goto_next()<CR>
+endif
 
 " QuickFix and location list
 nmap \q <Cmd>copen<CR>
@@ -43,4 +48,3 @@ tmap         <C-l>  <C-\><C-n><C-w>l
 " https://vi.stackexchange.com/a/693
 nmap <silent>gJ     <Cmd>call search('\%' . virtcol('.') . 'v\S', 'W')<CR>
 nmap <silent>gK     <Cmd>call search('\%' . virtcol('.') . 'v\S', 'bW')<CR>
-
