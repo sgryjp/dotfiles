@@ -1,14 +1,6 @@
 $env.config = ($env.config | upsert show_banner false)
 $env.config = ($env.config | upsert datetime_format { normal: '%Y-%m-%d %H:%M:%S %z' })
 $env.config.cursor_shape = { emacs: blink_block, vi_insert: blink_block, vi_normal: blink_line }
-$env.config.hooks.env_change = {
-    PWD: [ # run if the PWD environment is different since the last repl input
-        {
-            condition: {|before, after| ($after | path join ".venv/Scripts/activate.nu" | path exists)},
-            code: "overlay use .venv/Scripts/activate.nu"
-        }
-    ]
-}
 
 alias gb = git show-branch
 alias gd = git diff
