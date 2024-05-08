@@ -1,4 +1,3 @@
-# curl -LO https://raw.githubusercontent.com/nushell/nu_scripts/main/custom-completions/git/git-completions.nu
 
 def "nu-complete git available upstream" [] {
   ^git branch -a | lines | each { |line| $line | str replace '\* ' "" | str trim }
