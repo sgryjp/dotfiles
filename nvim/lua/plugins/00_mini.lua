@@ -9,6 +9,7 @@ else
     require("mini.completion").setup({})
     require("mini.cursorword").setup({})
     require("mini.extra").setup({})
+    require("mini.files").setup({})
     require("mini.indentscope").setup({})
     require("mini.notify").setup({})
     require("mini.pick").setup({})
