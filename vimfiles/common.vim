@@ -113,7 +113,9 @@ set   scrolloff=2
 set   updatetime=500
 set   wildmenu
 set   wildmode=longest:full
-set   wildoptions=pum
+if has('nvim') || v:version >= 900
+    set   wildoptions=pum
+endif
 set   mouse=
 set   completeopt=menuone,noinsert,noselect
 set nolist
