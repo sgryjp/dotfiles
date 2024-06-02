@@ -67,11 +67,15 @@ else
     nmap("<Space>d", ":lua MiniExtra.pickers.lsp({ scope = 'definition' })<CR>", { desc = "Pick a definition" })
     nmap("<Space>r", ":lua MiniExtra.pickers.lsp({ scope = 'references' })<CR>", { desc = "Pick a reference" })
     nmap("<Space>i", ":lua MiniExtra.pickers.lsp({ scope = 'implementation' })<CR>", { desc = "Pick a implementation" })
-    nmap("<Space>y", ":lua MiniExtra.pickers.lsp({ scope = 'type_definition' })<CR>", { desc = "Pick a type definition" })
+    nmap(
+        "<Space>y",
+        ":lua MiniExtra.pickers.lsp({ scope = 'type_definition' })<CR>",
+        { desc = "Pick a type definition" }
+    )
     nmap("<Space>g", ":lua MiniExtra.pickers.diagnostic()<CR>", { desc = "Pick a diagnostic" })
 
     nmap("<Space>s", ":SymbolsOutline<CR>", { desc = "Open outline" })
 end
 
 -- File explorer (mini.files)
-nmap("-", ":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>", { desc = "Open file explorer" } )
+nmap("-", ":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>", { desc = "Open file explorer" })
