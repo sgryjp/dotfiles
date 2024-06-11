@@ -77,5 +77,5 @@ else
     nmap("<Space>s", ":SymbolsOutline<CR>", { desc = "Open outline" })
 end
 
--- File explorer (mini.files)
-nmap("-", ":lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>", { desc = "Open file explorer" })
+-- File explorer (oil.nvim)
+nmap("-", ":Oil<CR>")
