@@ -54,25 +54,21 @@ if vim.g.vscode then
 else
     nmap("<Space>l", ":lopen<CR>", { desc = "Open location list window" })
     nmap("<Space>q", ":copen<CR>", { desc = "Open quick fix window" })
-    nmap("<C-p>", ":lua MiniPick.builtin.files()<CR>", { desc = "Pick files" })
-    nmap("<Space>b", ":lua MiniPick.builtin.buffers()<CR>", { desc = "Pick a buffer" })
-    nmap("<Space>f", ":lua MiniPick.builtin.files()<CR>", { desc = "Pick a file" })
-    nmap("<Space>p", ":lua MiniPick.builtin.grep_live()<CR>", { desc = "Live grep" })
-    -- nmap("<Space>s", ":lua MiniExtra.pickers.lsp({ scope = 'document_symbol' })<CR>", { desc = "Pick a symbol (document)" })
+    nmap("<C-p>", ":Telescope find_files<CR>", { desc = "Pick files" })
+    nmap("<Space>b", ":Telescope buffers<CR>", { desc = "Pick a buffer" })
+    nmap("<Space>f", ":Telescope find_files<CR>", { desc = "Pick a file" })
+    nmap("<Space>p", ":Telescope live_grep<CR>", { desc = "Live grep" })
+    -- nmap("<Space>s", ":Telescope lsp_document_symbols<CR>", { desc = "Pick a symbol (document)" })
     nmap(
         "<Space>S",
-        ":lua MiniExtra.pickers.lsp({ scope = 'workspace_symbol' })<CR>",
+        ":Telescope lsp_workspace_symbols<CR>",
         { desc = "Pick a symbol (workspace)" }
     )
-    nmap("<Space>d", ":lua MiniExtra.pickers.lsp({ scope = 'definition' })<CR>", { desc = "Pick a definition" })
-    nmap("<Space>r", ":lua MiniExtra.pickers.lsp({ scope = 'references' })<CR>", { desc = "Pick a reference" })
-    nmap("<Space>i", ":lua MiniExtra.pickers.lsp({ scope = 'implementation' })<CR>", { desc = "Pick a implementation" })
-    nmap(
-        "<Space>y",
-        ":lua MiniExtra.pickers.lsp({ scope = 'type_definition' })<CR>",
-        { desc = "Pick a type definition" }
-    )
-    nmap("<Space>g", ":lua MiniExtra.pickers.diagnostic()<CR>", { desc = "Pick a diagnostic" })
+    nmap("<Space>d", ":Telescope lsp_definitions<CR>", { desc = "Pick a definition" })
+    nmap("<Space>r", ":Telescope lsp_references<CR>", { desc = "Pick a reference" })
+    nmap("<Space>i", ":Telescope lsp_implementations<CR>", { desc = "Pick a implementation" })
+    nmap("<Space>y", ":Telescope lsp_type_definitions<CR>", { desc = "Pick a type definition" })
+    nmap("<Space>g", ":Telescope diagnostics<CR>", { desc = "Pick a diagnostic" })
 
     nmap("<Space>s", ":SymbolsOutline<CR>", { desc = "Open outline" })
 end

@@ -11,7 +11,6 @@ else
     require("mini.extra").setup({})
     require("mini.indentscope").setup({})
     require("mini.notify").setup({})
-    require("mini.pick").setup({})
     require("mini.statusline").setup({})
     require("mini.surround").setup({})
 
@@ -54,5 +53,4 @@ else
     })
 
     vim.notify = require("mini.notify").make_notify()
-    vim.ui.select = require("mini.pick").ui_select
 end
