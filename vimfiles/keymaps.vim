@@ -10,17 +10,17 @@ if !has("nvim")
     imap <silent><C-j>      <C-x><C-o>
 endif
 
-" Jump to prev/next l(ocation-list), q(uick-fix-list), (dia)g(nostic-items)
+" Jump to prev/next l(ocation-list), q(uick-fix-list), d(iagnostic-items)
 if exists('g:vscode')
-    nmap <silent>[g         :call VSCodeNotify("editor.action.marker.prevInFiles")<CR>
-    nmap <silent>]g         :call VSCodeNotify("editor.action.marker.nextInFiles")<CR>
+    nmap <silent>[d         :call VSCodeNotify("editor.action.marker.prevInFiles")<CR>
+    nmap <silent>]d         :call VSCodeNotify("editor.action.marker.nextInFiles")<CR>
 else
     nmap         ]l         <Cmd>lnext<CR>
     nmap         [l         <Cmd>lprevious<CR>
     nmap         ]q         <Cmd>cnext<CR>
     nmap         [q         <Cmd>cprevious<CR>
-    nmap <silent>[g         <Cmd>lua vim.diagnostic.goto_prev()<CR>
-    nmap <silent>]g         <Cmd>lua vim.diagnostic.goto_next()<CR>
+    nmap <silent>[d         <Cmd>lua vim.diagnostic.goto_prev()<CR>
+    nmap <silent>]d         <Cmd>lua vim.diagnostic.goto_next()<CR>
 endif
 
 " QuickFix and location list
