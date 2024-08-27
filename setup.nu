@@ -96,9 +96,9 @@ make_link ~/.vim/autoload/plug.vim  ($env.FILE_PWD | path join vimfiles autoload
 # Neovim
 make_dir $"($env.XDG_CONFIG_HOME)/nvim/autoload"
 make_dir $"($env.XDG_CONFIG_HOME)/nvim/lua/plugins"
-make_link $"($env.XDG_CONFIG_HOME)/nvim/init.lua"          $"($env.FILE_PWD)/nvim/init.lua"              
-make_link $"($env.XDG_CONFIG_HOME)/nvim/lua/keymaps.lua"   $"($env.FILE_PWD)/nvim/lua/keymaps.lua"       
-make_link $"($env.XDG_CONFIG_HOME)/nvim/autoload/plug.vim" $"($env.FILE_PWD)/vimfiles/autoload/plug.vim" 
+make_link $"($env.XDG_CONFIG_HOME)/nvim/init.lua"          $"($env.FILE_PWD)/nvim/init.lua"
+make_link $"($env.XDG_CONFIG_HOME)/nvim/lua/keymaps.lua"   $"($env.FILE_PWD)/nvim/lua/keymaps.lua"
+make_link $"($env.XDG_CONFIG_HOME)/nvim/autoload/plug.vim" $"($env.FILE_PWD)/vimfiles/autoload/plug.vim"
 ls $"($env.FILE_PWD)/nvim/lua/plugins" | each {|ent|
   if ($ent.type == 'file') {
     let basename = $ent.name | path basename
