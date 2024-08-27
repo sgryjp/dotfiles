@@ -68,7 +68,7 @@ def append_line [line, path] {
 
   # Insert the line
   log info $"Appending line... ({line: $line, path: $path})"
-  $line | save --append $path
+  $lines | append $line | save -f $path
 }
 
 # ----------------------------------------------------------------------------
