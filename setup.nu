@@ -43,8 +43,12 @@ def make_link [link_name, target] {
   }
 
   # Create a symbolic link
-  log info $"ln -fs ($target) ($link_name)"
-  do { ^ln -fs $target $link_name }
+  if ($link_name | path exists) {
+    log info $"rm ($link_name)"
+    rm $link_name
+  }
+  log info $"ln -s ($target) ($link_name)"
+  do { ^ln -s $target $link_name }
   if ($env.LAST_EXIT_CODE != 0) {
     log error $"Failed to create a link `($link_name)`"
     return
