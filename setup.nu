@@ -16,11 +16,6 @@ if (which ln | is-empty) {
     msg: "External command `ln` is required. (Hint: You can install it by `scoop install uutils-coreutils`)"
   }
 }
-if (which readlink | is-empty) {
-  error make {
-    msg: "External command `readlink` is required. (Hint: You can install it by `scoop install uutils-coreutils`)"
-  }
-}
 
 # ----------------------------------------------------------------------------
 # Functions
@@ -42,7 +37,7 @@ def make_link [link_name, target] {
     log error $"Link target does not exist: ($target)"
     return
   }
-  if ((^readlink -f $link_name) == $target) {
+  if (($link_name | path expand) == $target) {
     log debug $"Skipped creating a symbolik link as it already exists: ($link_name)"
     return
   }
@@ -109,7 +104,7 @@ ls $"($env.FILE_PWD)/nvim/lua/plugins" | each {|ent|
 
 # Remove dead symlinks
 ls ($"($env.XDG_CONFIG_HOME)/nvim/**/*" | into glob) | where {|it| $it.type == 'symlink'} | each {|file|
-  let target = readlink -m $file.name
+  let target = $file.name | path expand
   if (not ($target | path exists)) {
     log info $"rm ($file.name)"
     ^rm $file.name
