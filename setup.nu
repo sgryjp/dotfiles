@@ -1,11 +1,13 @@
 use std log
 
+let homedir = "~" | path expand
+
 # ----------------------------------------------------------------------------
 # Check prerequesties
 
 # Ensure XDG_CONFIG_HOME is defined
 if (not ('XDG_CONFIG_HOME' in $env)) {
-  let default_config_home = $env.USERPROFILE | path join .config
+  let default_config_home = $homedir | path join .config
   log warning $"Environment variable XDG_CONFIG_HOME is not set; falling back to ($default_config_home)"
   $env.XDG_CONFIG_HOME = $default_config_home
 }
@@ -80,8 +82,8 @@ append_line $"source ($env.FILE_PWD | path join nu config.nu)" ($env.FILE_PWD | 
 # Git
 log info $"git config --global include.path ($env.FILE_PWD | path join git config)"
 git config --global include.path ($env.FILE_PWD | path join git config)
-log info $"cp ($env.FILE_PWD | path join git ignore) ($env.USERPROFILE | path join .gitignore)"
-cp ($env.FILE_PWD | path join git ignore) ($env.USERPROFILE | path join .gitignore)
+log info $"cp ($env.FILE_PWD | path join git ignore) ($homedir | path join .gitignore)"
+cp ($env.FILE_PWD | path join git ignore) ($homedir | path join .gitignore)
 
 # VIM
 make_dir ~/.vim/autoload
