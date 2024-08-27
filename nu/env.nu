@@ -1,5 +1,5 @@
 # General coonfigurations
-$env.EDITOR = nvim
+$env.EDITOR = "nvim"
 $env.LESSCHARSET = "utf-8"
 $env.PROMPT_COMMAND_RIGHT = ''
 
