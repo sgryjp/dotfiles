@@ -42,6 +42,16 @@ def refresh-pipx [] {
   }
 }
 
+def refresh-uv [] {
+  if (not (which uv | is-empty)) {
+    log info "uv cache prune"
+    ^uv cache prune
+
+    log info "uv self update"
+    ^uv self update
+  }
+}
+
 def clean-dotcache [] {
   let cache_dir = ($env | get -i "XDG_CACHE_HOME")
   if $cache_dir != null {
