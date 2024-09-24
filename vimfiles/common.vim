@@ -209,6 +209,7 @@ if has('nvim')
     Plug 'stevearc/conform.nvim'
     Plug 'lewis6991/gitsigns.nvim', { 'tag': '*' }
     Plug 'simrat39/symbols-outline.nvim'
+    Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 else
     Plug 'sheerun/vim-polyglot'
     Plug 'lukas-reineke/indent-blankline.nvim'
