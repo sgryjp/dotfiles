@@ -49,6 +49,7 @@ end
 
 -- Define list of servers which I prefer to use
 local configured_servers = {
+    nushell = false,
     pyright = false,
 }
 
