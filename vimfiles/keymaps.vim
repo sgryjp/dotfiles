@@ -14,6 +14,8 @@ endif
 if exists('g:vscode')
     nmap <silent>[d         :call VSCodeNotify("editor.action.marker.prevInFiles")<CR>
     nmap <silent>]d         :call VSCodeNotify("editor.action.marker.nextInFiles")<CR>
+    nmap <silent>[c         :call VSCodeNotify("workbench.action.editor.prevChange")<CR>
+    nmap <silent>]c         :call VSCodeNotify("workbench.action.editor.nextChange")<CR>
 else
     nmap         ]l         <Cmd>lnext<CR>
     nmap         [l         <Cmd>lprevious<CR>
