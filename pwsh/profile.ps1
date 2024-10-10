@@ -15,6 +15,10 @@ $env:LESSCHARSET = "utf-8"
 # Define git related functions for aliases
 function GitDiff { git diff $args }
 function GitGraph { git graph $args }
+function GitGraphAll {
+    $refs = ((git for-each-ref --format="%(refname:short)" refs/heads refs/tags refs/remotes) -join " ").Split()
+    git graph $refs $args
+}
 function GitShowBranch { git show-branch $args }
 function GitStatus { git status --short --branch --ahead-behind $args }
 
@@ -28,6 +32,7 @@ if ($Host.Version.Major -ge 7) {
 else {
     Set-Alias -Force -Option AllScope gl GitGraph
 }
+Set-Alias gla GitGraphAll
 
 # Remove unnecessary aliases
 Get-ChildItem Alias: | Where-Object -Property Name -in @("curl", "wget", "r") | Remove-Item
