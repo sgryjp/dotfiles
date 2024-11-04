@@ -3,6 +3,8 @@ $env.config = ($env.config | upsert datetime_format { normal: '%Y-%m-%d %H:%M:%S
 $env.config.cursor_shape = { emacs: blink_block, vi_insert: blink_block, vi_normal: blink_line }
 $env.config.table.mode = "compact"
 
+use std/dirs shells-aliases * # n, p, g, enter, dexit, or shells
+
 # Very basic (incomplete too) fzf-like fuzzy finder menu, for file and directory paths
 $env.config.menus = ($env.config.menus | append {
   name: files_and_dirs_menu
