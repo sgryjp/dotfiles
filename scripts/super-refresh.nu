@@ -3,6 +3,7 @@ use std log
 
 def main [] {
   refresh-scoop
+  refresh-uv
   refresh-pip
   refresh-npm
   refresh-pipx
@@ -12,11 +13,13 @@ def main [] {
 
 def refresh-scoop [] {
   if ((do { powershell scoop help } | complete | get exit_code) != 0) {
-    log info "Skipping scoop recipe as `powershell scoop` failed."
+    log info "scoop update --all"
+    powershell -Command { sooop update --all }
+    log info "scoop cleanup --all"
+    powershell -Command { scoop cleanup --all }
+    log info "scoop cache rm --all"
+    powershell -Command { scoop cache rm --all }
   }
-  powershell -Command {sooop update '*'}
-  powershell -Command {scoop cleanup '*'}
-  powershell -Command {scoop cache rm --all}
 }
 
 def refresh-npm [] {
@@ -44,6 +47,9 @@ def refresh-pipx [] {
 
 def refresh-uv [] {
   if (not (which uv | is-empty)) {
+    log info "uv tool upgrade --all"
+    ^uv tool upgrade --all
+
     log info "uv cache prune"
     ^uv cache prune
 
