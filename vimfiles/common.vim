@@ -160,6 +160,11 @@ augroup END
 
 " }}}
 
+" Folding {{{
+" https://superuser.com/a/567391/2370467
+:autocmd BufWinEnter * let &foldlevel = max(map(range(1, line('$')), 'foldlevel(v:val)'))
+" }}}
+
 " Misc. {{{
 if executable('rg')
     set   grepprg=rg\ --vimgrep
@@ -246,7 +251,7 @@ endif
 " (GitGutter) Use '≅' instead of '~_' for modified & removed line
 let g:gitgutter_sign_modified_removed = '≅'
 
-" Filetype specific configurations {{{
+" Per filetype configurations {{{
 augroup GoSettings
     autocmd!
     autocmd FileType go     setlocal makeprg=go
@@ -260,8 +265,6 @@ augroup PythonSettings
     " the same as flake8's which should be provided by vim-polyglot.
     autocmd!
     autocmd FileType python setlocal errorformat=%f:%l:\ %m
-    autocmd FileType python setlocal foldmethod=indent
-    autocmd FileType python setlocal foldlevel=999
     autocmd FileType python setlocal makeprg=python\ -m\ pytest\ $*
     autocmd FileType python nmap<buffer>    \t <Cmd>make<CR>
 augroup END

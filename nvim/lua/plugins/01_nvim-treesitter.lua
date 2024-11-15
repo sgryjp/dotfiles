@@ -60,3 +60,6 @@ configs.setup({
         enabled = true,
     },
 })
+
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
