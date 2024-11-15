@@ -45,15 +45,6 @@ configs.setup({
                 ["[M"] = "@function.outer",
                 ["[]"] = "@class.outer",
             },
-            -- Below will go to either the start or the end, whichever is closer.
-            -- Use if you want more granular movements
-            -- Make it even more gradual by adding multiple queries and regex.
-            goto_next = {
-                ["]d"] = "@conditional.outer",
-            },
-            goto_previous = {
-                ["[d"] = "@conditional.outer",
-            },
         },
     },
     highlight = {
