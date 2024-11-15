@@ -10,6 +10,9 @@ export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
+# Use Neovim as man-pager
+command -v nvim >/dev/null && export MANPAGER='nvim +Man!'
+
 # Snap
 [ -d /snap/bin ]         && PATH=/snap/bin:$PATH
 
