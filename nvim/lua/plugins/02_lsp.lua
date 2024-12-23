@@ -50,7 +50,7 @@ end
 -- Define list of servers which I prefer to use
 local configured_servers = {
     nushell = false,
-    pyright = false,
+    -- pyright = false,
 }
 
 -- Setup servers managed by mason.nvim and then manually setup the rest
