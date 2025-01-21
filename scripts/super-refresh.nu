@@ -54,7 +54,7 @@ def refresh-uv [] {
     ^uv cache prune
 
     log info "uv self update"
-    ^uv self update
+    ^uv self update --quiet
   }
 }
 
