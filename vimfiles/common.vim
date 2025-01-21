@@ -125,8 +125,8 @@ set   breakindentopt=shift:2,sbr
 set   showbreak=↳
 if has('nvim')
     set laststatus=3
-    set pumblend=10
-    set winblend=10
+    "set pumblend=0
+    "set winblend=0
 else
     set laststatus=2
 endif
