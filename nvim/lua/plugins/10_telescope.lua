@@ -4,14 +4,19 @@ if not ok then
 end
 
 telescope.setup {
+    -- This default is based on `require('telescope.themes').get_ivy()`
     defaults = {
-        mappings = {
-            i = {
-                -- Close Telescope window by Esc even in insert mode
-                ["<Esc>"] = "close",
-                ["<C-[>"] = "close",
-            },
+        border = true,
+        borderchars = {
+            preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+            prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
+            results = { " " }
         },
+        layout_config = {
+            height = 25
+        },
+        layout_strategy = "bottom_pane",
+        sorting_strategy = "ascending",
     },
     extensions = {
         ["ui-select"] = {
