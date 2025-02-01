@@ -1,5 +1,3 @@
--- Neovim specific keymappings
-
 local function map(mode, lhs, rhs, opts)
     opts = opts or {}
     opts["silent"] = true
