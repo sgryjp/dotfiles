@@ -77,6 +77,9 @@ function Insert-Line($line, $file_path) {
 Insert-Line "source $PSScriptRoot\nu\env.nu" $env:APPDATA\nushell\env.nu
 Insert-Line "source $PSScriptRoot\nu\config.nu" $env:APPDATA\nushell\config.nu
 
+# Wezterm
+New-SymlinkFile -LinkTarget "$PSScriptRoot\wezterm.lua" -Path ~/.wezterm.lua
+
 # Git configurations
 git config --global include.path $PSScriptRoot\git\config
 Copy-Item "$PSScriptRoot\git\ignore" "$env:USERPROFILE\.gitignore"

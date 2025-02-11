@@ -78,6 +78,9 @@ def append_line [line, path] {
 append_line $"source ($env.FILE_PWD | path join nu env.nu)" ($env.FILE_PWD | path join $nu.env-path)
 append_line $"source ($env.FILE_PWD | path join nu config.nu)" ($env.FILE_PWD | path join $nu.config-path)
 
+# Wezterm
+make_link ~/.wezterm.lua            ($env.FILE_PWD | path join wezterm.lua)
+
 # Git
 log info $"git config --global include.path ($env.FILE_PWD | path join git config)"
 git config --global include.path ($env.FILE_PWD | path join git config)

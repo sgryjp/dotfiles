@@ -122,6 +122,9 @@ makelink $SCRIPT_PATH/tmux.conf                     ~/.tmux.conf
 insert_line "source $SCRIPT_PATH/nu/env.nu" ~/.config/nushell/env.nu
 insert_line "source $SCRIPT_PATH/nu/config.nu" ~/.config/nushell/config.nu
 
+# Wezterm
+makelink $SCRIPT_PATH/wezterm.lua                   ~/.wezterm.lua
+
 # Git
 if command -v git >/dev/null; then
     mkdir -pv ~/.config/git
