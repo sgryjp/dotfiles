@@ -17,7 +17,7 @@ if not (ok1 and ok2 and ok3) then
 end
 
 -- Make omnifunc LSP based completion
-vim.omnifunc = 'v:lua.vim.lsp.omnifunc'
+vim.omnifunc = "v:lua.vim.lsp.omnifunc"
 
 mason.setup({})
 -- mason_lspconfig.setup {
@@ -27,9 +27,6 @@ mason.setup({})
 local function configure_server(server_name)
     local opts = {}
     if server_name == "lua_ls" then
-        local libpath = {}
-        table.insert(libpath, vim.fn.stdpath("config") .. "/lua")
-        table.insert(libpath, vim.env.VIMRUNTIME .. "/lua")
         opts = {
             settings = {
                 Lua = {
@@ -38,7 +35,12 @@ local function configure_server(server_name)
                         globals = { "vim" },
                     },
                     workspace = {
-                        library = libpath,
+                        checkThirdParty = false,
+                        library = {
+                            vim.env.VIMRUNTIME,
+                            "${3rd}/luv/library",
+                            "${3rd}/busted/library",
+                        },
                     },
                 },
             },
