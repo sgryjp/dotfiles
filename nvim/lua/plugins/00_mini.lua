@@ -3,16 +3,18 @@ if not mini_available then
     return
 end
 
-if vim.g.vscode then
-    require("mini.surround").setup({})
-else
+require("mini.ai").setup({})
+require("mini.surround").setup({})
+if not vim.g.vscode then
     require("mini.completion").setup({})
     require("mini.cursorword").setup({})
     require("mini.extra").setup({})
+    require("mini.icons").setup({})
     require("mini.indentscope").setup({})
     require("mini.notify").setup({})
     require("mini.statusline").setup({})
     require("mini.surround").setup({})
+    require("mini.trailspace").setup({})
 
     clue.setup({
         window = {
