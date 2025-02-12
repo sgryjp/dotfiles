@@ -1,5 +1,5 @@
 -- Install mini.nvim and then setup mini.deps
-function install_mini_deps()
+local function install_mini_deps()
     local path_package = vim.fn.stdpath('data') .. '/site/'
     local mini_path = path_package .. 'pack/deps/start/mini.nvim'
     if not vim.loop.fs_stat(mini_path) then
@@ -27,6 +27,7 @@ add({ source = 'nvim-treesitter/nvim-treesitter-textobjects' })
 add({ source = 'williamboman/mason.nvim' })
 add({ source = 'williamboman/mason-lspconfig.nvim' })
 add({ source = 'catppuccin/nvim', name = 'catpuccin' })
+add({ source = 'folke/snacks.nvim'})
 
 add({ source = 'tpope/vim-fugitive' })
 add({ source = 'elkasztano/nushell-syntax-vim' })
