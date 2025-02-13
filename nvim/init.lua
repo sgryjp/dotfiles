@@ -45,7 +45,6 @@ add({ source = 'hrsh7th/cmp-vsnip' })
 add({ source = 'hrsh7th/vim-vsnip' })
 add({ source = 'onsails/lspkind-nvim' })
 add({ source = 'stevearc/conform.nvim' })
-add({ source = 'lewis6991/gitsigns.nvim' })
 add({ source = 'simrat39/symbols-outline.nvim' })
 add({ source = 'akinsho/toggleterm.nvim' })
 

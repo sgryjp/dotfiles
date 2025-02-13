@@ -4,6 +4,7 @@ if not mini_available then
 end
 
 require("mini.ai").setup({})
+require("mini.diff").setup({})
 require("mini.surround").setup({})
 if not vim.g.vscode then
     require("mini.completion").setup({})
