@@ -11,7 +11,9 @@ if not vim.g.vscode then
     require("mini.extra").setup({})
     require("mini.icons").setup({})
     require("mini.indentscope").setup({})
-    require("mini.notify").setup({})
+    require("mini.notify").setup({
+        window = { max_width_share = 0.5 },
+    })
     require("mini.statusline").setup({})
     require("mini.surround").setup({})
     require("mini.trailspace").setup({})
@@ -19,6 +21,7 @@ if not vim.g.vscode then
     clue.setup({
         window = {
             delay = 250,
+            config = { anchor = "SE", width = 48, row = "auto", col = "auto" },
         },
         triggers = {
             { mode = "n", keys = "\\" },
