@@ -1,13 +1,39 @@
+-- Utility functions
+
 local function map(mode, lhs, rhs, opts)
     opts = opts or {}
     opts["silent"] = true
     vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
 end
+
 local function nmap(lhs, rhs, opts)
     map("n", lhs, rhs, opts)
 end
+
+local function tmap(lhs, rhs, opts)
+    map("t", lhs, rhs, opts)
+end
+
 local function vscode_nmap(lhs, rhs)
     map("n", lhs, string.format(":call VSCodeNotify('%s')<CR>", rhs))
+end
+
+--------------------------------------------------------------------------------
+
+-- Close auxiliary windows by <C-[> in normal mode.
+nmap("<C-[>", ":cclose<CR>:lclose<CR>:helpclose<CR>", { desc = "Close auxiliary windows" })
+
+-- Jump to previous or next something
+if vim.g.vscode then
+    vscode_nmap("[d", "editor.action.marker.prevInFiles")
+    vscode_nmap("]d", "editor.action.marker.nextInFiles")
+    vscode_nmap("[h", "workbench.action.editor.prevChange")
+    vscode_nmap("]h", "workbench.action.editor.nextChange")
+else
+    nmap("]l", ":lnext<CR>", { desc = "Next location list item" })
+    nmap("[l", ":lprevious<CR>", { desc = "Previous location list item" })
+    nmap("]q", ":cnext<CR>", { desc = "Next quickfix item" })
+    nmap("[q", ":cprevious<CR>", { desc = "Previous quickfix item" })
 end
 
 -- Go to something
@@ -43,7 +69,7 @@ else
     nmap([[\f]], ":lua require'conform'.format({lsp_fallback = true})<CR>", { desc = "Format document" })
 end
 
--- Fuzzy finder and utility views
+-- Auxiliary views
 if vim.g.vscode then
     vscode_nmap("<Space>q", "workbench.actions.view.problems")
     vscode_nmap("<Space>f", "workbench.action.quickOpen")
@@ -73,3 +99,20 @@ end
 
 -- File explorer (oil.nvim)
 nmap("-", ":Oil<CR>")
+
+-- Moves between windows
+nmap("<C-h>", "<C-w>h", { desc = "Focus left" })
+nmap("<C-j>", "<C-w>j", { desc = "Focus down" })
+nmap("<C-k>", "<C-w>k", { desc = "Focus up" })
+nmap("<C-l>", "<C-w>l", { desc = "Focus right" })
+tmap("<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+tmap("<C-[>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+tmap("<C-h>", "<C-\\><C-n><C-w>h", { desc = "Focus left" })
+tmap("<C-j>", "<C-\\><C-n><C-w>j", { desc = "Focus down" })
+tmap("<C-k>", "<C-\\><C-n><C-w>k", { desc = "Focus up" })
+tmap("<C-l>", "<C-\\><C-n><C-w>l", { desc = "Focus right" })
+
+-- Move forward/backward till next non-wsp at same the column
+-- https://vi.stackexchange.com/a/693
+nmap("<silent>gJ", ":call search('%' . virtcol('.') . 'vS', 'W')<CR>", { desc = "Go down to next non-WSP" })
+nmap("<silent>gK", ":call search('%' . virtcol('.') . 'vS', 'bW')<CR>", { desc = "Go up to previous non-WSP" })
