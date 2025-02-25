@@ -110,5 +110,5 @@ tmap("<C-l>", "<C-\\><C-n><C-w>l", { desc = "Focus right" })
 
 -- Move forward/backward till next non-wsp at same the column
 -- https://vi.stackexchange.com/a/693
-nmap("<silent>gJ", ":call search('%' . virtcol('.') . 'vS', 'W')<CR>", { desc = "Go down to next non-WSP" })
-nmap("<silent>gK", ":call search('%' . virtcol('.') . 'vS', 'bW')<CR>", { desc = "Go up to previous non-WSP" })
+nmap("gJ", ":call search('\\%' . virtcol('.') . 'v\\S', 'W')<CR>", { desc = "Go down to next non-WSP" })
+nmap("gK", ":call search('\\%' . virtcol('.') . 'v\\S', 'bW')<CR>", { desc = "Go up to previous non-WSP" })
