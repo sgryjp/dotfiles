@@ -1,5 +1,5 @@
 def "nu-complete dotnet" [prefix: string] {
-    ^dotnet complete $"($prefix)" | lines 
+    ^dotnet complete $"($prefix)" | lines
 }
 
 export extern "dotnet" [

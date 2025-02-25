@@ -40,9 +40,9 @@ def "nu-complete nonprintable-notation" [] {
 }
 
 def "nu-complete languages" [] {
-    ^bat --list-languages 
-    | lines 
-    | parse "{value}:{description}" 
+    ^bat --list-languages
+    | lines
+    | parse "{value}:{description}"
 }
 
 def "nu-complete wrap-modes" [] {
@@ -58,7 +58,7 @@ def "nu-complete ansi italics" [] {
 }
 
 def "nu-complete themes" [] {
-    ^bat --list-themes 
-    | lines 
-    | parse "{value}" 
+    ^bat --list-themes
+    | lines
+    | parse "{value}"
 }

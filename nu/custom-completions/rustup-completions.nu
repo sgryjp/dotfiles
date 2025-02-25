@@ -1,20 +1,20 @@
 # ------------------ nu-complete commands ------------------
 
 def "nu-complete rustup" [] {
-  ^rustup --help 
-  | str replace --regex --multiline '(rustup[\s\S]*(?=SUBCOMMANDS:))' '' 
+  ^rustup --help
+  | str replace --regex --multiline '(rustup[\s\S]*(?=SUBCOMMANDS:))' ''
   | str replace --regex --multiline '\n+DISCUSSION:[\s\S]*' ''
-  | lines 
-  | where $it starts-with "  " 
+  | lines
+  | where $it starts-with "  "
   | parse -r '\s*(?P<value>[^ ]+) \s*(?P<description>\w.*)'
 }
 
 def "nu-complete rustup toolchain" [] {
   ^rustup toolchain --help
-  | str replace --regex --multiline '(rustup[\s\S]*(?=SUBCOMMANDS:))' '' 
+  | str replace --regex --multiline '(rustup[\s\S]*(?=SUBCOMMANDS:))' ''
   | str replace --regex --multiline '\n+DISCUSSION:[\s\S]*' ''
-  | lines 
-  | where $it starts-with "  " 
+  | lines
+  | where $it starts-with "  "
   | parse -r '\s*(?P<value>[^ ]+) \s*(?P<description>\w.*)'
 }
 
@@ -29,16 +29,16 @@ def "nu-complete rustup toolchain list" [] {
     {value: ($line | str replace " (default)" ""), description: "default"}
     } else {
       {value: $line, description: ""}
-    } 
+    }
   }
 }
 
 def "nu-complete rustup target" [] {
   ^rustup target --help
-  | str replace --regex --multiline '(rustup[\s\S]*(?=SUBCOMMANDS:))' '' 
+  | str replace --regex --multiline '(rustup[\s\S]*(?=SUBCOMMANDS:))' ''
   | str replace --regex --multiline '\n+DISCUSSION:[\s\S]*' ''
-  | lines 
-  | where $it starts-with "  " 
+  | lines
+  | where $it starts-with "  "
   | parse -r '\s*(?P<value>[^ ]+) \s*(?P<description>\w.*)'
 }
 
@@ -58,8 +58,8 @@ def "nu-complete rustup target list --installed" [] {
 }
 
 def "nu-complete rustup update" [] {
-  ^rustup toolchain list 
-  | lines 
+  ^rustup toolchain list
+  | lines
   | each {|line| if ($line | str contains "default") {
     {value: ($line | str replace " (default)" ""), description: "default"}
   } else {
@@ -69,10 +69,10 @@ def "nu-complete rustup update" [] {
 
 def "nu-complete rustup component" [] {
   ^rustup component --help
-  | str replace --regex --multiline '(rustup[\s\S]*(?=SUBCOMMANDS:))' '' 
+  | str replace --regex --multiline '(rustup[\s\S]*(?=SUBCOMMANDS:))' ''
   | str replace --regex --multiline '\n+DISCUSSION:[\s\S]*' ''
-  | lines 
-  | where $it starts-with "  " 
+  | lines
+  | where $it starts-with "  "
   | parse -r '\s*(?P<value>[^ ]+) \s*(?P<description>\w.*)'
 }
 
@@ -87,17 +87,17 @@ def "nu-complete rustup component list" [] {
 }
 
 def "nu-complete rustup component list installed" [] {
-  ^rustup component list 
-  | lines 
+  ^rustup component list
+  | lines
   | find --regex '^.+(?=\s\(installed)'
 }
 
 def "nu-complete rustup override" [] {
   ^rustup override --help
-  | str replace --regex --multiline '(rustup[\s\S]*(?=SUBCOMMANDS:))' '' 
+  | str replace --regex --multiline '(rustup[\s\S]*(?=SUBCOMMANDS:))' ''
   | str replace --regex --multiline '\n+DISCUSSION:[\s\S]*' ''
-  | lines 
-  | where $it starts-with "  " 
+  | lines
+  | where $it starts-with "  "
   | parse -r '\s*(?P<value>[^ ]+) \s*(?P<description>\w.*)'
 }
 
@@ -109,26 +109,26 @@ def "nu-complete rustup override list" [] {
 }
 
 def "nu-complete rustup override list installed" [] {
-  ^rustup override list 
-  | lines 
+  ^rustup override list
+  | lines
   # TODO: I don't have any override to match
   # TODO: exclude the result "no overrides"
 }
 
 def "nu-complete rustup self" [] {
   ^rustup self --help
-  | str replace --regex --multiline '(rustup[\s\S]*(?=SUBCOMMANDS:))' '' 
-  | lines 
-  | where $it starts-with "  " 
+  | str replace --regex --multiline '(rustup[\s\S]*(?=SUBCOMMANDS:))' ''
+  | lines
+  | where $it starts-with "  "
   | parse -r '\s*(?P<value>[^ ]+) \s*(?P<description>\w.*)'
 }
 
 def "nu-complete rustup set" [] {
   ^rustup set --help
-  | str replace --regex --multiline '(rustup[\s\S]*(?=SUBCOMMANDS:))' '' 
+  | str replace --regex --multiline '(rustup[\s\S]*(?=SUBCOMMANDS:))' ''
   | str replace --regex --multiline '\n+DISCUSSION:[\s\S]*' ''
-  | lines 
-  | where $it starts-with "  " 
+  | lines
+  | where $it starts-with "  "
   | parse -r '\s*(?P<value>[^ ]+) \s*(?P<description>\w.*)'
 }
 

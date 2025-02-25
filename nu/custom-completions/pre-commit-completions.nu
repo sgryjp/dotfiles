@@ -17,7 +17,7 @@ def "nu-complete pre-commit help" [] {
     ]
 }
 
-def "nu-complete --colors" [] { 
+def "nu-complete --colors" [] {
   [ "auto", "always", "never" ]
 }
 

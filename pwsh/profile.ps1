@@ -3,7 +3,7 @@
 # Check whether my personally important environment variables are set or not
 # and set fallback values if not set
 if (-Not (Test-Path Env:\XDG_CONFIG_HOME)) {
-    $env:XDG_CONFIG_HOME = $env:UserProfile + "\.config" 
+    $env:XDG_CONFIG_HOME = $env:UserProfile + "\.config"
     Write-Warning "XDG_CONFIG_HOME is not defind; using $env:XDG_CONFIG_HOME as fallback"
 }
 if (-Not (Test-Path Env:\XDG_DATA_HOME)) {

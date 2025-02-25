@@ -1,10 +1,10 @@
 def "nu-complete docker containers" [] {
-    ^docker ps -a --format "{{.ID}} {{.Names}}" | lines 
+    ^docker ps -a --format "{{.ID}} {{.Names}}" | lines
         | parse "{value} {description}"
 }
 
 def "nu-complete docker images" [] {
-    ^docker images --format "{{.ID}} {{.Repository}}" | lines 
+    ^docker images --format "{{.ID}} {{.Repository}}" | lines
         | parse "{value} {description}"
 }
 
@@ -26,7 +26,7 @@ def "nu-complete local files" [] {
 }
 
 def "nu-complete docker compose ps" [] {
-    ^docker compose ps -a --format "{{.ID}} {{.Names}}" | lines 
+    ^docker compose ps -a --format "{{.ID}} {{.Names}}" | lines
         | parse "{value} {description}"
 }
 
@@ -72,10 +72,10 @@ export extern "docker system events" [
 
 # Attach local standard input, output, and error streams to a running container
 export extern "docker container attach" [
-    container?: string@"nu-complete docker containers"                                 
-    --detach-keys:string                                #Override the key sequence for detaching a container   
+    container?: string@"nu-complete docker containers"
+    --detach-keys:string                                #Override the key sequence for detaching a container
     --no-stdin                                          #Do not attach STDIN
-    --sig-proxy                                         #Proxy all received signals to the process 
+    --sig-proxy                                         #Proxy all received signals to the process
 ]
 
 # Create a new image from a container's changes

@@ -1,8 +1,8 @@
 local ok, symbols_outline = pcall(require, "symbols-outline")
 if not ok then
-    return
+	return
 end
 
 symbols_outline.setup({
-    auto_close = true,
+	auto_close = true,
 })

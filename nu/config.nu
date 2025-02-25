@@ -55,4 +55,3 @@ source custom-completions/npm-completions.nu
 source custom-completions/poetry-completions.nu
 source custom-completions/rg-completions.nu
 source custom-completions/rustup-completions.nu
-
