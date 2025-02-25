@@ -46,7 +46,7 @@ tmap         <C-j>  <C-\><C-n><C-w>j
 tmap         <C-k>  <C-\><C-n><C-w>k
 tmap         <C-l>  <C-\><C-n><C-w>l
 
-" Move forward/backward till next non-wsp at same the colum
+" Move forward/backward till next non-wsp at same the column
 " https://vi.stackexchange.com/a/693
 nmap <silent>gJ     <Cmd>call search('\%' . virtcol('.') . 'v\S', 'W')<CR>
 nmap <silent>gK     <Cmd>call search('\%' . virtcol('.') . 'v\S', 'bW')<CR>
