@@ -16,7 +16,7 @@ local function scheme_for_appearance(appearance)
 	end
 end
 
-config.font = wezterm.font("UDEV Gothic 35NFLG")
+config.font = wezterm.font("UDEV Gothic 35NF")
 config.font_size = 11
 config.color_scheme = scheme_for_appearance(get_appearance())
 
