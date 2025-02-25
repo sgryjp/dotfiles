@@ -34,6 +34,8 @@ else
 	nmap("[l", ":lprevious<CR>", { desc = "Previous location list item" })
 	nmap("]q", ":cnext<CR>", { desc = "Next quickfix item" })
 	nmap("[q", ":cprevious<CR>", { desc = "Previous quickfix item" })
+	nmap("]d", ":lua vim.diagnostic.goto_next()<CR>", { desc = "Next diagnostic" })
+	nmap("[d", ":lua vim.diagnostic.goto_prev()<CR>", { desc = "Previous diagnostic" })
 end
 
 -- Go to something
