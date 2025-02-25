@@ -80,6 +80,7 @@ if vim.g.vscode then
 else
 	nmap("<Space>l", ":lopen<CR>", { desc = "Open location list window" })
 	nmap("<Space>q", ":copen<CR>", { desc = "Open quick fix window" })
+	nmap("<Space>h", ":lua MiniDiff.toggle_overlay()<CR>", { desc = "Toggle MiniDiff overlay" })
 	nmap("<C-p>", ":Telescope find_files<CR>", { desc = "Pick files" })
 	nmap("<Space>b", ":Telescope buffers<CR>", { desc = "Pick a buffer" })
 	nmap("<Space>f", ":Telescope find_files<CR>", { desc = "Pick a file" })
