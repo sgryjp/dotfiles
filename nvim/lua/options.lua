@@ -31,7 +31,7 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.swapfile = false
 vim.opt.undofile = false
-vim.opt.clipboard = ""
+vim.opt.clipboard = "unnamedplus"
 
 -- UI & Appearance
 vim.opt.number = true
@@ -40,7 +40,7 @@ vim.opt.splitright = true
 vim.opt.scrolloff = 2
 vim.opt.updatetime = 500
 vim.opt.wildmode = "longest:full"
-vim.opt.mouse = ""
+vim.opt.mouse = "nv"
 vim.opt.completeopt = "menuone,noinsert,noselect"
 vim.opt.listchars = "tab:╌╌>,trail:␠"
 vim.opt.breakindent = true
