@@ -7,6 +7,7 @@ require("mini.ai").setup({})
 require("mini.diff").setup({})
 require("mini.surround").setup({})
 if not vim.g.vscode then
+  require("mini.bufremove").setup({})
   require("mini.completion").setup({
     window = {
       info = { max_height = 25, max_width = 80, border = "rounded" },
@@ -22,6 +23,7 @@ if not vim.g.vscode then
   })
   require("mini.statusline").setup({})
   require("mini.surround").setup({})
+  require("mini.tabline").setup({})
   require("mini.trailspace").setup({})
 
   clue.setup({

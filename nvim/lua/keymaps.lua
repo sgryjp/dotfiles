@@ -17,6 +17,13 @@ local function vscode_nmap(lhs, rhs) map("n", lhs, string.format(":call VSCodeNo
 -- Close auxiliary windows by <C-[> in normal mode.
 nmap("<C-[>", ":cclose<CR>:lclose<CR>:helpclose<CR>", { desc = "Close auxiliary windows" })
 
+-- Buffer management
+if not vim.g.vscode then
+  nmap("]b", ":bnext<CR>", { desc = "Next buffer" })
+  nmap("[b", ":bprevious<CR>", { desc = "Previous buffer" })
+  nmap("\\q", ":lua MiniBufremove.delete()<CR>", { desc = "Delete buffer" })
+end
+
 -- Jump to previous or next something
 if vim.g.vscode then
   vscode_nmap("[d", "editor.action.marker.prevInFiles")
