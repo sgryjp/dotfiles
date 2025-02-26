@@ -1,6 +1,6 @@
 local ok, oil = pcall(require, "oil")
 if not ok then
-	return
+  return
 end
 
 oil.setup({})

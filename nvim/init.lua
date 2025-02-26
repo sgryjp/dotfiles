@@ -1,22 +1,22 @@
 -- Install mini.nvim and then setup mini.deps
 local function install_mini_deps()
-	local path_package = vim.fn.stdpath("data") .. "/site/"
-	local mini_path = path_package .. "pack/deps/start/mini.nvim"
-	if not vim.loop.fs_stat(mini_path) then
-		vim.cmd('echo "Installing `mini.nvim`" | redraw')
-		local clone_cmd = {
-			"git",
-			"clone",
-			"--filter=blob:none",
-			"https://github.com/echasnovski/mini.nvim",
-			mini_path,
-		}
-		vim.fn.system(clone_cmd)
-		vim.cmd("packadd mini.nvim | helptags ALL")
-		vim.cmd('echo "Installed `mini.nvim`" | redraw')
-	end
-	local deps = require("mini.deps")
-	deps.setup({ path = { package = path_package } })
+  local path_package = vim.fn.stdpath("data") .. "/site/"
+  local mini_path = path_package .. "pack/deps/start/mini.nvim"
+  if not vim.loop.fs_stat(mini_path) then
+    vim.cmd('echo "Installing `mini.nvim`" | redraw')
+    local clone_cmd = {
+      "git",
+      "clone",
+      "--filter=blob:none",
+      "https://github.com/echasnovski/mini.nvim",
+      mini_path,
+    }
+    vim.fn.system(clone_cmd)
+    vim.cmd("packadd mini.nvim | helptags ALL")
+    vim.cmd('echo "Installed `mini.nvim`" | redraw')
+  end
+  local deps = require("mini.deps")
+  deps.setup({ path = { package = path_package } })
 end
 install_mini_deps()
 
@@ -48,11 +48,11 @@ local plugin_dir = vim.fn.stdpath("config") .. "/lua/plugins"
 local plugins = vim.fn.readdir(plugin_dir)
 table.sort(plugins)
 for _, plugin in ipairs(plugins) do
-	if plugin:match("%.lua$") then
-		if not vim.g.vscode or plugin:match("%mini.lua$") then
-			require("plugins/" .. plugin:gsub("%.lua$", ""))
-		end
-	end
+  if plugin:match("%.lua$") then
+    if not vim.g.vscode or plugin:match("%mini.lua$") then
+      require("plugins/" .. plugin:gsub("%.lua$", ""))
+    end
+  end
 end
 
 -- Load keymaps and vim options

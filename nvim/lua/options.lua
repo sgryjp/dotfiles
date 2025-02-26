@@ -4,10 +4,10 @@
 --- @param width integer Indent size.
 --- @param expand_tab boolean Whether to expand tab to spaces or not.
 local function set_indent(width, expand_tab)
-	vim.opt.expandtab = expand_tab
-	vim.opt.tabstop = width
-	vim.opt.softtabstop = width
-	vim.opt.shiftwidth = width
+  vim.opt.expandtab = expand_tab
+  vim.opt.tabstop = width
+  vim.opt.softtabstop = width
+  vim.opt.shiftwidth = width
 end
 
 --- Configure indentation for a specific filetype.
@@ -16,13 +16,11 @@ end
 --- @param augroup integer Autocmd group
 --- @param filetypes string[] Filetypes to configure.
 local function set_indent_ft(width, expand_tab, augroup, filetypes)
-	vim.api.nvim_create_autocmd("FileType", {
-		group = augroup,
-		pattern = filetypes,
-		callback = function()
-			set_indent(width, expand_tab)
-		end,
-	})
+  vim.api.nvim_create_autocmd("FileType", {
+    group = augroup,
+    pattern = filetypes,
+    callback = function() set_indent(width, expand_tab) end,
+  })
 end
 
 -- File & Edit settings
@@ -50,23 +48,23 @@ vim.opt.breakindentopt = "shift:2,sbr"
 vim.opt.showbreak = "↳"
 vim.opt.laststatus = 3
 vim.diagnostic.config({
-	float = {
-		border = "rounded",
-		source = "if_many",
-		focusable = true,
-		max_width = 80,
-		max_height = 20,
-		title = " Diagnostic ",
-		style = "minimal",
-	},
+  float = {
+    border = "rounded",
+    source = "if_many",
+    focusable = true,
+    max_width = 80,
+    max_height = 20,
+    title = " Diagnostic ",
+    style = "minimal",
+  },
 })
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-	border = "rounded",
-	title = " Hover ",
+  border = "rounded",
+  title = " Hover ",
 })
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-	border = "rounded",
-	title = " Signature Help ",
+  border = "rounded",
+  title = " Signature Help ",
 })
 
 -- Search settings
@@ -83,25 +81,25 @@ local indent_group = vim.api.nvim_create_augroup("indent", { clear = true })
 set_indent_ft(8, false, indent_group, { "gitconfig", "make" })
 set_indent_ft(4, false, indent_group, { "go" })
 set_indent_ft(2, true, indent_group, {
-	"css",
-	"markdown",
-	"html",
-	"javascript",
-	"javascriptreact",
-	"typescript",
-	"typescriptreact",
+  "css",
+  "markdown",
+  "html",
+  "javascript",
+  "javascriptreact",
+  "typescript",
+  "typescriptreact",
 })
 
 -- Misc
 vim.opt.diffopt = "linematch:60,filler,closeoff"
 vim.opt.wildignore = {
-	"*.bak",
-	"*.dll",
-	"*.min.*",
-	"*.o",
-	"*.obj",
-	"*.py[cod]",
-	"*.so",
-	"*.swp",
-	"*~",
+  "*.bak",
+  "*.dll",
+  "*.min.*",
+  "*.o",
+  "*.obj",
+  "*.py[cod]",
+  "*.so",
+  "*.swp",
+  "*~",
 }
