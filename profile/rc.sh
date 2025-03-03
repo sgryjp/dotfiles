@@ -3,10 +3,9 @@
 
 # Aliases
 case $(uname) in
-    Darwin) LSOPTS='-G' ;;
-    Linux)  LSOPTS='--color=auto' ;;
+    Darwin) alias ls='ls -F -G -D %Y-%m-%d\ %H:%M' ;;
+    Linux)  alias ls='lf -F --color=auto --time-style-iso' ;;
 esac
-alias ls='ls -F $LSOPTS'
 alias ll='ls -l'
 alias la='ls -a'
 alias l.='ls -d .*'
