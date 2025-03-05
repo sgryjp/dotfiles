@@ -8,12 +8,12 @@ require("mini.diff").setup({})
 require("mini.surround").setup({})
 if not vim.g.vscode then
   require("mini.bufremove").setup({})
-  require("mini.completion").setup({
-    window = {
-      info = { max_height = 25, max_width = 80, border = "rounded" },
-      signature = { max_height = 25, max_width = 80, border = "rounded" },
-    },
-  })
+  -- require("mini.completion").setup({
+  --   window = {
+  --     info = { max_height = 25, max_width = 80, border = "rounded" },
+  --     signature = { max_height = 25, max_width = 80, border = "rounded" },
+  --   },
+  -- })
   require("mini.cursorword").setup({})
   require("mini.extra").setup({})
   require("mini.icons").setup({})

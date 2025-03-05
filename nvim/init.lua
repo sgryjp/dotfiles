@@ -22,6 +22,7 @@ install_mini_deps()
 
 -- Add plugins
 local add = require("mini.deps").add
+add({ source = "echasnovski/mini.nvim" })
 add({ source = "kyazdani42/nvim-web-devicons" })
 add({ source = "nvim-lua/plenary.nvim" })
 add({ source = "neovim/nvim-lspconfig" })
@@ -37,9 +38,8 @@ add({ source = "elkasztano/nushell-syntax-vim" })
 add({ source = "nvim-telescope/telescope.nvim" })
 add({ source = "nvim-telescope/telescope-ui-select.nvim" })
 add({ source = "stevearc/oil.nvim" })
-add({ source = "echasnovski/mini.nvim" })
-add({ source = "onsails/lspkind-nvim" })
 add({ source = "stevearc/conform.nvim" })
+add({ source = "saghen/blink.cmp", checkout = "v0.13.0" })
 add({ source = "simrat39/symbols-outline.nvim" })
 add({ source = "akinsho/toggleterm.nvim" })
 
