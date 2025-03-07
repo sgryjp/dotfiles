@@ -117,6 +117,7 @@ tmap("<C-l>", "<C-\\><C-n><C-w>l", { desc = "Focus right" })
 
 -- Toggling
 nmap("\\b", ':lua vim.o.bg = vim.o.bg == "dark" and "light" or "dark"<CR>', { desc = "Toggle dark/light" })
+nmap("\\w", ":setlocal wrap!<CR>", { desc = "Toggle wrap" })
 
 -- Move forward/backward till next non-wsp at same the column
 -- https://vi.stackexchange.com/a/693
