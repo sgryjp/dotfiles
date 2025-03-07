@@ -29,10 +29,16 @@ local function configure_server(server_name)
             library = {
               vim.env.VIMRUNTIME,
               "${3rd}/luv/library",
-              "${3rd}/busted/library",
             },
           },
         },
+      },
+    }
+  elseif server_name == "typos_ls" then
+    opts = {
+      cmd_env = { RUST_LOG = "info" },
+      init_options = {
+        diagnosticSeverity = "hint",
       },
     }
   end

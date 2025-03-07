@@ -17,41 +17,50 @@ local function install_mini_deps()
   end
   local deps = require("mini.deps")
   deps.setup({ path = { package = path_package } })
+  return deps
 end
-install_mini_deps()
+local MiniDeps = install_mini_deps()
 
--- Add plugins
-local add = require("mini.deps").add
-add({ source = "echasnovski/mini.nvim" })
-add({ source = "kyazdani42/nvim-web-devicons" })
-add({ source = "nvim-lua/plenary.nvim" })
-add({ source = "neovim/nvim-lspconfig" })
-add({ source = "nvim-treesitter/nvim-treesitter" })
-add({ source = "nvim-treesitter/nvim-treesitter-textobjects" })
-add({ source = "williamboman/mason.nvim" })
-add({ source = "williamboman/mason-lspconfig.nvim" })
-add({ source = "catppuccin/nvim", name = "catpuccin" })
-add({ source = "folke/snacks.nvim" })
+-- Declare plugins to use
+local add, later = MiniDeps.add, MiniDeps.later
+local specs = {
+  { source = "echasnovski/mini.nvim" },
+  { source = "kyazdani42/nvim-web-devicons" },
+  { source = "nvim-lua/plenary.nvim" },
+  { source = "neovim/nvim-lspconfig" },
+  { source = "nvim-treesitter/nvim-treesitter" },
+  { source = "nvim-treesitter/nvim-treesitter-textobjects" },
+  { source = "williamboman/mason.nvim" },
+  { source = "williamboman/mason-lspconfig.nvim" },
+  { source = "catppuccin/nvim", name = "catpuccin" },
+  { source = "folke/snacks.nvim" },
 
-add({ source = "tpope/vim-fugitive" })
-add({ source = "elkasztano/nushell-syntax-vim" })
-add({ source = "nvim-telescope/telescope.nvim" })
-add({ source = "nvim-telescope/telescope-ui-select.nvim" })
-add({ source = "stevearc/oil.nvim" })
-add({ source = "stevearc/conform.nvim" })
-add({ source = "saghen/blink.cmp", checkout = "v0.13.0" })
-add({ source = "simrat39/symbols-outline.nvim" })
-add({ source = "akinsho/toggleterm.nvim" })
+  { source = "tpope/vim-fugitive" },
+  { source = "elkasztano/nushell-syntax-vim" },
+  { source = "nvim-telescope/telescope.nvim" },
+  { source = "nvim-telescope/telescope-ui-select.nvim" },
+  { source = "stevearc/oil.nvim" },
+  { source = "stevearc/conform.nvim" },
+  { source = "saghen/blink.cmp", name = "blink_cmp", checkout = "v0.13.0" },
+  { source = "simrat39/symbols-outline.nvim" },
+  { source = "akinsho/toggleterm.nvim" },
+}
 
--- Configure plugins
-local plugin_dir = vim.fn.stdpath("config") .. "/lua/plugins"
-local plugins = vim.fn.readdir(plugin_dir)
-table.sort(plugins)
-for _, plugin in ipairs(plugins) do
-  if plugin:match("%.lua$") then
-    if not vim.g.vscode or plugin:match("%mini.lua$") then
-      require("plugins/" .. plugin:gsub("%.lua$", ""))
-    end
+-- Load plugins in declared order
+for _, spec in ipairs(specs) do
+  add(spec)
+
+  local name
+  if spec.name then
+    name = spec.name
+  else
+    name = spec.source
+    name = string.gsub(name, ".+/(.+)", "%1")
+    name = string.gsub(name, "(.+)%.nvim$", "%1")
+  end
+  local config_path = vim.fn.stdpath("config") .. "/lua/plugins/" .. name .. ".lua"
+  if vim.fn.filereadable(config_path) == 1 then
+    later(function() require("plugins/" .. name) end)
   end
 end
 
