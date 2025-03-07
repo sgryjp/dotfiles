@@ -6,14 +6,4 @@ end
 snacks.setup({
   bigfile = {},
   explorer = {},
-  -- indent = {},
-  -- input = {},
-  -- notifier = {},
-  picker = {},
-  -- quickfile = {},
-  -- scope = {},
-  -- scroll = {},
-  -- statuscolumn = {},
-  -- terminal = {},
-  words = {},
 })
