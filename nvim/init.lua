@@ -35,6 +35,7 @@ local specs = {
   { source = "catppuccin/nvim", name = "catpuccin" },
   { source = "folke/snacks.nvim" },
 
+  { source = "stevearc/quicker.nvim", _setup = { "quicker", {} } },
   { source = "tpope/vim-fugitive" },
   { source = "elkasztano/nushell-syntax-vim" },
   { source = "nvim-telescope/telescope.nvim" },
