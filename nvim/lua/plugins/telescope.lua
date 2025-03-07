@@ -3,17 +3,14 @@ if not ok then
   return
 end
 
+require("telescope").load_extension("ui-select")
+
 telescope.setup({
-  -- This default is based on `require('telescope.themes').get_ivy()`
   defaults = {
-    border = true,
-    borderchars = {
-      preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-      prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
-      results = { " " },
-    },
     layout_config = {
-      height = 25,
+      height = vim.o.lines,
+      width = vim.o.columns,
+      prompt_position = "top",
     },
     layout_strategy = "bottom_pane",
     sorting_strategy = "ascending",
@@ -24,5 +21,3 @@ telescope.setup({
     },
   },
 })
-
-require("telescope").load_extension("ui-select")
