@@ -39,9 +39,9 @@ local specs = {
   { source = "elkasztano/nushell-syntax-vim" },
   { source = "nvim-telescope/telescope.nvim" },
   { source = "nvim-telescope/telescope-ui-select.nvim" },
-  { source = "stevearc/oil.nvim" },
+  { source = "stevearc/oil.nvim", _setup = { "oil", {} } },
   { source = "stevearc/conform.nvim" },
-  { source = "saghen/blink.cmp", name = "blink_cmp", checkout = "v0.13.0" },
+  { source = "saghen/blink.cmp", name = "blink_cmp", checkout = "v0.13.0", _setup = { "blink.cmp", {} } },
   { source = "simrat39/symbols-outline.nvim" },
   { source = "akinsho/toggleterm.nvim" },
 }
@@ -61,6 +61,9 @@ for _, spec in ipairs(specs) do
   local config_path = vim.fn.stdpath("config") .. "/lua/plugins/" .. name .. ".lua"
   if vim.fn.filereadable(config_path) == 1 then
     later(function() require("plugins/" .. name) end)
+  elseif spec._setup then
+    local n, o = spec._setup[1], spec._setup[2]
+    later(function() require(n).setup(o) end)
   end
 end
 
