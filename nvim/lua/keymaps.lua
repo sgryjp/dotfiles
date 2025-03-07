@@ -115,6 +115,9 @@ tmap("<C-j>", "<C-\\><C-n><C-w>j", { desc = "Focus down" })
 tmap("<C-k>", "<C-\\><C-n><C-w>k", { desc = "Focus up" })
 tmap("<C-l>", "<C-\\><C-n><C-w>l", { desc = "Focus right" })
 
+-- Toggling
+nmap("\\b", ':lua vim.o.bg = vim.o.bg == "dark" and "light" or "dark"<CR>', { desc = "Toggle dark/light" })
+
 -- Move forward/backward till next non-wsp at same the column
 -- https://vi.stackexchange.com/a/693
 nmap("gJ", ":call search('\\%' . virtcol('.') . 'v\\S', 'W')<CR>", { desc = "Go down to next non-WSP" })
