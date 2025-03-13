@@ -4,7 +4,7 @@
 # Aliases
 case $(uname) in
     Darwin) alias ls='ls -F -G -D %Y-%m-%d\ %H:%M' ;;
-    Linux)  alias ls='ls -F --color=auto --time-style-iso' ;;
+    Linux)  alias ls='ls -F --color=auto --time-style=iso' ;;
 esac
 alias ll='ls -l'
 alias la='ls -a'
