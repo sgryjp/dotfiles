@@ -21,50 +21,43 @@ local function install_mini_deps()
 end
 local MiniDeps = install_mini_deps()
 
--- Declare plugins to use
-local add, later = MiniDeps.add, MiniDeps.later
+-- Declare plugins
+---@type { source: string, _require: string?, _setup: string? }[]
 local specs = {
-  { source = "echasnovski/mini.nvim" },
+  { source = "echasnovski/mini.nvim", _require = "mini" },
   { source = "kyazdani42/nvim-web-devicons" },
   { source = "nvim-lua/plenary.nvim" },
-  { source = "neovim/nvim-lspconfig" },
+  { source = "neovim/nvim-lspconfig", _require = "lsp" },
   { source = "nvim-treesitter/nvim-treesitter" },
   { source = "nvim-treesitter/nvim-treesitter-textobjects" },
-  { source = "williamboman/mason.nvim" },
+  { source = "williamboman/mason.nvim", _setup = "mason" },
   { source = "williamboman/mason-lspconfig.nvim" },
   { source = "catppuccin/nvim", name = "catpuccin" },
-  { source = "folke/snacks.nvim" },
+  { source = "folke/snacks.nvim", _require = "snacks" },
 
-  { source = "stevearc/quicker.nvim", _setup = { "quicker", {} } },
+  { source = "stevearc/quicker.nvim", _setup = "quicker" },
   { source = "tpope/vim-fugitive" },
   { source = "elkasztano/nushell-syntax-vim" },
-  { source = "nvim-telescope/telescope.nvim" },
+  { source = "nvim-telescope/telescope.nvim", _require = "telescope" },
   { source = "nvim-telescope/telescope-ui-select.nvim" },
-  { source = "stevearc/oil.nvim", _setup = { "oil", {} } },
-  { source = "stevearc/conform.nvim" },
-  { source = "saghen/blink.cmp", name = "blink_cmp", checkout = "v0.13.0", _setup = { "blink.cmp", {} } },
-  { source = "simrat39/symbols-outline.nvim" },
-  { source = "akinsho/toggleterm.nvim" },
+  { source = "stevearc/oil.nvim", _setup = "oil" },
+  { source = "stevearc/conform.nvim", _require = "conform" },
+  { source = "saghen/blink.cmp", checkout = "v0.13.0", _setup = "blink.cmp" },
+  { source = "simrat39/symbols-outline.nvim", _require = "symbols-outline" },
+  { source = "akinsho/toggleterm.nvim", _require = "toggleterm" },
 }
 
 -- Load plugins in declared order
+local add, later = MiniDeps.add, MiniDeps.later
 for _, spec in ipairs(specs) do
+  -- Add the plugin
   add(spec)
 
-  local name
-  if spec.name then
-    name = spec.name
-  else
-    name = spec.source
-    name = string.gsub(name, ".+/(.+)", "%1")
-    name = string.gsub(name, "(.+)%.nvim$", "%1")
-  end
-  local config_path = vim.fn.stdpath("config") .. "/lua/plugins/" .. name .. ".lua"
-  if vim.fn.filereadable(config_path) == 1 then
-    later(function() require("plugins/" .. name) end)
-  elseif spec._setup then
-    local n, o = spec._setup[1], spec._setup[2]
-    later(function() require(n).setup(o) end)
+  -- Configure the plugin
+  if spec._setup then
+    later(function() require(spec._setup).setup({}) end)
+  elseif spec._require then
+    later(function() require("plugins/" .. spec._require) end)
   end
 end
 
