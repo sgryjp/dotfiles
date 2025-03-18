@@ -1,6 +1,6 @@
 # A cat(1) clone with syntax highlighting and Git integration
 export extern "bat" [
-    ...file: path  # file to print / concatenate
+    ...file: path  # file(s) to print / concatenate
     --help         # Print help (see a summary with '-h')
     -h             # Print help (see more with '--help')
     --version      # Print version
@@ -40,9 +40,9 @@ def "nu-complete nonprintable-notation" [] {
 }
 
 def "nu-complete languages" [] {
-    ^bat --list-languages
-    | lines
-    | parse "{value}:{description}"
+    ^bat --list-languages 
+    | lines 
+    | parse "{value}:{description}" 
 }
 
 def "nu-complete wrap-modes" [] {
@@ -58,7 +58,7 @@ def "nu-complete ansi italics" [] {
 }
 
 def "nu-complete themes" [] {
-    ^bat --list-themes
-    | lines
-    | parse "{value}"
+    ^bat --list-themes 
+    | lines 
+    | parse "{value}" 
 }
