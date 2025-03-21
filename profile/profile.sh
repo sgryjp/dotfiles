@@ -10,8 +10,9 @@ export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
-# Use Neovim as man-pager
-command -v nvim >/dev/null && export MANPAGER='nvim +Man!'
+# Use bat as man-pager
+# https://github.com/sharkdp/bat/issues/1433#issuecomment-745206164
+command -v bat >/dev/null && export MANPAGER='sh -c "col -bx | bat -l man -p"'
 
 # Snap
 [ -d /snap/bin ]         && PATH=/snap/bin:$PATH
