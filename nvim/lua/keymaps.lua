@@ -14,8 +14,9 @@ local function vscode_nmap(lhs, rhs) map("n", lhs, string.format(":call VSCodeNo
 
 --------------------------------------------------------------------------------
 
--- Close auxiliary windows by <C-[> in normal mode.
+-- Close auxiliary windows by q or <C-[> in normal mode.
 nmap("<C-[>", ":cclose<CR>:lclose<CR>:helpclose<CR>", { desc = "Close auxiliary windows" })
+nmap("q", ":cclose<CR>:lclose<CR>:helpclose<CR>", { desc = "Close auxiliary windows" })
 
 -- Buffer management
 if not vim.g.vscode then
