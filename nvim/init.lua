@@ -40,10 +40,10 @@ local specs = {
   { source = "elkasztano/nushell-syntax-vim" },
   { source = "nvim-telescope/telescope.nvim", _require = "telescope" },
   { source = "nvim-telescope/telescope-ui-select.nvim" },
+  { source = "stevearc/aerial.nvim", _require = "aerial" },
   { source = "stevearc/oil.nvim", _setup = "oil" },
   { source = "stevearc/conform.nvim", _require = "conform" },
   { source = "saghen/blink.cmp", checkout = "v0.14.0", _setup = "blink.cmp" },
-  { source = "simrat39/symbols-outline.nvim", _require = "symbols-outline" },
   { source = "akinsho/toggleterm.nvim", _require = "toggleterm" },
 }
 

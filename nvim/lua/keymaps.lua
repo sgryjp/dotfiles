@@ -97,7 +97,7 @@ else
   nmap("<Space>y", ":Telescope lsp_type_definitions<CR>", { desc = "Pick a type definition" })
   nmap("<Space>g", ":Telescope diagnostics<CR>", { desc = "Pick a diagnostic" })
 
-  nmap("<Space>s", ":SymbolsOutline<CR>", { desc = "Open outline" })
+  nmap("<Space>s", ":AerialToggle<CR>", { desc = "Open outline" })
 end
 
 -- File explorer (oil.nvim)
