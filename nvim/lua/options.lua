@@ -74,6 +74,11 @@ else
     title = " Signature Help ",
   })
 end
+if vim.version.ge(nvim_version, { 0, 11 }) then
+  vim.diagnostic.config({
+    virtual_text = { current_line = true },
+  })
+end
 
 -- Search settings
 vim.opt.hlsearch = true
