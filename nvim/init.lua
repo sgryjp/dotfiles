@@ -22,7 +22,7 @@ end
 local MiniDeps = install_mini_deps()
 
 -- Declare plugins
----@type { source: string, _require: string?, _setup: string? }[]
+---@type { source: string, _require: string?, _opts: table? }[]
 local specs = {
   { source = "echasnovski/mini.nvim", _require = "mini" },
   { source = "kyazdani42/nvim-web-devicons" },
@@ -30,20 +30,20 @@ local specs = {
   { source = "neovim/nvim-lspconfig", _require = "lsp" },
   { source = "nvim-treesitter/nvim-treesitter" },
   { source = "nvim-treesitter/nvim-treesitter-textobjects" },
-  { source = "williamboman/mason.nvim", _setup = "mason" },
+  { source = "williamboman/mason.nvim", _opts = {} },
   { source = "williamboman/mason-lspconfig.nvim" },
   { source = "catppuccin/nvim", name = "catpuccin" },
   { source = "folke/snacks.nvim", _require = "snacks" },
 
-  { source = "stevearc/quicker.nvim", _setup = "quicker" },
+  { source = "stevearc/quicker.nvim", _opts = {} },
   { source = "tpope/vim-fugitive" },
   { source = "elkasztano/nushell-syntax-vim" },
   { source = "nvim-telescope/telescope.nvim", _require = "telescope" },
   { source = "nvim-telescope/telescope-ui-select.nvim" },
   { source = "stevearc/aerial.nvim", _require = "aerial" },
-  { source = "stevearc/oil.nvim", _setup = "oil" },
+  { source = "stevearc/oil.nvim", _opts = {} },
   { source = "stevearc/conform.nvim", _require = "conform" },
-  { source = "saghen/blink.cmp", checkout = "v0.14.2", _setup = "blink.cmp" },
+  { source = "saghen/blink.cmp", checkout = "v0.14.2", _opts = {} },
   { source = "akinsho/toggleterm.nvim", _require = "toggleterm" },
 }
 
@@ -54,8 +54,11 @@ for _, spec in ipairs(specs) do
   add(spec)
 
   -- Configure the plugin
-  if spec._setup then
-    later(function() require(spec._setup).setup({}) end)
+  if spec._opts then
+    local main = spec.source
+    main = string.gsub(main, ".*/", "", 1)
+    main = string.gsub(main, "%.nvim$", "", 1)
+    later(function() require(main).setup(spec._opts) end)
   elseif spec._require then
     later(function() require("plugins/" .. spec._require) end)
   end
