@@ -1,3 +1,5 @@
+local nvim_version = vim.version()
+
 -- Utility functions
 
 --- Configure indentation.
@@ -46,26 +48,32 @@ vim.opt.listchars = "tab:╌╌>,trail:␠"
 vim.opt.breakindent = true
 vim.opt.breakindentopt = "shift:2,sbr"
 vim.opt.showbreak = "↳"
-vim.opt.laststatus = 3
-vim.diagnostic.config({
-  float = {
+if vim.version.ge(nvim_version, { 0, 8 }) then
+  vim.opt.laststatus = 3
+end
+if vim.version.ge(nvim_version, { 0, 11 }) then
+  vim.o.winborder = "rounded"
+else
+  vim.diagnostic.config({
+    float = {
+      border = "rounded",
+      source = "if_many",
+      focusable = true,
+      max_width = 80,
+      max_height = 20,
+      title = " Diagnostic ",
+      style = "minimal",
+    },
+  })
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
-    source = "if_many",
-    focusable = true,
-    max_width = 80,
-    max_height = 20,
-    title = " Diagnostic ",
-    style = "minimal",
-  },
-})
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "rounded",
-  title = " Hover ",
-})
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = "rounded",
-  title = " Signature Help ",
-})
+    title = " Hover ",
+  })
+  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = "rounded",
+    title = " Signature Help ",
+  })
+end
 
 -- Search settings
 vim.opt.hlsearch = true
