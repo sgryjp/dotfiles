@@ -19,7 +19,7 @@ if not vim.g.vscode then
   require("mini.icons").setup({})
   require("mini.indentscope").setup({})
   require("mini.notify").setup({
-    window = { max_width_share = 0.8 },
+    window = { max_width_share = 0.5 },
   })
   require("mini.statusline").setup({})
   require("mini.surround").setup({})
