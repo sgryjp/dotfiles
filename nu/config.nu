@@ -5,6 +5,12 @@ $env.config.table.mode = "compact"
 
 use std/dirs shells-aliases * # n, p, g, enter, dexit, or shells
 
+# Disable shell integration when running on WezTerm on Windows
+# https://github.com/nushell/nushell/issues/5585
+if ($env | get -i OS TERM_PROGRAM) == [Windows_NT, WezTerm] {
+  $env.config.shell_integration.osc133 = false
+}
+
 # Very basic (incomplete too) fzf-like fuzzy finder menu, for file and directory paths
 $env.config.menus = ($env.config.menus | append {
   name: files_and_dirs_menu

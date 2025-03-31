@@ -19,5 +19,8 @@ end
 config.font = wezterm.font("UDEV Gothic 35NF")
 config.font_size = 11
 config.color_scheme = scheme_for_appearance(get_appearance())
+if wezterm.target_triple == "x86_64-pc-windows-msvc" then
+  config.default_prog = { "nu", "-l" }
+end
 
 return config
