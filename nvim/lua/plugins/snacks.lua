@@ -6,4 +6,6 @@ end
 snacks.setup({
   bigfile = {},
   explorer = {},
+  input = {},
+  picker = {},
 })

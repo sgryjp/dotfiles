@@ -38,8 +38,6 @@ local specs = {
   { source = "stevearc/quicker.nvim", _opts = {} },
   { source = "tpope/vim-fugitive" },
   { source = "elkasztano/nushell-syntax-vim" },
-  { source = "nvim-telescope/telescope.nvim", _require = "telescope" },
-  { source = "nvim-telescope/telescope-ui-select.nvim" },
   { source = "stevearc/aerial.nvim", _require = "aerial" },
   { source = "stevearc/oil.nvim", _opts = {} },
   { source = "stevearc/conform.nvim", _require = "conform" },

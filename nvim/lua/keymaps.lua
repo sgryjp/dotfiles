@@ -86,17 +86,17 @@ else
 
   nmap("<Space>e", ":lua Snacks.explorer()<CR>", { desc = "Pick files" })
 
-  nmap("<C-p>", ":Telescope find_files<CR>", { desc = "Pick files" })
-  nmap("<Space>b", ":Telescope buffers<CR>", { desc = "Pick a buffer" })
-  nmap("<Space>f", ":Telescope find_files<CR>", { desc = "Pick a file" })
-  nmap("<Space>p", ":Telescope live_grep<CR>", { desc = "Live grep" })
-  -- nmap("<Space>s", ":Telescope lsp_document_symbols<CR>", { desc = "Pick a symbol (document)" })
-  nmap("<Space>S", ":Telescope lsp_workspace_symbols<CR>", { desc = "Pick a symbol (workspace)" })
-  nmap("<Space>d", ":Telescope lsp_definitions<CR>", { desc = "Pick a definition" })
-  nmap("<Space>r", ":Telescope lsp_references<CR>", { desc = "Pick a reference" })
-  nmap("<Space>i", ":Telescope lsp_implementations<CR>", { desc = "Pick a implementation" })
-  nmap("<Space>y", ":Telescope lsp_type_definitions<CR>", { desc = "Pick a type definition" })
-  nmap("<Space>g", ":Telescope diagnostics<CR>", { desc = "Pick a diagnostic" })
+  nmap("<C-p>", ":lua Snacks.picker.files()<CR>", { desc = "Pick files" })
+  nmap("<Space>b", ":lua Snacks.picker.buffers()<CR>", { desc = "Pick a buffer" })
+  nmap("<Space>f", ":lua Snacks.picker.files()<CR>", { desc = "Pick a file" })
+  nmap("<Space>p", ":lua Snacks.picker.grep()<CR>", { desc = "Live grep" })
+  -- nmap("<Space>s", ":lua Snacks.picker.lsp_symbols()<CR>", { desc = "Pick a symbol (document)" })
+  nmap("<Space>S", ":lua Snacks.picker.lsp_workspace_symbols()<CR>", { desc = "Pick a symbol (workspace)" })
+  nmap("<Space>d", ":lua Snacks.picker.lsp_definitions()<CR>", { desc = "Pick a definition" })
+  nmap("<Space>r", ":lua Snacks.picker.lsp_references()<CR>", { desc = "Pick a reference" })
+  nmap("<Space>i", ":lua Snacks.picker.lsp_implementations()<CR>", { desc = "Pick a implementation" })
+  nmap("<Space>y", ":lua Snacks.picker.lsp_type_definitions()<CR>", { desc = "Pick a type definition" })
+  nmap("<Space>g", ":lua Snacks.picker.diagnostics()<CR>", { desc = "Pick a diagnostic (workspace)" })
 
   nmap("<Space>s", ":AerialToggle<CR>", { desc = "Open outline" })
 end
