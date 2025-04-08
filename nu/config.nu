@@ -1,5 +1,5 @@
-$env.config = ($env.config | upsert show_banner "short")
-$env.config = ($env.config | upsert datetime_format { normal: '%Y-%m-%d %H:%M:%S %z' })
+$env.config.show_banner = "short"
+$env.config.datetime_format = { normal: '%+', table: '%F %T' } # format date -l
 $env.config.cursor_shape = { emacs: blink_block, vi_insert: blink_block, vi_normal: blink_line }
 $env.config.table.mode = "compact"
 
