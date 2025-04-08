@@ -1,3 +1,4 @@
+#!/usr/bin/env nu
 use std log
 let scripts_dir = $env.FILE_PWD | path join "custom-completions"
 let base_url = "https://raw.githubusercontent.com/nushell/nu_scripts/main/custom-completions"

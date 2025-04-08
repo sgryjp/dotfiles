@@ -1,3 +1,4 @@
+#!/usr/bin/env nu
 use std log
 
 let homedir = "~" | path expand
