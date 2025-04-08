@@ -14,6 +14,7 @@ conform.setup({
     python = { "ruff_format" },
     sh = { "shfmt" },
     swift = { "swift_format" },
+    toml = { "taplo" },
     yaml = { "prettierd", "prettier", stop_after_first = true },
   },
   log_level = vim.log.levels.INFO,
