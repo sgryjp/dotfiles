@@ -20,7 +20,9 @@ let targets = [
   "rustup",
   "scoop",
   "ssh",
-  "tar"
+  "tar",
+  "uv",
+  "winget",
 ]
 
 $targets | each {|it|
