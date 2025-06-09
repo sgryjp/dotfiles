@@ -30,8 +30,8 @@ local specs = {
   { source = "neovim/nvim-lspconfig", _require = "lsp" },
   { source = "nvim-treesitter/nvim-treesitter" },
   { source = "nvim-treesitter/nvim-treesitter-textobjects" },
-  { source = "williamboman/mason.nvim", _opts = {} },
-  { source = "williamboman/mason-lspconfig.nvim" },
+  { source = "mason-org/mason.nvim", _opts = {} },
+  { source = "mason-org/mason-lspconfig.nvim" },
   { source = "catppuccin/nvim", name = "catpuccin" },
   { source = "folke/snacks.nvim", _require = "snacks" },
 
