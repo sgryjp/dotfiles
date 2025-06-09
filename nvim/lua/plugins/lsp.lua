@@ -35,3 +35,7 @@ vim.lsp.config("typos_ls", {
 mason.setup({})
 mason_lspconfig.setup({})
 vim.lsp.enable("nushell")
+
+-- Setup LSP servers independently from Mason
+lspconfig["nushell"].setup({})
+lspconfig["ruff"].setup({})
