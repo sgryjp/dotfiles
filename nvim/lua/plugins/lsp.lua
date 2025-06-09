@@ -6,9 +6,6 @@ if not (ok1 and ok2 and ok3) then
   return
 end
 
--- Make omnifunc LSP based completion
-vim.omnifunc = "v:lua.vim.lsp.omnifunc"
-
 -- Set default configuration for LSP clients
 vim.lsp.config("lua_ls", {
   settings = {
