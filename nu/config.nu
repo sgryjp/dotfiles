@@ -53,23 +53,6 @@ alias gl = git graph
 alias gla = git graph ...(git for-each-ref --format='%(refname:short)' 'refs/heads' 'refs/tags' 'refs/remotes' | lines)
 alias gs = git status --short --branch --ahead-behind
 
-source custom-completions/bat-completions.nu
-source custom-completions/cargo-completions.nu
 source custom-completions/curl-completions.nu
 source custom-completions/docker-completions.nu
-source custom-completions/dotnet-completions.nu
 source custom-completions/git-completions.nu
-source custom-completions/less-completions.nu
-source custom-completions/man-completions.nu
-source custom-completions/npm-completions.nu
-source custom-completions/pnpm-completions.nu
-source custom-completions/poetry-completions.nu
-source custom-completions/pre-commit-completions.nu
-source custom-completions/pytest-completions.nu
-source custom-completions/rg-completions.nu
-source custom-completions/rustup-completions.nu
-source custom-completions/scoop-completions.nu
-source custom-completions/ssh-completions.nu
-source custom-completions/tar-completions.nu
-source custom-completions/uv-completions.nu
-source custom-completions/winget-completions.nu
