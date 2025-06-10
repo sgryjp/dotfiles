@@ -27,7 +27,7 @@ $env.config.menus = ($env.config.menus | append {
   }
   source: {|buffer, position|
     ls **/*
-    | filter { $in.name =~ $"($buffer)" }
+    | where { $in.name =~ $"($buffer)" }
     | each {|it| {
           value: $it.name,
           description: $"($it.type | str substring 0..1)"
