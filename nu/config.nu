@@ -2,6 +2,8 @@ $env.config.show_banner = "short"
 $env.config.datetime_format = { normal: '%+', table: '%F %T' } # format date -l
 $env.config.cursor_shape = { emacs: blink_block, vi_insert: blink_block, vi_normal: blink_line }
 $env.config.table.mode = "compact"
+$env.config.history.file_format = "sqlite"
+$env.config.history.isolation = true
 
 use std/dirs shells-aliases * # n, p, g, enter, dexit, or shells
 
