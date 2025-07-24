@@ -9,7 +9,7 @@ use std/dirs shells-aliases * # n, p, g, enter, dexit, or shells
 
 # Disable shell integration when running on WezTerm on Windows
 # https://github.com/nushell/nushell/issues/5585
-if ($env | get -i OS TERM_PROGRAM) == [Windows_NT, WezTerm] {
+if ($env | get -o OS TERM_PROGRAM) == [Windows_NT, WezTerm] {
   $env.config.shell_integration.osc133 = false
 }
 
