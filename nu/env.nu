@@ -74,16 +74,72 @@ def create_gstat_segment [] {
   }
 
   # Compose prompt string from the stat
-  let branch = (ansi magenta) + $stat.branch + (ansi reset)
+  let branch_icon = "\u{e725}" # nf-dev-git_branch
+  let rebase_icon = "\u{e728}" # nf-dev-git_compare
+  let conflict_icon = "\u{ea6c}" # nf-cod-warning
+  let branch = match $stat.branch {
+    "" => "",
+    _ => $"(ansi purple)($branch_icon) ($stat.branch)(ansi reset)"
+  }
   let ahead_behind = match ($stat.ahead + $stat.behind) {
     0 => "",
     _ => {
       let ahead = match $stat.ahead { 0 => "", _ => $"↓($stat.ahead)" }
       let behind = match $stat.behind { 0 => "", _ => $"↑($stat.behind)" }
-      $" (ansi black)($ahead + $behind)(ansi reset)"
+      $"(ansi cyan)($ahead + $behind)(ansi reset)"
     }
   }
-  let prompt = $branch + $ahead_behind # + $conflicts + $state
+  let counts_added_staged = match $stat.idx_added_staged { 0 => "", _ => $"+($stat.idx_added_staged)"}
+  let counts_modified_staged = match $stat.idx_modified_staged { 0 => "", _ => $"!($stat.idx_modified_staged)"}
+  let counts_deleted_staged = match $stat.idx_deleted_staged { 0 => "", _ => $"-($stat.idx_deleted_staged)"}
+  let counts_staged = [
+    $counts_added_staged,
+    $counts_modified_staged,
+    $counts_deleted_staged,
+  ] | str join
+  let counts_staged = match $counts_staged {
+    "" => "",
+    _ => $"(ansi green)($counts_staged)(ansi reset)",
+  }
+  let counts_untracked = match $stat.wt_untracked { 0 => "", _ => $"?($stat.wt_untracked)"}
+  let counts_modified = match $stat.wt_modified { 0 => "", _ => $"!($stat.wt_modified)"}
+  let counts_deleted = match $stat.wt_deleted { 0 => "", _ => $"-($stat.wt_deleted)"}
+  let counts_renamed = match $stat.wt_renamed { 0 => "", _ => $"»($stat.wt_renamed)"}
+  let counts_type_changed = match $stat.wt_type_changed { 0 => "", _ => $"?($stat.wt_type_changed)"}
+  let counts_wt = [
+    $counts_untracked,
+    $counts_modified,
+    $counts_deleted,
+    $counts_renamed,
+    $counts_type_changed,
+  ] | str join
+  let counts_wt = match $counts_wt {
+    "" => "",
+    _ => $"(ansi yellow)($counts_wt)(ansi reset)",
+  }
+  let stashes = match $stat.stashes {
+    0 => "",
+    _ => $"(ansi blue)($stat.stashes)(ansi reset)"
+  }
+  let conflicts = match $stat.conflicts {
+    0 => "",
+    _ => $"(ansi red)($conflict_icon) ($stat.conflicts)(ansi reset)"
+  }
+  let state = match ($stat.state) {
+    "clean" => "",
+    _ => {
+      $"(ansi yellow_bold)($stat.state)(ansi reset)"
+    },
+  }
+  let prompt = [
+    $branch,
+    $ahead_behind,
+    $counts_staged,
+    $counts_wt,
+    $stashes,
+    $conflicts,
+    $state,
+  ] | where { $in | is-not-empty } | str join " "
 
   # Return the composed prompt string
   cache_prompt $prompt
