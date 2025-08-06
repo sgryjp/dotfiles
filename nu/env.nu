@@ -77,6 +77,7 @@ def create_gstat_segment [] {
   let branch_icon = "\u{e725}" # nf-dev-git_branch
   let rebase_icon = "\u{e728}" # nf-dev-git_compare
   let conflict_icon = "\u{ea6c}" # nf-cod-warning
+  let stash_icon = "\u{f51e}" # nf-oct-stack
   let branch = match $stat.branch {
     "" => "",
     _ => $"(ansi purple)($branch_icon) ($stat.branch)(ansi reset)"
@@ -119,7 +120,7 @@ def create_gstat_segment [] {
   }
   let stashes = match $stat.stashes {
     0 => "",
-    _ => $"(ansi blue)($stat.stashes)(ansi reset)"
+    _ => $"(ansi default_dimmed)($stash_icon) ($stat.stashes)(ansi reset)"
   }
   let conflicts = match $stat.conflicts {
     0 => "",
