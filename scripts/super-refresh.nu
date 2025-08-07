@@ -12,7 +12,8 @@ def main [] {
 }
 
 def refresh-scoop [] {
-  if ((do { powershell scoop help } | complete | get exit_code) != 0) {
+  if ((which powershell | is-not-empty)
+    and (do { powershell scoop help } | complete | get exit_code) != 0) {
     log info "scoop update --all"
     powershell -Command { sooop update --all }
     log info "scoop cleanup --all"
@@ -59,7 +60,7 @@ def refresh-uv [] {
 }
 
 def clean-dotcache [] {
-  let cache_dir = ($env | get -i "XDG_CACHE_HOME")
+  let cache_dir = ($env | get -o "XDG_CACHE_HOME")
   if $cache_dir != null {
     let target = $cache_dir | path join '*'
     log info $"rm -rf ($target)"
@@ -68,7 +69,7 @@ def clean-dotcache [] {
 }
 
 def clean-tempfiles [] {
-  let temp_dir = ($env | get -i "TEMP")
+  let temp_dir = ($env | get -o "TEMP")
   if $temp_dir != null {
     let target = $temp_dir | path join '*'
     log info $"rm -rf ($target)"
