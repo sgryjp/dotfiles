@@ -85,8 +85,8 @@ def create_gstat_segment [] {
   let ahead_behind = match ($stat.ahead + $stat.behind) {
     0 => "",
     _ => {
-      let ahead = match $stat.ahead { 0 => "", _ => $"↓($stat.ahead)" }
-      let behind = match $stat.behind { 0 => "", _ => $"↑($stat.behind)" }
+      let ahead = match $stat.ahead { 0 => "", _ => $"↑($stat.ahead)" }
+      let behind = match $stat.behind { 0 => "", _ => $"↓($stat.behind)" }
       $"(ansi cyan)($ahead + $behind)(ansi reset)"
     }
   }
