@@ -90,39 +90,22 @@ def create_gstat_segment [] {
       $"(ansi cyan)($ahead + $behind)(ansi reset)"
     }
   }
-  let counts_added_staged = match $stat.idx_added_staged { 0 => "", _ => $"+($stat.idx_added_staged)"}
-  let counts_modified_staged = match $stat.idx_modified_staged { 0 => "", _ => $"!($stat.idx_modified_staged)"}
-  let counts_deleted_staged = match $stat.idx_deleted_staged { 0 => "", _ => $"-($stat.idx_deleted_staged)"}
-  let counts_staged = [
-    $counts_added_staged,
-    $counts_modified_staged,
-    $counts_deleted_staged,
-  ] | str join
-  let counts_staged = match $counts_staged {
+  let count_staged = $stat.idx_added_staged + $stat.idx_modified_staged + $stat.idx_deleted_staged;
+  let count_staged = match $count_staged {
     "" => "",
-    _ => $"(ansi green)($counts_staged)(ansi reset)",
+    _ => $"(ansi green)+($count_staged)(ansi reset)",
   }
-  let counts_untracked = match $stat.wt_untracked { 0 => "", _ => $"?($stat.wt_untracked)"}
-  let counts_modified = match $stat.wt_modified { 0 => "", _ => $"!($stat.wt_modified)"}
-  let counts_deleted = match $stat.wt_deleted { 0 => "", _ => $"-($stat.wt_deleted)"}
-  let counts_renamed = match $stat.wt_renamed { 0 => "", _ => $"»($stat.wt_renamed)"}
-  let counts_type_changed = match $stat.wt_type_changed { 0 => "", _ => $"?($stat.wt_type_changed)"}
-  let counts_wt = [
-    $counts_untracked,
-    $counts_modified,
-    $counts_deleted,
-    $counts_renamed,
-    $counts_type_changed,
-  ] | str join
-  let counts_wt = match $counts_wt {
+  let count_unstaged = $stat.wt_modified + $stat.wt_renamed + $stat.wt_deleted + $stat.wt_type_changed
+  let count_unstaged = match $count_unstaged {
     "" => "",
-    _ => $"(ansi yellow)($counts_wt)(ansi reset)",
+    _ => $"(ansi yellow)!($count_unstaged)(ansi reset)",
   }
+  let count_untracked = match $stat.wt_untracked { 0 => "", _ => $"?($stat.wt_untracked)"}
   let stashes = match $stat.stashes {
     0 => "",
     _ => $"(ansi default_dimmed)($stash_icon) ($stat.stashes)(ansi reset)"
   }
-  let conflicts = match $stat.conflicts {
+  let count_conflicts = match $stat.conflicts {
     0 => "",
     _ => $"(ansi red)($conflict_icon) ($stat.conflicts)(ansi reset)"
   }
@@ -135,10 +118,11 @@ def create_gstat_segment [] {
   let prompt = [
     $branch,
     $ahead_behind,
-    $counts_staged,
-    $counts_wt,
+    $count_conflicts,
+    $count_staged,
+    $count_unstaged,
+    $count_untracked,
     $stashes,
-    $conflicts,
     $state,
   ] | where { $in | is-not-empty } | str join " "
 
