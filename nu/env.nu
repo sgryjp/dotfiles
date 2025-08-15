@@ -82,12 +82,12 @@ def create_gstat_segment [] {
     "" => "",
     _ => $"(ansi purple)($branch_icon) ($stat.branch)(ansi reset)"
   }
-  let ahead_behind = match ($stat.ahead + $stat.behind) {
+  let behind_ahead = match ($stat.behind + $stat.ahead) {
     0 => "",
     _ => {
-      let ahead = match $stat.ahead { 0 => "", _ => $"↑($stat.ahead)" }
       let behind = match $stat.behind { 0 => "", _ => $"↓($stat.behind)" }
-      $"(ansi cyan)($ahead + $behind)(ansi reset)"
+      let ahead = match $stat.ahead { 0 => "", _ => $"↑($stat.ahead)" }
+      $"(ansi cyan)($behind + $ahead)(ansi reset)"
     }
   }
   let count_staged = $stat.idx_added_staged + $stat.idx_modified_staged + $stat.idx_deleted_staged;
@@ -117,7 +117,7 @@ def create_gstat_segment [] {
   }
   let prompt = [
     $branch,
-    $ahead_behind,
+    $behind_ahead,
     $count_conflicts,
     $count_staged,
     $count_unstaged,
