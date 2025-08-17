@@ -12,6 +12,22 @@ $env.NU_LIB_DIRS = [
 
 # -----------------------------------------------------------------------------
 # Prompt Customization
+let use_nerd_font_icon = true
+let prompt_icons = if $use_nerd_font_icon {{
+  branch: "\u{f418} " # nf-oct-git_branch
+  conflict: "\u{f421} " # nf-oct-alert
+  staged: "+" # nf-oct-file_diff
+  unstaged: "!"
+  stash: "\u{f51e} " # nf-oct-stack
+  merge_conflict: "\u{f47f} " # nf-oct-git_compare
+}} else {{
+  branch: ""
+  conflict: "~"
+  staged: "+"
+  unstaged: "!"
+  stash: "$"
+  merge_conflict: ""
+}}
 
 # Create in-memory database table to store cached prompt string
 def create_prompt_cache [] {
@@ -49,8 +65,28 @@ def create_last_error_segment [] {
     }
 }
 
+def rename_repo_state [] {
+  match $in {
+    "clean" => "Clean",
+    "merge" => "Merge",
+    "revert" => "Revert",
+    "revertsequence" => "RevertSequence",
+    "cherrypick" => "CherryPick",
+    "cherrypicksequence" => "CherryPickSequence",
+    "bisect" => "Bisect",
+    "rebase" => "Rebase",
+    "rebaseinteractive" => $"RebaseInteractive",
+    "rebasemerge" => "RebaseMerge",
+    "applymailbox" => "ApplyMailbox",
+    "applymailboxorrebase" => "ApplyMailboxOrRebase",
+    _ => _,
+  }
+}
+
 # Create prompt segment expressing Git repository information
 def create_gstat_segment [] {
+  let icons = $prompt_icons
+
   # Quit if gstat was not available.
   if (plugin list | where { $in.name == "gstat" } | is-empty) {
     return ""
@@ -74,13 +110,9 @@ def create_gstat_segment [] {
   }
 
   # Compose prompt string from the stat
-  let branch_icon = "\u{e725}" # nf-dev-git_branch
-  let rebase_icon = "\u{e728}" # nf-dev-git_compare
-  let conflict_icon = "\u{ea6c}" # nf-cod-warning
-  let stash_icon = "\u{f51e}" # nf-oct-stack
   let branch = match $stat.branch {
     "" => "",
-    _ => $"(ansi purple)($branch_icon) ($stat.branch)(ansi reset)"
+    _ => $"(ansi purple)($icons.branch)($stat.branch)(ansi reset)"
   }
   let behind_ahead = match ($stat.behind + $stat.ahead) {
     0 => "",
@@ -92,27 +124,27 @@ def create_gstat_segment [] {
   }
   let count_staged = $stat.idx_added_staged + $stat.idx_modified_staged + $stat.idx_deleted_staged;
   let count_staged = match $count_staged {
-    "" => "",
-    _ => $"(ansi green)+($count_staged)(ansi reset)",
+    0 => "",
+    _ => $"(ansi green)($icons.staged)($count_staged)(ansi reset)",
   }
   let count_unstaged = $stat.wt_modified + $stat.wt_renamed + $stat.wt_deleted + $stat.wt_type_changed
   let count_unstaged = match $count_unstaged {
-    "" => "",
+    0 => "",
     _ => $"(ansi yellow)!($count_unstaged)(ansi reset)",
   }
   let count_untracked = match $stat.wt_untracked { 0 => "", _ => $"?($stat.wt_untracked)"}
   let stashes = match $stat.stashes {
     0 => "",
-    _ => $"(ansi default_dimmed)($stash_icon) ($stat.stashes)(ansi reset)"
+    _ => $"(ansi default_dimmed)($icons.stash)($stat.stashes)(ansi reset)"
   }
   let count_conflicts = match $stat.conflicts {
     0 => "",
-    _ => $"(ansi red)($conflict_icon) ($stat.conflicts)(ansi reset)"
+    _ => $"(ansi red)($icons.conflict)($stat.conflicts)(ansi reset)"
   }
   let state = match ($stat.state) {
     "clean" => "",
     _ => {
-      $"(ansi yellow_bold)($stat.state)(ansi reset)"
+      $"(ansi yellow_reverse)($stat.state | rename_repo_state)(ansi reset)"
     },
   }
   let prompt = [
