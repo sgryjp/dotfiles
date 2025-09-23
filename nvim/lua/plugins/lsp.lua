@@ -1,5 +1,5 @@
 -- Setup plugins
-local ok1, lspconfig = pcall(require, "lspconfig")
+local ok1, _ = pcall(require, "lspconfig")
 local ok2, mason = pcall(require, "mason")
 local ok3, mason_lspconfig = pcall(require, "mason-lspconfig")
 if not (ok1 and ok2 and ok3) then
@@ -37,5 +37,4 @@ mason_lspconfig.setup({})
 vim.lsp.enable("nushell")
 
 -- Setup LSP servers independently from Mason
-lspconfig["nushell"].setup({})
-lspconfig["ruff"].setup({})
+vim.lsp.config("nushell", {})
