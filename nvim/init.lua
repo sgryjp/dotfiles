@@ -32,7 +32,7 @@ local specs = {
   { source = "kyazdani42/nvim-web-devicons" },
   { source = "nvim-lua/plenary.nvim" },
   { source = "neovim/nvim-lspconfig", _require = "lsp" },
-  { source = "nvim-treesitter/nvim-treesitter" },
+  { source = "nvim-treesitter/nvim-treesitter", _require = "nvim-treesitter" },
   { source = "nvim-treesitter/nvim-treesitter-textobjects" },
   { source = "mason-org/mason.nvim", _opts = {} },
   { source = "mason-org/mason-lspconfig.nvim" },
