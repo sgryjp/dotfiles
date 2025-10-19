@@ -102,7 +102,9 @@ def "nu-complete git available upstream" [] {
 }
 
 def "nu-complete git remotes" [] {
-  ^git remote | lines | each { |line| $line | str trim }
+  ^git remote --verbose
+  | parse --regex '(?<value>\S+)\s+(?<description>\S+)'
+  | uniq-by value # Deduplicate where fetch and push remotes are the same
 }
 
 def "nu-complete git log" [] {
@@ -785,7 +787,7 @@ export extern "git worktree" [
 # create a new working tree
 export extern "git worktree add" [
   path: path            # directory to clone the branch
-  branch: string@"nu-complete git available upstream" # Branch to clone
+  branch?: string@"nu-complete git available upstream" # Branch to clone
   --help(-h)            # display the help message for this command
   --force(-f)           # checkout <branch> even if already checked out in other worktree
   -b                    # create a new branch
