@@ -65,14 +65,6 @@ else
       style = "minimal",
     },
   })
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
-    title = " Hover ",
-  })
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = "rounded",
-    title = " Signature Help ",
-  })
 end
 if vim.version.ge(nvim_version, { 0, 11 }) then
   vim.diagnostic.config({
