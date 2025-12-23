@@ -1,8 +1,7 @@
 -- Setup plugins
-local ok1, _ = pcall(require, "lspconfig")
-local ok2, mason = pcall(require, "mason")
-local ok3, mason_lspconfig = pcall(require, "mason-lspconfig")
-if not (ok1 and ok2 and ok3) then
+local ok1, mason = pcall(require, "mason")
+local ok2, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not (ok1 and ok2) then
   return
 end
 
