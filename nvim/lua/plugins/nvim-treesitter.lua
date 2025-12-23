@@ -22,28 +22,21 @@ configs.setup({
       set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
         ["]f"] = { query = "@function.outer", desc = "Next function" },
-        ["]]"] = { query = "@class.outer", desc = "Next class start" },
-        --
-        -- You can use regex matching (i.e. lua pattern) and/or pass a list in a "query" key to group multiple queires.
-        ["]o"] = "@loop.*",
-        -- ["]o"] = { query = { "@loop.inner", "@loop.outer" } }
-        --
-        -- You can pass a query group to use query from `queries/<lang>/<query_group>.scm file in your runtime path.
-        -- Below example nvim-treesitter's `locals.scm` and `folds.scm`. They also provide highlights.scm and indent.scm.
-        ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
-        ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+        ["]c"] = { query = "@class.outer", desc = "Next class" },
+        ["]]"] = { query = { "@function.outer", "@class.outer" }, desc = "Next class or function" },
       },
       goto_next_end = {
-        ["]M"] = "@function.outer",
-        ["]["] = "@class.outer",
+        ["]F"] = "@function.outer",
+        ["]C"] = "@class.outer",
       },
       goto_previous_start = {
-        ["[m"] = "@function.outer",
-        ["[["] = "@class.outer",
+        ["]f"] = { query = "@function.outer", desc = "Previous function" },
+        ["]c"] = { query = "@class.outer", desc = "Previous class" },
+        ["]]"] = { query = { "@function.outer", "@class.outer" }, desc = "Previous class or function" },
       },
       goto_previous_end = {
-        ["[M"] = "@function.outer",
-        ["[]"] = "@class.outer",
+        ["[F"] = "@function.outer",
+        ["[C"] = "@class.outer",
       },
     },
   },
