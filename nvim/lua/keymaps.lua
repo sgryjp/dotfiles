@@ -17,9 +17,9 @@ local function vscode_nmap(lhs, rhs) map("n", lhs, string.format(":call VSCodeNo
 -- Close auxiliary windows by q or <C-[> in normal mode, but only for auxiliary windows.
 local function setup_close_keymaps_for_auxiliary_window()
   local aux_filetypes = {
-    "qf",      -- quickfix/location list
-    "help",    -- help windows
-    "oil",     -- oil.nvim file browser
+    "qf", -- quickfix/location list
+    "help", -- help windows
+    "oil", -- oil.nvim file browser
   }
 
   vim.api.nvim_create_autocmd("FileType", {

@@ -4,8 +4,8 @@ if not ok then
 end
 
 aerial.setup({
-    keymaps = {
-        -- Allow closing by Esc too
-        ["<C-[>"] = "actions.close",
-    }
+  keymaps = {
+    -- Allow closing by Esc too
+    ["<C-[>"] = "actions.close",
+  },
 })
