@@ -79,7 +79,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.wrapscan = false
 
--- Indentation
+-- Indentation and TextWidth
 vim.opt.shiftround = true
 set_indent(4, true)
 
@@ -114,3 +114,11 @@ vim.opt.wildignore = {
   "*.swp",
   "*~",
 }
+-- Force enable syntax highlight for .razor files
+-- (it is disabled by default for unknown reason as of 2025-12-23)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "razor",
+  callback = function()
+    vim.scheduyle(function() vim.cmd("TSBufEnable highlight") end)
+  end,
+})
