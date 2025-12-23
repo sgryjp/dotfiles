@@ -48,6 +48,7 @@ local specs = {
   { source = "stevearc/conform.nvim", _require = "conform" },
   { source = "saghen/blink.cmp", checkout = "v1.8.0", _opts = { signature = { enabled = true } } },
   { source = "akinsho/toggleterm.nvim", _require = "toggleterm" },
+  { source = "hat0uma/csvview.nvim", _opts = {} },
 }
 
 -- Load plugins in declared order

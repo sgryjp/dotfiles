@@ -118,7 +118,10 @@ vim.opt.wildignore = {
 -- (it is disabled by default for unknown reason as of 2025-12-23)
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "razor",
-  callback = function()
-    vim.scheduyle(function() vim.cmd("TSBufEnable highlight") end)
-  end,
+  command = "TSBufEnable highlight",
+})
+-- Enable CSV view for .csv files automatically
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "csv",
+  command = "CsvViewEnable",
 })
