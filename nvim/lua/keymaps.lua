@@ -33,7 +33,13 @@ end
 
 setup_close_keymaps_for_auxiliary_window()
 
--- Buffer management
+-- Toggle between the dark theme and the light theme
+nmap("\\b", ':lua vim.o.bg = vim.o.bg == "dark" and "light" or "dark"<CR>', { desc = "Toggle dark/light" })
+
+-- Toggle word wrapping
+nmap("\\w", ":setlocal wrap!<CR>", { desc = "Toggle wrap" })
+
+-- Manage buffers
 if not vim.g.vscode then
   nmap("]b", ":bnext<CR>", { desc = "Next buffer" })
   nmap("[b", ":bprevious<CR>", { desc = "Previous buffer" })
@@ -70,23 +76,40 @@ else
   nmap("gr", ":lua vim.lsp.buf.references()<CR>", { desc = "Go to references" })
 end
 
--- Inspection
+-- Inspect
 if vim.g.vscode then
   vscode_nmap("K", "editor.action.showHover")
 else
   nmap("K", ":lua vim.lsp.buf.hover()<CR>", { desc = "Show hover" })
 end
 
--- Refactoring (and formatting)
+-- Execute code actions
 if vim.g.vscode then
-  vscode_nmap([[\r]], "editor.action.rename")
-  vscode_nmap([[\a]], "editor.action.quickFix")
-  vscode_nmap([[\f]], "editor.action.formatDocument")
+  vscode_nmap("\\r", "editor.action.rename")
+  vscode_nmap("\\a", "editor.action.quickFix")
+  vscode_nmap("\\f", "editor.action.formatDocument")
 else
-  nmap([[\r]], ":lua vim.lsp.buf.rename()<CR>", { desc = "Rename symbol" })
-  nmap([[\a]], ":lua vim.lsp.buf.code_action()<CR>", { desc = "Exec code action" })
-  nmap([[\f]], ":lua require'conform'.format({lsp_fallback = true})<CR>", { desc = "Format document" })
+  nmap("\\r", ":lua vim.lsp.buf.rename()<CR>", { desc = "Rename symbol" })
+  nmap("\\a", ":lua vim.lsp.buf.code_action()<CR>", { desc = "Exec code action" })
+  nmap("\\f", ":lua require'conform'.format({lsp_fallback = true})<CR>", { desc = "Format document" })
 end
+
+-- Move forward/backward till next non-wsp at same the column
+-- https://vi.stackexchange.com/a/693
+nmap("gJ", ":call search('\\%' . virtcol('.') . 'v\\S', 'W')<CR>", { desc = "Go down to next non-WSP" })
+nmap("gK", ":call search('\\%' . virtcol('.') . 'v\\S', 'bW')<CR>", { desc = "Go up to previous non-WSP" })
+
+-- Move between windows
+nmap("<C-h>", "<C-w>h", { desc = "Focus left" })
+nmap("<C-j>", "<C-w>j", { desc = "Focus down" })
+nmap("<C-k>", "<C-w>k", { desc = "Focus up" })
+nmap("<C-l>", "<C-w>l", { desc = "Focus right" })
+tmap("<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+tmap("<C-[>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+tmap("<C-h>", "<C-\\><C-n><C-w>h", { desc = "Focus left" })
+tmap("<C-j>", "<C-\\><C-n><C-w>j", { desc = "Focus down" })
+tmap("<C-k>", "<C-\\><C-n><C-w>k", { desc = "Focus up" })
+tmap("<C-l>", "<C-\\><C-n><C-w>l", { desc = "Focus right" })
 
 -- Auxiliary views
 if vim.g.vscode then
@@ -118,24 +141,3 @@ end
 
 -- File explorer (oil.nvim)
 nmap("-", ":Oil<CR>")
-
--- Moves between windows
-nmap("<C-h>", "<C-w>h", { desc = "Focus left" })
-nmap("<C-j>", "<C-w>j", { desc = "Focus down" })
-nmap("<C-k>", "<C-w>k", { desc = "Focus up" })
-nmap("<C-l>", "<C-w>l", { desc = "Focus right" })
-tmap("<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-tmap("<C-[>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-tmap("<C-h>", "<C-\\><C-n><C-w>h", { desc = "Focus left" })
-tmap("<C-j>", "<C-\\><C-n><C-w>j", { desc = "Focus down" })
-tmap("<C-k>", "<C-\\><C-n><C-w>k", { desc = "Focus up" })
-tmap("<C-l>", "<C-\\><C-n><C-w>l", { desc = "Focus right" })
-
--- Toggling
-nmap("\\b", ':lua vim.o.bg = vim.o.bg == "dark" and "light" or "dark"<CR>', { desc = "Toggle dark/light" })
-nmap("\\w", ":setlocal wrap!<CR>", { desc = "Toggle wrap" })
-
--- Move forward/backward till next non-wsp at same the column
--- https://vi.stackexchange.com/a/693
-nmap("gJ", ":call search('\\%' . virtcol('.') . 'v\\S', 'W')<CR>", { desc = "Go down to next non-WSP" })
-nmap("gK", ":call search('\\%' . virtcol('.') . 'v\\S', 'bW')<CR>", { desc = "Go up to previous non-WSP" })
