@@ -40,6 +40,8 @@ local specs = {
   { source = "catppuccin/nvim", name = "catpuccin" },
   { source = "folke/snacks.nvim", _require = "snacks" },
 
+  { source = "nanozuki/tabby.nvim", _opts = {} },
+  { source = "backdround/tabscope.nvim", _opts = {} },
   { source = "stevearc/quicker.nvim", _opts = {} },
   { source = "tpope/vim-fugitive" },
   { source = "elkasztano/nushell-syntax-vim" },

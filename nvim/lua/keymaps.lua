@@ -99,6 +99,10 @@ end
 nmap("gJ", ":call search('\\%' . virtcol('.') . 'v\\S', 'W')<CR>", { desc = "Go down to next non-WSP" })
 nmap("gK", ":call search('\\%' . virtcol('.') . 'v\\S', 'bW')<CR>", { desc = "Go up to previous non-WSP" })
 
+-- Move between tabs
+nmap("<A-,>", ":tabprevious<CR>", { desc = "Go to previous tab" })
+nmap("<A-.>", ":tabnext<CR>", { desc = "Go to next tab" })
+
 -- Move between windows
 nmap("<C-h>", "<C-w>h", { desc = "Focus left" })
 nmap("<C-j>", "<C-w>j", { desc = "Focus down" })
