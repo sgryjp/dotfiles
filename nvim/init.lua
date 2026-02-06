@@ -47,7 +47,7 @@ local specs = {
   { source = "stevearc/aerial.nvim", _require = "aerial" },
   { source = "stevearc/oil.nvim", _opts = {} },
   { source = "stevearc/conform.nvim", _require = "conform" },
-  { source = "saghen/blink.cmp", checkout = "v1.8.0", _opts = { signature = { enabled = true } } },
+  { source = "saghen/blink.cmp", checkout = "v1.9.1", _opts = { signature = { enabled = true } } },
   { source = "akinsho/toggleterm.nvim", _require = "toggleterm" },
   { source = "hat0uma/csvview.nvim", _opts = {} },
 }
