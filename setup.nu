@@ -101,6 +101,7 @@ make_link ~/.vim/autoload/plug.vim  ($env.FILE_PWD | path join vimfiles autoload
 make_dir $"($env.XDG_CONFIG_HOME)/nvim/autoload"
 make_dir $"($env.XDG_CONFIG_HOME)/nvim/lua/plugins"
 make_link $"($env.XDG_CONFIG_HOME)/nvim/init.lua"          $"($env.FILE_PWD)/nvim/init.lua"
+make_link $"($env.XDG_CONFIG_HOME)/nvim/lua/plugins.lua"   $"($env.FILE_PWD)/nvim/lua/plugins.lua"
 make_link $"($env.XDG_CONFIG_HOME)/nvim/lua/keymaps.lua"   $"($env.FILE_PWD)/nvim/lua/keymaps.lua"
 make_link $"($env.XDG_CONFIG_HOME)/nvim/lua/options.lua"   $"($env.FILE_PWD)/nvim/lua/options.lua"
 make_link $"($env.XDG_CONFIG_HOME)/nvim/autoload/plug.vim" $"($env.FILE_PWD)/vimfiles/autoload/plug.vim"
