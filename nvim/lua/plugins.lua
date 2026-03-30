@@ -11,8 +11,6 @@ vim.pack.add({
   gh("mason-org/mason-lspconfig.nvim"),
   { src = gh("catppuccin/nvim"), name = "catpuccin" },
   gh("folke/snacks.nvim"),
-  gh("nanozuki/tabby.nvim"),
-  gh("backdround/tabscope.nvim"),
   gh("stevearc/quicker.nvim"),
   gh("tpope/vim-fugitive"),
   gh("elkasztano/nushell-syntax-vim"),
@@ -35,8 +33,6 @@ require("plugins/conform")
 require("plugins/toggleterm")
 
 -- Configure plugins (simple setup calls)
-require("tabby").setup({})
-require("tabscope").setup({})
 require("quicker").setup({})
 require("oil").setup({})
 require("blink.cmp").setup({ signature = { enabled = true } })
