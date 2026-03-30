@@ -11,6 +11,7 @@ conform.setup({
     json = { "prettierd", "prettier", stop_after_first = true },
     lua = { "stylua" },
     markdown = { "prettierd", "prettier", stop_after_first = true },
+    nu = { "nufmt" },
     python = { "ruff_format" },
     rust = { "trim_whitespace", "rustfmt", lsp_format = "fallback" },
     sh = { "shfmt" },
