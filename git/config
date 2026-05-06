@@ -14,6 +14,10 @@
 	ui = true
 [delta]
 	side-by-side = true
+[difftool "nvim"]
+	cmd = nvim -c \"packadd nvim.difftool\" -d \"$LOCAL\" \"$REMOTE\"
+[diff]
+	tool = nvim
 [fetch]
 	prune = true
 [init]
