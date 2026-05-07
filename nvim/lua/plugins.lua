@@ -2,12 +2,14 @@ local gh = function(x) return "https://github.com/" .. x end
 
 -- Dependency packages
 vim.pack.add({
-  gh("echasnovski/mini.nvim"), -- mini.icons for oil, snacks
+  gh("echasnovski/mini.nvim"), -- mini.icons for oil, snacks, render-markdown
   gh("kyazdani42/nvim-web-devicons"), -- for aerial, oil
+  gh("nvim-treesitter/nvim-treesitter"), -- render-markdown
 })
 
 -- Non-dependency packages
 vim.pack.add({
+  gh("MeanderingProgrammer/render-markdown.nvim"),
   gh("nvim-lua/plenary.nvim"),
   gh("neovim/nvim-lspconfig"),
   gh("seblyng/roslyn.nvim"),
