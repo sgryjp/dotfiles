@@ -33,7 +33,6 @@ vim.pack.add({
 require("plugins/mini")
 require("plugins/lsp")
 require("plugins/roslyn")
-require("plugins/mason")
 require("plugins/snacks")
 require("plugins/aerial")
 require("plugins/conform")
