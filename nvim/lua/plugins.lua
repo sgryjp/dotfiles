@@ -24,7 +24,7 @@ vim.pack.add({
   gh("stevearc/aerial.nvim"),
   gh("stevearc/oil.nvim"),
   gh("stevearc/conform.nvim"),
-  { src = gh("saghen/blink.cmp"), version = "v1.9.1" },
+  { src = gh("saghen/blink.cmp"), version = vim.version.range("1.*") },
   gh("akinsho/toggleterm.nvim"),
   gh("hat0uma/csvview.nvim"),
 })
