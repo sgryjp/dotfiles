@@ -62,8 +62,8 @@ if command -v fzf >/dev/null; then
     export FZF_DEFAULT_OPTS="--height 40% --inline-info"
     export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
-    [ -n "$BASH_VERSION" ] && [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-    [ -n "$ZSH_VERSION" ] && [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+    [ -n "$BASH_VERSION" ] && eval "$(fzf --bash)"
+    [ -n "$ZSH_VERSION" ] && source <(fzf --zsh)
 fi
 
 # Other settings for interactive use
