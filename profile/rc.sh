@@ -56,11 +56,17 @@ fi
 
 # fzf
 if command -v fzf >/dev/null; then
-    if command -v rg >/dev/null; then
-        export FZF_DEFAULT_COMMAND="rg --files --follow"
-    fi
-    export FZF_DEFAULT_OPTS="--height 40% --inline-info"
-    export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
+    # https://junegunn.github.io/fzf/shell-integration/
+    export FZF_CTRL_T_OPTS="
+    --walker-skip .git,node_modules,target
+    --preview 'bat -n --color=always {}'
+    --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
+    # if command -v rg >/dev/null; then
+    #     export FZF_DEFAULT_COMMAND="rg --files --follow"
+    # fi
+    # export FZF_DEFAULT_OPTS="--height 40% --inline-info"
+    # export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
     [ -n "$BASH_VERSION" ] && eval "$(fzf --bash)"
     [ -n "$ZSH_VERSION" ] && source <(fzf --zsh)
