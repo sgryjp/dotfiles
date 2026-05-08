@@ -109,6 +109,22 @@ insert_source_line() {
     fi
 }
 
+#######################################
+# Copy an agent file into a tool's agents directory, if the tool's
+# config directory already exists.
+#
+# Arguments:
+#   1. Tool config directory (e.g. ~/.config/opencode)
+#   2. Source file path
+#   3. Destination filename (basename only)
+#######################################
+copy_agent() {
+    if [ -d "$1" ]; then
+        mkdir -pv "$1/agents"
+        cp -v "$2" "$1/agents/$3"
+    fi
+}
+
 # Profile
 [ -e ~/.bashrc ] &&         insert_source_line $SCRIPT_PATH/profile/rc.sh       ~/.bashrc
 [ -e ~/.zshrc ] &&          insert_source_line $SCRIPT_PATH/profile/rc.sh       ~/.zshrc
@@ -164,6 +180,12 @@ for f in $SCRIPT_PATH/nvim/lua/plugins/*; do
         makelink "$f" ~/.config/nvim/lua/plugins/$basename
     fi
 done
+
+# OpenCode agents
+copy_agent ~/.config/opencode $SCRIPT_PATH/agents/git-committer.md git-committer.md
+
+# GitHub Copilot CLI agents
+copy_agent ~/.copilot $SCRIPT_PATH/agents/git-committer.md git-committer.agent.md
 
 # Remove dead symlinks
 for link in $(find ~/.config/nvim -type l); do
