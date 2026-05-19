@@ -187,6 +187,15 @@ copy_agent ~/.config/opencode $SCRIPT_PATH/agents/git-committer.md git-committer
 # GitHub Copilot CLI agents
 copy_agent ~/.copilot $SCRIPT_PATH/agents/git-committer.md git-committer.agent.md
 
+# Prompt Templates for Pi Coding Agent
+mkdir -pv ~/.pi/agent/prompts
+for f in "$SCRIPT_PATH"/prompts/*; do
+    if [ -f "$f" ]; then
+        basename=$(basename "$f")
+        cp -v "$f" ~/.pi/agent/prompts/"$basename"
+    fi
+done
+
 # Remove dead symlinks
 for link in $(find ~/.config/nvim -type l); do
     if [ ! -e $link ]; then

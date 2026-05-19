@@ -125,6 +125,13 @@ copy_agent $"($env.HOME)/.config/opencode" ($env.FILE_PWD | path join agents git
 # GitHub Copilot CLI agents
 copy_agent $"($env.HOME)/.copilot" ($env.FILE_PWD | path join agents git-committer.md) git-committer.agent.md
 
+# Prompt Templates
+make_dir $"($env.HOME)/.pi/agent/prompts"
+glob ($env.FILE_PWD | path join prompts *) | each {|file|
+  let basename = $file | path basename
+  cp $file ($"($env.HOME)/.pi/agent/prompts/($basename)")
+}
+
 # Remove dead symlinks
 ls ($"($env.XDG_CONFIG_HOME)/nvim/**/*" | into glob) | where {|it| $it.type == 'symlink'} | each {|file|
   let target = $file.name | path expand
