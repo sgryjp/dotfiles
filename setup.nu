@@ -23,8 +23,10 @@ if (which ln | is-empty) {
 
 def make_dir [path] {
   let path = $path | path expand
-  log info $"mkdir ($path)"
-  mkdir $path
+  if (not ($path | path exists)) {
+    log info $"mkdir ($path)"
+    mkdir $path
+  }
 }
 
 def copy_agent [config_dir, src, dest_name] {
