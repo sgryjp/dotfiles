@@ -5,7 +5,18 @@ if not (ok1 and ok2) then
   return
 end
 
+-- Enable LSP servers
+mason.setup({})
+mason_lspconfig.setup({})
+vim.lsp.enable("bashls")
+vim.lsp.enable("jsonls")
+vim.lsp.enable("lua_ls")
+vim.lsp.enable("nushell")
+vim.lsp.enable("pyrefly")
+vim.lsp.enable("yamlls")
+
 -- Set default configuration for LSP clients
+vim.lsp.config("nushell", {})
 vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
@@ -29,11 +40,3 @@ vim.lsp.config("typos_ls", {
     diagnosticSeverity = "hint",
   },
 })
-
--- Enable LSP servers
-mason.setup({})
-mason_lspconfig.setup({})
-vim.lsp.enable("nushell")
-
--- Setup LSP servers independently from Mason
-vim.lsp.config("nushell", {})
