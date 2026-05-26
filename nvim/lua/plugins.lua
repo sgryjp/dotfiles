@@ -13,7 +13,6 @@ vim.pack.add({
   gh("nvim-lua/plenary.nvim"),
   gh("neovim/nvim-lspconfig"),
   gh("seblyng/roslyn.nvim"),
-  gh("nvim-treesitter/nvim-treesitter"),
   gh("mason-org/mason.nvim"),
   gh("mason-org/mason-lspconfig.nvim"),
   { src = gh("catppuccin/nvim"), name = "catpuccin" },
