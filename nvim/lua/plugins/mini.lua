@@ -47,6 +47,9 @@ if not vim.g.vscode then
       { mode = "n", keys = "]" },
       -- gitsigns
       { mode = "n", keys = "<C-g>" },
+      -- mini.surround
+      { mode = "n", keys = "s" },
+      { mode = "x", keys = "s" },
     },
     clues = {
       clue.gen_clues.builtin_completion(),
@@ -55,6 +58,15 @@ if not vim.g.vscode then
       clue.gen_clues.registers(),
       clue.gen_clues.windows(),
       clue.gen_clues.z(),
+      -- mini.surround
+      { mode = "n", keys = "sa", desc = "Add surrounding" },
+      { mode = "n", keys = "sd", desc = "Delete surrounding" },
+      { mode = "n", keys = "sr", desc = "Replace surrounding" },
+      { mode = "n", keys = "sf", desc = "Find surrounding (right)" },
+      { mode = "n", keys = "sF", desc = "Find surrounding (left)" },
+      { mode = "n", keys = "sh", desc = "Highlight surrounding" },
+      { mode = "n", keys = "sn", desc = "Update n_lines" },
+      { mode = "x", keys = "sa", desc = "Add surrounding" },
     },
   })
 
