@@ -1,5 +1,10 @@
 local gh = function(x) return "https://github.com/" .. x end
 
+-- Optional buit-in packages
+if vim.version.range("0.12"):has(vim.version()) then
+  vim.cmd("packadd nvim.difftool")
+end
+
 -- Dependency packages
 vim.pack.add({
   gh("echasnovski/mini.nvim"), -- mini.icons for oil, snacks, render-markdown
