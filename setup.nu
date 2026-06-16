@@ -122,16 +122,16 @@ ls $"($env.FILE_PWD)/nvim/lua/plugins" | each {|ent|
 }
 
 # OpenCode agents
-copy_agent $"($env.HOME)/.config/opencode" ($env.FILE_PWD | path join agents git-committer.md) git-committer.md
+copy_agent $"($env.XDG_CONFIG_HOME)/opencode" ($env.FILE_PWD | path join agents git-committer.md) git-committer.md
 
 # GitHub Copilot CLI agents
-copy_agent $"($env.HOME)/.copilot" ($env.FILE_PWD | path join agents git-committer.md) git-committer.agent.md
+copy_agent $"($homedir)/.copilot" ($env.FILE_PWD | path join agents git-committer.md) git-committer.agent.md
 
 # Prompt Templates
-make_dir $"($env.HOME)/.pi/agent/prompts"
+make_dir $"($homedir)/.pi/agent/prompts"
 glob ($env.FILE_PWD | path join prompts *) | each {|file|
   let basename = $file | path basename
-  cp $file ($"($env.HOME)/.pi/agent/prompts/($basename)")
+  cp $file ($"($homedir)/.pi/agent/prompts/($basename)")
 }
 
 # Remove dead symlinks
