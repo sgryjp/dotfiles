@@ -129,9 +129,9 @@ copy_agent $"($homedir)/.copilot" ($env.FILE_PWD | path join agents git-committe
 
 # Prompt Templates
 make_dir $"($homedir)/.pi/agent/prompts"
-glob ($env.FILE_PWD | path join prompts *) | each {|file|
-  let basename = $file | path basename
-  cp $file ($"($homedir)/.pi/agent/prompts/($basename)")
+ls ($env.FILE_PWD | path join prompts) | each {|file|
+  let basename = $file.name | path basename
+  cp $file.name ($"($homedir)/.pi/agent/prompts/($basename)")
 }
 
 # Remove dead symlinks
