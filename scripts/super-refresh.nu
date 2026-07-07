@@ -1,5 +1,5 @@
 #!/usr/bin/env nu
-use std log
+use std/log
 
 def main [] {
   refresh-scoop
