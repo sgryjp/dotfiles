@@ -58,3 +58,4 @@ alias gs = git status --short --branch --ahead-behind
 source custom-completions/curl-completions.nu
 source custom-completions/docker-completions.nu
 source custom-completions/git-completions.nu
+source custom-completions/rg-completions.nu
