@@ -95,11 +95,6 @@ set_indent_ft(2, true, indent_group, {
   "typescript",
   "typescriptreact",
 })
-vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("textwidth", { clear = true }),
-  pattern = "python",
-  callback = function() vim.opt.textwidth = 88 end,
-})
 
 -- Misc
 vim.opt.diffopt = "linematch:60,filler,closeoff"
