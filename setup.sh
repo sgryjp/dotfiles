@@ -23,7 +23,7 @@ canonicalize() {
             echo "error: too many recursion" >&2
             return 1
         fi
-        _COUNT=$((_COUNT + 1))
+        _COUNT=$((_COUNT - 1))
     done
 
     CANONICALIZED=$(cd "$_DIRNAME" && pwd -P)/$_BASENAME
