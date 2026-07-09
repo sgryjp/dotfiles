@@ -1,5 +1,5 @@
 #!/bin/sh
-SCRIPT_PATH=$(cd $(dirname $0) && pwd -P)
+SCRIPT_PATH=$(cd "$(dirname "$0")" && pwd -P)
 
 #######################################
 # Resolve canonicalized path of a given target.
@@ -11,22 +11,22 @@ SCRIPT_PATH=$(cd $(dirname $0) && pwd -P)
 #######################################
 canonicalize() {
     _COUNT=100
-    _DIRNAME=$(dirname $1)
-    _BASENAME=$(basename $1)
+    _DIRNAME=$(dirname "$1")
+    _BASENAME=$(basename "$1")
 
     while test -L "$_DIRNAME/$_BASENAME"; do
         _TARGET=$(readlink "$_DIRNAME/$_BASENAME")
         _DIRNAME=$(dirname "$_TARGET")
         _BASENAME=$(basename "$_TARGET")
 
-        if test $_COUNT -le 0; then
+        if test "$_COUNT" -le 0; then
             echo "error: too many recursion" >&2
             return 1
         fi
-        _COUNT=$(expr $_COUNT + 1)
+        _COUNT=$((_COUNT - 1))
     done
 
-    CANONICALIZED=$(cd $_DIRNAME && pwd -P)/$_BASENAME
+    CANONICALIZED=$(cd "$_DIRNAME" && pwd -P)/$_BASENAME
     unset _DIRNAME _BASENAME
 }
 
@@ -43,7 +43,7 @@ canonicalize() {
 #######################################
 makelink() {
     # Resolve canonicalized path of the target file
-    canonicalize $2
+    canonicalize "$2"
     if test $? -ne 0; then
          echo "error: failed to resolve canonicalized path of $2" >&2
          return 1
@@ -72,15 +72,15 @@ makelink() {
 #######################################
 insert_line() {
     # Ensure that the target file exists
-    if test ! -e $2; then
-        mkdir -pv $(dirname $2)
-        touch $2
+    if test ! -e "$2"; then
+        mkdir -pv "$(dirname "$2")"
+        touch "$2"
     fi
 
     # Insert a line to "source" the target file if not inserted yet
-    if test $(grep "$1" $2 | wc -l 2>/dev/null) = 0; then
+    if test "$(grep -c "$1" "$2")" = 0; then
         echo "Inserting \"$1\" into \"$2\""
-        echo "$1" >>$2
+        echo "$1" >>"$2"
     fi
 }
 
@@ -95,17 +95,19 @@ insert_line() {
 #######################################
 insert_source_line() {
     # Ensure that the target file exists
-    if test ! -e $2; then
-        mkdir -pv $(dirname $2)
-        touch $2
+    if test ! -e "$2"; then
+        mkdir -pv "$(dirname "$2")"
+        touch "$2"
     fi
 
     # Insert a line to "source" the target file
-    if test $(grep \"$1\" $2 | wc -l 2>/dev/null) = 0; then
+    if test "$(grep -c "\"$1\"" "$2")" = 0; then
         echo "Modifying \"$2\" to source \"$1\""
-        echo "if test -r \"$1\"; then" >>$2
-        echo "    source \"$1\"" >>$2
-        echo "fi" >>$2
+        {
+            echo "if test -r \"$1\"; then"
+            echo "    source \"$1\""
+            echo "fi"
+        } >> "$2"
     fi
 }
 
@@ -126,33 +128,33 @@ copy_agent() {
 }
 
 # Profile
-[ -e ~/.bashrc ] &&         insert_source_line $SCRIPT_PATH/profile/rc.sh       ~/.bashrc
-[ -e ~/.zshrc ] &&          insert_source_line $SCRIPT_PATH/profile/rc.sh       ~/.zshrc
-[ -e ~/.profile ] &&        insert_source_line $SCRIPT_PATH/profile/profile.sh  ~/.profile
-[ -e ~/.bash_profile ] &&   insert_source_line $SCRIPT_PATH/profile/profile.sh  ~/.bash_profile
-[ -e ~/.zprofile ] &&       insert_source_line $SCRIPT_PATH/profile/profile.sh  ~/.zprofile
+[ -e ~/.bashrc ] &&         insert_source_line "$SCRIPT_PATH/profile/rc.sh"       ~/.bashrc
+[ -e ~/.zshrc ] &&          insert_source_line "$SCRIPT_PATH/profile/rc.sh"       ~/.zshrc
+[ -e ~/.profile ] &&        insert_source_line "$SCRIPT_PATH/profile/profile.sh"  ~/.profile
+[ -e ~/.bash_profile ] &&   insert_source_line "$SCRIPT_PATH/profile/profile.sh"  ~/.bash_profile
+[ -e ~/.zprofile ] &&       insert_source_line "$SCRIPT_PATH/profile/profile.sh"  ~/.zprofile
 insert_line "set editing-mode emacs"                ~/.inputrc
-makelink $SCRIPT_PATH/tmux.conf                     ~/.tmux.conf
+makelink "$SCRIPT_PATH/tmux.conf"                   ~/.tmux.conf
 
 # Nushell
 insert_line "source $SCRIPT_PATH/nu/env.nu" ~/.config/nushell/env.nu
 insert_line "source $SCRIPT_PATH/nu/config.nu" ~/.config/nushell/config.nu
 
 # Wezterm
-makelink $SCRIPT_PATH/wezterm.lua                   ~/.wezterm.lua
+makelink "$SCRIPT_PATH/wezterm.lua"                 ~/.wezterm.lua
 
 # Git
 if command -v git >/dev/null; then
     mkdir -pv ~/.config/git
-    makelink $SCRIPT_PATH/git/ignore ~/.config/git/ignore
+    makelink "$SCRIPT_PATH/git/ignore" ~/.config/git/ignore
     already_sourced=no
     for path in $(git config --global --get-all include.path); do
-        if test $path -ef $SCRIPT_PATH/git/config; then
+        if test "$path" -ef "$SCRIPT_PATH/git/config"; then
             already_sourced=yes
         fi
     done
-    if test $already_sourced = "no"; then
-        git config --global --add include.path $SCRIPT_PATH/git/config
+    if test "$already_sourced" = "no"; then
+        git config --global --add include.path "$SCRIPT_PATH/git/config"
         echo "Updated 'include.path' of Git config as:"
         git config --global --get-all include.path
     fi
@@ -160,32 +162,32 @@ fi
 
 # VIM
 mkdir -pv ~/.vim/autoload ~/.vim/colors
-makelink $SCRIPT_PATH/vimfiles/vimrc                ~/.vim/vimrc
-makelink $SCRIPT_PATH/vimfiles/common.vim           ~/.vim/common.vim
-makelink $SCRIPT_PATH/vimfiles/keymaps.vim          ~/.vim/keymaps.vim
-makelink $SCRIPT_PATH/vimfiles/regular.vim          ~/.vim/regular.vim
-makelink $SCRIPT_PATH/vimfiles/autoload/plug.vim    ~/.vim/autoload/plug.vim
+makelink "$SCRIPT_PATH/vimfiles/vimrc"              ~/.vim/vimrc
+makelink "$SCRIPT_PATH/vimfiles/common.vim"         ~/.vim/common.vim
+makelink "$SCRIPT_PATH/vimfiles/keymaps.vim"        ~/.vim/keymaps.vim
+makelink "$SCRIPT_PATH/vimfiles/regular.vim"        ~/.vim/regular.vim
+makelink "$SCRIPT_PATH/vimfiles/autoload/plug.vim"  ~/.vim/autoload/plug.vim
 
 # Neovim
 mkdir -pv ~/.config/nvim/autoload
 mkdir -pv ~/.config/nvim/lua/plugins
-makelink $SCRIPT_PATH/nvim/init.lua                 ~/.config/nvim/init.lua
-makelink $SCRIPT_PATH/nvim/lua/plugins.lua          ~/.config/nvim/lua/plugins.lua
-makelink $SCRIPT_PATH/nvim/lua/keymaps.lua          ~/.config/nvim/lua/keymaps.lua
-makelink $SCRIPT_PATH/nvim/lua/options.lua          ~/.config/nvim/lua/options.lua
-makelink $SCRIPT_PATH/vimfiles/autoload/plug.vim    ~/.config/nvim/autoload/plug.vim
-for f in $SCRIPT_PATH/nvim/lua/plugins/*; do
+makelink "$SCRIPT_PATH/nvim/init.lua"               ~/.config/nvim/init.lua
+makelink "$SCRIPT_PATH/nvim/lua/plugins.lua"        ~/.config/nvim/lua/plugins.lua
+makelink "$SCRIPT_PATH/nvim/lua/keymaps.lua"        ~/.config/nvim/lua/keymaps.lua
+makelink "$SCRIPT_PATH/nvim/lua/options.lua"        ~/.config/nvim/lua/options.lua
+makelink "$SCRIPT_PATH/vimfiles/autoload/plug.vim"  ~/.config/nvim/autoload/plug.vim
+for f in "$SCRIPT_PATH"/nvim/lua/plugins/*; do
     if [ -f "$f" ]; then
-        basename=$(basename $f)
-        makelink "$f" ~/.config/nvim/lua/plugins/$basename
+        basename=$(basename "$f")
+        makelink "$f" ~/.config/nvim/lua/plugins/"$basename"
     fi
 done
 
 # OpenCode agents
-copy_agent ~/.config/opencode $SCRIPT_PATH/agents/git-committer.md git-committer.md
+copy_agent ~/.config/opencode "$SCRIPT_PATH/agents/git-committer.md" git-committer.md
 
 # GitHub Copilot CLI agents
-copy_agent ~/.copilot $SCRIPT_PATH/agents/git-committer.md git-committer.agent.md
+copy_agent ~/.copilot "$SCRIPT_PATH/agents/git-committer.md" git-committer.agent.md
 
 # Prompt Templates for Pi Coding Agent
 mkdir -pv ~/.pi/agent/prompts
@@ -197,9 +199,9 @@ for f in "$SCRIPT_PATH"/prompts/*; do
 done
 
 # Remove dead symlinks
-for link in $(find ~/.config/nvim -type l); do
-    if [ ! -e $link ]; then
+find ~/.config/nvim -type l | while IFS= read -r link; do
+    if [ ! -e "$link" ]; then
         echo "rm -f $link # dead link"
-        rm -f $link
+        rm -f "$link"
     fi
 done

@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # Goodies for interactive use. This should be sourced from
 # ~/.zshrc or ~/.bashrc.
 
@@ -24,8 +25,9 @@ if test -n "$BASH_VERSION"; then
     ul='\[\e[4m\]'
     red='\[\e[0;31m\]'
     PS1="\$("
-    PS1+="status="\$?"; "
-    PS1+="if [ \$status -ne 0 ]; then echo \"$red[\$status] $rst\"; fi"
+    PS1+='status=$?; '
+    # shellcheck disable=SC2154
+    PS1+="if [ \$status -ne 0 ]; then echo \"${red}[\$status] ${rst}\"; fi"
     PS1+=")"
     PS1+="\u@"
     PS1+="\h:${ul}\w${rst}\$ "
@@ -69,15 +71,19 @@ if command -v fzf >/dev/null; then
     # export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
     [ -n "$BASH_VERSION" ] && eval "$(fzf --bash)"
+    # shellcheck disable=SC1090
     [ -n "$ZSH_VERSION" ] && source <(fzf --zsh)
 fi
 
 # Other settings for interactive use
-EDITOR=vi
+EDITOR='vi'
 command -v vim  >/dev/null && EDITOR=$(command -v vim)
 command -v nvim >/dev/null && EDITOR=$(command -v nvim)
 export EDITOR
 export HISTSIZE=8192
 export HISTFILESIZE=8192
 
-command -v less >/dev/null && export PAGER=$(command -v less)
+if command -v less >/dev/null; then
+    PAGER=$(command -v less)
+    export PAGER
+fi
