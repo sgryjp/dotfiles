@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 SCRIPT_PATH=$(cd "$(dirname "$0")" && pwd -P)
 
 #######################################
@@ -199,7 +199,7 @@ for f in "$SCRIPT_PATH"/prompts/*; do
 done
 
 # Remove dead symlinks
-find ~/.config/nvim -type l | while IFS= read -r link; do
+find ~/.config/nvim -type l -print0 | while IFS= read -r -d '' link; do
     if [ ! -e "$link" ]; then
         echo "rm -f $link # dead link"
         rm -f "$link"
