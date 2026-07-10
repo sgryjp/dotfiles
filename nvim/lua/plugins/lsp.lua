@@ -12,8 +12,10 @@ vim.lsp.enable("bashls")
 vim.lsp.enable("jsonls")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("nushell")
+vim.lsp.enable("shellcheck")
 vim.lsp.enable("pyrefly")
 vim.lsp.enable("yamlls")
+vim.lsp.enable("rust_analyzer")
 
 -- Set default configuration for LSP clients
 vim.lsp.config("nushell", {})
