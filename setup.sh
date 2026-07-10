@@ -189,6 +189,11 @@ copy_agent ~/.config/opencode "$SCRIPT_PATH/agents/git-committer.md" git-committ
 # GitHub Copilot CLI agents
 copy_agent ~/.copilot "$SCRIPT_PATH/agents/git-committer.md" git-committer.agent.md
 
+# GitHub Copilot CLI personal instructions
+if [ -d ~/.copilot ]; then
+    makelink "$SCRIPT_PATH/personal-instructions.md" ~/.copilot/copilot-instructions.md
+fi
+
 # Prompt Templates for Pi Coding Agent
 mkdir -pv ~/.pi/agent/prompts
 for f in "$SCRIPT_PATH"/prompts/*; do
@@ -197,6 +202,10 @@ for f in "$SCRIPT_PATH"/prompts/*; do
         cp -v "$f" ~/.pi/agent/prompts/"$basename"
     fi
 done
+
+# Personal instructions for Pi Coding Agent
+mkdir -pv ~/.pi/agent
+makelink "$SCRIPT_PATH/personal-instructions.md" ~/.pi/agent/AGENTS.md
 
 # Remove dead symlinks
 find ~/.config/nvim -type l | while IFS= read -r link; do
