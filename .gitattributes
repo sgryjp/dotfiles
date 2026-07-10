@@ -1,0 +1,10 @@
+# Shell scripts — must be LF
+*.sh   text eol=lf
+*.bash text eol=lf
+
+# PowerShell — LF is fine cross-platform, don't force CRLF
+*.ps1  text
+
+# Batch files are Windows-only
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
