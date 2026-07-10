@@ -2,7 +2,7 @@
 # Goodies for non-interactive use. This should be source from:
 # ~/.zprofile, ~/.bash_profile or ~/.profile.
 
-# General coonfigurations
+# General configurations
 export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
 export LESSCHARSET='utf-8'
@@ -13,7 +13,18 @@ PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
 # Use bat as man-pager
 # https://github.com/sharkdp/bat/issues/1433#issuecomment-745206164
-command -v bat >/dev/null && export MANPAGER='sh -c "col -bx | bat -l man -p"'
+if command -v bat >/dev/null; then
+    case $(uname) in
+        Darwin)
+            # shellcheck disable=SC2089
+            export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+            ;;
+        Linux)
+            # shellcheck disable=SC2090
+            export MANPAGER="bat -l man -p"
+            ;;
+    esac
+fi
 
 # Snap
 [ -d /snap/bin ]         && PATH=/snap/bin:$PATH
