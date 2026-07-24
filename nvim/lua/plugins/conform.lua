@@ -8,6 +8,7 @@ conform.setup({
   -- Use a sub-list to run only the first available formatter.
   formatters_by_ft = {
     css = { "oxfmt" },
+    cs = { "csharpier" },
     less = { "oxfmt" },
     html = { "oxfmt", "prettier" },
     json = { "oxfmt", "prettier" },
