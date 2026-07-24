@@ -11,19 +11,9 @@ export XDG_CACHE_HOME="$HOME"/.cache
 export XDG_DATA_HOME="$HOME"/.local/share
 PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
-# Use bat as man-pager
-# https://github.com/sharkdp/bat/issues/1433#issuecomment-745206164
-if command -v bat >/dev/null; then
-    case $(uname) in
-        Darwin)
-            # shellcheck disable=SC2089
-            export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-            ;;
-        Linux)
-            # shellcheck disable=SC2090
-            export MANPAGER="bat -l man -p"
-            ;;
-    esac
+# Use Neovim as man-pager
+if command -v nvim >/dev/null; then
+    export MANPAGER="nvim +Man!"
 fi
 
 # Snap
