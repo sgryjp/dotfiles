@@ -16,7 +16,6 @@ if not vim.g.vscode then
   })
   require("mini.statusline").setup({})
   require("mini.surround").setup({})
-  require("mini.tabline").setup({})
   require("mini.trailspace").setup({})
 
   clue.setup({

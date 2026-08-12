@@ -31,6 +31,7 @@ vim.pack.add({
   { src = gh("saghen/blink.cmp"), version = vim.version.range("1.*") },
   gh("akinsho/toggleterm.nvim"),
   gh("hat0uma/csvview.nvim"),
+  gh("esmuellert/codediff.nvim"),
 })
 
 -- Configure plugins (dedicated config files)
@@ -47,3 +48,14 @@ require("quicker").setup({})
 require("oil").setup({})
 require("blink.cmp").setup({ signature = { enabled = true } })
 require("csvview").setup({})
+require("codediff").setup({
+  keymaps = {
+    view = {
+      -- dp = stage, do = unstage
+      diff_get = false,
+      diff_put = false,
+      stage_hunk = "dp",
+      unstage_hunk = "do",
+    },
+  },
+})
