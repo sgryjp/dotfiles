@@ -29,13 +29,6 @@ def make_dir [path] {
   }
 }
 
-def copy_agent [config_dir, src, dest_name] {
-  if ($config_dir | path exists) {
-    make_dir ($config_dir | path join agents)
-    cp $src ($config_dir | path join agents $dest_name)
-  }
-}
-
 # Make a symbolic link file at $link_name which points to $target.
 def make_link [link_name, target] {
   # Make the target path absolute
@@ -120,12 +113,6 @@ ls $"($env.FILE_PWD)/nvim/lua/plugins" | each {|ent|
     make_link $"($env.XDG_CONFIG_HOME)/nvim/lua/plugins/($basename)" $ent.name
   }
 }
-
-# OpenCode agents
-copy_agent $"($env.XDG_CONFIG_HOME)/opencode" ($env.FILE_PWD | path join agents git-committer.md) git-committer.md
-
-# GitHub Copilot CLI agents
-copy_agent $"($homedir)/.copilot" ($env.FILE_PWD | path join agents git-committer.md) git-committer.agent.md
 
 # GitHub Copilot CLI personal instructions
 if ($"($homedir)/.copilot" | path exists) {
