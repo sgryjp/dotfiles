@@ -130,6 +130,16 @@ ls ($env.FILE_PWD | path join prompts) | each {|file|
 make_dir $"($homedir)/.pi/agent"
 make_link $"($homedir)/.pi/agent/AGENTS.md" ($env.FILE_PWD | path join personal-instructions.md)
 
+# Custom agents for Pi Coding Agent and GitHub Copilot CLI
+make_dir $"($homedir)/.pi/agent/agents"
+make_dir $"($homedir)/.copilot/agents"
+ls ($env.FILE_PWD | path join agents) | where {|file| $file.type == 'file' and ($file.name | str ends-with '.md')} | each {|file|
+  let basename = $file.name | path basename
+  let agent_name = $basename | str replace -r '\\.md$' ''
+  make_link $"($homedir)/.pi/agent/agents/($basename)" $file.name
+  make_link $"($homedir)/.copilot/agents/($agent_name).agent.md" $file.name
+}
+
 # Remove dead symlinks
 ls ($"($env.XDG_CONFIG_HOME)/nvim/**/*" | into glob) | where {|it| $it.type == 'symlink'} | each {|file|
   let target = $file.name | path expand

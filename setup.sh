@@ -185,6 +185,16 @@ done
 mkdir -pv ~/.pi/agent
 makelink "$SCRIPT_PATH/personal-instructions.md" ~/.pi/agent/AGENTS.md
 
+# Custom agents for Pi Coding Agent and GitHub Copilot CLI
+mkdir -pv ~/.pi/agent/agents ~/.copilot/agents
+for f in "$SCRIPT_PATH"/agents/*.md; do
+    if [ -f "$f" ]; then
+        basename=$(basename "$f")
+        makelink "$f" ~/.pi/agent/agents/"$basename"
+        makelink "$f" ~/.copilot/agents/"${basename%.md}".agent.md
+    fi
+done
+
 # Remove dead symlinks
 find ~/.config/nvim -type l | while IFS= read -r link; do
     if [ ! -e "$link" ]; then
