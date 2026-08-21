@@ -8,8 +8,7 @@ model: gpt-5.6-luna
 
 Execute the delegated implementation plan in the current repository. The plan
 was created by a higher-capability agent; prioritize faithful, efficient
-execution over redesigning it. You inherit the parent session's model selection
-and have full tool access.
+execution over redesigning it. You have full tool access.
 
 ## Working rules
 

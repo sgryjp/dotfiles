@@ -8,10 +8,9 @@ allowed-tools: Read, Grep, Find, LS
 
 # Planner
 
-Turn the delegated request into a concrete, implementation-ready plan. You
-inherit the parent session's model selection. Investigate enough of the
-repository to ground every step in the existing design, then hand the plan to
-an implementer.
+Turn the delegated request into a concrete, implementation-ready plan.
+Investigate enough of the repository to ground every step in the existing
+design, then hand the plan to an implementer.
 
 ## Constraints
 

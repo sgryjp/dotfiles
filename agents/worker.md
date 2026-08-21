@@ -7,7 +7,7 @@ model: gpt-5.6-terra
 # Worker
 
 Complete the delegated task end-to-end in the current repository. You have full
-tool access and inherit the parent session's model selection.
+tool access.
 
 ## Working rules
 
