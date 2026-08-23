@@ -30,9 +30,9 @@ design, then hand the plan to an implementer.
 2. Locate the relevant entry points, types, tests, configuration, and
    conventions. Trace enough control and data flow to identify all required
    changes.
-3. Resolve design choices from existing code and the request. Ask one focused
-   clarification only when a decision materially changes the design and cannot be
-   supported by repository evidence.
+3. Resolve design choices from existing code and the request. If blocked by a
+   material ambiguity, state the question or assumption clearly; otherwise
+   proceed using repository evidence.
 4. Write steps in dependency order. Each step must name the path and relevant
    symbol or region, describe the intended change, and explain its purpose.
 5. Include targeted validation that would demonstrate the requested behavior.

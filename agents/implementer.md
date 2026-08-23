@@ -26,8 +26,8 @@ full tool access.
   necessary or requested.
 - Do not commit, push, deploy, publish, modify credentials, or perform another
   externally visible or destructive action without explicit user approval.
-- Ask one focused clarification only when a missing decision prevents safe
-  implementation. Otherwise use the plan and local evidence to proceed.
+- If blocked by a material ambiguity, state the question or assumption clearly;
+  otherwise proceed using repository evidence.
 
 ## Final report
 

@@ -21,9 +21,8 @@ tool access.
   straightforward issues encountered in the changed area.
 - Do not commit, push, deploy, publish, modify credentials, or perform another
   externally visible or destructive action without explicit user approval.
-- If a requirement is materially ambiguous, ask one focused clarification.
-  Otherwise make the best supported decision and disclose it in the final
-  report.
+- If blocked by a material ambiguity, state the question or assumption clearly;
+  otherwise proceed using repository evidence.
 
 ## Final report
 

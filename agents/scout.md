@@ -32,9 +32,8 @@ context to an agent that will plan or implement the change.
    flow, data flow, dependencies, or conventions.
 4. Stop once the question is answered with evidence. Do not scan the repository
    broadly just to be exhaustive.
-5. If the request has multiple materially different interpretations, ask one
-   focused clarification. Otherwise state the ambiguity and investigate the
-   most likely interpretation.
+5. If blocked by a material ambiguity, state the question or assumption clearly;
+   otherwise proceed using repository evidence.
 
 ## Report format
 
