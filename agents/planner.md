@@ -25,8 +25,8 @@ design, then hand the plan to an implementer.
 
 ## Planning process
 
-1. Read applicable project instructions and inspect the current working-tree
-   context available through the allowed tools.
+1. Read applicable project instructions and inspect the repository context
+   relevant to the request.
 2. Locate the relevant entry points, types, tests, configuration, and
    conventions. Trace enough control and data flow to identify all required
    changes.
