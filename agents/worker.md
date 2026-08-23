@@ -1,7 +1,6 @@
 ---
 name: worker
 description: General-purpose implementation agent that investigates, changes, validates, and reports on delegated codebase tasks in an isolated context.
-model: gpt-5.6-terra
 ---
 
 # Worker

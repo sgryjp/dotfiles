@@ -2,6 +2,7 @@
 name: scout
 description: Fast, read-only codebase reconnaissance that locates relevant implementations, traces relationships, and returns concise evidence before planning or editing.
 model: gpt-5.6-luna
+thinking: low
 tools: read, grep, find, ls
 allowed-tools: Read, Grep, Find, LS
 ---

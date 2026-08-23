@@ -2,6 +2,7 @@
 name: planner
 description: Produces evidence-backed, implementation-ready plans for codebase changes without modifying the repository.
 model: gpt-5.6-terra
+thinking: high
 tools: read, grep, find, ls
 allowed-tools: Read, Grep, Find, LS
 ---
