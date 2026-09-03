@@ -24,6 +24,7 @@ vim.pack.add({
   gh("folke/snacks.nvim"),
   gh("stevearc/quicker.nvim"),
   gh("tpope/vim-fugitive"),
+  gh("f-person/git-blame.nvim"),
   gh("elkasztano/nushell-syntax-vim"),
   gh("stevearc/aerial.nvim"),
   gh("stevearc/oil.nvim"),
@@ -48,6 +49,10 @@ require("quicker").setup({})
 require("oil").setup({})
 require("blink.cmp").setup({ signature = { enabled = true } })
 require("csvview").setup({})
+require("gitblame").setup({
+    date_format = "%r",
+    message_template = "  <summary> • <author> (<date>)"
+})
 require("codediff").setup({
   keymaps = {
     view = {
