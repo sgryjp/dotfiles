@@ -72,12 +72,12 @@ If authentication fails, report the error and suggest `gh auth login` or
    - Propose 3–5 numbered candidates as `{type}/{short-description}`:
      lowercase kebab-case, 2–5 meaningful words, and no articles.
    - Iterate on feedback until the user explicitly approves one.
-   - Derive `{worktree-name}` by replacing `/` in the approved branch name
-     with `-`.
 
 4. **Check conflicts**
-   - Check whether the selected branch or destination directory already
-     exists.
+   - Derive `{worktree-name}` by replacing `/` in the approved branch name
+     with `-`.
+   - Check whether the selected branch or final worktree directory
+     `{destination}/{worktree-name}` already exists.
    - Explain any conflict and ask whether to reuse it or choose another name.
      Never overwrite or silently rename anything.
 
@@ -85,6 +85,8 @@ If authentication fails, report the error and suggest `gh auth login` or
    - Determine the base branch from `refs/remotes/origin/HEAD`.
    - If unavailable, use an unambiguous local or remote `main`, then `master`;
      otherwise ask the user.
+   - Immediately before creating the worktree, derive `{worktree-name}` again:
+     replace `/` in the approved branch name with `-`.
    - For a new branch, create the worktree with:
 
      ```sh
