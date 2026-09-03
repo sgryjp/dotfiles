@@ -23,6 +23,8 @@ else
     nmap         [q         <Cmd>cprevious<CR>
     nmap <silent>[d         <Cmd>lua vim.diagnostic.goto_prev()<CR>
     nmap <silent>]d         <Cmd>lua vim.diagnostic.goto_next()<CR>
+    nmap         [t         <Cmd>tabprevious<CR>
+    nmap         ]t         <Cmd>tabnext<CR>
 endif
 
 " QuickFix and location list
