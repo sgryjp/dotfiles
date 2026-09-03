@@ -17,6 +17,9 @@ alias gd='git diff'
 alias gl='git graph'
 alias gla='git graph $(git for-each-ref --format="%(refname:short)" refs/heads refs/tags refs/remotes | tr "\n" " ")'
 alias gs='git status --short --branch --ahead-behind'
+alias gwa='git worktree add'
+alias gwl='git worktree list'
+alias gwp='git worktree prune'
 alias ,ps='ps -Hfu $(id -un)'
 
 # PS1

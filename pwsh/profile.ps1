@@ -21,11 +21,17 @@ function GitGraphAll {
 }
 function GitShowBranch { git show-branch $args }
 function GitStatus { git status --short --branch --ahead-behind $args }
+function GitWorktreeAdd { git worktree add $args }
+function GitWorktreeList { git worktree list $args }
+function GitWorktreePrune { git worktree prune $args }
 
 # Define git related aliases. Note, "gl" is for Get-Location by default.
 Set-Alias gd GitDiff
 Set-Alias gb GitShowBranch
 Set-Alias gs GitStatus
+Set-Alias gwa GitWorktreeAdd
+Set-Alias gwl GitWorktreeList
+Set-Alias gwp GitWorktreePrune
 if ($Host.Version.Major -ge 7) {
     Set-Alias -Force gl GitGraph
 }
