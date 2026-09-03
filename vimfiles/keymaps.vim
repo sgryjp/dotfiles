@@ -1,14 +1,5 @@
-" Close auxiliary windows by <C-[> in normal mode.
-if has("nvim")
-    nmap <silent><C-[>      <Cmd>cclose<CR>
-                            \ <Cmd>lclose<CR>
-                            \ <Cmd>helpclose<CR>
-endif
-
-" Code-completion (not for Neovim as there will be nvim-cmp)
-if !has("nvim")
-    imap <silent><C-j>      <C-x><C-o>
-endif
+" Code completion
+imap <silent><C-j>      <C-x><C-o>
 
 " Jump to prev/next l(ocation-list), q(uick-fix-list), d(iagnostic-items)
 if exists('g:vscode')
@@ -21,8 +12,6 @@ else
     nmap         [l         <Cmd>lprevious<CR>
     nmap         ]q         <Cmd>cnext<CR>
     nmap         [q         <Cmd>cprevious<CR>
-    nmap <silent>[d         <Cmd>lua vim.diagnostic.goto_prev()<CR>
-    nmap <silent>]d         <Cmd>lua vim.diagnostic.goto_next()<CR>
     nmap         [t         <Cmd>tabprevious<CR>
     nmap         ]t         <Cmd>tabnext<CR>
 endif
@@ -32,9 +21,7 @@ nmap \q <Cmd>copen<CR>
 nmap \l <Cmd>lopen<CR>
 
 " Fuzzy finder
-if !has('nvim')
-    nmap         <C-p>      <Cmd>Files<CR>
-endif
+nmap         <C-p>      <Cmd>Files<CR>
 
 " Moves between windows
 nmap         <C-h>  <C-w>h

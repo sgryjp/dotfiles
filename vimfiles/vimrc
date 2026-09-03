@@ -1,12 +1,8 @@
-" This file should be included from init.nvim in Neovim instance.
-
 " Common settings
 runtime common.vim
 
-" Regular VIM specific settings
-if !has('nvim')
-    runtime! regular.vim
-end
+" Additional Vim settings
+runtime! regular.vim
 
 " Set keymappings
 runtime keymaps.vim
