@@ -8,12 +8,13 @@
   use class names). Name the changed object. For a shared/cross-cutting module
   (high fan-in), name affected feature(s) in the first body line. Infer high
   fan-in from project-provided structural information when available (e.g.
-  sources in a `Utilities` module).
+  sources in a `Utilities` module). Target 50 characters; treat it as a soft
+  limit, not a cap to truncate or overcompress for.
 - Body: include the *why* — the rationale for the change — only when derivable
   from session context, an issue, or recent conversation; otherwise omit it.
   Typo fixes, formatting, and trivial test additions may omit the *why*. If a
   high-fan-in or externally observable change has no derivable *why*, ask the
-  user once before committing.
+  user once before committing. Wrap at 72 characters per line.
 - When a change spans multiple scopes: split into separate commits by default.
   If splitting is impractical, use `scopeA, scopeB: description` for changes
   bridging two closely-related scopes (e.g. moving code between modules; order
