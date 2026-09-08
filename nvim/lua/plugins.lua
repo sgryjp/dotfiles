@@ -50,8 +50,8 @@ require("oil").setup({})
 require("blink.cmp").setup({ signature = { enabled = true } })
 require("csvview").setup({})
 require("gitblame").setup({
-    date_format = "%r",
-    message_template = "  <summary> • <author> (<date>)"
+  date_format = "%r",
+  message_template = "  <summary> • <author> (<date>)",
 })
 require("codediff").setup({
   keymaps = {

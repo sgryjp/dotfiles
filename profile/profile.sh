@@ -13,24 +13,24 @@ PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
 # Use Neovim as man-pager
 if command -v nvim >/dev/null; then
-    export MANPAGER="nvim +Man!"
+  export MANPAGER="nvim +Man!"
 fi
 
 # Snap
-[ -d /snap/bin ]         && PATH=/snap/bin:$PATH
+[ -d /snap/bin ] && PATH=/snap/bin:$PATH
 
 # Rust (Cargo)
-[ -d "$HOME/.cargo/bin" ]  && PATH=$PATH:$HOME/.cargo/bin
+[ -d "$HOME/.cargo/bin" ] && PATH=$PATH:$HOME/.cargo/bin
 
 # Go
 command -v go >/dev/null && PATH=$PATH:$(go env GOPATH)/bin
 
 # Node.js (fnm)
 if command -v fnm >/dev/null; then
-    PATH="$XDG_DATA_HOME/fnm:$PATH"
-    eval "$(fnm env --use-on-cd)"
-    [ -n "$BASH_VERSION" ] && eval "$(fnm completions --shell bash)"
-    [ -n "$ZSH_VERSION" ]  && eval "$(fnm completions --shell zsh)"
+  PATH="$XDG_DATA_HOME/fnm:$PATH"
+  eval "$(fnm env --use-on-cd)"
+  [ -n "$BASH_VERSION" ] && eval "$(fnm completions --shell bash)"
+  [ -n "$ZSH_VERSION" ] && eval "$(fnm completions --shell zsh)"
 fi
 
 # Python (pip)

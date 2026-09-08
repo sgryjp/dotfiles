@@ -10,24 +10,24 @@ SCRIPT_PATH=$(cd "$(dirname "$0")" && pwd -P)
 #   Set the result to a variable `CANONICALIZED`
 #######################################
 canonicalize() {
-    _COUNT=100
-    _DIRNAME=$(dirname "$1")
-    _BASENAME=$(basename "$1")
+  _COUNT=100
+  _DIRNAME=$(dirname "$1")
+  _BASENAME=$(basename "$1")
 
-    while test -L "$_DIRNAME/$_BASENAME"; do
-        _TARGET=$(readlink "$_DIRNAME/$_BASENAME")
-        _DIRNAME=$(dirname "$_TARGET")
-        _BASENAME=$(basename "$_TARGET")
+  while test -L "$_DIRNAME/$_BASENAME"; do
+    _TARGET=$(readlink "$_DIRNAME/$_BASENAME")
+    _DIRNAME=$(dirname "$_TARGET")
+    _BASENAME=$(basename "$_TARGET")
 
-        if test "$_COUNT" -le 0; then
-            echo "error: too many recursion" >&2
-            return 1
-        fi
-        _COUNT=$((_COUNT - 1))
-    done
+    if test "$_COUNT" -le 0; then
+      echo "error: too many recursion" >&2
+      return 1
+    fi
+    _COUNT=$((_COUNT - 1))
+  done
 
-    CANONICALIZED=$(cd "$_DIRNAME" && pwd -P)/$_BASENAME
-    unset _DIRNAME _BASENAME
+  CANONICALIZED=$(cd "$_DIRNAME" && pwd -P)/$_BASENAME
+  unset _DIRNAME _BASENAME
 }
 
 #######################################
@@ -42,23 +42,23 @@ canonicalize() {
 #   1 if any error detected otherwise 0
 #######################################
 makelink() {
-    # Resolve canonicalized path of the target file
-    canonicalize "$2"
-    if test $? -ne 0; then
-         echo "error: failed to resolve canonicalized path of $2" >&2
-         return 1
-    fi
+  # Resolve canonicalized path of the target file
+  canonicalize "$2"
+  if test $? -ne 0; then
+    echo "error: failed to resolve canonicalized path of $2" >&2
+    return 1
+  fi
 
-    # Make a link unless the target is a symlink to the source
-    if test "$CANONICALIZED" != "$1"; then
-        ln -fsv "$1" "$2"
-        if test $? -ne 0; then
-            echo "error: failed to create a link \"$2\"" >&2
-            return 1
-        fi
-        unset CANONICALIZED
+  # Make a link unless the target is a symlink to the source
+  if test "$CANONICALIZED" != "$1"; then
+    ln -fsv "$1" "$2"
+    if test $? -ne 0; then
+      echo "error: failed to create a link \"$2\"" >&2
+      return 1
     fi
-    return 0
+    unset CANONICALIZED
+  fi
+  return 0
 }
 
 #######################################
@@ -71,17 +71,17 @@ makelink() {
 #   (stdout) Trace message.
 #######################################
 insert_line() {
-    # Ensure that the target file exists
-    if test ! -e "$2"; then
-        mkdir -pv "$(dirname "$2")"
-        touch "$2"
-    fi
+  # Ensure that the target file exists
+  if test ! -e "$2"; then
+    mkdir -pv "$(dirname "$2")"
+    touch "$2"
+  fi
 
-    # Insert a line to "source" the target file if not inserted yet
-    if test "$(grep -c "$1" "$2")" = 0; then
-        echo "Inserting \"$1\" into \"$2\""
-        echo "$1" >>"$2"
-    fi
+  # Insert a line to "source" the target file if not inserted yet
+  if test "$(grep -c "$1" "$2")" = 0; then
+    echo "Inserting \"$1\" into \"$2\""
+    echo "$1" >>"$2"
+  fi
 }
 
 #######################################
@@ -94,91 +94,91 @@ insert_line() {
 #   (stdout) Trace message.
 #######################################
 insert_source_line() {
-    # Ensure that the target file exists
-    if test ! -e "$2"; then
-        mkdir -pv "$(dirname "$2")"
-        touch "$2"
-    fi
+  # Ensure that the target file exists
+  if test ! -e "$2"; then
+    mkdir -pv "$(dirname "$2")"
+    touch "$2"
+  fi
 
-    # Insert a line to "source" the target file
-    if test "$(grep -c "\"$1\"" "$2")" = 0; then
-        echo "Modifying \"$2\" to source \"$1\""
-        {
-            echo "if test -r \"$1\"; then"
-            echo "    source \"$1\""
-            echo "fi"
-        } >> "$2"
-    fi
+  # Insert a line to "source" the target file
+  if test "$(grep -c "\"$1\"" "$2")" = 0; then
+    echo "Modifying \"$2\" to source \"$1\""
+    {
+      echo "if test -r \"$1\"; then"
+      echo "    source \"$1\""
+      echo "fi"
+    } >>"$2"
+  fi
 }
 
 # Profile
-[ -e ~/.bashrc ] &&         insert_source_line "$SCRIPT_PATH/profile/rc.sh"       ~/.bashrc
-[ -e ~/.zshrc ] &&          insert_source_line "$SCRIPT_PATH/profile/rc.sh"       ~/.zshrc
-[ -e ~/.profile ] &&        insert_source_line "$SCRIPT_PATH/profile/profile.sh"  ~/.profile
-[ -e ~/.bash_profile ] &&   insert_source_line "$SCRIPT_PATH/profile/profile.sh"  ~/.bash_profile
-[ -e ~/.zprofile ] &&       insert_source_line "$SCRIPT_PATH/profile/profile.sh"  ~/.zprofile
-insert_line "set editing-mode emacs"                ~/.inputrc
-makelink "$SCRIPT_PATH/tmux.conf"                   ~/.tmux.conf
+[ -e ~/.bashrc ] && insert_source_line "$SCRIPT_PATH/profile/rc.sh" ~/.bashrc
+[ -e ~/.zshrc ] && insert_source_line "$SCRIPT_PATH/profile/rc.sh" ~/.zshrc
+[ -e ~/.profile ] && insert_source_line "$SCRIPT_PATH/profile/profile.sh" ~/.profile
+[ -e ~/.bash_profile ] && insert_source_line "$SCRIPT_PATH/profile/profile.sh" ~/.bash_profile
+[ -e ~/.zprofile ] && insert_source_line "$SCRIPT_PATH/profile/profile.sh" ~/.zprofile
+insert_line "set editing-mode emacs" ~/.inputrc
+makelink "$SCRIPT_PATH/tmux.conf" ~/.tmux.conf
 
 # Nushell
 insert_line "source $SCRIPT_PATH/nu/env.nu" ~/.config/nushell/env.nu
 insert_line "source $SCRIPT_PATH/nu/config.nu" ~/.config/nushell/config.nu
 
 # Wezterm
-makelink "$SCRIPT_PATH/wezterm.lua"                 ~/.wezterm.lua
+makelink "$SCRIPT_PATH/wezterm.lua" ~/.wezterm.lua
 
 # Git
 if command -v git >/dev/null; then
-    mkdir -pv ~/.config/git
-    makelink "$SCRIPT_PATH/git/ignore" ~/.config/git/ignore
-    already_sourced=no
-    for path in $(git config --global --get-all include.path); do
-        if test "$path" -ef "$SCRIPT_PATH/git/config"; then
-            already_sourced=yes
-        fi
-    done
-    if test "$already_sourced" = "no"; then
-        git config --global --add include.path "$SCRIPT_PATH/git/config"
-        echo "Updated 'include.path' of Git config as:"
-        git config --global --get-all include.path
+  mkdir -pv ~/.config/git
+  makelink "$SCRIPT_PATH/git/ignore" ~/.config/git/ignore
+  already_sourced=no
+  for path in $(git config --global --get-all include.path); do
+    if test "$path" -ef "$SCRIPT_PATH/git/config"; then
+      already_sourced=yes
     fi
+  done
+  if test "$already_sourced" = "no"; then
+    git config --global --add include.path "$SCRIPT_PATH/git/config"
+    echo "Updated 'include.path' of Git config as:"
+    git config --global --get-all include.path
+  fi
 fi
 
 # VIM
 mkdir -pv ~/.vim/autoload ~/.vim/colors
-makelink "$SCRIPT_PATH/vimfiles/vimrc"              ~/.vim/vimrc
-makelink "$SCRIPT_PATH/vimfiles/common.vim"         ~/.vim/common.vim
-makelink "$SCRIPT_PATH/vimfiles/keymaps.vim"        ~/.vim/keymaps.vim
-makelink "$SCRIPT_PATH/vimfiles/regular.vim"        ~/.vim/regular.vim
-makelink "$SCRIPT_PATH/vimfiles/autoload/plug.vim"  ~/.vim/autoload/plug.vim
+makelink "$SCRIPT_PATH/vimfiles/vimrc" ~/.vim/vimrc
+makelink "$SCRIPT_PATH/vimfiles/common.vim" ~/.vim/common.vim
+makelink "$SCRIPT_PATH/vimfiles/keymaps.vim" ~/.vim/keymaps.vim
+makelink "$SCRIPT_PATH/vimfiles/regular.vim" ~/.vim/regular.vim
+makelink "$SCRIPT_PATH/vimfiles/autoload/plug.vim" ~/.vim/autoload/plug.vim
 
 # Neovim
 mkdir -pv ~/.config/nvim/autoload
 mkdir -pv ~/.config/nvim/lua/plugins
-makelink "$SCRIPT_PATH/nvim/init.lua"               ~/.config/nvim/init.lua
-makelink "$SCRIPT_PATH/nvim/lua/plugins.lua"        ~/.config/nvim/lua/plugins.lua
-makelink "$SCRIPT_PATH/nvim/lua/keymaps.lua"        ~/.config/nvim/lua/keymaps.lua
-makelink "$SCRIPT_PATH/nvim/lua/options.lua"        ~/.config/nvim/lua/options.lua
-makelink "$SCRIPT_PATH/vimfiles/autoload/plug.vim"  ~/.config/nvim/autoload/plug.vim
+makelink "$SCRIPT_PATH/nvim/init.lua" ~/.config/nvim/init.lua
+makelink "$SCRIPT_PATH/nvim/lua/plugins.lua" ~/.config/nvim/lua/plugins.lua
+makelink "$SCRIPT_PATH/nvim/lua/keymaps.lua" ~/.config/nvim/lua/keymaps.lua
+makelink "$SCRIPT_PATH/nvim/lua/options.lua" ~/.config/nvim/lua/options.lua
+makelink "$SCRIPT_PATH/vimfiles/autoload/plug.vim" ~/.config/nvim/autoload/plug.vim
 for f in "$SCRIPT_PATH"/nvim/lua/plugins/*; do
-    if [ -f "$f" ]; then
-        basename=$(basename "$f")
-        makelink "$f" ~/.config/nvim/lua/plugins/"$basename"
-    fi
+  if [ -f "$f" ]; then
+    basename=$(basename "$f")
+    makelink "$f" ~/.config/nvim/lua/plugins/"$basename"
+  fi
 done
 
 # GitHub Copilot CLI personal instructions
 if [ -d ~/.copilot ]; then
-    makelink "$SCRIPT_PATH/personal-instructions.md" ~/.copilot/copilot-instructions.md
+  makelink "$SCRIPT_PATH/personal-instructions.md" ~/.copilot/copilot-instructions.md
 fi
 
 # Prompt Templates for Pi Coding Agent
 mkdir -pv ~/.pi/agent/prompts
 for f in "$SCRIPT_PATH"/prompts/*; do
-    if [ -f "$f" ]; then
-        basename=$(basename "$f")
-        cp -v "$f" ~/.pi/agent/prompts/"$basename"
-    fi
+  if [ -f "$f" ]; then
+    basename=$(basename "$f")
+    cp -v "$f" ~/.pi/agent/prompts/"$basename"
+  fi
 done
 
 # Personal instructions for Pi Coding Agent
@@ -188,17 +188,17 @@ makelink "$SCRIPT_PATH/personal-instructions.md" ~/.pi/agent/AGENTS.md
 # Custom agents for Pi Coding Agent and GitHub Copilot CLI
 mkdir -pv ~/.pi/agent/agents ~/.copilot/agents
 for f in "$SCRIPT_PATH"/agents/*.md; do
-    if [ -f "$f" ]; then
-        basename=$(basename "$f")
-        makelink "$f" ~/.pi/agent/agents/"$basename"
-        makelink "$f" ~/.copilot/agents/"${basename%.md}".agent.md
-    fi
+  if [ -f "$f" ]; then
+    basename=$(basename "$f")
+    makelink "$f" ~/.pi/agent/agents/"$basename"
+    makelink "$f" ~/.copilot/agents/"${basename%.md}".agent.md
+  fi
 done
 
 # Remove dead symlinks
 find ~/.config/nvim -type l | while IFS= read -r link; do
-    if [ ! -e "$link" ]; then
-        echo "rm -f $link # dead link"
-        rm -f "$link"
-    fi
+  if [ ! -e "$link" ]; then
+    echo "rm -f $link # dead link"
+    rm -f "$link"
+  fi
 done
