@@ -113,7 +113,9 @@ insert_source_line() {
 
 # Profile
 [ -e ~/.bashrc ] && insert_source_line "$SCRIPT_PATH/profile/rc.sh" ~/.bashrc
+[ -e ~/.bashrc ] && insert_source_line "$SCRIPT_PATH/profile/bashrc.bash" ~/.bashrc
 [ -e ~/.zshrc ] && insert_source_line "$SCRIPT_PATH/profile/rc.sh" ~/.zshrc
+[ -e ~/.zshrc ] && insert_source_line "$SCRIPT_PATH/profile/zshrc.zsh" ~/.zshrc
 [ -e ~/.profile ] && insert_source_line "$SCRIPT_PATH/profile/profile.sh" ~/.profile
 [ -e ~/.bash_profile ] && insert_source_line "$SCRIPT_PATH/profile/profile.sh" ~/.bash_profile
 [ -e ~/.zprofile ] && insert_source_line "$SCRIPT_PATH/profile/profile.sh" ~/.zprofile

@@ -1,6 +1,5 @@
-# shellcheck shell=bash
-# Goodies for interactive use. This should be sourced from
-# ~/.zshrc or ~/.bashrc.
+# shellcheck shell=sh
+# Shared interactive setup. This should be sourced from ~/.bashrc or ~/.zshrc.
 
 # Aliases
 case $(uname) in
@@ -21,43 +20,6 @@ alias gwl='git worktree list'
 alias gwp='git worktree prune'
 alias ,ps='ps -Hfu $(id -un)'
 
-# PS1
-if test -n "$BASH_VERSION"; then
-  rst='\[\e[0m\]'
-  ul='\[\e[4m\]'
-  red='\[\e[0;31m\]'
-  PS1="\$("
-  PS1+='status=$?; '
-  # shellcheck disable=SC2154
-  PS1+="if [ \$status -ne 0 ]; then echo \"${red}[\$status] ${rst}\"; fi"
-  PS1+=")"
-  PS1+="\u@"
-  PS1+="\h:${ul}\w${rst}\$ "
-  unset rst ul red
-  export PS1
-fi
-if test -n "$ZSH_VERSION"; then
-  PS1="%(?..%F{red}[%?]%f )"
-  PS1+="%m:%U%~%u%# "
-  export PS1
-fi
-
-# Keybind
-if test -n "$BASH_VERSION"; then
-  set -o emacs
-fi
-if test -n "$ZSH_VERSION"; then
-  bindkey -e
-fi
-
-# Completion
-if test -n "$ZSH_VERSION"; then
-  if command -v brew >/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-  fi
-  autoload -Uz compinit && compinit
-fi
-
 # fzf
 if command -v fzf >/dev/null; then
   # https://junegunn.github.io/fzf/shell-integration/
@@ -71,10 +33,6 @@ if command -v fzf >/dev/null; then
   # fi
   # export FZF_DEFAULT_OPTS="--height 40% --inline-info"
   # export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
-
-  [ -n "$BASH_VERSION" ] && eval "$(fzf --bash)"
-  # shellcheck disable=SC1090
-  [ -n "$ZSH_VERSION" ] && source <(fzf --zsh)
 fi
 
 # Other settings for interactive use
