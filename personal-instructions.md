@@ -22,6 +22,19 @@
   applied uniformly across the tree (the *why* may be omitted). Otherwise,
   use the scope central to the change.
 
+## AI-created tracker items
+
+For every issue, pull request, merge request, or equivalent tracker or
+code-review item you create, unless the user explicitly requests otherwise,
+begin its description with:
+
+> AI-assisted draft - human review required.
+
+Retain this notice unless the user explicitly instructs you to remove it.
+
+If project-specific instructions define a policy for AI-created tracker or
+code-review items, follow that policy in preference to this global default.
+
 ## Tests and Scenario Names
 
 - Encode *what* behavior is expected — use descriptive test names or scenario
