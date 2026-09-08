@@ -8,3 +8,10 @@ repos:
         entry: stylua
         language: system
         types: [lua]
+
+      - id: shfmt
+        name: shfmt
+        entry: shfmt
+        language: system
+        types: [shell]
+        args: [-w, -i, "2", -ci]
