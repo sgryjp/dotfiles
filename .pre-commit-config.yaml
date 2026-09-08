@@ -14,4 +14,4 @@ repos:
         entry: shfmt
         language: system
         types: [shell]
-        args: [-w, -i, "2", -ci]
+        args: [-w]
