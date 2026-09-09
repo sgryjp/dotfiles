@@ -117,6 +117,18 @@ tmap("<C-j>", "<C-\\><C-n><C-w>j", { desc = "Focus down" })
 tmap("<C-k>", "<C-\\><C-n><C-w>k", { desc = "Focus up" })
 tmap("<C-l>", "<C-\\><C-n><C-w>l", { desc = "Focus right" })
 
+-- Buffer annotations
+if not vim.g.vscode then
+  nmap(",b", ":GitBlameToggle<CR>", { desc = "Toggle Git blame" })
+  nmap(",d", ":lua MiniDiff.toggle_overlay()<CR>", { desc = "Toggle diff overlay" })
+  nmap(",h", ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", { desc = "Toggle inlay-hints" })
+end
+
+-- Special rendering modes
+if not vim.g.vscode then
+  nmap(",c", ":CsvViewToggle<CR>", { desc = "Toggle CSV view" })
+end
+
 -- Auxiliary views
 if vim.g.vscode then
   vscode_nmap("<Space>q", "workbench.actions.view.problems")

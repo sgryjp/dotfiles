@@ -49,6 +49,8 @@ if not vim.g.vscode then
       -- mini.surround
       { mode = "n", keys = "s" },
       { mode = "x", keys = "s" },
+      -- Buffer annotations and special rendering modes
+      { mode = "n", keys = "," },
     },
     clues = {
       clue.gen_clues.builtin_completion(),
