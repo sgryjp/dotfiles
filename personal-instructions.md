@@ -44,8 +44,11 @@ code-review items, follow that policy in preference to this global default.
 
 ## Code Comments
 
-- Focus on _why not_ — why the obvious alternatives weren't chosen, if such
-  alternatives exist. Don't just describe what the code does.
+- Avoid comments that merely restate what the code does.
+- When supported by the task context, linked issue, documentation, tests, or
+  existing codebase conventions, use comments to record non-obvious
+  constraints, trade-offs, or rejected alternatives.
+- Do not infer or invent rationale that is not supported by available evidence.
 
 ## Web Search and Scrape
 
