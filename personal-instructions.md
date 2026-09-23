@@ -24,13 +24,14 @@
 
 ## AI-created tracker items
 
-For every issue, pull request, merge request, or equivalent tracker or
-code-review item you create, unless the user explicitly requests otherwise,
-begin its description with:
+For every newly created issue, pull request, merge request, or equivalent
+tracker or code-review item, unless the user explicitly requests otherwise,
+include the following notice near the beginning of its description:
 
 > AI-assisted draft - human review required.
 
-Retain this notice unless the user explicitly instructs you to remove it.
+Preserve required project templates and form structure. Do not add the notice
+when updating existing items, posting comments, or submitting reviews.
 
 If project-specific instructions define a policy for AI-created tracker or
 code-review items, follow that policy in preference to this global default.
