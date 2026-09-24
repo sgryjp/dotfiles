@@ -7,18 +7,19 @@ conform.setup({
   -- Conform will run multiple formatters sequentially.
   -- Use a sub-list to run only the first available formatter.
   formatters_by_ft = {
-    css = { "oxfmt" },
     cs = { "csharpier" },
-    less = { "oxfmt" },
+    css = { "oxfmt" },
     html = { "oxfmt", "prettier" },
-    json = { "oxfmt", "prettier" },
     javascriptreact = { "oxfmt", "oxlint" },
+    json = { "oxfmt", "prettier" },
+    less = { "oxfmt" },
     lua = { "stylua" },
     markdown = { "oxfmt", "prettier" },
     nu = { "nufmt" },
     python = { "ruff_format" },
     rust = { "trim_whitespace", "rustfmt", lsp_format = "fallback" },
     sh = { "shfmt" },
+    sql = { "sleek" },
     swift = { "swift_format" },
     toml = { "oxfmt", "taplo" },
     typescript = { "oxfmt", "oxlint" },
