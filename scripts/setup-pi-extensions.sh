@@ -5,7 +5,7 @@ set -eu
 # sources.
 set -- \
   "npm:cache-warm@0.2.0" \
-  "npm:@gotgenes/pi-subagents@19.3.2" \
+  "npm:@gotgenes/pi-subagents@21.7.6" \
   "npm:@tmustier/pi-usage-extension@0.9.4" \
   "npm:@vanillagreen/pi-tool-renderer@1.7.1"
 
