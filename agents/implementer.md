@@ -1,7 +1,7 @@
 ---
 name: implementer
 description: Executes an approved implementation plan with focused edits, targeted validation, and an explicit report of deviations.
-model: gpt-5.6-luna
+model: gpt-6-luna
 thinking: high
 ---
 
