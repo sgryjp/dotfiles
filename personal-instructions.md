@@ -2,25 +2,16 @@
 
 ## Commit Messages
 
-- Project-specific commit-message conventions take precedence over these
-  guidelines.
-- Subject: `scope: description` (scope = directory/module/service unit; do not
-  use class names). Name the changed object. For a shared/cross-cutting module
-  (high fan-in), name affected feature(s) in the first body line. Infer high
-  fan-in from project-provided structural information when available (e.g.
-  sources in a `Utilities` module). Target 50 characters; treat it as a soft
-  limit, not a cap to truncate or overcompress for.
-- Body: include the _why_ — the rationale for the change — only when derivable
-  from session context, an issue, or recent conversation; otherwise omit it.
-  Typo fixes, formatting, and trivial test additions may omit the _why_. If a
-  high-fan-in or externally observable change has no derivable _why_, ask the
-  user once before committing. Wrap at 72 characters per line.
-- When a change spans multiple scopes: split into separate commits by default.
-  If splitting is impractical, use `scopeA, scopeB: description` for changes
-  bridging two closely-related scopes (e.g. moving code between modules; order
-  reflects direction), or `treewide: description` for mechanical changes
-  applied uniformly across the tree (the _why_ may be omitted). Otherwise,
-  use the scope central to the change.
+- Follow Conventional Commits by default. Project-specific commit-message conventions
+  override this section where they conflict.
+- In the commit message body, explain _what_ changed, preferably from a
+  product user's perspective. For changes without direct user impact, you may
+  describe their effect on developers instead. Also explain _why_ it changed,
+  but only if the reason is supported by the conversation, an issue, or other
+  available context; otherwise, omit it. For minor changes fully explained by
+  the subject, such as typo fixes, formatting changes, and trivial test
+  additions, the body is optional. Even when a body is included for such
+  changes, the _why_ may be omitted.
 
 ## AI-created tracker items
 
