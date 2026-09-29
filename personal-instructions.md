@@ -1,9 +1,11 @@
 # Personal Coding Guidelines
 
+Project-specific instructions and conventions take precedence over these guidelines
+where they conflict.
+
 ## Commit Messages
 
-- Follow Conventional Commits by default. Project-specific commit-message conventions
-  override this section where they conflict.
+- Follow Conventional Commits by default.
 - In the commit message body, explain _what_ changed, preferably from a
   product user's perspective. For changes without direct user impact, you may
   describe their effect on developers instead. Also explain _why_ it changed,
@@ -23,9 +25,6 @@ include the following notice near the beginning of its description:
 
 Preserve required project templates and form structure. Do not add the notice
 when updating existing items, posting comments, or submitting reviews.
-
-If project-specific instructions define a policy for AI-created tracker or
-code-review items, follow that policy in preference to this global default.
 
 ## Tests and Scenario Names
 
