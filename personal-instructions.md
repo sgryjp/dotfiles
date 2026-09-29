@@ -14,6 +14,7 @@ where they conflict.
   the subject, such as typo fixes, formatting changes, and trivial test
   additions, the body is optional. Even when a body is included for such
   changes, the _why_ may be omitted.
+- Wrap the commit message body at 72 characters per line.
 
 ## AI-created tracker items
 
