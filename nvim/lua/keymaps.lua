@@ -138,7 +138,6 @@ if vim.g.vscode then
 else
   nmap("<Space>l", ":lopen<CR>", { desc = "Open location list window" })
   nmap("<Space>q", ":copen<CR>", { desc = "Open quick fix window" })
-  nmap("<Space>h", ":lua MiniDiff.toggle_overlay()<CR>", { desc = "Toggle MiniDiff overlay" })
 
   nmap("<Space>e", ":lua Snacks.explorer()<CR>", { desc = "Pick files" })
 
