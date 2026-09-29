@@ -71,11 +71,11 @@ if vim.g.vscode then
   vscode_nmap("gi", "editor.action.goToImplementation")
   vscode_nmap("gr", "editor.action.goToReferences")
 else
-  nmap("gD", ":lua vim.lsp.buf.declaration()<CR>", { desc = "Go to declaration" })
-  nmap("gd", ":lua vim.lsp.buf.definition()<CR>", { desc = "Go to definition" })
-  nmap("gy", ":lua vim.lsp.buf.type_definition()<CR>", { desc = "Go to type definition" })
-  nmap("gi", ":lua vim.lsp.buf.implementation()<CR>", { desc = "Go to implementation" })
-  nmap("gr", ":lua vim.lsp.buf.references()<CR>", { desc = "Go to references" })
+  nmap("gD", ":lua Snacks.picker.lsp_declarations()<CR>", { desc = "Go to declaration" })
+  nmap("gd", ":lua Snacks.picker.lsp_definitions()<CR>", { desc = "Go to definition" })
+  nmap("gy", ":lua Snacks.picker.lsp_type_definitions()<CR>", { desc = "Go to type definition" })
+  nmap("gi", ":lua Snacks.picker.lsp_implementations()<CR>", { desc = "Go to implementation" })
+  nmap("gr", ":lua Snacks.picker.lsp_references()<CR>", { desc = "Go to references", nowait = true })
 end
 
 -- Inspect
@@ -147,10 +147,6 @@ else
   nmap("<Space>p", ":lua Snacks.picker.grep()<CR>", { desc = "Live grep" })
   -- nmap("<Space>s", ":lua Snacks.picker.lsp_symbols()<CR>", { desc = "Pick a symbol (document)" })
   nmap("<Space>S", ":lua Snacks.picker.lsp_workspace_symbols()<CR>", { desc = "Pick a symbol (workspace)" })
-  nmap("<Space>d", ":lua Snacks.picker.lsp_definitions()<CR>", { desc = "Pick a definition" })
-  nmap("<Space>r", ":lua Snacks.picker.lsp_references()<CR>", { desc = "Pick a reference" })
-  nmap("<Space>i", ":lua Snacks.picker.lsp_implementations()<CR>", { desc = "Pick a implementation" })
-  nmap("<Space>y", ":lua Snacks.picker.lsp_type_definitions()<CR>", { desc = "Pick a type definition" })
   nmap("<Space>g", ":lua Snacks.picker.diagnostics()<CR>", { desc = "Pick a diagnostic (workspace)" })
 
   nmap("<Space>s", ":AerialToggle<CR>", { desc = "Open outline" })

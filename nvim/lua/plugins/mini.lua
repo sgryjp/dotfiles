@@ -29,7 +29,6 @@ if not vim.g.vscode then
       { mode = "n", keys = "<Space>" },
       { mode = "x", keys = "<Space>" },
       { mode = "i", keys = "<C-x>" },
-      { mode = "n", keys = "g" },
       { mode = "x", keys = "g" },
       { mode = "n", keys = "'" },
       { mode = "n", keys = "`" },
