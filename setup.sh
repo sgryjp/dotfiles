@@ -198,7 +198,7 @@ for f in "$SCRIPT_PATH"/agents/*.md; do
 done
 
 # Remove dead symlinks
-find ~/.config/nvim -type l | while IFS= read -r link; do
+find ~/.config/nvim ~/.pi/agent/agents ~/.copilot/agents -type l | while IFS= read -r link; do
   if [ ! -e "$link" ]; then
     echo "rm -f $link # dead link"
     rm -f "$link"
