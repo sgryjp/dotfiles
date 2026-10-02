@@ -41,6 +41,11 @@ when updating existing items, posting comments, or submitting reviews.
   constraints, trade-offs, or rejected alternatives.
 - Do not infer or invent rationale that is not supported by available evidence.
 
+## Subagent Model Preferences
+
+For read-only codebase exploration subagents, use `gpt-6-luna` and set
+thinking level (reasoning effort) to `low`.
+
 ## Web Search and Scrape
 
 <!-- https://chain.sh/ketch/guide/agent-integration -->
