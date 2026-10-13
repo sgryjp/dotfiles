@@ -16,6 +16,14 @@ where they conflict.
   changes, the _why_ may be omitted.
 - Wrap the commit message body at 72 characters per line.
 
+## Git Branch and Worktree Names
+
+- When creating a branch, use `{type}/{description}`. Choose a Conventional
+  Commits type that matches the work (e.g., `feat`, `fix`, `docs`, `refactor`,
+  `test`, or `chore`), and write the description in lowercase kebab-case.
+- When creating a worktree, name its directory after the branch, replacing
+  every `/` with `-`. For example, `feat/add-search` becomes `feat-add-search`.
+
 ## AI-created tracker items
 
 For every newly created issue, pull request, merge request, or equivalent
