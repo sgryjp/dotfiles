@@ -25,25 +25,30 @@ local function set_indent_ft(width, expand_tab, augroup, filetypes)
   })
 end
 
--- File & Edit settings
+-- File I/O
 vim.opt.fileencoding = "utf-8"
 vim.opt.fileencodings = "ucs-bom,utf-8,cp932"
-vim.opt.virtualedit = "block"
 vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.swapfile = false
 vim.opt.undofile = false
+
+-- Editing
 vim.opt.clipboard = "unnamedplus"
+vim.opt.virtualedit = "block"
+
+-- Search
+vim.opt.hlsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.wrapscan = false
 
 -- UI & Appearance
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.splitright = true
 vim.opt.scrolloff = 2
-vim.opt.updatetime = 500
-vim.opt.wildmode = "longest:full"
 vim.opt.mouse = "nv"
-vim.opt.completeopt = "menuone,noinsert,noselect"
 vim.opt.listchars = "tab:╌╌>,trail:␠"
 vim.opt.breakindent = true
 vim.opt.breakindentopt = "shift:2,sbr"
@@ -53,6 +58,29 @@ if vim.version.ge(nvim_version, { 0, 8 }) then
 end
 if vim.version.ge(nvim_version, { 0, 11 }) then
   vim.o.winborder = "rounded"
+end
+
+-- Completion & File Browsing
+vim.opt.completeopt = "menuone,noinsert,noselect"
+vim.opt.wildmode = "longest:full"
+vim.opt.wildignore = {
+  "*.bak",
+  "*.dll",
+  "*.min.*",
+  "*.o",
+  "*.obj",
+  "*.py[cod]",
+  "*.so",
+  "*.swp",
+  "*~",
+}
+
+-- Diagnostics
+if vim.version.ge(nvim_version, { 0, 11 }) then
+  vim.diagnostic.config({
+    virtual_text = true,
+    virtual_lines = { current_line = true },
+  })
 else
   vim.diagnostic.config({
     float = {
@@ -66,23 +94,16 @@ else
     },
   })
 end
-if vim.version.ge(nvim_version, { 0, 11 }) then
-  vim.diagnostic.config({
-    virtual_text = true,
-    virtual_lines = { current_line = true },
-  })
-end
 
--- Search settings
-vim.opt.hlsearch = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.wrapscan = false
-
--- Indentation and TextWidth
+-- Indentation
 vim.opt.shiftround = true
 set_indent(4, true)
 
+-- Behavior
+vim.opt.updatetime = 500
+vim.opt.diffopt = "linematch:60,filler,closeoff"
+
+-- Filetype-specific settings
 local indent_group = vim.api.nvim_create_augroup("indent", { clear = true })
 set_indent_ft(8, false, indent_group, { "gitconfig", "make" })
 set_indent_ft(4, false, indent_group, { "go" })
@@ -96,19 +117,6 @@ set_indent_ft(2, true, indent_group, {
   "typescriptreact",
 })
 
--- Misc
-vim.opt.diffopt = "linematch:60,filler,closeoff"
-vim.opt.wildignore = {
-  "*.bak",
-  "*.dll",
-  "*.min.*",
-  "*.o",
-  "*.obj",
-  "*.py[cod]",
-  "*.so",
-  "*.swp",
-  "*~",
-}
 -- Force enable syntax highlight for .razor files
 -- (it is disabled by default for unknown reason as of 2025-12-23)
 vim.api.nvim_create_autocmd("FileType", {
