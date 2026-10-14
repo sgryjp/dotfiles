@@ -55,6 +55,7 @@ vim.opt.breakindentopt = "shift:2,sbr"
 vim.opt.showbreak = "↳"
 if vim.version.ge(nvim_version, { 0, 8 }) then
   vim.opt.laststatus = 3
+  vim.opt.cmdheight = 0
 end
 if vim.version.ge(nvim_version, { 0, 11 }) then
   vim.o.winborder = "rounded"
