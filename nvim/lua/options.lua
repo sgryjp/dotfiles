@@ -34,6 +34,35 @@ vim.opt.swapfile = false
 vim.opt.undofile = false
 
 -- Editing
+-- Use a copy-only OSC 52 provider over SSH; keep native providers locally.
+-- OSC 52 paste queries the terminal's clipboard. Terminals without read support
+-- (e.g. Windows Terminal) can cause long pauses, even for `yyp`, while Neovim
+-- waits for a response. Read from a local cache instead.
+-- With 'unnamedplus' below, over SSH:
+--   - Yank/delete: send text through OSC 52 and cache it with its register type.
+--   - p/P: paste cached text without querying the terminal.
+--   - Text copied in another app: use the terminal's paste shortcut, not p/P.
+if vim.version.ge(nvim_version, { 0, 10 }) and (vim.env.SSH_TTY or vim.env.SSH_CONNECTION) then
+  local osc52 = require("vim.ui.clipboard.osc52")
+  local clipboard = {
+    name = "OSC 52 (copy only)",
+    copy = {},
+    paste = {},
+  }
+
+  for _, register in ipairs({ "+", "*" }) do
+    local copy = osc52.copy(register)
+    local contents = { { "" }, "v" }
+
+    clipboard.copy[register] = function(lines, regtype)
+      contents = { vim.deepcopy(lines), regtype }
+      copy(lines)
+    end
+    clipboard.paste[register] = function() return vim.deepcopy(contents) end
+  end
+
+  vim.g.clipboard = clipboard
+end
 vim.opt.clipboard = "unnamedplus"
 vim.opt.virtualedit = "block"
 
