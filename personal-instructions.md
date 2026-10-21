@@ -28,12 +28,14 @@ where they conflict.
 
 For every newly created issue, pull request, merge request, or equivalent
 tracker or code-review item, unless the user explicitly requests otherwise,
-include the following notice near the beginning of its description:
+include the following exact notice as a plain-text paragraph near the
+beginning of its description:
 
-> AI-assisted draft - human review required.
+AI-assisted draft - human review required.
 
 Preserve required project templates and form structure. Do not add the notice
 when updating existing items, posting comments, or submitting reviews.
+Skip it if an equivalent notice (any wording or language) is already present.
 
 ## Tests and Scenario Names
 
