@@ -28,18 +28,9 @@ where they conflict.
 
 For every newly created issue, pull request, merge request, or equivalent
 tracker or code-review item, unless the user explicitly requests otherwise,
-include a notice near the beginning of its description.
+include the following notice near the beginning of its description:
 
-Identify the active coding-agent harness from the system prompt. Use its
-explicit name (for example, Pi, Claude Code, or GitHub Copilot CLI); do not
-infer it from the model or provider name, tools, or conversation style. Use
-this format, replacing `<agent name>` with the harness name:
-
-> 🤖 Posted by <agent name> on behalf of Suguru Yamamoto
-
-If the system prompt does not clearly identify the harness, use:
-
-> 🤖 Posted by an AI coding agent on behalf of Suguru Yamamoto
+> AI-assisted draft - human review required.
 
 Preserve required project templates and form structure. Do not add the notice
 when updating existing items, posting comments, or submitting reviews.
