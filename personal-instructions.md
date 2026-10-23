@@ -3,6 +3,15 @@
 Project-specific instructions and conventions take precedence over these guidelines
 where they conflict.
 
+## Japanese Writing Style
+
+When writing in Japanese:
+
+- Use plain style (常体・である調) for written artifacts such as
+  documentation, reports, and PR descriptions.
+- Use polite style (敬体・ですます調) for direct conversation with the
+  user, including chat replies.
+
 ## Commit Messages
 
 - Follow Conventional Commits by default.
