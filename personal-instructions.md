@@ -60,6 +60,13 @@ Skip it if an equivalent notice (any wording or language) is already present.
   constraints, trade-offs, or rejected alternatives.
 - Do not infer or invent rationale that is not supported by available evidence.
 
+## Windows Process Launching
+
+When launching non-interactive background processes on Windows, keep console
+windows hidden. When using .NET `ProcessStartInfo`, set `UseShellExecute = false`
+and `CreateNoWindow = true`. This does not apply when an interactive console
+or visible application window is needed.
+
 ## Subagent Model Preferences
 
 For read-only codebase exploration subagents, use `gpt-6-luna` and set
