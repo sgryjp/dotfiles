@@ -27,11 +27,15 @@ When writing in Japanese:
 
 ## Git Branch and Worktree Names
 
-- When creating a branch, use `{type}/{description}`. Choose a Conventional
-  Commits type that matches the work (e.g., `feat`, `fix`, `docs`, `refactor`,
-  `test`, or `chore`), and write the description in lowercase kebab-case.
+- When creating a branch, use a lowercase kebab-case name made of 3-5 words
+  that describe the work (e.g., `fix-user-name-collision`). Do not add a
+  Conventional Commits type or any other `{prefix}/` namespace.
+- If the work resolves a known issue, start the name with its number (e.g.,
+  `123-fix-user-name-collision`). If no related issue is known, omit it.
 - When creating a worktree, name its directory after the branch, replacing
-  every `/` with `-`. For example, `feat/add-search` becomes `feat-add-search`.
+  every `/` with `-` so that the directory stays flat. For example,
+  `alice/123-fix-user-name-collision` becomes
+  `alice-123-fix-user-name-collision`.
 
 ## AI-created tracker items
 
