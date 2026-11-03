@@ -65,8 +65,6 @@ Personal dotfiles for shells, editors, Git, tmux, and coding agents.
 - Keep the checkout path stable: installed links and source lines refer to it.
 - When adding configuration files, check both installers. Some files are listed
   explicitly rather than discovered automatically.
-- Both installers still reference `wezterm.lua`, which is absent from this
-  checkout.
 - Run installers only when deployment is intended: they modify user-level
   configuration, can replace destination files, and remove broken symlinks from
   selected configuration directories.
