@@ -73,8 +73,13 @@ or visible application window is needed.
 
 ## Subagent Model Preferences
 
-For read-only codebase exploration subagents, use `gpt-6-luna` and set
-thinking level (reasoning effort) to `low`.
+Honor any explicitly specified model or thinking level (reasoning effort). For
+each setting not explicitly specified:
+
+- For tasks primarily focused on codebase exploration, use `gpt-6-luna` with
+  thinking level `high`.
+- For all other tasks, including code review, inherit the parent session's model
+  and thinking level, regardless of subagent type.
 
 ## Web Search and Scrape
 
