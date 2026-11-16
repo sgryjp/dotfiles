@@ -8,8 +8,9 @@ end
 -- Dependency packages
 vim.pack.add({
   gh("echasnovski/mini.nvim"), -- mini.icons for oil, snacks, render-markdown
-  gh("kyazdani42/nvim-web-devicons"), -- for aerial, oil
+  gh("kyazdani42/nvim-web-devicons"), -- for aerial, atlas, oil
   gh("nvim-treesitter/nvim-treesitter"), -- render-markdown
+  gh("esmuellert/codediff.nvim"), -- atlas.nvim
 })
 
 -- Non-dependency packages
@@ -32,8 +33,8 @@ vim.pack.add({
   { src = gh("saghen/blink.cmp"), version = vim.version.range("1.*") },
   gh("akinsho/toggleterm.nvim"),
   gh("hat0uma/csvview.nvim"),
-  gh("esmuellert/codediff.nvim"),
   gh("CoreyKaylor/diffbandit.nvim"),
+  gh("emrearmagan/atlas.nvim"),
 })
 
 -- Configure plugins (dedicated config files)
@@ -66,3 +67,8 @@ require("codediff").setup({
   },
 })
 require("diffbandit").setup({})
+require("atlas").setup({
+  providers = {
+    github = {},
+  },
+})
