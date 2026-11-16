@@ -24,6 +24,12 @@ When writing in Japanese:
   additions, the body is optional. Even when a body is included for such
   changes, the _why_ may be omitted.
 - Wrap the commit message body at 72 characters per line.
+- For commits with a body, pass the full message (subject and body) to
+  `git commit -F <file>` or `git commit -F -`, using actual newlines.
+  Use one blank line after the subject and between body paragraphs,
+  and single newlines within paragraphs. Prevent shell expansion (e.g.,
+  use a quoted heredoc in Bash/Zsh or a single-quoted here-string in
+  PowerShell).
 
 ## Git Branch and Worktree Names
 
