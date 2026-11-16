@@ -7,7 +7,13 @@ end
 
 -- Enable LSP servers
 mason.setup({})
-mason_lspconfig.setup({})
+mason_lspconfig.setup({
+  automatic_enable = {
+    exclude = {
+      "roslyn_ls", -- Prefer roslyn.nvim
+    },
+  },
+})
 vim.lsp.enable("bashls")
 vim.lsp.enable("jsonls")
 vim.lsp.enable("lua_ls")
