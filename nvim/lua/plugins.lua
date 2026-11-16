@@ -33,6 +33,7 @@ vim.pack.add({
   gh("akinsho/toggleterm.nvim"),
   gh("hat0uma/csvview.nvim"),
   gh("esmuellert/codediff.nvim"),
+  gh("CoreyKaylor/diffbandit.nvim"),
 })
 
 -- Configure plugins (dedicated config files)
@@ -64,3 +65,4 @@ require("codediff").setup({
     },
   },
 })
+require("diffbandit").setup({})
