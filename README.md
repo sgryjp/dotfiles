@@ -9,18 +9,16 @@ This repository stores my personal dot files.
 sequence for a committed branch and, with approval, rebuilds it on a new local
 branch without changing the original.
 
-Install it for Pi at user scope with either of these commands:
+Install it for supported coding agents using [skills](https://skills.sh/) or
+[gh skills](https://cli.github.com/manual/gh_skill):
 
 ```sh
-npx skills add sgryjp/dotfiles --skill reorganize-branch --agent pi --global
+npx skills add sgryjp/dotfiles --skill reorganize-branch
 ```
 
 ```sh
-gh skill install sgryjp/dotfiles reorganize-branch --agent pi --scope user
+gh skills install sgryjp/dotfiles reorganize-branch
 ```
 
-For another agent or installation scope, adjust the flags; see the
-[`skills` CLI documentation](https://github.com/vercel-labs/skills) or the
-[`gh skill install` manual](https://cli.github.com/manual/gh_skill_install).
-When no version is specified, `gh skill install` prefers the latest tagged
-release over the default branch.
+When no version is specified, `gh skills` prefers the latest tagged release
+over the default branch.
