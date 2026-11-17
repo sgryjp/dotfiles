@@ -127,6 +127,7 @@ end
 -- Special rendering modes
 if not vim.g.vscode then
   nmap(",c", ":CsvViewToggle<CR>", { desc = "Toggle CSV view" })
+  nmap(",m", ":RenderMarkdown toggle<CR>", { desc = "Toggle Markdown rendering" })
 end
 
 -- Auxiliary views
